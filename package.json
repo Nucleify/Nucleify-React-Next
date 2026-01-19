@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "npx next dev",
+    "dev": "npx next dev --turbopack",
     "build": "npx next build",
     "start": "npx next start"
   },
@@ -11,6 +11,7 @@
     "@gsap/react": "2.1.2",
     "gsap": "3.13.0",
     "next": "15.4.3",
+    "primereact": "^10.9.7",
     "react": "19.0.0",
     "react-dom": "19.0.0",
     "sass": "1.89.0"
