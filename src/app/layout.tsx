@@ -1,5 +1,6 @@
 import { PrimeReactProvider } from 'primereact/api'
 import 'primereact/resources/themes/lara-dark-blue/theme.css'
+import 'primeicons/primeicons.css'
 
 export const metadata = {
   title: 'Next.js',
