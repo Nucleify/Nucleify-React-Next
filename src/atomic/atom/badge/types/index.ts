@@ -1,1 +1,1 @@
-export type { BadgeInterface } from './interfaces'
+export * from './interfaces'

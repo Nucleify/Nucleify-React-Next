@@ -6,3 +6,6 @@ import type { AvatarInterface } from './types'
 export default function AdAvatar(props: AvatarInterface): JSX.Element {
   return <Avatar {...props} />
 }
+
+export type { AvatarInterface }
+export { AdAvatar }

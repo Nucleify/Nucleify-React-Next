@@ -11,3 +11,4 @@ export default function AdImage({
 }
 
 export type { ImageInterface } from './types'
+export { AdImage }

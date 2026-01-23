@@ -32,3 +32,4 @@ export default function AdIcon({
 }
 
 export type { IconInterface } from './types'
+export { AdIcon }

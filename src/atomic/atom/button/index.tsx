@@ -60,3 +60,4 @@ export default function AdButton({
 }
 
 export type { ButtonInterface } from './types'
+export { AdButton }

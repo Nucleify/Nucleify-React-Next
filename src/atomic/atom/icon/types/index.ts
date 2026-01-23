@@ -1,1 +1,1 @@
-export type { IconInterface } from './interfaces'
+export type * from './interfaces'
