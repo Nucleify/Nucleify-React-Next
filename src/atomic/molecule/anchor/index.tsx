@@ -1,0 +1,40 @@
+import type { JSX, ReactNode } from 'react'
+
+import { AdIcon, AdImage, AdLabel } from '../../atom'
+import type { AnchorInterface } from './types'
+
+export default function AdAnchor({
+  children,
+  href,
+  rel,
+  target,
+  style,
+  icon,
+  adType,
+  size,
+  storybook,
+  src,
+  alt,
+  fetchpriority,
+  label,
+  anchorClass,
+  itemClass,
+  tooltip,
+  ...rest
+}: AnchorInterface & { children?: ReactNode }): JSX.Element {
+  const combinedStyle = { cursor: 'pointer', ...(style ?? {}) }
+  return (
+    <a href={href} rel={rel} target={target} style={combinedStyle} {...rest}>
+      {children}
+      {icon && (
+        <AdIcon icon={icon} adType={adType} size={size} storybook={storybook} />
+      )}
+      {src && <AdImage src={src} alt={alt} fetchpriority={fetchpriority} />}
+      {label && <AdLabel label={label} />}
+    </a>
+  )
+}
+
+export * from './types'
+export type { AnchorInterface }
+export { AdAnchor }
