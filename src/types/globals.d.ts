@@ -25,4 +25,6 @@ declare global {
     icon: string
     click: (data: ObjectType) => void
   }
+
+  type PositionType = 'top' | 'right' | 'left' | 'bottom'
 }
