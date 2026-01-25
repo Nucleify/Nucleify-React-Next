@@ -16,4 +16,13 @@ declare global {
     | 'user'
 
   type AdTypeType = ObjectNameType | 'main'
+
+  type ActionType = 'delete' | 'show' | 'create' | 'edit'
+
+  type ObjectType = Record<string, unknown> | undefined
+
+  interface ActionInterface {
+    icon: string
+    click: (data: ObjectType) => void
+  }
 }
