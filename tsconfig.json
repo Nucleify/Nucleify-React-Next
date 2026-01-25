@@ -20,10 +20,10 @@
     ],
     "paths": {
       "@/*": ["./src/*"],
-      "atomic": ["./src/app/atomic/*"],
-      "boson/*": ["./src/app/atomic/boson/*"],
-      "molecule/*": ["./src/app/atomic/molecule/*"],
-      "template/*": ["./src/app/atomic/template/*"]
+      "atomic": ["./src/atomic/*"],
+      "atom/*": ["./src/atomic/atom/*"],
+      "molecule/*": ["./src/atomic/molecule/*"],
+      "organism/*": ["./src/atomic/organism/*"]
     },
     "allowImportingTsExtensions": true
   },
