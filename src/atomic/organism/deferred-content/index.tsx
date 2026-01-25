@@ -1,0 +1,23 @@
+import type { JSX } from 'react'
+
+import { DeferredContent } from 'primereact/deferredcontent'
+import type { DeferredContentInterface } from './types'
+
+export default function AdDeferredContent({
+  className = '',
+  children,
+  ...rest
+}: DeferredContentInterface): JSX.Element {
+  const mergedClassName = ['ad-deferredcontent', className]
+    .filter(Boolean)
+    .join(' ')
+
+  return (
+    <DeferredContent {...rest} className={mergedClassName || undefined}>
+      {children}
+    </DeferredContent>
+  )
+}
+
+export type * from './types'
+export { AdDeferredContent }
