@@ -14,6 +14,7 @@
     "next": "15.4.3",
     "primeicons": "^7.0.0",
     "primereact": "^10.9.7",
+    "quill": "^2.0.3",
     "react": "19.0.0",
     "react-dom": "19.0.0",
     "sass": "1.89.0"
