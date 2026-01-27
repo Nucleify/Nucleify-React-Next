@@ -2,7 +2,7 @@ import type { JSX, ReactNode } from 'react'
 
 import type { ParagraphInterface } from './types'
 
-export default function AdParagraph({
+export function AdParagraph({
   text,
   children,
 }: ParagraphInterface & { children?: ReactNode }): JSX.Element {
@@ -13,6 +13,3 @@ export default function AdParagraph({
     </p>
   )
 }
-
-export type { ParagraphInterface }
-export { AdParagraph }

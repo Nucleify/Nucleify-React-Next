@@ -1,14 +1,14 @@
 import type { CSSProperties, JSX, ReactNode } from 'react'
 
 import { Button } from 'primereact/button'
-import AdIcon from '../icon'
-import AdImage from '../image'
+import { AdIcon } from '../icon'
+import { AdImage } from '../image'
 import type { ButtonInterface } from './types'
 
 const cx = (...parts: Array<string | false | null | undefined>): string =>
   parts.filter(Boolean).join(' ')
 
-export default function AdButton({
+export function AdButton({
   adType,
   media,
   variant,
@@ -58,6 +58,3 @@ export default function AdButton({
     </Button>
   )
 }
-
-export type { ButtonInterface } from './types'
-export { AdButton }

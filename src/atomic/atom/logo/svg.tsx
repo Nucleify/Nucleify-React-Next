@@ -1,9 +1,9 @@
 import type { JSX } from 'react'
 
-import AdLogoPaths from './paths'
+import { AdLogoPaths } from './paths'
 import type { LogoInterface } from './types'
 
-export default function AdLogoSvg({
+export function AdLogoSvg({
   dimensions = 44,
   lighterColorClass,
   darkerColorClass,
@@ -23,5 +23,3 @@ export default function AdLogoSvg({
     </svg>
   )
 }
-
-export { AdLogoSvg }

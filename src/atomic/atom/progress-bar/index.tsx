@@ -3,7 +3,7 @@ import type { JSX } from 'react'
 import { ProgressBar } from 'primereact/progressbar'
 import type { ProgressBarInterface } from './types'
 
-export default function AdProgressBar({
+export function AdProgressBar({
   width,
   height,
   style,
@@ -17,6 +17,3 @@ export default function AdProgressBar({
 
   return <ProgressBar {...rest} style={mergedStyle} />
 }
-
-export type { ProgressBarInterface }
-export { AdProgressBar }

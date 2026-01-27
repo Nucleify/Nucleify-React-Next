@@ -3,7 +3,7 @@ import type { JSX } from 'react'
 import { InputTextarea } from 'primereact/inputtextarea'
 import type { TextareaInterface } from './types'
 
-export default function AdTextarea({
+export function AdTextarea({
   className,
   adType,
   ...rest
@@ -12,6 +12,3 @@ export default function AdTextarea({
 
   return <InputTextarea {...rest} className={mergedClassName} />
 }
-
-export type { TextareaInterface }
-export { AdTextarea }

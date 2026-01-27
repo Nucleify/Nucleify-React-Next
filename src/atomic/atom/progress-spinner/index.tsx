@@ -3,7 +3,7 @@ import type { JSX } from 'react'
 import { ProgressSpinner } from 'primereact/progressspinner'
 import type { ProgressSpinnerInterface } from './types'
 
-export default function AdProgressSpinner({
+export function AdProgressSpinner({
   width,
   height,
   style,
@@ -17,6 +17,3 @@ export default function AdProgressSpinner({
 
   return <ProgressSpinner {...rest} style={mergedStyle} />
 }
-
-export type { ProgressSpinnerInterface }
-export { AdProgressSpinner }

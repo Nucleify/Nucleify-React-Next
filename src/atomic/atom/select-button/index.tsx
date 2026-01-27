@@ -3,7 +3,7 @@ import type { JSX } from 'react'
 import { SelectButton } from 'primereact/selectbutton'
 import type { SelectButtonInterface } from './types'
 
-export default function AdSelectButton({
+export function AdSelectButton({
   pt,
   adType,
   ...rest
@@ -25,6 +25,3 @@ export default function AdSelectButton({
 
   return <SelectButton {...rest} pt={mergedPt} />
 }
-
-export type { SelectButtonInterface }
-export { AdSelectButton }

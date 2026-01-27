@@ -3,7 +3,7 @@ import type { JSX } from 'react'
 import type { HeadingInterface } from './types'
 import { chooseHeading } from './utils'
 
-export default function AdHeading({
+export function AdHeading({
   tag,
   text,
   children,
@@ -17,7 +17,3 @@ export default function AdHeading({
     </Tag>
   )
 }
-
-export type { HeadingInterface, HeadingType } from './types'
-export { chooseHeading } from './utils'
-export { AdHeading }

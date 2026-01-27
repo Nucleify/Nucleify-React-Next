@@ -2,7 +2,7 @@ import type { JSX } from 'react'
 
 import type { PathsInterface } from './types'
 
-export default function AdLogoPaths({
+export function AdLogoPaths({
   lighterColorClass,
   darkerColorClass,
 }: PathsInterface): JSX.Element {
@@ -23,5 +23,3 @@ export default function AdLogoPaths({
     </>
   )
 }
-
-export { AdLogoPaths }

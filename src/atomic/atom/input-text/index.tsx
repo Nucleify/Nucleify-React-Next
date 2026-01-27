@@ -3,7 +3,7 @@ import type { JSX } from 'react'
 import { InputText } from 'primereact/inputtext'
 import type { InputTextInterface } from './types'
 
-export default function AdInputText({
+export function AdInputText({
   className,
   adType,
   ...rest
@@ -18,6 +18,3 @@ export default function AdInputText({
     />
   )
 }
-
-export type { InputTextInterface }
-export { AdInputText }

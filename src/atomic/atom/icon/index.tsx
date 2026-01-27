@@ -2,7 +2,7 @@ import type { JSX } from 'react'
 
 import type { IconInterface } from './types'
 
-export default function AdIcon({
+export function AdIcon({
   icon,
   size,
   className,
@@ -30,6 +30,3 @@ export default function AdIcon({
     />
   )
 }
-
-export type { IconInterface } from './types'
-export { AdIcon }
