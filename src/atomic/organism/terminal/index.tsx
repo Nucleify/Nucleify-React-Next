@@ -1,3 +1,4 @@
+'use client'
 import { JSX, useEffect } from 'react'
 
 import { Terminal } from 'primereact/terminal'

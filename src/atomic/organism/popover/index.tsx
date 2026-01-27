@@ -1,3 +1,4 @@
+'use client'
 import type { JSX, ReactNode } from 'react'
 import { useRef } from 'react'
 
