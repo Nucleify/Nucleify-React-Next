@@ -3,7 +3,7 @@ import type { JSX, ReactNode } from 'react'
 import { AdIcon, AdImage, AdLabel } from '../../atom'
 import type { AnchorInterface } from './types'
 
-export default function AdAnchor({
+export function AdAnchor({
   children,
   href,
   rel,
@@ -34,7 +34,3 @@ export default function AdAnchor({
     </a>
   )
 }
-
-export * from './types'
-export type { AnchorInterface }
-export { AdAnchor }

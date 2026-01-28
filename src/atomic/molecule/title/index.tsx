@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { AdIcon, AdParagraph } from '../../atom'
 import type { TitleInterface } from './types'
 
-export default function AdTitle({
+export function AdTitle({
   adType,
   header,
   href = '#',
@@ -47,7 +47,3 @@ export default function AdTitle({
     </Link>
   )
 }
-
-export * from './types'
-export type { TitleInterface }
-export { AdTitle }

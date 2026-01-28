@@ -3,13 +3,9 @@ import type { JSX, ReactNode } from 'react'
 import { FloatLabel } from 'primereact/floatlabel'
 import type { FloatLabelInterface } from './types'
 
-export default function AdFloatLabel({
+export function AdFloatLabel({
   children,
   ...rest
 }: FloatLabelInterface & { children?: ReactNode }): JSX.Element {
   return <FloatLabel {...rest}>{children}</FloatLabel>
 }
-
-export * from './types'
-export type { FloatLabelInterface }
-export { AdFloatLabel }
