@@ -3,7 +3,7 @@ import type { JSX } from 'react'
 import { Panel } from 'primereact/panel'
 import type { PanelInterface } from './types'
 
-export default function AdPanel({
+export function AdPanel({
   className,
   content,
   children,
@@ -18,6 +18,3 @@ export default function AdPanel({
     </Panel>
   )
 }
-
-export type * from './types'
-export { AdPanel }

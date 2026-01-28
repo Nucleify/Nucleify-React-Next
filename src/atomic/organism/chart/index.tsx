@@ -3,7 +3,7 @@ import type { JSX } from 'react'
 import { Chart } from 'primereact/chart'
 import type { ChartInterface } from './types'
 
-export default function AdChart({
+export function AdChart({
   className = '',
   chartClass,
   data,
@@ -30,6 +30,3 @@ export default function AdChart({
     />
   )
 }
-
-export type * from './types'
-export { AdChart }

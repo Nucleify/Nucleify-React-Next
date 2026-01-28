@@ -6,7 +6,7 @@ import { TerminalService } from 'primereact/terminalservice'
 import type { TerminalInterface } from './types'
 import { handleCommands } from './utils/handle_commands'
 
-export default function AdTerminal({
+export function AdTerminal({
   className,
   ...props
 }: TerminalInterface): JSX.Element {
@@ -30,6 +30,3 @@ export default function AdTerminal({
     />
   )
 }
-
-export type * from './types'
-export { AdTerminal }

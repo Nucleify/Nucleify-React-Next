@@ -3,7 +3,7 @@ import type { JSX } from 'react'
 import { ColorPicker } from 'primereact/colorpicker'
 import type { ColorPickerInterface } from './types'
 
-export default function AdColorPicker({
+export function AdColorPicker({
   className = '',
   adType,
   ...rest
@@ -20,6 +20,3 @@ export default function AdColorPicker({
     />
   )
 }
-
-export type * from './types'
-export { AdColorPicker }

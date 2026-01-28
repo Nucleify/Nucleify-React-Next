@@ -3,7 +3,7 @@ import type { JSX } from 'react'
 import { PickList } from 'primereact/picklist'
 import type { PickListInterface } from './types'
 
-export default function AdPickList({
+export function AdPickList({
   className,
   ...props
 }: PickListInterface): JSX.Element {
@@ -14,6 +14,3 @@ export default function AdPickList({
     />
   )
 }
-
-export type * from './types'
-export { AdPickList }

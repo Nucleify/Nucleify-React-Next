@@ -3,7 +3,7 @@ import type { JSX } from 'react'
 import { Galleria } from 'primereact/galleria'
 import type { GalleriaInterface } from './types'
 
-export default function AdGalleria({
+export function AdGalleria({
   items,
   value,
   className,
@@ -18,6 +18,3 @@ export default function AdGalleria({
     />
   )
 }
-
-export type { GalleriaImageItem, GalleriaInterface } from './types'
-export { AdGalleria }

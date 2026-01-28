@@ -25,7 +25,7 @@ function filterProps<T extends object>(
   return filtered
 }
 
-export default function AdPopover({
+export function AdPopover({
   className,
   children,
   position,
@@ -66,6 +66,3 @@ export default function AdPopover({
     </>
   )
 }
-
-export type * from './types'
-export { AdPopover }

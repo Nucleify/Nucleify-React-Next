@@ -3,7 +3,7 @@ import type { JSX } from 'react'
 import { Dock } from 'primereact/dock'
 import type { DockInterface } from './types'
 
-export default function AdDock({
+export function AdDock({
   className = '',
   position,
   ...rest
@@ -24,7 +24,3 @@ export default function AdDock({
     />
   )
 }
-
-export * from './constants'
-export type * from './types'
-export { AdDock }

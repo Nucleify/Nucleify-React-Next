@@ -2,7 +2,7 @@ import type { JSX, ReactNode } from 'react'
 
 import type { SelectInterface } from './types'
 
-export default function AdSelect({
+export function AdSelect({
   options,
   className,
   children,
@@ -31,6 +31,3 @@ export default function AdSelect({
     </div>
   )
 }
-
-export type * from './types'
-export { AdSelect }

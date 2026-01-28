@@ -3,7 +3,7 @@ import type { JSX, ReactNode } from 'react'
 import { ScrollPanel } from 'primereact/scrollpanel'
 import type { ScrollPanelInterface } from './types'
 
-export default function AdScrollPanel({
+export function AdScrollPanel({
   className,
   children,
   ...props
@@ -17,6 +17,3 @@ export default function AdScrollPanel({
     </ScrollPanel>
   )
 }
-
-export type * from './types'
-export { AdScrollPanel }

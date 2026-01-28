@@ -3,7 +3,7 @@ import type { JSX } from 'react'
 import { Card } from 'primereact/card'
 import type { CardInterface } from './types'
 
-export default function AdCard({
+export function AdCard({
   className = '',
   ...rest
 }: CardInterface): JSX.Element {
@@ -11,6 +11,3 @@ export default function AdCard({
 
   return <Card {...rest} className={mergedClassName || undefined} />
 }
-
-export type * from './types'
-export { AdCard }

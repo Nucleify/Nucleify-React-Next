@@ -3,7 +3,7 @@ import type { JSX } from 'react'
 import { Dialog } from 'primereact/dialog'
 import type { DialogInterface } from './types'
 
-export default function AdDialog({
+export function AdDialog({
   className = '',
   modal = true,
   showHeader = true,
@@ -34,6 +34,3 @@ export default function AdDialog({
     </Dialog>
   )
 }
-
-export type * from './types'
-export { AdDialog }

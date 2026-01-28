@@ -3,7 +3,7 @@ import type { JSX } from 'react'
 import { Carousel } from 'primereact/carousel'
 import type { CarouselInterface } from './types'
 
-export default function AdCarousel({
+export function AdCarousel({
   className = '',
   ...rest
 }: CarouselInterface): JSX.Element {
@@ -11,6 +11,3 @@ export default function AdCarousel({
 
   return <Carousel {...rest} className={mergedClassName || undefined} />
 }
-
-export type * from './types'
-export { AdCarousel }

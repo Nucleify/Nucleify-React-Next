@@ -3,7 +3,7 @@ import type { JSX } from 'react'
 import { AutoComplete } from 'primereact/autocomplete'
 import type { AutoCompleteInterface } from './types'
 
-export default function AdAutoComplete({
+export function AdAutoComplete({
   className = '',
   ...rest
 }: AutoCompleteInterface): JSX.Element {
@@ -13,6 +13,3 @@ export default function AdAutoComplete({
 
   return <AutoComplete {...rest} className={mergedClassName || undefined} />
 }
-
-export type * from './types'
-export { AdAutoComplete }

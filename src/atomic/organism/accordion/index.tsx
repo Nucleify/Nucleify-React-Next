@@ -3,7 +3,7 @@ import type { JSX } from 'react'
 import { Accordion, AccordionTab } from 'primereact/accordion'
 import type { AccordionInterface } from './types'
 
-export default function AdAccordion({
+export function AdAccordion({
   panels,
   hexagons,
   className = '',
@@ -40,6 +40,3 @@ export default function AdAccordion({
 
   return null
 }
-
-export type * from './types'
-export { AdAccordion, AccordionTab as AdAccordionTab }

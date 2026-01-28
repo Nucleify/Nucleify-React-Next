@@ -8,7 +8,7 @@ export interface AdTimelineProps extends TimelineInterface {
   renderEvent?: (event: TimelineEventInterface) => ReactNode
 }
 
-export default function AdTimeline({
+export function AdTimeline({
   className,
   events,
   renderEvent,
@@ -23,6 +23,3 @@ export default function AdTimeline({
     />
   )
 }
-
-export type * from './types'
-export { AdTimeline }

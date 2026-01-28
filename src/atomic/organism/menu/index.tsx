@@ -4,7 +4,7 @@ import React, { forwardRef, useImperativeHandle, useRef } from 'react'
 import { Menu } from 'primereact/menu'
 import type { MenuInterface } from './types'
 
-const AdMenu = forwardRef<
+export const AdMenu = forwardRef<
   { toggle: (event: React.MouseEvent) => void },
   MenuInterface
 >((props, ref) => {
@@ -28,8 +28,3 @@ const AdMenu = forwardRef<
 })
 
 AdMenu.displayName = 'AdMenu'
-
-export default AdMenu
-
-export type { MenuInterface } from './types'
-export { AdMenu }

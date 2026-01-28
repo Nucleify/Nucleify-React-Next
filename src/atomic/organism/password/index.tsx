@@ -3,7 +3,7 @@ import type { JSX } from 'react'
 import { Password } from 'primereact/password'
 import type { PasswordInterface } from './types'
 
-export default function AdPassword({
+export function AdPassword({
   className,
   adType,
   passwordsMatch,
@@ -24,6 +24,3 @@ export default function AdPassword({
     />
   )
 }
-
-export type * from './types'
-export { AdPassword }

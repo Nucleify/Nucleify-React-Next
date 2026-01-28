@@ -8,12 +8,7 @@ interface AdToastProps extends ToastInterface {
   pt?: ToastInterface['pt']
 }
 
-export default function AdToast({
-  className,
-  children,
-  pt,
-  ...rest
-}: AdToastProps) {
+export function AdToast({ className, children, pt, ...rest }: AdToastProps) {
   return (
     <Toast
       {...rest}
@@ -24,6 +19,3 @@ export default function AdToast({
     </Toast>
   )
 }
-
-export type * from './types'
-export { AdToast }

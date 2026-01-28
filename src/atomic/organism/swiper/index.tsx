@@ -6,9 +6,7 @@ import type { ReactNode } from 'react'
 
 import type { SwiperInterface } from './types'
 
-export default function AdSwiper(
-  props: SwiperInterface & { children?: ReactNode }
-) {
+export function AdSwiper(props: SwiperInterface & { children?: ReactNode }) {
   const { slides, children, ...rest } = props
   return (
     <div className="swiper-container ad-swiper">
@@ -28,6 +26,3 @@ export default function AdSwiper(
     </div>
   )
 }
-
-export type * from './types'
-export { AdSwiper }

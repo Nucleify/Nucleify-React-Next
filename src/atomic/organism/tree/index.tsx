@@ -1,7 +1,7 @@
 import { Tree } from 'primereact/tree'
 import type { TreeInterface } from './types'
 
-export default function AdTree(props: TreeInterface) {
+export function AdTree(props: TreeInterface) {
   const { className, ...rest } = props
   return (
     <Tree
@@ -10,6 +10,3 @@ export default function AdTree(props: TreeInterface) {
     />
   )
 }
-
-export type * from './types'
-export { AdTree }

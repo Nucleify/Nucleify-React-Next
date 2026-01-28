@@ -3,7 +3,7 @@ import type { JSX } from 'react'
 import { DeferredContent } from 'primereact/deferredcontent'
 import type { DeferredContentInterface } from './types'
 
-export default function AdDeferredContent({
+export function AdDeferredContent({
   className = '',
   children,
   ...rest
@@ -18,6 +18,3 @@ export default function AdDeferredContent({
     </DeferredContent>
   )
 }
-
-export type * from './types'
-export { AdDeferredContent }

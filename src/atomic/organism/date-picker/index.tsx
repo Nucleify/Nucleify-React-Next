@@ -3,7 +3,7 @@ import type { JSX } from 'react'
 import { Calendar } from 'primereact/calendar'
 import type { DatePickerInterface } from './types'
 
-export default function AdDatePicker({
+export function AdDatePicker({
   className = '',
   adType,
   showOnFocus = true,
@@ -26,6 +26,3 @@ export default function AdDatePicker({
     />
   )
 }
-
-export type * from './types'
-export { AdDatePicker }

@@ -1,10 +1,9 @@
 import type { JSX } from 'react'
 
-import { Column } from 'primereact/column'
 import { DataTable } from 'primereact/datatable'
 import type { DataTableInterface } from './types'
 
-export default function AdDataTable({
+export function AdDataTable({
   className = '',
   adType,
   value,
@@ -63,8 +62,3 @@ export default function AdDataTable({
     />
   )
 }
-
-export type * from './types'
-export { AdDataTable }
-
-export { Column as AdDataTableColumn } from 'primereact/column'

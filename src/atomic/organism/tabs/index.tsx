@@ -13,7 +13,7 @@ export function AdTabPanel(
   return <TabPanel {...props}>{props.children}</TabPanel>
 }
 
-export default function AdTabs({
+export function AdTabs({
   className,
   lists,
   panels,
@@ -47,6 +47,3 @@ export default function AdTabs({
     </TabView>
   )
 }
-
-export type * from './types'
-export { AdTabs }
