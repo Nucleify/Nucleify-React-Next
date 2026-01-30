@@ -2,6 +2,7 @@ import type { JSX } from 'react'
 
 import Link from 'next/link'
 import { AdIcon, AdParagraph } from '../../atom'
+import styles from './index.module.scss'
 import type { TitleInterface } from './types'
 
 export function AdTitle({
@@ -15,32 +16,32 @@ export function AdTitle({
   storybook,
 }: TitleInterface): JSX.Element {
   return (
-    <Link href={href} data-ad-type={adType} className="ad-tile">
-      <div className="ad-tile-general">
-        <div className="ad-tile-info">
-          <div className="ad-tile-header">
+    <Link href={href} data-ad-type={adType} className={styles['ad-tile']}>
+      <div className={styles['general']}>
+        <div className={styles['info']}>
+          <div className={styles['header']}>
             <AdParagraph text={header} />
           </div>
-          <div className="ad-tile-count">
+          <div className={styles['count']}>
             <AdParagraph text={count !== undefined ? String(count) : ''} />
           </div>
         </div>
-        <div className="ad-tile-icon-container">
+        <div className={styles['icon-container']}>
           <AdIcon
-            className="ad-tile-icon"
+            className={styles['icon']}
             icon={icon}
             adType={adType}
             storybook={storybook}
           />
         </div>
       </div>
-      <div className="ad-tile-secondary">
-        <div className="ad-tile-count">
+      <div className={styles['secondary']}>
+        <div className={styles['count']}>
           <AdParagraph
             text={countSecondary !== undefined ? `${countSecondary} new` : ''}
           />
         </div>
-        <div className="ad-tile-text">
+        <div className={styles['text']}>
           <AdParagraph text={textSecondary} />
         </div>
       </div>
