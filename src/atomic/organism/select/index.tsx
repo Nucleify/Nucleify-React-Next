@@ -1,33 +1,33 @@
-import type { JSX, ReactNode } from 'react'
+import type { JSX } from 'react'
 
-import type { SelectInterface } from './types'
+import { Dropdown } from 'primereact/dropdown'
+import styles from './index.module.scss'
+import type { SelectInterface } from './types/interfaces'
 
 export function AdSelect({
-  options,
   className,
-  children,
-}: {
-  options?: SelectInterface[]
-  className?: string
-  children?: ReactNode
-}): JSX.Element {
-  if (options && options.length > 0) {
-    return (
-      <ul className={[className, 'ad-select'].filter(Boolean).join(' ')}>
-        {options.map((option, idx) => (
-          <li key={idx} className="ad-select-option" onClick={option.command}>
-            {option.icon && (
-              <span className={option.icon} style={{ marginRight: 8 }} />
-            )}
-            {option.label}
-          </li>
-        ))}
-      </ul>
-    )
-  }
+  adType,
+  ...rest
+}: SelectInterface): JSX.Element {
+  const mergedClassName = [styles['ad-select'], className]
+    .filter(Boolean)
+    .join(' ')
+
   return (
-    <div className={[className, 'ad-select'].filter(Boolean).join(' ')}>
-      {children}
-    </div>
+    <Dropdown
+      {...rest}
+      className={mergedClassName}
+      pt={{
+        root: { style: { display: 'flex', alignItems: 'center' } },
+        trigger: { className: styles['ad-select-dropdown'] },
+        panel: {
+          className: styles['ad-select-overlay'],
+          ...(adType ? { 'ad-type': adType } : ({} as Record<string, unknown>)),
+        },
+        wrapper: { className: styles['ad-select-list-container'] },
+        list: { className: styles['ad-select-list'] },
+        item: { className: styles['ad-select-option'] },
+      }}
+    />
   )
 }

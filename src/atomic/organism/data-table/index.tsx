@@ -1,64 +1,77 @@
 import type { JSX } from 'react'
 
 import { DataTable } from 'primereact/datatable'
-import type { DataTableInterface } from './types'
+import styles from './index.module.scss'
+import type { DataTableInterface } from './types/interfaces'
 
 export function AdDataTable({
   className = '',
   adType,
   value,
   loading,
-  rows,
-  paginator,
-  showHeaders,
+  rows = 10,
+  paginator = true,
+  showHeaders = true,
   stripedRows = true,
   rowHover = true,
   filters,
   onFilter,
+  children,
   ...rest
 }: DataTableInterface): JSX.Element | null {
   if (!value || loading) return null
 
-  const mergedClassName = ['ad-datatable', className].filter(Boolean).join(' ')
+  const mergedClassName = [styles['ad-datatable'], className]
+    .filter(Boolean)
+    .join(' ')
+
+  const adTypeAttribute = adType
+    ? ({ 'ad-type': adType } as Record<string, string>)
+    : {}
 
   return (
     <DataTable
       {...rest}
       value={value}
-      rows={rows ?? 10}
-      paginator={paginator ?? true}
-      showHeaders={showHeaders ?? true}
+      rows={rows}
+      paginator={paginator}
+      showHeaders={showHeaders}
       stripedRows={stripedRows}
       rowHover={rowHover}
       filters={filters}
       onFilter={onFilter}
-      className={mergedClassName || undefined}
-      {...(adType ? { 'ad-type': adType } : {})}
+      className={mergedClassName}
+      {...adTypeAttribute}
       pt={{
-        root: { className: 'ad-datatable' },
-        bodyRow: { className: 'ad-datatable-row' },
+        root: { className: styles['ad-datatable'] },
+        bodyRow: { className: styles['ad-datatable-row'] },
         paginator: {
-          root: { className: 'ad-datatable-paginator' },
-          content: { className: 'ad-datatable-paginator-content' },
-          next: { className: 'ad-datatable-paginator-next' },
-          last: { className: 'ad-datatable-paginator-last' },
-          pcRowPerPageDropdown: {
+          root: { className: styles['ad-datatable-paginator'] },
+          pages: { className: styles['ad-datatable-paginator-pages'] },
+          first: { className: styles['ad-datatable-paginator-first'] },
+          prev: { className: styles['ad-datatable-paginator-prev'] },
+          next: { className: styles['ad-datatable-paginator-next'] },
+          last: { className: styles['ad-datatable-paginator-last'] },
+
+          rowPerPageDropdown: {
             root: {
-              className: 'ad-select',
-              ...(adType ? { 'ad-type': adType } : {}),
+              className: styles['ad-select'],
+              ...adTypeAttribute,
             },
-            label: { className: 'ad-select-label' },
-            dropdown: { className: 'ad-select-dropdown' },
-            overlay: {
-              className: 'ad-select-overlay',
-              ...(adType ? { 'ad-type': adType } : {}),
+            label: { className: styles['ad-select-label'] },
+            trigger: { className: styles['ad-select-dropdown'] },
+            panel: {
+              className: styles['ad-select-overlay'],
+              ...adTypeAttribute,
             },
-            listContainer: { className: 'ad-select-list-container' },
-            list: { className: 'ad-select-list' },
-            option: { className: 'ad-select-option' },
+            wrapper: { className: styles['ad-select-list-container'] },
+            list: { className: styles['ad-select-list'] },
+            item: { className: styles['ad-select-option'] },
           },
         },
       }}
-    />
+    >
+      {children}
+    </DataTable>
   )
 }

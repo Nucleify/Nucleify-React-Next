@@ -1,0 +1,65 @@
+@import '../../atom/input-text/index.module';
+
+.ad-select {
+  padding: 0.625em 0.8em;
+
+  @extend %ad-inputtext !optional;
+
+  .ad-select-dropdown {
+    width: min-content;
+  }
+
+  .ad-select-label {
+    padding: 0;
+  }
+}
+
+.ad-select-overlay {
+  background-color: color-mix(
+    in srgb,
+    $p-card-background 80%,
+    transparent
+  ) !important;
+  backdrop-filter: blur(8px);
+  border: none !important;
+
+  .ad-select-list-container {
+    background: transparent !important;
+    border: none !important;
+    padding: 0;
+  }
+
+  .ad-select-list {
+    background: transparent !important;
+    padding: 0;
+    list-style: none;
+
+    :global(.p-dropdown-item) {
+      padding: 0.625em 0.8em !important;
+      color: $white-text-color !important;
+      background: transparent !important;
+      cursor: pointer;
+      transition: none !important;
+
+      &:hover,
+      &.p-focus {
+        background-color: var(
+          --p-select-option-focus-background,
+          rgb(255 255 255 / 10%)
+        ) !important;
+        color: $white-text-color !important;
+      }
+
+      &.p-highlight,
+      &[aria-selected='true'] {
+        background-color: $content-background !important;
+        color: $white-text-color !important;
+      }
+
+      &:focus {
+        box-shadow: none !important;
+        outline: none !important;
+      }
+    }
+  }
+}

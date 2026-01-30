@@ -1,0 +1,93 @@
+@import '../select/index.module';
+
+.ad-datatable {
+  min-height: 595px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: 0.2s 0.15s opacity;
+
+  .ad-datatable-row {
+    cursor: pointer;
+  }
+
+  :global {
+    .p-datatable-tbody > tr {
+      border: none !important;
+
+      > td {
+        padding: 6px 9px !important;
+        border: none !important;
+      }
+
+      &:nth-child(even) {
+        background-color: $p-card-background !important;
+
+        > td {
+          background-color: $p-card-background !important;
+          color: $white-text-color !important;
+        }
+      }
+
+      &:nth-child(odd) {
+        background-color: $content-background !important;
+
+        > td {
+          background-color: $content-background !important;
+          color: $white-text-color !important;
+        }
+      }
+    }
+
+    .p-datatable-thead > tr > th {
+      background: $bg-black-color !important;
+      padding: 9px !important;
+      color: $white-text-color !important;
+      border: none !important;
+    }
+  }
+
+  .ad-datatable-paginator {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    background: transparent;
+    position: relative;
+    font-size: $font-size-sm;
+    width: 100%;
+    padding: 20px 0;
+    margin: -0.5em 0 -2.125em;
+
+    .ad-datatable-paginator-content {
+      display: flex;
+      gap: 8px;
+    }
+
+    .ad-datatable-paginator-first,
+    .ad-datatable-paginator-prev,
+    .ad-datatable-paginator-next,
+    .ad-datatable-paginator-last {
+      min-height: $min-max-width-height-small !important;
+      min-width: $min-max-width-height-small !important;
+      max-height: $min-max-width-height-small !important;
+      max-width: $min-max-width-height-small !important;
+      background: transparent;
+      border: none;
+      color: inherit;
+    }
+
+    :global(.p-paginator-page.p-highlight) {
+      background: $content-background !important;
+      color: $white-text-color !important;
+      border-radius: 4px;
+    }
+
+    .ad-select {
+      display: flex;
+      align-items: center;
+      padding: 0 0.75em;
+      margin-left: 0.75em;
+      gap: 1em;
+    }
+  }
+}
