@@ -1,0 +1,43 @@
+@import '../../atom/input-text/index.module';
+
+.ad-dialog {
+  background: $content-background !important;
+  border: 1px solid $p-card-border !important;
+  color: $white-text-color !important;
+  backdrop-filter: blur(0.5em);
+  border-radius: 6px;
+}
+
+.ad-dialog-mask {
+  padding: 0 10px;
+  background-color: rgb(0 0 0 / 40%) !important;
+}
+
+.ad-dialog-header {
+  padding: 1.125rem 1.5rem 0.5rem;
+  background: transparent !important;
+  border: none !important;
+  color: inherit !important;
+
+  h2 {
+    margin: 0;
+  }
+}
+
+.ad-dialog-content {
+  padding: 20px;
+  background: transparent !important;
+  border: none !important;
+  color: inherit !important;
+}
+
+.ad-dialog-header-icon {
+  display: none !important;
+}
+
+.ad-dialog-footer {
+  padding: 20px;
+  background: transparent !important;
+  border: none !important;
+  color: inherit !important;
+}

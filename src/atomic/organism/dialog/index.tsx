@@ -1,6 +1,7 @@
 import type { JSX } from 'react'
 
 import { Dialog } from 'primereact/dialog'
+import styles from './index.module.scss'
 import type { DialogInterface } from './types'
 
 export function AdDialog({
@@ -12,7 +13,9 @@ export function AdDialog({
   children,
   ...rest
 }: DialogInterface): JSX.Element {
-  const mergedClassName = ['ad-dialog', className].filter(Boolean).join(' ')
+  const mergedClassName = [styles['ad-dialog'], className]
+    .filter(Boolean)
+    .join(' ')
 
   return (
     <Dialog
@@ -21,13 +24,15 @@ export function AdDialog({
       showHeader={showHeader}
       header={header}
       footer={footer}
-      className={mergedClassName || undefined}
+      className={mergedClassName}
       pt={{
-        mask: { className: 'ad-dialog-mask' },
-        header: { className: 'ad-dialog-header' },
-        headerIcons: { className: 'ad-dialog-header-icon' },
-        content: { className: 'ad-dialog-content' },
-        footer: { className: 'ad-dialog-footer' },
+        root: { className: mergedClassName },
+        mask: { className: styles['ad-dialog-mask'] },
+        header: { className: styles['ad-dialog-header'] },
+        content: { className: styles['ad-dialog-content'] },
+        footer: { className: styles['ad-dialog-footer'] },
+        closeButton: { className: styles['ad-dialog-header-icon'] },
+        closeButtonIcon: { className: styles['ad-dialog-header-icon'] },
       }}
     >
       {children}
