@@ -1,36 +1,22 @@
 import type { JSX } from 'react'
 
 import { InputOtp } from 'primereact/inputotp'
+import styles from './index.module.scss'
 import type { InputOtpInterface } from './types'
 
-export default function AdInputOtp({
+export function AdInputOtp({
   className,
   adType,
   pt,
   ...rest
 }: InputOtpInterface): JSX.Element {
-  const mergedClassName = ['ad-inputotp', className].filter(Boolean).join(' ')
+  const mergedPt = {
+    ...(pt as object),
+    root: {
+      className: [styles['ad-inputotp'], className].filter(Boolean).join(' '),
+      ...(adType ? { 'ad-type': adType } : {}),
+    },
+  }
 
-  const mergeInput = (
-    input: Record<string, unknown> | undefined
-  ): Record<string, unknown> => ({
-    ...input,
-    className: ['ad-inputtext', input?.className as string | undefined]
-      .filter(Boolean)
-      .join(' '),
-    ...(adType ? { 'ad-type': adType } : {}),
-  })
-
-  const mergedPt =
-    typeof pt === 'object' && pt !== null && !Array.isArray(pt)
-      ? {
-          ...pt,
-          input: mergeInput(pt.input as Record<string, unknown> | undefined),
-        }
-      : (pt ?? { input: mergeInput(undefined) })
-
-  return <InputOtp {...rest} pt={mergedPt} className={mergedClassName} />
+  return <InputOtp {...rest} pt={mergedPt} />
 }
-
-export type { InputOtpInterface }
-export { AdInputOtp }

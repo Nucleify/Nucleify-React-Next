@@ -1,0 +1,7 @@
+@import '../input-text/index.module';
+
+.ad-inputotp {
+  :global(.p-inputotp-input) {
+    @extend %ad-inputtext;
+  }
+}
