@@ -4,6 +4,7 @@ import { useRef } from 'react'
 
 import { OverlayPanel } from 'primereact/overlaypanel'
 import { AdButton } from '@/atomic/atom/button'
+import styles from './index.module.scss'
 import type { PopoverInterface } from './types'
 
 const EXCLUDED_PROPS = [
@@ -39,14 +40,23 @@ export function AdPopover({
 }: PopoverInterface & { children?: ReactNode }): JSX.Element {
   const opRef = useRef<OverlayPanel>(null)
   const showButton = buttonText || icon || src
+
+  const cx = (...classes: (string | undefined | null | false)[]) =>
+    classes.filter(Boolean).join(' ')
+
   const overlayPanelProps = {
     ...filterProps(props, EXCLUDED_PROPS),
     ref: opRef,
-    className: [className, popoverClass, 'ad-popover', position]
-      .filter(Boolean)
-      .join(' '),
+    className: cx(
+      className,
+      popoverClass,
+      styles['ad-popover'],
+      position && styles[position],
+      position
+    ),
     'data-position': position,
   }
+
   return (
     <>
       {showButton && (
@@ -54,9 +64,12 @@ export function AdPopover({
           label={buttonText}
           icon={icon}
           src={src}
-          className={[buttonClass, 'ad-popover-toggle', position]
-            .filter(Boolean)
-            .join(' ')}
+          className={cx(
+            buttonClass,
+            styles['ad-popover-toggle'],
+            position && styles[position],
+            position
+          )}
           style={typeof buttonStyle === 'string' ? undefined : buttonStyle}
           rounded
           onClick={(e) => opRef.current?.toggle(e)}

@@ -10,11 +10,29 @@
   border-radius: 0;
   overflow: hidden;
   margin: 0 !important;
-  
+  background: transparent !important;
+  box-shadow: none !important;
+  border: none !important;
+
+  :global(.p-overlaypanel-content) {
+    background: $p-card-background !important;
+    color: $white-text-color !important;
+    border: 1px solid $p-card-border !important;
+    height: 100%;
+    padding: 1rem;
+
+    div,
+    span,
+    p,
+    strong {
+      color: inherit !important;
+    }
+  }
+
   &.top,
   &.right,
   &.left {
-    bottom: .5rem;
+    bottom: 0.5rem;
   }
 
   &.bottom {
@@ -57,7 +75,9 @@
   padding: 0.5em !important;
   color: $white-text-color !important;
   font-size: 1.25em !important;
-  
+
+  :global(.p-button-label),
+  :global(.p-button-icon),
   :global(.iconify) {
     transition: all 300ms;
     color: $white-text-color !important;
@@ -72,6 +92,8 @@
     border: 1px solid var(--main-item-color-user) !important;
     color: var(--main-item-color-user) !important;
 
+    :global(.p-button-label),
+    :global(.p-button-icon),
     :global(.iconify) {
       color: var(--main-item-color-user) !important;
     }
