@@ -3,6 +3,7 @@ import type { CSSProperties, JSX, ReactNode } from 'react'
 import { Button } from 'primereact/button'
 import { AdIcon } from '../icon'
 import { AdImage } from '../image'
+import styles from './index.module.scss'
 import type { ButtonInterface } from './types'
 
 const cx = (...parts: Array<string | false | null | undefined>): string =>
@@ -30,16 +31,17 @@ export function AdButton({
   const mergedStyle: CSSProperties = {
     ...style,
     ...(width ? { width } : {}),
+    ...(height ? { height } : {}),
     ...(gap ? { gap } : {}),
     ...(padding ? { padding } : {}),
   }
 
   const mergedClassName = cx(
-    'ad-button',
+    styles['ad-button'],
     className,
-    media && `${media}-button`,
-    variant && `${variant}-button`,
-    rounded && 'rounded-button'
+    media && styles[`${media}-button`],
+    variant && styles[`${variant}-button`],
+    rounded && styles['rounded-button']
   )
 
   return (
@@ -53,7 +55,7 @@ export function AdButton({
     >
       {src && <AdImage src={src} alt={alt} />}
       {icon && <AdIcon icon={icon} />}
-      {label && <>{label}</>}
+      {label && <span>{label}</span>}
       {children}
     </Button>
   )

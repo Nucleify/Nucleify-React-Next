@@ -3,7 +3,7 @@
   justify-content: center;
   transition: all 0.5s;
 
-  .p-button-label {
+  :global(.p-button-label) {
     font-family: Nunito, sans-serif;
     font-weight: 600;
   }
@@ -23,6 +23,7 @@
   &.data-table-button {
     height: 34px;
     width: 34px;
+    padding: 0;
   }
 
   @media (min-width: $lg) {
