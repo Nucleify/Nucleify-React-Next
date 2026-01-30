@@ -1,7 +1,8 @@
 import type { JSX } from 'react'
 
 import { Accordion, AccordionTab } from 'primereact/accordion'
-import type { AccordionInterface } from './types'
+import styles from './index.module.scss'
+import type { AccordionInterface } from './types/interfaces'
 
 export function AdAccordion({
   panels,
@@ -9,34 +10,35 @@ export function AdAccordion({
   className = '',
   ...rest
 }: AccordionInterface): JSX.Element | null {
-  const mergedClassName = ['ad-accordion', className].filter(Boolean).join(' ')
+  const mergedClassName = [styles['ad-accordion'], className]
+    .filter(Boolean)
+    .join(' ')
 
-  if (panels && panels.length > 0) {
-    return (
-      <Accordion className={mergedClassName || undefined} {...rest}>
-        {panels.map((panel, index) => (
-          <AccordionTab
-            key={index}
-            header={
-              <>
-                {hexagons && <div className="ad-hexagon-rows-container" />}
-                {panel.content}
-              </>
-            }
-            pt={{
-              root: { className: 'ad-accordionpanel' },
-              header: { className: 'ad-accordionheader' },
-              headerAction: { className: 'ad-accordionheader-action' },
-              headerIcon: { className: 'ad-accordionheader-toggle-icon' },
-              content: { className: 'ad-accordion-content' },
-            }}
-          >
-            {panel.answer}
-          </AccordionTab>
-        ))}
-      </Accordion>
-    )
-  }
+  if (!panels || panels.length === 0) return null
 
-  return null
+  return (
+    <Accordion className={mergedClassName} {...rest}>
+      {panels.map((panel, index) => (
+        <AccordionTab
+          key={index}
+          header={
+            <div className="flex align-items-center">
+              {hexagons && (
+                <div className={styles['ad-hexagon-rows-container']} />
+              )}
+              <span>{panel.content}</span>
+            </div>
+          }
+          className={styles['ad-accordionpanel']}
+          pt={{
+            headerAction: { className: styles['ad-accordionheader'] },
+            headerIcon: { className: styles['ad-accordionheader-toggle-icon'] },
+            content: { className: styles['ad-accordion-content'] },
+          }}
+        >
+          {panel.answer}
+        </AccordionTab>
+      ))}
+    </Accordion>
+  )
 }
