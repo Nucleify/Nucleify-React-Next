@@ -2,6 +2,7 @@
 import React, { forwardRef, useImperativeHandle, useRef } from 'react'
 
 import { Menu } from 'primereact/menu'
+import styles from './index.module.scss'
 import type { MenuInterface } from './types'
 
 export const AdMenu = forwardRef<
@@ -12,9 +13,7 @@ export const AdMenu = forwardRef<
 
   useImperativeHandle(ref, () => ({
     toggle: (event: React.MouseEvent) => {
-      if (menuRef.current && typeof menuRef.current.toggle === 'function') {
-        menuRef.current.toggle(event)
-      }
+      menuRef.current?.toggle(event)
     },
   }))
 
@@ -22,7 +21,13 @@ export const AdMenu = forwardRef<
     <Menu
       ref={menuRef}
       {...props}
-      className={[props.className, 'ad-menu'].filter(Boolean).join(' ')}
+      className={[styles['ad-menu'], props.className].filter(Boolean).join(' ')}
+      pt={{
+        menu: { className: styles['ad-menu-list'] },
+        menuitem: { className: styles['ad-menu-item'] },
+        content: { className: styles['ad-menu-item-content'] },
+        action: { className: styles['ad-menu-item-link'] },
+      }}
     />
   )
 })
