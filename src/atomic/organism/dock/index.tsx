@@ -1,25 +1,26 @@
 import type { JSX } from 'react'
 
 import { Dock } from 'primereact/dock'
+import styles from './index.module.scss'
 import type { DockInterface } from './types'
 
 export function AdDock({
   className = '',
-  position,
+  position = 'bottom',
   ...rest
 }: DockInterface): JSX.Element {
-  const positionClass = position ? `ad-dock-${position}` : ''
-  const mergedClassName = ['ad-dock', positionClass, className]
-    .filter(Boolean)
-    .join(' ')
+  const positionClass = styles[`ad-dock-${position}`]
 
   return (
     <Dock
       {...rest}
       position={position}
-      className={mergedClassName || undefined}
+      className={[styles['ad-dock'], positionClass, className].join(' ')}
       pt={{
-        root: { className: 'ad-dock-list-container' },
+        container: { className: styles['ad-dock-list-container'] },
+        menu: { className: styles['ad-dock-list'] },
+        menuitem: { className: styles['ad-dock-item'] },
+        action: { className: styles['ad-dock-item-link'] },
       }}
     />
   )

@@ -1,3 +1,5 @@
+@import '../../atom/input-text/index.module';
+
 .ad-dock {
   box-sizing: border-box;
   position: fixed !important;
@@ -32,13 +34,17 @@
 
       @include center-content;
 
-      .ad-dock-item {
-        @include center-content;
+      @media (min-width: $lg) {
+        gap: 0.25em;
+      }
 
+      .ad-dock-item {
         padding: 0.75em;
         min-width: 58px;
         min-height: 58px;
         box-shadow: none;
+
+        @include center-content;
 
         &:first-child {
           width: 70px;
@@ -54,10 +60,6 @@
           @include center-content;
           @include min-content;
         }
-      }
-
-      @media (min-width: $lg) {
-        gap: 0.25em;
       }
     }
   }
