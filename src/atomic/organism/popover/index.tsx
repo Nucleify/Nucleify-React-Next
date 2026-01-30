@@ -55,6 +55,9 @@ export function AdPopover({
       position
     ),
     'data-position': position,
+    pt: {
+      content: { className: styles['ad-popover-content'] },
+    },
   }
 
   return (

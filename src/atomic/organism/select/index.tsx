@@ -1,3 +1,4 @@
+'use client'
 import type { JSX } from 'react'
 
 import { Dropdown } from 'primereact/dropdown'
@@ -9,25 +10,26 @@ export function AdSelect({
   adType,
   ...rest
 }: SelectInterface): JSX.Element {
-  const mergedClassName = [styles['ad-select'], className]
-    .filter(Boolean)
-    .join(' ')
+  const cx = (...classes: (string | undefined | null | false)[]) =>
+    classes.filter(Boolean).join(' ')
+
+  const pt = {
+    input: { className: styles['ad-select-label'] },
+    trigger: { className: styles['ad-select-trigger'] },
+    panel: {
+      className: styles['ad-select-panel'],
+      ...(adType ? { 'ad-type': adType } : {}),
+    },
+    wrapper: { className: styles['ad-select-list-container'] },
+    list: { className: styles['ad-select-list'] },
+    item: { className: styles['ad-select-item'] },
+  }
 
   return (
     <Dropdown
       {...rest}
-      className={mergedClassName}
-      pt={{
-        root: { style: { display: 'flex', alignItems: 'center' } },
-        trigger: { className: styles['ad-select-dropdown'] },
-        panel: {
-          className: styles['ad-select-overlay'],
-          ...(adType ? { 'ad-type': adType } : ({} as Record<string, unknown>)),
-        },
-        wrapper: { className: styles['ad-select-list-container'] },
-        list: { className: styles['ad-select-list'] },
-        item: { className: styles['ad-select-option'] },
-      }}
+      className={cx(styles['ad-select'], className)}
+      pt={pt}
     />
   )
 }

@@ -17,17 +17,22 @@ export const AdMenu = forwardRef<
     },
   }))
 
+  const cx = (...classes: (string | undefined | null | false)[]) =>
+    classes.filter(Boolean).join(' ')
+
+  const pt = {
+    menu: { className: styles['ad-menu-list'] },
+    menuitem: { className: styles['ad-menu-item'] },
+    content: { className: styles['ad-menu-item-content'] },
+    action: { className: styles['ad-menu-item-link'] },
+  }
+
   return (
     <Menu
       ref={menuRef}
       {...props}
-      className={[styles['ad-menu'], props.className].filter(Boolean).join(' ')}
-      pt={{
-        menu: { className: styles['ad-menu-list'] },
-        menuitem: { className: styles['ad-menu-item'] },
-        content: { className: styles['ad-menu-item-content'] },
-        action: { className: styles['ad-menu-item-link'] },
-      }}
+      className={cx(styles['ad-menu'], props.className)}
+      pt={pt}
     />
   )
 })

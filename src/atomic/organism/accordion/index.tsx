@@ -1,3 +1,4 @@
+'use client'
 import type { JSX } from 'react'
 
 import { Accordion, AccordionTab } from 'primereact/accordion'
@@ -10,35 +11,44 @@ export function AdAccordion({
   className = '',
   ...rest
 }: AccordionInterface): JSX.Element | null {
-  const mergedClassName = [styles['ad-accordion'], className]
-    .filter(Boolean)
-    .join(' ')
+  const cx = (...classes: (string | undefined | null | false)[]) =>
+    classes.filter(Boolean).join(' ')
 
   if (!panels || panels.length === 0) return null
 
   return (
-    <Accordion className={mergedClassName} {...rest}>
-      {panels.map((panel, index) => (
-        <AccordionTab
-          key={index}
-          header={
-            <div className="flex align-items-center">
-              {hexagons && (
-                <div className={styles['ad-hexagon-rows-container']} />
-              )}
-              <span>{panel.content}</span>
-            </div>
-          }
-          className={styles['ad-accordionpanel']}
-          pt={{
-            headerAction: { className: styles['ad-accordionheader'] },
-            headerIcon: { className: styles['ad-accordionheader-toggle-icon'] },
-            content: { className: styles['ad-accordion-content'] },
-          }}
-        >
-          {panel.answer}
-        </AccordionTab>
-      ))}
+    <Accordion
+      className={cx(styles['ad-accordion'], className)}
+      {...rest}
+      pt={{
+        root: { className: styles['ad-accordion'] },
+      }}
+    >
+      {panels.map((panel, index) => {
+        const headerContent = (
+          <div className="flex align-items-center relative">
+            {hexagons && (
+              <div className={styles['ad-hexagon-rows-container']}></div>
+            )}
+            <span>{panel.content}</span>
+          </div>
+        )
+
+        return (
+          <AccordionTab
+            key={index}
+            header={headerContent}
+            pt={{
+              root: { className: styles['ad-accordion-tab-root'] },
+              headerAction: { className: styles['ad-accordion-header'] },
+              headerIcon: { className: styles['ad-accordion-icon'] },
+              content: { className: styles['ad-accordion-content'] },
+            }}
+          >
+            {panel.answer}
+          </AccordionTab>
+        )
+      })}
     </Accordion>
   )
 }

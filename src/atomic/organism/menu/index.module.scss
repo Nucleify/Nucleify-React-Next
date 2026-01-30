@@ -1,38 +1,41 @@
-@import '../../atom/input-text/index.module';
-
 .ad-menu {
-  background: $content-background;
-  border: 1px solid $p-card-border;
+  background: $content-background !important;
+  border: 1px solid $p-card-border !important;
   backdrop-filter: blur(0.25em);
-}
-
-.ad-menu,
-.ad-menu-list,
-.ad-menu-item-content {
-  border-radius: 0;
-}
-
-.ad-menu,
-.ad-menu-list,
-.ad-menu-item {
+  border-radius: 0 !important;
+  padding: 0 !important;
   min-width: 130px;
-  max-width: 120px;
 }
 
-.ad-menu,
 .ad-menu-list {
-  padding: 0;
-  margin: 0;
+  border-radius: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
   gap: 5px;
   overflow: hidden;
+  list-style: none !important;
+}
+
+.ad-menu-item {
+  min-width: 130px;
+}
+
+.ad-menu-item-content {
+  border-radius: 0 !important;
 }
 
 .ad-menu-item-link {
-  text-decoration: none;
+  text-decoration: none !important;
+  display: flex;
+  align-items: center;
   gap: 1em;
-  padding-left: 1.45em;
+  padding-left: 1.45em !important;
+  cursor: pointer;
+  color: inherit;
 
-  span {
-    color: $white-text-color;
+  span,
+  :global(.p-menuitem-text),
+  :global(.p-menuitem-icon) {
+    color: $white-text-color !important;
   }
 }

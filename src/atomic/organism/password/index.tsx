@@ -21,6 +21,7 @@ export function AdPassword({
   ...rest
 }: PasswordInterface) {
   const [localValue, setLocalValue] = useState<string>((value as string) || '')
+  const isConfirmation = id === 'password_confirmation'
 
   useEffect(() => {
     setLocalValue((value as string) || '')
@@ -36,8 +37,11 @@ export function AdPassword({
     [localValue]
   )
 
+  const cx = (...classes: (string | undefined | null | false)[]) =>
+    classes.filter(Boolean).join(' ')
+
   const footer = useMemo(() => {
-    if (id !== 'password_confirmation') {
+    if (!isConfirmation) {
       return (
         <>
           <Divider />
@@ -45,9 +49,10 @@ export function AdPassword({
             {criteria.map((c, i) => (
               <li
                 key={i}
-                className={`${styles['ad-password-criterion']} ${
+                className={cx(
+                  styles['ad-password-criterion'],
                   c.isValid ? styles['valid'] : styles['invalid']
-                }`}
+                )}
               >
                 {c.label}
               </li>
@@ -61,9 +66,10 @@ export function AdPassword({
       return (
         <ul className={styles['ad-password-criteria']}>
           <li
-            className={`${styles['ad-password-criterion']} ${
+            className={cx(
+              styles['ad-password-criterion'],
               passwordsMatch ? styles['valid'] : styles['invalid']
-            }`}
+            )}
           >
             {passwordsMatch ? 'Passwords match' : 'Passwords do not match'}
           </li>
@@ -71,7 +77,24 @@ export function AdPassword({
       )
     }
     return null
-  }, [id, criteria, emptyPassword, passwordsMatch])
+  }, [isConfirmation, criteria, emptyPassword, passwordsMatch])
+
+  const pt = {
+    input: { className: styles['ad-password-input'] },
+    panel: { className: styles['ad-password-panel'] },
+    meter: {
+      className: cx(
+        styles['ad-password-meter'],
+        isConfirmation && styles['hidden']
+      ),
+    },
+    info: {
+      className: cx(
+        styles['ad-password-info'],
+        isConfirmation && styles['hidden']
+      ),
+    },
+  }
 
   return (
     <Password
@@ -84,11 +107,8 @@ export function AdPassword({
       }}
       feedback={!emptyPassword}
       footer={footer}
-      className={[styles['ad-password'], className].filter(Boolean).join(' ')}
-      pt={{
-        input: { className: styles['ad-inputtext'] },
-        panel: { className: styles['ad-password-overlay'] },
-      }}
+      className={cx(className, styles['ad-password'])}
+      pt={pt}
     />
   )
 }

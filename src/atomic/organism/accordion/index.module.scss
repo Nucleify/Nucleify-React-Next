@@ -1,64 +1,67 @@
 .ad-accordion {
+  overflow: visible !important;
+  background: transparent !important;
+}
+
+.ad-accordion-tab-root {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  margin: 0 !important;
+}
+
+.ad-accordion-header {
+  background: $content-background !important;
+  color: $white-text-color !important;
+  border: 1px solid $p-card-border !important;
+  border-radius: 0 !important;
+  position: relative;
+  padding: 0 1em !important;
+  height: 60px;
+  transition: all 300ms;
+  display: flex;
+  align-items: center;
+  text-decoration: none !important;
+  box-shadow: none !important;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+  gap: 0.75em;
+}
+
+// ...existing code...
+.ad-accordion-header:hover {
+  border: 1px solid $primary-color !important;
+  color: $primary-color !important;
+}
+
+.ad-accordion-tab-root:first-child .ad-accordion-header {
+  border-start-start-radius: 0 !important;
+  border-start-end-radius: 0 !important;
+}
+
+.ad-accordion-tab-root:last-child .ad-accordion-header {
+  border-end-start-radius: 0 !important;
+  border-end-end-radius: 0 !important;
+}
+
+.ad-accordion-icon {
+  color: $white-text-color !important;
+  transition: color 300ms;
+  margin-right: 0 !important;
+}
+
+.ad-accordion-content {
+  background: $content-background !important;
+  color: $white-text-color !important;
+  border: 1px solid $p-card-border !important;
+  border-top: none !important;
+  padding: 1em !important;
+}
+
+.ad-hexagon-rows-container {
+  position: absolute;
   overflow: visible;
-
-  .ad-accordionpanel {
-    :global(.p-accordion-header-link) {
-      background: $content-background;
-      color: $white-text-color;
-      border: 1px solid $p-card-border;
-      border-radius: 0;
-      position: relative;
-      padding: 0 1em;
-      height: 60px;
-      transition: all 300ms;
-      display: flex;
-      align-items: center;
-      text-decoration: none;
-      box-shadow: none !important;
-
-      :global(.p-accordion-toggle-icon) {
-        margin-right: 0.75em;
-        transition: color 300ms;
-      }
-
-      &:hover {
-        border: 1px solid $primary-color;
-        color: $primary-color;
-
-        :global(.p-accordion-toggle-icon) {
-          color: $primary-color;
-        }
-      }
-    }
-
-    .ad-hexagon-rows-container {
-      position: absolute;
-      overflow: visible;
-      top: -25px;
-      left: 0;
-      pointer-events: none;
-    }
-
-    &:first-child {
-      :global(.p-accordion-header-link) {
-        border-start-start-radius: 0;
-        border-start-end-radius: 0;
-      }
-    }
-
-    &:last-child {
-      :global(.p-accordion-header-link) {
-        border-end-start-radius: 0;
-        border-end-end-radius: 0;
-      }
-    }
-
-    :global(.p-accordion-content) {
-      background: $content-background;
-      color: $white-text-color;
-      border: 1px solid $p-card-border;
-      border-top: none;
-      padding: 1em;
-    }
-  }
+  top: -25px;
+  left: 0;
+  pointer-events: none;
 }

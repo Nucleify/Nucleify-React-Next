@@ -1,3 +1,4 @@
+'use client'
 import type { JSX } from 'react'
 
 import { Card } from 'primereact/card'
@@ -6,24 +7,14 @@ import type { CardInterface } from './types/interfaces'
 
 export function AdCard({
   className = '',
-  header,
-  title,
-  subTitle,
   children,
   ...rest
 }: CardInterface): JSX.Element {
-  const mergedClassName = [styles['ad-card'], className]
-    .filter(Boolean)
-    .join(' ')
+  const cx = (...classes: (string | undefined | null | false)[]) =>
+    classes.filter(Boolean).join(' ')
 
   return (
-    <Card
-      {...rest}
-      className={mergedClassName}
-      header={header}
-      title={title}
-      subTitle={subTitle}
-    >
+    <Card {...rest} className={cx(styles['ad-card'], className)}>
       {children}
     </Card>
   )

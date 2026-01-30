@@ -24,7 +24,6 @@ export function AdTerminal({
   const pt = {
     command: { className: styles['ad-terminal-command'] },
     response: { className: styles['ad-terminal-response'] },
-    container: { className: styles['ad-terminal-content'] },
   }
 
   return (

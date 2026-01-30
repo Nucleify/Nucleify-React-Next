@@ -1,4 +1,17 @@
-@import '../../atom/input-text/index.module';
+.ad-dock-list-container {
+  padding: 0;
+  border: 0;
+  background: $p-card-background;
+  backdrop-filter: blur(1em);
+  border-radius: 0;
+  height: 100%;
+  width: 100%;
+
+  @media (min-width: $lg) {
+    width: 100%;
+    height: 100%;
+  }
+}
 
 .ad-dock {
   box-sizing: border-box;
@@ -9,72 +22,12 @@
     &.ad-dock-top,
     &.ad-dock-bottom {
       width: 100%;
-
-      .ad-dock-list-container {
-        width: 100%;
-
-        .ad-dock-list {
-          width: 100%;
-        }
-      }
-    }
-  }
-
-  .ad-dock-list-container {
-    padding: 0;
-    border: 0;
-    background: $p-card-background;
-    backdrop-filter: blur(1em);
-    border-radius: 0;
-
-    .ad-dock-list {
-      box-shadow: $primary-box-shadow;
-      padding: 0;
-      margin: 0;
-
-      @include center-content;
-
-      @media (min-width: $lg) {
-        gap: 0.25em;
-      }
-
-      .ad-dock-item {
-        padding: 0.75em;
-        min-width: 58px;
-        min-height: 58px;
-        box-shadow: none;
-
-        @include center-content;
-
-        &:first-child {
-          width: 70px;
-          height: 70px;
-        }
-
-        .ad-dock-item-link {
-          overflow: visible;
-          text-decoration: none;
-          cursor: pointer;
-          transition: all 300ms;
-
-          @include center-content;
-          @include min-content;
-        }
-      }
     }
   }
 
   &.ad-dock-left,
   &.ad-dock-right {
     height: 100%;
-
-    .ad-dock-list-container {
-      height: 100%;
-
-      .ad-dock-list {
-        height: 100%;
-      }
-    }
   }
 
   &.ad-dock-top {
@@ -100,4 +53,48 @@
       border-left: 1px solid $p-card-border;
     }
   }
+}
+
+.ad-dock-list {
+  box-shadow: $primary-box-shadow;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  list-style: none;
+
+  @media (min-width: $lg) {
+    gap: 0.25em;
+  }
+}
+
+.ad-dock-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75em;
+  min-width: 58px;
+  min-height: 58px;
+  box-shadow: none;
+
+  &:first-child {
+    width: 70px;
+    height: 70px;
+  }
+}
+
+.ad-dock-item-link {
+  overflow: visible;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 300ms;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: min-content;
+  height: min-content;
+  border-radius: 50%;
 }

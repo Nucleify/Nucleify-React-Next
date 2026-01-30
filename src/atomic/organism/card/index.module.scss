@@ -1,13 +1,11 @@
 .ad-card {
   background: $p-card-background !important;
-  border: 1px solid $p-card-border;
-  color: $white-text-color;
+  border: 1px solid $p-card-border !important;
+  color: $white-text-color !important;
 
-  :global(.p-card-body) {
-    color: $white-text-color;
-  }
-
-  :global(.p-card-title) {
-    color: $white-text-color;
+  :global(.p-card-title),
+  :global(.p-card-subtitle),
+  :global(.p-card-content) {
+    color: inherit;
   }
 }

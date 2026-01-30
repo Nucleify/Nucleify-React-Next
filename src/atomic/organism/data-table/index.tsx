@@ -1,3 +1,4 @@
+'use client'
 import type { JSX } from 'react'
 
 import { DataTable } from 'primereact/datatable'
@@ -21,13 +22,45 @@ export function AdDataTable({
 }: DataTableInterface): JSX.Element | null {
   if (!value || loading) return null
 
-  const mergedClassName = [styles['ad-datatable'], className]
-    .filter(Boolean)
-    .join(' ')
+  const cx = (...classes: (string | undefined | null | false)[]) =>
+    classes.filter(Boolean).join(' ')
 
   const adTypeAttribute = adType
     ? ({ 'ad-type': adType } as Record<string, string>)
     : {}
+
+  const pt = {
+    root: { className: styles['ad-datatable'] },
+    paginator: {
+      root: { className: styles['ad-datatable-paginator'] },
+      content: { className: styles['ad-datatable-paginator-content'] },
+      firstPageButton: { className: styles['ad-datatable-paginator-button'] },
+      prevPageButton: { className: styles['ad-datatable-paginator-button'] },
+      nextPageButton: { className: styles['ad-datatable-paginator-button'] },
+      lastPageButton: { className: styles['ad-datatable-paginator-button'] },
+      pageButton: { className: styles['ad-datatable-paginator-button'] },
+      rowPerPageDropdown: {
+        root: {
+          className: styles['ad-select'],
+          ...adTypeAttribute,
+          style: {
+            display: 'flex',
+            alignItems: 'center',
+            marginLeft: '0.75em',
+          },
+        },
+        input: { className: styles['ad-select-label'] },
+        trigger: { className: styles['ad-select-trigger'] },
+        panel: {
+          className: styles['ad-select-panel'],
+          ...adTypeAttribute,
+        },
+        wrapper: { className: styles['ad-select-list-container'] },
+        list: { className: styles['ad-select-list'] },
+        item: { className: styles['ad-select-item'] },
+      },
+    },
+  }
 
   return (
     <DataTable
@@ -40,36 +73,9 @@ export function AdDataTable({
       rowHover={rowHover}
       filters={filters}
       onFilter={onFilter}
-      className={mergedClassName}
+      className={cx(styles['ad-datatable'], className)}
       {...adTypeAttribute}
-      pt={{
-        root: { className: styles['ad-datatable'] },
-        bodyRow: { className: styles['ad-datatable-row'] },
-        paginator: {
-          root: { className: styles['ad-datatable-paginator'] },
-          pages: { className: styles['ad-datatable-paginator-pages'] },
-          first: { className: styles['ad-datatable-paginator-first'] },
-          prev: { className: styles['ad-datatable-paginator-prev'] },
-          next: { className: styles['ad-datatable-paginator-next'] },
-          last: { className: styles['ad-datatable-paginator-last'] },
-
-          rowPerPageDropdown: {
-            root: {
-              className: styles['ad-select'],
-              ...adTypeAttribute,
-            },
-            label: { className: styles['ad-select-label'] },
-            trigger: { className: styles['ad-select-dropdown'] },
-            panel: {
-              className: styles['ad-select-overlay'],
-              ...adTypeAttribute,
-            },
-            wrapper: { className: styles['ad-select-list-container'] },
-            list: { className: styles['ad-select-list'] },
-            item: { className: styles['ad-select-option'] },
-          },
-        },
-      }}
+      pt={pt}
     >
       {children}
     </DataTable>

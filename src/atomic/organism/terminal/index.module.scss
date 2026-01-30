@@ -1,5 +1,3 @@
-// Import zmiennych (dopasuj ścieżkę)
-
 .ad-terminal {
   position: fixed;
   top: 0;
@@ -12,7 +10,7 @@
   background-color: $p-card-background;
   color: $white-text-color;
 
-  @media (min-width: $lg) {
+  @media (min-width: $md) {
     padding: 0.5em 0.75em;
     position: absolute;
     width: 100%;
@@ -22,15 +20,10 @@
 
 .ad-terminal-command {
   width: 100%;
-  background: transparent !important;
-  color: inherit !important;
-  border: none !important;
-  outline: none !important;
 }
 
 .ad-terminal-response {
-  color: var(--main-item-color-user) !important;
+  color: var(--main-item-color-user);
   flex-basis: 100%;
   width: 100%;
-  margin-bottom: 0.5rem;
 }
