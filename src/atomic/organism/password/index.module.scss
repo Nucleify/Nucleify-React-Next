@@ -1,0 +1,55 @@
+@import '../../atom/input-text/index.module';
+
+.ad-password {
+  .ad-inputtext {
+    width: 100%;
+
+    @extend %ad-inputtext !optional;
+  }
+}
+
+.ad-password-overlay {
+  background: $p-card-background !important;
+  border: 1px solid $p-card-border;
+  backdrop-filter: blur(0.25em);
+  padding: 1.25rem;
+
+  :global(.p-password-info),
+  :global(.p-password-footer),
+  :global(.p-password-meter) {
+    background: transparent !important;
+    padding: 0;
+    margin-bottom: 0.5rem;
+    color: $white-text-color;
+  }
+
+  .ad-password-criteria {
+    list-style-type: none;
+    padding-left: 0;
+    margin-bottom: 0;
+    margin-top: 0;
+
+    .ad-password-criterion {
+      padding: 4px 0;
+      font-size: 14px;
+      color: $white-text-color;
+    }
+  }
+
+  &:global([id='password_confirmation_panel']) {
+    :global(.p-password-meter),
+    :global(.p-password-info) {
+      display: none !important;
+    }
+  }
+}
+
+.valid {
+  color: #10b981 !important;
+  font-weight: bold;
+}
+
+.invalid {
+  color: #ef4444 !important;
+  font-weight: bold;
+}
