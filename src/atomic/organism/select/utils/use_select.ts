@@ -2,8 +2,7 @@
 
 import { useMemo } from 'react'
 
-import type { SelectItemInterface } from '../types/Item/interfaces'
-import type { OpenDialogFunctionType } from '../types/interfaces'
+import type { OpenDialogFunctionType, SelectItemInterface } from '../types'
 
 const selectData = [
   ['Show', 'pi pi-eye', 'show'],

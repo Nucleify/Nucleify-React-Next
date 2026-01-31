@@ -1,5 +1,5 @@
 'use client'
-import type { JSX, ReactNode } from 'react'
+import type { JSX } from 'react'
 import { useRef } from 'react'
 
 import { OverlayPanel } from 'primereact/overlaypanel'
@@ -7,45 +7,28 @@ import { AdButton } from '@/atomic/atom/button'
 import styles from './index.module.scss'
 import type { PopoverInterface } from './types'
 
-const EXCLUDED_PROPS = [
-  'src',
-  'buttonClass',
-  'buttonStyle',
-  'popoverClass',
-  'icon',
-]
+export function AdPopover(props: PopoverInterface): JSX.Element {
+  const {
+    className,
+    children,
+    position,
+    src,
+    buttonClass,
+    buttonStyle,
+    buttonText,
+    popoverClass,
+    icon,
+    ...rest
+  } = props
 
-function filterProps<T extends object>(
-  props: T,
-  exclude: string[]
-): Partial<T> {
-  const filtered = {} as Partial<T>
-  ;(Object.keys(props) as Array<keyof T>).forEach((key) => {
-    if (!exclude.includes(key as string)) filtered[key] = props[key]
-  })
-  return filtered
-}
-
-export function AdPopover({
-  className,
-  children,
-  position,
-  src,
-  buttonClass,
-  buttonStyle,
-  buttonText,
-  popoverClass,
-  icon,
-  ...props
-}: PopoverInterface & { children?: ReactNode }): JSX.Element {
   const opRef = useRef<OverlayPanel>(null)
-  const showButton = buttonText || icon || src
+  const showButton = !!(buttonText || icon || src)
 
   const cx = (...classes: (string | undefined | null | false)[]) =>
     classes.filter(Boolean).join(' ')
 
   const overlayPanelProps = {
-    ...filterProps(props, EXCLUDED_PROPS),
+    ...rest,
     ref: opRef,
     className: cx(
       className,
@@ -73,7 +56,7 @@ export function AdPopover({
             position && styles[position],
             position
           )}
-          style={typeof buttonStyle === 'string' ? undefined : buttonStyle}
+          style={typeof buttonStyle === 'object' ? buttonStyle : undefined}
           rounded
           onClick={(e) => opRef.current?.toggle(e)}
         />

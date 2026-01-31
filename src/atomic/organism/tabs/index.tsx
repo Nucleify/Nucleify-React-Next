@@ -1,16 +1,12 @@
-import type { JSX, ReactNode } from 'react'
+'use client'
+
+import type { JSX } from 'react'
 
 import { TabPanel, TabView } from 'primereact/tabview'
-import type {
-  TabListInterface,
-  TabPanelInterface,
-  TabsInterface,
-} from './types'
+import type { TabPanelInterface, TabsInterface } from './types'
 
-export function AdTabPanel(
-  props: TabPanelInterface & { children?: ReactNode }
-): JSX.Element {
-  return <TabPanel {...props}>{props.children}</TabPanel>
+export function AdTabPanel(props: TabPanelInterface): JSX.Element {
+  return <TabPanel {...props} />
 }
 
 export function AdTabs({
@@ -19,31 +15,24 @@ export function AdTabs({
   panels,
   children,
   ...props
-}: TabsInterface & { children?: ReactNode }): JSX.Element {
-  if (
+}: TabsInterface): JSX.Element {
+  const cx = (...classes: (string | undefined | null | false)[]) =>
+    classes.filter(Boolean).join(' ')
+
+  const isAutoRender =
     Array.isArray(lists) &&
     Array.isArray(panels) &&
     lists.length === panels.length
-  ) {
-    return (
-      <TabView
-        {...props}
-        className={[className, 'ad-tabs'].filter(Boolean).join(' ')}
-      >
-        {lists.map((list, idx) => (
-          <TabPanel key={list.value} header={list.header}>
-            {panels[idx]?.content}
-          </TabPanel>
-        ))}
-      </TabView>
-    )
-  }
+
   return (
-    <TabView
-      {...props}
-      className={[className, 'ad-tabs'].filter(Boolean).join(' ')}
-    >
-      {children}
+    <TabView {...props} className={cx(className, 'ad-tabs')}>
+      {isAutoRender
+        ? lists.map((list, idx) => (
+            <TabPanel key={list.value} header={list.header}>
+              {panels[idx]?.content}
+            </TabPanel>
+          ))
+        : children}
     </TabView>
   )
 }

@@ -1,8 +1,7 @@
 import type { DropdownProps } from 'primereact/dropdown'
-import type { SelectItemInterface } from './Item/interfaces'
+
+export type OpenDialogFunctionType = (action: string, data: unknown) => void
 
 export interface SelectInterface extends DropdownProps {
   adType?: string
-  className?: string
-  options?: SelectItemInterface[]
 }

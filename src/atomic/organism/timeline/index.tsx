@@ -1,12 +1,9 @@
-import type { JSX, ReactNode } from 'react'
+'use client'
+
+import type { JSX } from 'react'
 
 import { Timeline } from 'primereact/timeline'
-import type { TimelineEventInterface, TimelineInterface } from './types'
-
-export interface AdTimelineProps extends TimelineInterface {
-  events?: TimelineEventInterface[]
-  renderEvent?: (event: TimelineEventInterface) => ReactNode
-}
+import type { AdTimelineProps } from './types'
 
 export function AdTimeline({
   className,
@@ -14,11 +11,14 @@ export function AdTimeline({
   renderEvent,
   ...props
 }: AdTimelineProps): JSX.Element {
+  const cx = (...classes: (string | undefined | null | false)[]) =>
+    classes.filter(Boolean).join(' ')
+
   return (
     <Timeline
       {...props}
       value={events}
-      className={[className, 'ad-timeline'].filter(Boolean).join(' ')}
+      className={cx(className, 'ad-timeline')}
       content={renderEvent}
     />
   )
