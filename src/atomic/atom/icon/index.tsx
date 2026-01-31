@@ -1,32 +1,41 @@
-import type { JSX } from 'react'
+'use client'
+import type { CSSProperties, JSX } from 'react'
 
+import styles from './index.module.scss'
 import type { IconInterface } from './types'
+import { getPrimeIconClass } from './utils'
 
 export function AdIcon({
   icon,
   size,
   className,
+  style,
   storybook,
-}: IconInterface): JSX.Element | null {
+  ...rest
+}: IconInterface & { style?: CSSProperties }): JSX.Element | null {
   if (!icon) return null
 
-  if (icon.startsWith('prime:')) {
-    const iconName = icon.replace('prime:', '')
-    const iconClass = `pi pi-${iconName}`
-    return (
-      <i
-        className={`${iconClass} ${className || ''}`.trim()}
-        style={size ? { fontSize: size } : undefined}
-      />
-    )
+  const cx = (...classes: (string | undefined | null | false)[]) =>
+    classes.filter(Boolean).join(' ')
+
+  let iconClass = getPrimeIconClass(icon, storybook)
+
+  if (!iconClass) {
+    if (icon.startsWith('prime:')) {
+      iconClass = `pi pi-${icon.replace('prime:', '')}`
+    } else if (icon.startsWith('pi-')) {
+      iconClass = `pi ${icon}`
+    } else {
+      iconClass = `pi pi-${icon}`
+    }
   }
 
-  const iconClass = icon.startsWith('pi-') ? `pi ${icon}` : `pi pi-${icon}`
+  const mergedStyle: CSSProperties = {
+    ...style,
+    ...(size ? { fontSize: size } : {}),
+  }
 
-  return (
-    <i
-      className={`${iconClass} ${className || ''}`.trim()}
-      style={size ? { fontSize: size } : undefined}
-    />
-  )
+  const mergedClassName = cx(iconClass, styles['ad-icon'], className)
+
+  return <i className={mergedClassName} style={mergedStyle} {...rest} />
 }
