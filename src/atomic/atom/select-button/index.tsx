@@ -1,6 +1,8 @@
+'use client'
 import type { JSX } from 'react'
 
 import { SelectButton } from 'primereact/selectbutton'
+import styles from './index.module.scss'
 import type { SelectButtonInterface } from './types'
 
 export function AdSelectButton({
@@ -10,18 +12,10 @@ export function AdSelectButton({
 }: SelectButtonInterface): JSX.Element {
   const mergedPt = {
     ...pt,
-    button: (() => {
-      const base =
-        typeof pt?.button === 'function' ? pt.button?.() : pt?.button || {}
-      const baseAttrs = base as Record<string, unknown>
-      return {
-        ...baseAttrs,
-        className: ['ad-togglebutton', baseAttrs.className]
-          .filter(Boolean)
-          .join(' '),
-      }
-    }) as unknown,
-  } as typeof pt
+    button: {
+      className: styles['ad-togglebutton'],
+    },
+  }
 
   return <SelectButton {...rest} pt={mergedPt} />
 }

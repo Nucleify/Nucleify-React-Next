@@ -1,0 +1,18 @@
+.ad-togglebutton {
+  background: $p-card-background !important;
+  border-color: $p-card-border !important;
+
+  span {
+    color: $white-text-color !important;
+  }
+
+  &:global(.p-highlight) {
+    background: $content-background !important;
+    border-color: $p-card-border !important;
+  }
+
+  &:hover:not(:global(.p-disabled)) {
+    background: $content-background !important;
+    border-color: $p-card-border !important;
+  }
+}
