@@ -6,16 +6,22 @@ import styles from './index.module.scss'
 import type { SelectButtonInterface } from './types'
 
 export function AdSelectButton({
-  pt,
+  className = '',
   adType,
   ...rest
 }: SelectButtonInterface): JSX.Element {
-  const mergedPt = {
-    ...pt,
+  const cx = (...classes: (string | undefined | null | false)[]) =>
+    classes.filter(Boolean).join(' ')
+
+  const pt = {
+    root: {
+      className: cx(className),
+    },
     button: {
       className: styles['ad-togglebutton'],
+      ...(adType ? { 'ad-type': adType } : {}),
     },
   }
 
-  return <SelectButton {...rest} pt={mergedPt} />
+  return <SelectButton {...rest} pt={pt} />
 }

@@ -6,18 +6,20 @@ import styles from './index.module.scss'
 import type { TextareaInterface } from './types'
 
 export function AdTextarea({
-  className,
+  className = '',
   adType,
   ...rest
 }: TextareaInterface): JSX.Element {
   const cx = (...classes: (string | undefined | null | false)[]) =>
     classes.filter(Boolean).join(' ')
 
-  return (
-    <InputTextarea
-      {...rest}
-      className={cx(styles['ad-textarea'], className)}
-      {...(adType ? { 'ad-type': adType } : {})}
-    />
-  )
+  const pt = {
+    root: {
+      className: cx(styles['ad-textarea'], className),
+      // Wstrzykujemy atrybut ad-type bezpośrednio do elementu textarea
+      ...(adType ? { 'ad-type': adType } : {}),
+    },
+  }
+
+  return <InputTextarea {...rest} pt={pt} />
 }

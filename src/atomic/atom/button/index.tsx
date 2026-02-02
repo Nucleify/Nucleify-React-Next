@@ -1,13 +1,10 @@
 import type { CSSProperties, JSX, ReactNode } from 'react'
 
-import { Button } from 'primereact/button'
+import { Button, type ButtonProps } from 'primereact/button'
 import { AdIcon } from '../icon'
 import { AdImage } from '../image'
 import styles from './index.module.scss'
 import type { ButtonInterface } from './types'
-
-const cx = (...parts: Array<string | false | null | undefined>): string =>
-  parts.filter(Boolean).join(' ')
 
 export function AdButton({
   adType,
@@ -24,38 +21,55 @@ export function AdButton({
   src,
   alt,
   children,
-  className,
+  className = '',
   style,
   ...rest
 }: ButtonInterface & { children?: ReactNode }): JSX.Element {
-  const mergedStyle: CSSProperties = {
-    ...style,
-    ...(width ? { width } : {}),
-    ...(height ? { height } : {}),
-    ...(gap ? { gap } : {}),
-    ...(padding ? { padding } : {}),
-  }
+  const isPrimary = (severity as string) === 'primary'
+  const primeSeverity = isPrimary
+    ? undefined
+    : (severity as ButtonProps['severity'])
 
-  const mergedClassName = cx(
-    styles['ad-button'],
-    className,
-    media && styles[`${media}-button`],
-    variant && styles[`${variant}-button`],
-    rounded && styles['rounded-button']
-  )
+  const cx = (...classes: (string | undefined | null | false)[]) =>
+    classes.filter(Boolean).join(' ')
+
+  const pt = {
+    root: {
+      className: cx(
+        styles['ad-button'],
+        media && styles[`${media}-button`],
+        variant && styles[`${variant}-button`],
+        rounded && styles['rounded-button'],
+        isPrimary && styles['primary-button'],
+        className
+      ),
+      style: {
+        width,
+        height,
+        gap,
+        padding,
+        ...style,
+      } as CSSProperties,
+      ...(adType ? { 'ad-type': adType } : {}),
+    },
+    label: {
+      className: styles['p-button-label'],
+    },
+    icon: {
+      className: styles['prime-icon'],
+    },
+  }
 
   return (
     <Button
       {...rest}
-      {...(adType ? { 'ad-type': adType } : {})}
-      severity={severity}
+      severity={primeSeverity}
       rounded={rounded}
-      className={mergedClassName || undefined}
-      style={mergedStyle}
+      label={label}
+      pt={pt}
     >
       {src && <AdImage src={src} alt={alt} />}
       {icon && <AdIcon icon={icon} />}
-      {label && <span>{label}</span>}
       {children}
     </Button>
   )

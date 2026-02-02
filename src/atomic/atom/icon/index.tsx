@@ -1,4 +1,3 @@
-'use client'
 import type { CSSProperties, JSX } from 'react'
 
 import styles from './index.module.scss'
@@ -8,7 +7,7 @@ import { getPrimeIconClass } from './utils'
 export function AdIcon({
   icon,
   size,
-  className,
+  className = '',
   style,
   storybook,
   ...rest
@@ -31,11 +30,11 @@ export function AdIcon({
   }
 
   const mergedStyle: CSSProperties = {
-    ...style,
     ...(size ? { fontSize: size } : {}),
+    ...style,
   }
 
-  const mergedClassName = cx(iconClass, styles['ad-icon'], className)
+  const mergedClassName = cx(iconClass, styles['prime-icon'], className)
 
   return <i className={mergedClassName} style={mergedStyle} {...rest} />
 }

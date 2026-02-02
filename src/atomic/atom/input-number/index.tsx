@@ -5,16 +5,24 @@ import styles from './index.module.scss'
 import type { InputNumberInterface } from './types'
 
 export function AdInputNumber({
-  className,
-  ...props
+  className = '',
+  adType,
+  ...rest
 }: InputNumberInterface): JSX.Element {
-  return (
-    <InputNumber
-      {...props}
-      className={[styles['ad-inputnumber'], className]
-        .filter(Boolean)
-        .join(' ')}
-      inputClassName={styles['ad-inputtext']}
-    />
-  )
+  const cx = (...classes: (string | undefined | null | false)[]) =>
+    classes.filter(Boolean).join(' ')
+
+  const pt = {
+    root: {
+      className: cx(styles['ad-inputnumber'], className),
+    },
+    input: {
+      root: {
+        className: styles['ad-inputtext'],
+        ...(adType ? { 'ad-type': adType } : {}),
+      },
+    },
+  }
+
+  return <InputNumber {...rest} pt={pt} />
 }

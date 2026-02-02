@@ -5,18 +5,24 @@ import styles from './index.module.scss'
 import type { InputOtpInterface } from './types'
 
 export function AdInputOtp({
-  className,
+  className = '',
   adType,
-  pt,
   ...rest
 }: InputOtpInterface): JSX.Element {
-  const mergedPt = {
-    ...(pt as object),
+  const cx = (...classes: (string | undefined | null | false)[]) =>
+    classes.filter(Boolean).join(' ')
+
+  const pt = {
     root: {
-      className: [styles['ad-inputotp'], className].filter(Boolean).join(' '),
-      ...(adType ? { 'ad-type': adType } : {}),
+      className: cx(styles['ad-inputotp'], className),
+    },
+    input: {
+      root: {
+        className: styles['ad-inputtext'],
+        ...(adType ? { 'ad-type': adType } : {}),
+      },
     },
   }
 
-  return <InputOtp {...rest} pt={mergedPt} />
+  return <InputOtp {...rest} pt={pt} />
 }

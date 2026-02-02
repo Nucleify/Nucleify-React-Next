@@ -5,12 +5,19 @@ import styles from './index.module.scss'
 import type { InputMaskInterface } from './types'
 
 export function AdInputMask({
-  className,
-  ...props
+  className = '',
+  adType,
+  ...rest
 }: InputMaskInterface): JSX.Element {
-  const mergedClassName = [styles['ad-inputmask'], className]
-    .filter(Boolean)
-    .join(' ')
+  const cx = (...classes: (string | undefined | null | false)[]) =>
+    classes.filter(Boolean).join(' ')
 
-  return <InputMask {...props} className={mergedClassName} />
+  const pt = {
+    root: {
+      className: cx(styles['ad-inputmask'], className),
+      ...(adType ? { 'ad-type': adType } : {}),
+    },
+  }
+
+  return <InputMask {...rest} pt={pt} />
 }
