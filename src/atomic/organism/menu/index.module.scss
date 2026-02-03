@@ -1,41 +1,36 @@
 .ad-menu {
-  background: $content-background !important;
-  border: 1px solid $p-card-border !important;
+  background: $content-background;
+  border: 1px solid $p-card-border;
   backdrop-filter: blur(0.25em);
-  border-radius: 0 !important;
-  padding: 0 !important;
-  min-width: 130px;
 }
 
-.ad-menu-list {
-  border-radius: 0 !important;
-  padding: 0 !important;
-  margin: 0 !important;
-  gap: 5px;
-  overflow: hidden;
-  list-style: none !important;
+.ad-menu,
+.ad-menu-list,
+.ad-menu-item-content {
+  border-radius: 0;
 }
 
+.ad-menu,
+.ad-menu-list,
 .ad-menu-item {
   min-width: 130px;
+  max-width: 120px;
 }
 
-.ad-menu-item-content {
-  border-radius: 0 !important;
+.ad-menu,
+.ad-menu-list {
+  padding: 0;
+  margin: 0;
+  gap: 5px;
+  overflow: hidden;
 }
 
 .ad-menu-item-link {
-  text-decoration: none !important;
-  display: flex;
-  align-items: center;
+  text-decoration: none;
   gap: 1em;
-  padding-left: 1.45em !important;
-  cursor: pointer;
-  color: inherit;
+  padding-left: 1.45em;
 
-  span,
-  :global(.p-menuitem-text),
-  :global(.p-menuitem-icon) {
-    color: $white-text-color !important;
+  span {
+    color: $white-text-color;
   }
 }

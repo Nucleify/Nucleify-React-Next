@@ -14,22 +14,29 @@ export function AdSelect({
     classes.filter(Boolean).join(' ')
 
   const pt = {
-    input: { className: styles['ad-select-label'] },
-    trigger: { className: styles['ad-select-trigger'] },
-    panel: {
-      className: styles['ad-select-panel'],
-      ...(adType ? { 'ad-type': adType } : {}),
+    root: {
+      className: cx(styles['ad-select'], className),
     },
-    wrapper: { className: styles['ad-select-list-container'] },
-    list: { className: styles['ad-select-list'] },
-    item: { className: styles['ad-select-item'] },
+    input: {
+      className: styles['ad-select-label'],
+    },
+    trigger: {
+      className: styles['ad-select-dropdown'],
+    },
+    panel: {
+      className: styles['ad-select-overlay'],
+      ...(adType ? { 'data-ad-type': adType } : {}),
+    },
+    wrapper: {
+      className: styles['ad-select-list-container'],
+    },
+    list: {
+      className: styles['ad-select-list'],
+    },
+    item: {
+      className: styles['ad-select-option'],
+    },
   }
 
-  return (
-    <Dropdown
-      {...rest}
-      className={cx(styles['ad-select'], className)}
-      pt={pt}
-    />
-  )
+  return <Dropdown {...rest} pt={pt} />
 }

@@ -1,11 +1,11 @@
 'use client'
-import { JSX, useEffect } from 'react'
+import { type JSX, useEffect } from 'react'
 
 import { Terminal } from 'primereact/terminal'
 import { TerminalService } from 'primereact/terminalservice'
 import styles from './index.module.scss'
 import type { TerminalInterface } from './types'
-import { handleCommands } from './utils/handle_commands'
+import { handleCommands } from './utils'
 
 export function AdTerminal({
   className,
@@ -22,15 +22,16 @@ export function AdTerminal({
     classes.filter(Boolean).join(' ')
 
   const pt = {
-    command: { className: styles['ad-terminal-command'] },
-    response: { className: styles['ad-terminal-response'] },
+    root: {
+      className: cx(styles['ad-terminal'], className),
+    },
+    command: {
+      className: styles['ad-terminal-command'],
+    },
+    response: {
+      className: styles['ad-terminal-response'],
+    },
   }
 
-  return (
-    <Terminal
-      {...props}
-      className={cx(className, styles['ad-terminal'])}
-      pt={pt}
-    />
-  )
+  return <Terminal {...props} pt={pt} />
 }

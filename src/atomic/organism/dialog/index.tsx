@@ -18,11 +18,28 @@ export function AdDialog({
     classes.filter(Boolean).join(' ')
 
   const pt = {
-    mask: { className: styles['ad-dialog-mask'] },
-    header: { className: styles['ad-dialog-header'] },
-    content: { className: styles['ad-dialog-content'] },
-    footer: { className: styles['ad-dialog-footer'] },
-    closeButton: { className: styles['ad-dialog-close-button'] },
+    root: {
+      className: cx(styles['ad-dialog'], className),
+    },
+    header: {
+      className: styles['ad-dialog-header'],
+      style: { background: 'transparent' },
+    },
+    content: {
+      className: styles['ad-dialog-content'],
+      style: { background: 'transparent' },
+    },
+    footer: {
+      className: styles['ad-dialog-footer'],
+      style: { background: 'transparent' },
+    },
+
+    mask: {
+      className: styles['ad-dialog-mask'],
+    },
+    closeButton: {
+      className: styles['ad-dialog-header-icon'],
+    },
   }
 
   return (
@@ -32,7 +49,6 @@ export function AdDialog({
       showHeader={showHeader}
       header={header}
       footer={footer}
-      className={cx(styles['ad-dialog'], className)}
       pt={pt}
     >
       {children}

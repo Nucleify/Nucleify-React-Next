@@ -16,7 +16,6 @@ export function AdTextarea({
   const pt = {
     root: {
       className: cx(styles['ad-textarea'], className),
-      // Wstrzykujemy atrybut ad-type bezpośrednio do elementu textarea
       ...(adType ? { 'ad-type': adType } : {}),
     },
   }

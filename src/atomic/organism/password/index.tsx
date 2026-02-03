@@ -1,5 +1,4 @@
-'use client'
-import React, { useEffect, useMemo, useState } from 'react'
+import { type JSX, useEffect, useMemo, useState } from 'react'
 
 import { Divider } from 'primereact/divider'
 import { Password } from 'primereact/password'
@@ -19,7 +18,7 @@ export function AdPassword({
   id,
   className,
   ...rest
-}: PasswordInterface) {
+}: PasswordInterface): JSX.Element {
   const [localValue, setLocalValue] = useState<string>((value as string) || '')
   const isConfirmation = id === 'password_confirmation'
 
@@ -80,19 +79,15 @@ export function AdPassword({
   }, [isConfirmation, criteria, emptyPassword, passwordsMatch])
 
   const pt = {
-    input: { className: styles['ad-password-input'] },
-    panel: { className: styles['ad-password-panel'] },
-    meter: {
-      className: cx(
-        styles['ad-password-meter'],
-        isConfirmation && styles['hidden']
-      ),
+    root: {
+      className: cx(styles['ad-password'], className),
     },
-    info: {
-      className: cx(
-        styles['ad-password-info'],
-        isConfirmation && styles['hidden']
-      ),
+    input: {
+      className: styles['ad-inputtext'],
+    },
+    panel: {
+      className: styles['ad-password-overlay'],
+      id: isConfirmation ? 'password_confirmation_panel' : undefined,
     },
   }
 
@@ -105,9 +100,8 @@ export function AdPassword({
         setLocalValue(e.target.value)
         onChange?.(e)
       }}
-      feedback={!emptyPassword}
+      feedback
       footer={footer}
-      className={cx(className, styles['ad-password'])}
       pt={pt}
     />
   )

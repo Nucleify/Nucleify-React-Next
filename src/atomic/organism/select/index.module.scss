@@ -1,75 +1,41 @@
-@import '../../atom/input-text/index.module';
+@import "../../atom/input-text/index.module";
 
 .ad-select {
   padding: 0.625em 0.8em;
 
-  @extend %ad-inputtext !optional;
+  @extend %ad-inputtext;
 
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.ad-select-label {
-  padding: 0;
-}
-
-.ad-select-trigger {
-  width: min-content;
-  background: transparent;
-  color: inherit;
-}
-
-.ad-select-panel {
-  background-color: color-mix(
-    in srgb,
-    $p-card-background 80%,
-    transparent
-  ) !important;
-  backdrop-filter: blur(8px);
-  border: none !important;
-  box-shadow:
-    0 4px 6px -1px rgb(0 0 0 / 10%),
-    0 2px 4px -2px rgb(0 0 0 / 10%);
-}
-
-.ad-select-list-container {
-  background: transparent !important;
-  border: none !important;
-  padding: 0 !important;
-}
-
-.ad-select-list {
-  background: transparent !important;
-  padding: 0 !important;
-  list-style: none;
-}
-
-.ad-select-item {
-  padding: 0.625em 0.8em !important;
-  color: $white-text-color !important;
-  background: transparent !important;
-  cursor: pointer;
-  transition:
-    background-color 0.2s,
-    color 0.2s;
-  border-radius: 4px;
-  margin: 2px 0;
-
-  &:hover,
-  &:focus-visible,
-  &[data-p-focus='true'] {
-    background-color: var(
-      --p-select-option-focus-background,
-      rgb(255 255 255 / 10%)
-    ) !important;
-    color: $white-text-color !important;
-    outline: none !important;
+  .ad-select-dropdown {
+    width: min-content;
   }
 
-  &[data-p-highlight='true'],
-  &[aria-selected='true'] {
-    background-color: $content-background !important;
-    color: $white-text-color !important;
+  .ad-select-label {
+    padding: 0;
+  }
+}
+
+.ad-select-overlay {
+  .ad-select-list {
+    background: $p-card-background;
+    color: $white-text-color;
+
+    .ad-select-option {
+      padding: 0.625em 0.8em;
+
+      &[data-p-selected="true"] {
+        background-color: $content-background;
+      }
+
+      &:hover {
+        background-color: var(--p-select-option-focus-background);
+      }
+    }
+  }
+
+  .ad-select-list,
+  .ad-select-list-container {
+    border: none;
+    border-radius: 0.25em;
+    padding: 0;
   }
 }

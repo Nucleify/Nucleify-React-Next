@@ -1,4 +1,3 @@
-'use client'
 import type { JSX } from 'react'
 
 import { DataTable } from 'primereact/datatable'
@@ -25,39 +24,53 @@ export function AdDataTable({
   const cx = (...classes: (string | undefined | null | false)[]) =>
     classes.filter(Boolean).join(' ')
 
-  const adTypeAttribute = adType
-    ? ({ 'ad-type': adType } as Record<string, string>)
-    : {}
+  const adTypeAttribute = adType ? { 'data-ad-type': adType } : {}
 
   const pt = {
-    root: { className: styles['ad-datatable'] },
+    root: {
+      className: cx(styles['ad-datatable'], className),
+    },
+    bodyRow: {
+      className: styles['ad-datatable-row'],
+    },
     paginator: {
-      root: { className: styles['ad-datatable-paginator'] },
-      content: { className: styles['ad-datatable-paginator-content'] },
-      firstPageButton: { className: styles['ad-datatable-paginator-button'] },
-      prevPageButton: { className: styles['ad-datatable-paginator-button'] },
-      nextPageButton: { className: styles['ad-datatable-paginator-button'] },
-      lastPageButton: { className: styles['ad-datatable-paginator-button'] },
-      pageButton: { className: styles['ad-datatable-paginator-button'] },
-      rowPerPageDropdown: {
+      root: {
+        className: styles['ad-datatable-paginator'],
+      },
+      content: {
+        className: styles['ad-datatable-paginator-content'],
+      },
+      firstPageButton: { className: styles['ad-datatable-paginator-first'] },
+      prevPageButton: { className: styles['ad-datatable-paginator-prev'] },
+      nextPageButton: { className: styles['ad-datatable-paginator-next'] },
+      lastPageButton: { className: styles['ad-datatable-paginator-last'] },
+      pageButton: { className: styles['ad-datatable-paginator-current'] },
+
+      rowsPerPageDropdown: {
         root: {
           className: styles['ad-select'],
+          style: { display: 'flex', alignItems: 'center' },
           ...adTypeAttribute,
-          style: {
-            display: 'flex',
-            alignItems: 'center',
-            marginLeft: '0.75em',
-          },
         },
-        input: { className: styles['ad-select-label'] },
-        trigger: { className: styles['ad-select-trigger'] },
+        input: {
+          className: styles['ad-select-label'],
+        },
+        trigger: {
+          className: styles['ad-select-dropdown'],
+        },
         panel: {
-          className: styles['ad-select-panel'],
+          className: styles['ad-select-overlay'],
           ...adTypeAttribute,
         },
-        wrapper: { className: styles['ad-select-list-container'] },
-        list: { className: styles['ad-select-list'] },
-        item: { className: styles['ad-select-item'] },
+        wrapper: {
+          className: styles['ad-select-list-container'],
+        },
+        list: {
+          className: styles['ad-select-list'],
+        },
+        item: {
+          className: styles['ad-select-option'],
+        },
       },
     },
   }
@@ -73,9 +86,8 @@ export function AdDataTable({
       rowHover={rowHover}
       filters={filters}
       onFilter={onFilter}
-      className={cx(styles['ad-datatable'], className)}
-      {...adTypeAttribute}
       pt={pt}
+      {...adTypeAttribute}
     >
       {children}
     </DataTable>

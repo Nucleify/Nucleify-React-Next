@@ -1,11 +1,12 @@
+'use client'
 import type { JSX } from 'react'
 
 import Link from 'next/link'
-import { AdIcon, AdParagraph } from '../../atom'
+import { AdIcon, AdParagraph } from '@/atomic'
 import styles from './index.module.scss'
-import type { TitleInterface } from './types'
+import type { TileInterface } from './types'
 
-export function AdTitle({
+export function AdTile({
   adType,
   header,
   href = '#',
@@ -14,7 +15,7 @@ export function AdTitle({
   textSecondary,
   icon,
   storybook,
-}: TitleInterface): JSX.Element {
+}: TileInterface): JSX.Element {
   return (
     <Link href={href} data-ad-type={adType} className={styles['ad-tile']}>
       <div className={styles['general']}>
@@ -22,10 +23,12 @@ export function AdTitle({
           <div className={styles['header']}>
             <AdParagraph text={header} />
           </div>
+
           <div className={styles['count']}>
             <AdParagraph text={count !== undefined ? String(count) : ''} />
           </div>
         </div>
+
         <div className={styles['icon-container']}>
           <AdIcon
             className={styles['icon']}
@@ -35,6 +38,7 @@ export function AdTitle({
           />
         </div>
       </div>
+
       <div className={styles['secondary']}>
         <div className={styles['count']}>
           <AdParagraph

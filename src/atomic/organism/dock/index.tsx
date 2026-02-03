@@ -1,4 +1,3 @@
-'use client'
 import type { JSX } from 'react'
 
 import { Dock } from 'primereact/dock'
@@ -16,18 +15,22 @@ export function AdDock({
   const positionClass = styles[`ad-dock-${position}`]
 
   const pt = {
-    container: { className: styles['ad-dock-list-container'] },
-    menu: { className: styles['ad-dock-list'] },
-    menuitem: { className: styles['ad-dock-item'] },
-    action: { className: styles['ad-dock-item-link'] },
+    root: {
+      className: cx(styles['ad-dock'], positionClass, className),
+    },
+    container: {
+      className: styles['ad-dock-list-container'],
+    },
+    menu: {
+      className: styles['ad-dock-list'],
+    },
+    menuitem: {
+      className: styles['ad-dock-item'],
+    },
+    action: {
+      className: styles['ad-dock-item-link'],
+    },
   }
 
-  return (
-    <Dock
-      {...rest}
-      position={position}
-      className={cx(styles['ad-dock'], positionClass, className)}
-      pt={pt}
-    />
-  )
+  return <Dock {...rest} position={position} pt={pt} />
 }

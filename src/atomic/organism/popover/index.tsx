@@ -1,9 +1,8 @@
-'use client'
 import type { JSX } from 'react'
 import { useRef } from 'react'
 
 import { OverlayPanel } from 'primereact/overlaypanel'
-import { AdButton } from '@/atomic/atom/button'
+import { AdButton } from '@/atomic'
 import styles from './index.module.scss'
 import type { PopoverInterface } from './types'
 
@@ -22,24 +21,26 @@ export function AdPopover(props: PopoverInterface): JSX.Element {
   } = props
 
   const opRef = useRef<OverlayPanel>(null)
+
   const showButton = !!(buttonText || icon || src)
 
   const cx = (...classes: (string | undefined | null | false)[]) =>
     classes.filter(Boolean).join(' ')
 
-  const overlayPanelProps = {
-    ...rest,
-    ref: opRef,
-    className: cx(
-      className,
-      popoverClass,
-      styles['ad-popover'],
-      position && styles[position],
-      position
-    ),
-    'data-position': position,
-    pt: {
-      content: { className: styles['ad-popover-content'] },
+  const positionStyle = position ? styles[position] : undefined
+
+  const pt = {
+    root: {
+      className: cx(
+        styles['ad-popover'],
+        positionStyle,
+        popoverClass,
+        className
+      ),
+      'data-position': position,
+    },
+    content: {
+      className: styles['ad-popover-content'],
     },
   }
 
@@ -53,7 +54,7 @@ export function AdPopover(props: PopoverInterface): JSX.Element {
           className={cx(
             buttonClass,
             styles['ad-popover-toggle'],
-            position && styles[position],
+            positionStyle,
             position
           )}
           style={typeof buttonStyle === 'object' ? buttonStyle : undefined}
@@ -61,7 +62,10 @@ export function AdPopover(props: PopoverInterface): JSX.Element {
           onClick={(e) => opRef.current?.toggle(e)}
         />
       )}
-      <OverlayPanel {...overlayPanelProps}>{children}</OverlayPanel>
+
+      <OverlayPanel ref={opRef} {...rest} pt={pt}>
+        {children}
+      </OverlayPanel>
     </>
   )
 }

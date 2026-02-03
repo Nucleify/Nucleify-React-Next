@@ -15,12 +15,7 @@ export function AdInputText({
 
   const pt = {
     root: {
-      className: cx(
-        styles['ad-inputtext'],
-        invalid && 'p-invalid', // Dodajemy klasę błędu warunkowo
-        className
-      ),
-      // Atrybut warunkowy wstrzykiwany przez spread operator
+      className: cx(styles['ad-inputtext'], invalid && 'p-invalid', className),
       ...(adType ? { 'ad-type': adType } : {}),
     },
   }

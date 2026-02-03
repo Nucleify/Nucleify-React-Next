@@ -1,6 +1,6 @@
 import type { IconInterface } from '@/atomic'
 
-export interface TitleInterface extends IconInterface {
+export interface TileInterface extends IconInterface {
   adType?: AdTypeType
   header?: string
   href?: string
