@@ -5,7 +5,7 @@ import { AdParagraph } from '@/atomic/atom/paragraph'
 import { AdCard } from '@/atomic/organism/card'
 import styles from '../index.module.scss'
 
-export function Box(props: NucBoxInterface) {
+export function NucCardBox(props: NucBoxInterface) {
   return (
     <div className={styles['card-box']}>
       <AdCard>

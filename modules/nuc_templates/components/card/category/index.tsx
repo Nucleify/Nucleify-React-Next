@@ -4,7 +4,7 @@ import { AdHeading } from '@/atomic/atom/heading'
 import { AdParagraph } from '@/atomic/atom/paragraph'
 import styles from './index.module.scss'
 
-export function CategoryCard(props: NucCardCategoryInterface) {
+export function NucCardCategory(props: NucCardCategoryInterface) {
   return (
     <div className={styles['categories-container']}>
       <div className={styles['cards-container']}>

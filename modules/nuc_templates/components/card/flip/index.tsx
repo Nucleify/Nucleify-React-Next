@@ -4,7 +4,7 @@ import { AdParagraph } from '@/atomic/atom/paragraph'
 import styles from './index.module.scss'
 import type { NucFlipCardInterface } from './types'
 
-export function FlipCard(props: NucFlipCardInterface) {
+export function NucFlipCard(props: NucFlipCardInterface) {
   return (
     <div className={styles['flip-card']}>
       <div className={styles['flip-card-inner']}>
