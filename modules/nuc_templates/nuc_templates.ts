@@ -1,6 +1,2 @@
 export { NucAuthors } from './components/authors'
-export { NucCardBoxes } from './components/card/boxes'
-export { NucCardBox } from './components/card/boxes/components/Box'
-export { NucCardCategory } from './components/card/category'
-export { NucFlipCard } from './components/card/flip'
 export { NucCube } from './components/cube'
