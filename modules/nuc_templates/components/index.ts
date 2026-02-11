@@ -1,6 +1,7 @@
 export * from './authors'
 export * from './cube'
 export * from './dashboard'
+export * from './grid-background'
 export * from './hexagons-button'
 export * from './home-link'
 export * from './tiles'
