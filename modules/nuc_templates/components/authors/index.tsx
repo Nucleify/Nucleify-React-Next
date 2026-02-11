@@ -1,9 +1,11 @@
+import type { JSX } from 'react'
+
 import { AdImage } from '@/atomic/atom/image'
 import { AdAnchor } from '@/atomic/molecule/anchor'
 import { AdDeferredContent } from '@/atomic/organism/deferred-content'
 import styles from './index.module.scss'
 
-export function NucAuthors() {
+export function NucAuthors(): JSX.Element {
   return (
     <AdAnchor
       href="https://github.com/Atomic-IT"
