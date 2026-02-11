@@ -1,3 +1,4 @@
 export * from './authors'
 export * from './cube'
 export * from './dashboard'
+export * from './hexagons-button'
