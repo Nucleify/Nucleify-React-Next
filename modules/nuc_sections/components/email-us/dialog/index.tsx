@@ -15,6 +15,12 @@ function t(key: string): string {
   return textMap[key] || key
 }
 
+function resolveButtonIcon(icon: string): string {
+  if (!icon) return 'prime:comment'
+  if (icon.startsWith('mdi:')) return 'prime:comment'
+  return icon
+}
+
 export function NucSectionEmailUsDialog({
   buttonLabel = '',
   buttonClass = '',
@@ -39,7 +45,7 @@ export function NucSectionEmailUsDialog({
     <>
       <AdButton
         className={buttonClass}
-        icon={buttonIcon}
+        icon={resolveButtonIcon(buttonIcon)}
         label={resolvedLabel}
         onClick={() => setShowDialog(true)}
       >
