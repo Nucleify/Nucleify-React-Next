@@ -1,7 +1,7 @@
 import type {
   NucQuestionObjectInterface,
   UseSplitQuestionsInterface,
-} from 'atomic'
+} from '../types'
 
 export function useSplitQuestions(
   questions: NucQuestionObjectInterface | NucQuestionObjectInterface[]

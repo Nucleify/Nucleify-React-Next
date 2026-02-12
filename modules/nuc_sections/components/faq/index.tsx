@@ -1,8 +1,7 @@
 'use client'
 import { type JSX, useEffect, useState } from 'react'
 
-import { AdAccordion } from 'atomic'
-
+import { AdAccordion } from '@/atomic'
 import styles from './index.module.scss'
 import type {
   NucQuestionObjectInterface,
