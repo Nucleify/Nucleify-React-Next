@@ -1,3 +1,4 @@
 export * from './contact'
 export * from './email-us'
 export * from './faq'
+export * from './footer'
