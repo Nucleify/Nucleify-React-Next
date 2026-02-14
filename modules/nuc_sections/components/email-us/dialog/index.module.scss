@@ -1,0 +1,39 @@
+.p-dialog-mask {
+  backdrop-filter: blur(0.5em);
+  z-index: 9999 !important;
+
+  .p-dialog {
+    position: relative;
+    width: 95vw !important;
+    max-width: 500px !important;
+    background: rgb(0 0 0 / 50%) !important;
+    border: none !important;
+    padding: 0 !important;
+
+    .p-dialog-header {
+      position: absolute;
+      width: 100%;
+
+      &-actions {
+        position: absolute;
+        right: .5rem;
+        top: .5rem;
+        z-index: 9;
+      }
+    }
+
+    .p-dialog-content {
+      padding: 0 !important;
+
+      .p-card {
+        border: 1px solid rgba($primary-color, 0.25) !important;
+      }
+    }
+  }
+}
+
+body:has(#home, #offer) {
+  .p-toast-message {
+    top: 6rem !important;
+  }
+}
