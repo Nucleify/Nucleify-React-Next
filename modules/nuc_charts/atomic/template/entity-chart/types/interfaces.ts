@@ -18,6 +18,8 @@ export interface NucEntityChartInterface extends ChartInterface {
   direction?: string
 }
 
+export type LoadingType = boolean;
+
 export interface NucEntityChartDataInterface {
   activity?: NucActivityObjectInterface[]
   article?: NucArticleObjectInterface[]

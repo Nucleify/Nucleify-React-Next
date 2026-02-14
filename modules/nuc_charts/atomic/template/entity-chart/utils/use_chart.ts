@@ -100,7 +100,7 @@ export function useChart() {
     technologyData?: any[],
     userData?: any[],
     example?: boolean
-  ): ChartData | null => { // Змінено тип на ChartData
+  ): ChartData | null => { 
     try {
       const entitiesData = {
         activityLogData,
