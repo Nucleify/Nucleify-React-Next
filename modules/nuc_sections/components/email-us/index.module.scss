@@ -1,0 +1,184 @@
+@import './dialog/index.module';
+
+#email-us {
+  position: relative;
+  padding: 0;
+  width: 100%;
+
+  .p-inputtext,
+  .p-textarea {
+    background: rgba(#000, 0.3) !important;
+
+    &:not(.p-invalid) {
+      border: 1px solid rgba($primary-color, 0.2) !important;
+      color: $white-text-color !important;
+      transition: all 0.2s ease;
+  
+      &::placeholder {
+        color: rgba($white-text-color, 0.5);
+      }
+
+      &:focus {
+        border-color: rgba($primary-color, 0.5) !important;
+        box-shadow: 0 0 0 3px rgba($primary-color, 0.1) !important;
+      }
+  
+      &:hover:not(:focus) {
+        border-color: rgba($primary-color, 0.35) !important;
+      }
+    }
+  }
+  
+  .email-us-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+
+    label {
+      font-size: $font-size-sm;
+      font-weight: 600;
+      color: $primary-white-text-color;
+      margin-bottom: 0.5rem;
+
+      .optional {
+        font-weight: 400;
+        color: $primary-text-color;
+      }
+    }
+
+    .error-message {
+      color: #ef4444;
+      font-size: $font-size-xs;
+      margin-top: 0.35rem;
+    }
+  }
+
+  .checkbox-group {
+    flex-flow: row wrap;
+    align-items: center;
+    gap: 0.75rem;
+
+    .p-checkbox {
+      width: 22px;
+      height: 22px;
+
+      .p-checkbox-box {
+        width: 22px;
+        height: 22px;
+        border-radius: 4px;
+        border: 1.5px solid rgba($primary-color, 0.3) !important;
+        background: rgba(#000, 0.3) !important;
+        transition: all 0.2s ease;
+
+        .p-checkbox-icon {
+          color: #000;
+        }
+
+        &:hover:not(.p-highlight) {
+          border-color: rgba($primary-color, 0.5) !important;
+        }
+
+        &.p-highlight {
+          background: $primary-color !important;
+          border-color: $primary-color !important;
+        }
+      }
+    }
+
+    label {
+      margin-bottom: 0;
+      font-weight: 400;
+      color: $white-text-color;
+      cursor: pointer;
+    }
+
+    .error-message {
+      width: 100%;
+      margin-top: 0.25rem;
+    }
+  }
+
+  .submit-button {
+    width: 100%;
+    padding: 1rem 1.5rem !important;
+    font-size: $font-size-sm;
+    font-weight: 700 !important;
+    letter-spacing: 0.025em;
+    border-radius: $small-border-radius !important;
+    margin-top: 0.5rem;
+    color: #000 !important;
+    box-shadow: 0 4px 24px rgba($primary-color, 0.4);
+    transition: all 0.3s ease;
+
+    &:disabled {
+      opacity: 0.65;
+      box-shadow: none;
+    }
+
+    &:hover:not(:disabled) {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba($primary-color, 0.5);
+    }
+
+    .hexagon-rows-container {
+      .hexagon-row-container {
+        top: 2rem;
+      }
+    }
+  }
+
+  .email-us-footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding-top: 1.25rem;
+
+    @media (min-width: $sm) {
+      flex-direction: row;
+      gap: 0.75rem;
+    }
+
+    .response-text {
+      font-size: $font-size-sm;
+      color: $primary-white-text-color;
+    }
+
+    .response-badge {
+      font-size: $font-size-xs;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      line-height: 1;
+      color: $primary-color;
+      background: rgba($primary-color, 0.075);
+      padding: 0.45em 0.75em 0.35em;
+      border-radius: .5rem;
+      position: relative;
+
+      &::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        border-radius: .5rem;
+        padding: 1px;
+        background: linear-gradient(
+          to top,
+          rgba($primary-color, 0.5) 0%,
+          transparent 100%
+        );
+        mask: 
+          linear-gradient(#fff 0 0) content-box, 
+          linear-gradient(#fff 0 0);
+        mask-composite: exclude;
+        pointer-events: none;
+      }
+    }
+  }
+}
