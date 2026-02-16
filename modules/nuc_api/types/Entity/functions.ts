@@ -1,5 +1,3 @@
-export type SiteType = string
-
 export type DeleteEntityRequestType = (
   id: number,
   getData: () => Promise<void>
@@ -13,7 +11,7 @@ export type GetEntitiesByCategoryRequestType = (
 ) => Promise<void>
 
 export type GetSiteEntitiesRequestType = (
-  site: SiteType,
+  site: string,
   loading?: boolean
 ) => Promise<void>
 
