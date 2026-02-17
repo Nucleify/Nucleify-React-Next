@@ -10,6 +10,12 @@ function getCookieValue(name: string): string | undefined {
   return decodeURIComponent(entry.slice(name.length + 1))
 }
 
+function resolveApiUrl(url: string): string {
+  const baseUrl = process.env.NEXT_PUBLIC_API_URL?.replace(/\/$/, '')
+  if (!baseUrl || /^https?:\/\//.test(url)) return url
+  return `${baseUrl}${url}`
+}
+
 export async function apiRequest<T>(
   url: string,
   method: HttpMethodType = 'GET',
@@ -18,18 +24,14 @@ export async function apiRequest<T>(
   params: Record<string, unknown> = {}
 ): Promise<ApiResponseType<T>> {
   const finalUrl = id ? `${url}/${id}` : url
-  const searchParams = new URLSearchParams()
+  const finalApiUrl = resolveApiUrl(finalUrl)
+  let xsrfTokenValue: string | undefined
 
-  for (const [key, value] of Object.entries(params)) {
-    if (value === undefined || value === null) continue
-    searchParams.append(key, String(value))
+  if (typeof window !== 'undefined') {
+    xsrfTokenValue = getCookieValue('XSRF-TOKEN')
   }
 
-  const queryString = searchParams.toString()
-  const requestUrl = queryString ? `${finalUrl}?${queryString}` : finalUrl
-  const xsrfTokenValue = getCookieValue('XSRF-TOKEN')
-
-  const headers: Record<string, string> = {
+  let headers: Record<string, string> = {
     Accept: 'application/json',
     'Content-Type': 'application/json',
   }
@@ -41,6 +43,16 @@ export async function apiRequest<T>(
   if (typeof window !== 'undefined') {
     headers['Referer-Slug'] = window.location.pathname
   }
+
+  const searchParams = new URLSearchParams()
+
+  for (const [key, value] of Object.entries(params)) {
+    if (value === undefined || value === null) continue
+    searchParams.append(key, String(value))
+  }
+
+  const queryString = searchParams.toString()
+  const requestUrl = queryString ? `${finalApiUrl}?${queryString}` : finalApiUrl
 
   const response = await fetch(requestUrl, {
     method,

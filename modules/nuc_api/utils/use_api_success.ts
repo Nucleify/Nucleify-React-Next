@@ -1,9 +1,4 @@
-import type { UseToastInterface } from 'atomic'
-import { useAtomicToast } from 'atomic'
-
 export function useApiSuccess() {
-  const { flashToast }: UseToastInterface = useAtomicToast()
-
   async function apiSuccess(
     response?: unknown,
     getData?: () => Promise<void>,
@@ -22,11 +17,7 @@ export function useApiSuccess() {
       (response as Record<'message', string>)?.message ||
       'Operation completed successfully'
 
-    if (flashToast) {
-      flashToast(message, 'success')
-    } else {
-      console.log(message)
-    }
+    console.log(message)
   }
 
   return { apiSuccess }

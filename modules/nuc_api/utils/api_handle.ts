@@ -1,9 +1,6 @@
-import type {
-  ApiHandleOptionsInterface,
-  HttpMethodType,
-  UseApiErrorsInterface,
-} from 'atomic'
-import { apiRequest, useApiErrors } from 'atomic'
+import type { ApiHandleOptionsInterface, HttpMethodType } from '../types'
+import { apiRequest } from './api_request'
+import { useApiErrors } from './use_api_errors'
 
 export async function apiHandle<T>({
   url,
@@ -13,7 +10,7 @@ export async function apiHandle<T>({
   setLoading,
   onSuccess,
 }: ApiHandleOptionsInterface<T>): Promise<void> {
-  const { apiErrors }: UseApiErrorsInterface = useApiErrors()
+  const { apiErrors } = useApiErrors()
 
   try {
     setLoading?.(true)
