@@ -28,14 +28,19 @@ export default function RootLayout({
           }}>
             <p style={{ margin: '0 0 10px 0', fontSize: '12px', color: '#94a3b8' }}>Debug Tooltip:</p>
             
-            <NucTooltip value="test" position="left" showDelay={500} hideDelay={200}>
+            <NucTooltip value="test" position="left" showDelay={500} hideDelay={200} style={{ 
+                border: '2px dashed #f59e0b',
+                padding: '5px', 
+                borderRadius: '8px' 
+              }}
+              className="my-debug-class">
               <button style={{ 
                 padding: '8px 16px', 
                 background: '#3b82f6', 
                 color: 'white', 
                 border: 'none', 
                 borderRadius: '4px',
-                cursor: 'pointer' 
+                cursor: 'pointer'              
               }}>
                 Hover me
               </button>
