@@ -1,8 +1,15 @@
+import type { CloseDialogType } from 'atomic'
+
+import type { UseToastInterface } from '../../../src/atomic/organism/toast/types'
+import { useAtomicToast } from '../../../src/atomic/organism/toast/utils'
+
 export function useApiSuccess() {
+  const { flashToast }: UseToastInterface = useAtomicToast()
+
   async function apiSuccess(
     response?: unknown,
     getData?: () => Promise<void>,
-    close?: (action: ActionType) => void,
+    close?: CloseDialogType,
     action?: ActionType
   ): Promise<void> {
     if (close && action) {
@@ -17,7 +24,11 @@ export function useApiSuccess() {
       (response as Record<'message', string>)?.message ||
       'Operation completed successfully'
 
-    console.log(message)
+    if (flashToast) {
+      flashToast(message, 'success')
+    } else {
+      console.log(message)
+    }
   }
 
   return { apiSuccess }

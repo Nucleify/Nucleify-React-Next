@@ -1,5 +1,7 @@
 import type { HttpMethodType } from '../Http'
 
+export type CloseDialogType = (action: ActionType) => void
+
 export interface ApiHandleOptionsInterface<T> {
   url: string
   method?: HttpMethodType
