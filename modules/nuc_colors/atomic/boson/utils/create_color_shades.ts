@@ -1,5 +1,4 @@
-import { darkenColor } from './darken_color'
-import { setColorOpacity } from './set_color_opacity'
+import { darkenColor, setColorOpacity } from 'atomic'
 
 export function createColorShades(colorValue: string): Record<string, string> {
   return {
