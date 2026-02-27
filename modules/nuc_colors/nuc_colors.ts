@@ -1,3 +1,6 @@
+import { colorsClientPlugin, colorsServerPlugin } from './plugins'
+
 export function registerNucColors(): void {
-  return undefined
+  colorsServerPlugin()
+  colorsClientPlugin()
 }
