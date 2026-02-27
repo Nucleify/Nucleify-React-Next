@@ -1,0 +1,22 @@
+@import 'mixins';
+
+@each $type in $ad-types {
+  .p-select[ad-type='#{$type}'] {
+    @include entity-with-suffix($type) using ($suffix) {
+      @include entity-select-styles(
+        var(--#{$type}-item-color#{$suffix}) !important,
+        var(--#{$type}-item-focus-color#{$suffix}) !important
+      );
+    }
+  }
+
+  .p-select-overlay[ad-type='#{$type}'] {
+    @include entity-with-suffix($type) using ($suffix) {
+      @include entity-select-overlay-styles(
+        var(--#{$type}-item-color#{$suffix}) !important,
+        var(--#{$type}-item-selected-color#{$suffix}) !important,
+        var(--#{$type}-item-highlight-color#{$suffix}) !important
+      );
+    }
+  }
+}
