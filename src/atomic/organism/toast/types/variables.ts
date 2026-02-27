@@ -1,4 +1,4 @@
-import type { MessageOrMessagesType } from 'atomic'
+export type MessageOrMessagesType = string | Record<string, string[]>
 
 export type ToastSeverityType =
   | 'success'

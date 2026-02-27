@@ -1,0 +1,25 @@
+@import 'variables/system_selectors';
+
+// General mixin for handling -user and -system suffixes
+// Generates styles with -user suffix (default) and -system (for special selectors)
+// 
+// Usage:
+// @include entity-with-suffix($type, $system-selectors) using ($suffix) {
+//   @include your-mixin(
+//     var(--#{$type}-item-color#{$suffix}) !important,
+//     var(--#{$type}-item-dark-color#{$suffix}) !important
+//   );
+// }
+@mixin entity-with-suffix(
+  $type,
+  $system-selectors: $system-selectors
+) {
+  @content(-user);
+
+  @each $selector in $system-selectors {
+    body:has(#{$selector}) & {
+      @content(-system);
+    }
+  }
+}
+
