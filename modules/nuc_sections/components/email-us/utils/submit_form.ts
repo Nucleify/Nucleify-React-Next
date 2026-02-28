@@ -1,3 +1,4 @@
+import { apiHandle } from '../../../../nuc_api'
 import type {
   ContactFormDataInterface,
   SubmitFormResultInterface,
@@ -12,37 +13,46 @@ export async function submitContactForm(
     return { success: false, errors: validationErrors }
   }
 
+  let isSuccess = false
+  let successMessage = 'Message sent successfully!'
+
   try {
-    const response = await fetch('/api/contact-form', {
-      headers: { 'Content-Type': 'application/json' },
+    await apiHandle<{ success: boolean; message: string }>({
+      url: '/contact-form',
       method: 'POST',
-      body: JSON.stringify({
+      data: {
         name: form.name,
         email: form.email,
         phone: form.phone,
         message: form.message,
-      }),
+      },
+      onSuccess: (response) => {
+        isSuccess = true
+        successMessage = response.message || successMessage
+      },
     })
+  } catch (error) {
+    const errorMessage =
+      typeof error === 'object' && error !== null && 'data' in error
+        ? ((error.data as { message?: string; error?: string })?.message ??
+          (error.data as { message?: string; error?: string })?.error)
+        : undefined
 
-    const payload = await response
-      .json()
-      .catch((): { message?: string } => ({ message: undefined }))
-
-    if (!response.ok) {
-      return {
-        success: false,
-        message: payload?.message || 'Could not send your message.',
-      }
-    }
-
-    return {
-      success: true,
-      message: payload?.message || 'Message sent successfully!',
-    }
-  } catch {
     return {
       success: false,
-      message: 'Network error. Please try again.',
+      message: errorMessage || 'Network error. Please try again.',
     }
+  }
+
+  if (!isSuccess) {
+    return {
+      success: false,
+      message: 'Could not send your message.',
+    }
+  }
+
+  return {
+    success: true,
+    message: successMessage,
   }
 }
