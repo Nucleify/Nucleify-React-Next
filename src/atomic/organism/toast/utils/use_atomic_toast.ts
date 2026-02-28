@@ -1,7 +1,5 @@
 'use client'
 
-import { useRef } from 'react'
-
 import type { Toast } from 'primereact/toast'
 import type {
   MessageOrMessagesType,
@@ -9,9 +7,9 @@ import type {
   UseToastInterface,
 } from '../types'
 
-export function useAtomicToast(): UseToastInterface {
-  const toastRef = useRef<Toast>(null)
+const toastRef: { current: Toast | null } = { current: null }
 
+export function useAtomicToast(): UseToastInterface {
   function closeToast(): void {
     toastRef.current?.clear()
   }
