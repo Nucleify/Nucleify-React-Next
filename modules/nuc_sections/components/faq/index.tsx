@@ -1,7 +1,8 @@
 'use client'
 import { type JSX, useEffect, useState } from 'react'
 
-import { AdAccordion } from '@/atomic'
+import { AdAccordion, apiHandle } from 'atomic'
+
 import styles from './index.module.scss'
 import type {
   NucQuestionObjectInterface,
@@ -22,12 +23,11 @@ export function NucSectionFaq({
   useEffect(() => {
     if (!site || questions) return
 
-    void fetch(`/api/questions/get-site-questions/${site}`)
-      .then((response) => response.json())
-      .then((data) =>
-        setResultsBySite(Array.isArray(data) ? data : (data?.data ?? []))
-      )
-      .catch(() => setResultsBySite([]))
+    void apiHandle<NucQuestionObjectInterface[]>({
+      url: '/api/questions/get-site-questions',
+      id: site,
+      onSuccess: (data) => setResultsBySite(Array.isArray(data) ? data : []),
+    }).catch(() => setResultsBySite([]))
   }, [questions, site])
 
   useEffect(() => {

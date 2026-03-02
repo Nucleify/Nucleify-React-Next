@@ -9,6 +9,8 @@ export function AdChart({
   data,
   width,
   height,
+  chartMethodType,
+  example,
   ...rest
 }: ChartInterface): JSX.Element | null {
   if (!data) return null
