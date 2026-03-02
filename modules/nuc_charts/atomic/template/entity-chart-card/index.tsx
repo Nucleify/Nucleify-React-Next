@@ -1,14 +1,18 @@
 'use client'
 import React from 'react'
-import { AdCard } from '../../../../../../next/src/atomic/organism/card/index' 
-import { NucEntityChart } from '../entity-chart/index.tsx'
-import { useDisplayChartsStore } from '../../boson/utils/use_display_charts_store'
-import type { NucEntityChartCardInterface } from '../entity-chart-card/types/interfaces'
+
+import { AdCard } from '../../../../../../next/src/atomic/organism/card/index'
 import type { NucDisplayChartsStateInterface } from '../../../tmp_Files/types/interfaces.ts'
-export const NucEntityChartCard: React.FC<NucEntityChartCardInterface> = (props) => {
+import { useDisplayChartsStore } from '../../boson/utils/use_display_charts_store'
+import { NucEntityChart } from '../entity-chart/index.tsx'
+import type { NucEntityChartCardInterface } from '../entity-chart-card/types/interfaces'
+export const NucEntityChartCard: React.FC<NucEntityChartCardInterface> = (
+  props
+) => {
   const displayCharts = useDisplayChartsStore()
 
-  const isVisible = displayCharts[props.entity as keyof NucDisplayChartsStateInterface]
+  const isVisible =
+    displayCharts[props.entity as keyof NucDisplayChartsStateInterface]
 
   if (!isVisible) return null
 

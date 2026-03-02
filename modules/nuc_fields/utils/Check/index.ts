@@ -1,5 +1,4 @@
 export * from './empty'
-
 export * from './has_lowercase'
 export * from './has_min_length'
 export * from './has_number'

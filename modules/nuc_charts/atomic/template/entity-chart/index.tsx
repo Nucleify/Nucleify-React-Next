@@ -1,19 +1,22 @@
 'use client'
-import React, { useState, useEffect, useMemo, use } from 'react';
-import { AdChart } from '../../../../../../next/src/atomic/organism/chart/index'; 
+import React, { useEffect, useMemo, useState } from 'react'
+
+import type { ChartData } from 'chart.js'
+import { AdChart } from '../../../../../../next/src/atomic/organism/chart/index'
+import type { ChartType } from '../../../../../../next/src/atomic/organism/chart/types/variables'
 import { useChart } from '../entity-chart/utils/use_chart'
-import type { NucEntityChartInterface } from './types';
+import type { NucEntityChartInterface } from './types'
 
 export const NucEntityChart: React.FC<NucEntityChartInterface> = (props) => {
-  const { setChartData, setChartOptions } = useChart();
+  const { setChartData, setChartOptions } = useChart()
 
-  const [chartData, setChartDataState] = useState<any>(null);
+  const [chartData, setChartDataState] = useState<ChartData | null>(null)
 
   const chartOptions = useMemo(() => {
-    if (!props.type) return {}; 
-    
-    return setChartOptions(props.type as any, props.direction);
-  }, [props.type, props.direction, setChartOptions]);
+    if (!props.type) return {}
+
+    return setChartOptions(props.type as ChartType, props.direction)
+  }, [props.type, props.direction, setChartOptions])
 
   useEffect(() => {
     const updateData = () => {
@@ -28,20 +31,15 @@ export const NucEntityChart: React.FC<NucEntityChartInterface> = (props) => {
         props.data?.technology,
         props.data?.user,
         props.example
-      );
+      )
 
       if (dataToSet) {
-        setChartDataState(dataToSet);
+        setChartDataState(dataToSet)
       }
-    };
+    }
 
-    updateData();
-  }, [
-    props.chartMethodType, 
-    props.example, 
-    props.data, 
-    setChartData
-  ]); 
+    updateData()
+  }, [props.chartMethodType, props.example, props.data, setChartData])
 
   return (
     <AdChart
@@ -50,8 +48,8 @@ export const NucEntityChart: React.FC<NucEntityChartInterface> = (props) => {
       type={props.type}
       chartMethodType={props.chartMethodType}
       direction={props.direction}
-      className={props.chartClass} 
+      className={props.chartClass}
       example={props.example}
     />
-  );
-};
+  )
+}

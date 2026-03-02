@@ -1,19 +1,25 @@
 /* eslint-disable */
-import { useMemo, useCallback } from 'react'
-import { ChartOptions,ChartData } from 'chart.js'
-import {allEntitiesKeys} from '../../../../tmp_Files/types/variables'
-import { 
-  colorKeys, 
-  defaultColors 
-} from '../../../../tmp_Files/constants/list'
-import type { 
-  UseColorsInterface, 
-  ColorItemInterface, 
-  ChartInterface, 
-  ChartMethodType 
-} from '../../../../tmp_Files/types/interfaces'
+import { useCallback, useMemo } from 'react'
+
+import { ChartData, ChartOptions } from 'chart.js'
 import type { ChartType } from '../../../../../../../next/src/atomic/organism/chart/types/variables'
 import type { ObjectType } from '../../../../../../../next/src/atomic/organism/menu/types/interfaces'
+import { colorKeys, defaultColors } from '../../../../tmp_Files/constants/list'
+import type {
+  ChartInterface,
+  ChartMethodType,
+  ColorItemInterface,
+  NucActivityObjectInterface,
+  NucArticleObjectInterface,
+  NucContactObjectInterface,
+  NucFileObjectInterface,
+  NucMoneyObjectInterface,
+  NucQuestionObjectInterface,
+  NucTechnologyObjectInterface,
+  NucUserObjectInterface,
+  UseColorsInterface,
+} from '../../../../tmp_Files/types/interfaces'
+import { allEntitiesKeys } from '../../../../tmp_Files/types/variables'
 import {
   cartesianChart,
   circularChart,
@@ -43,21 +49,27 @@ export function cookieGetItem(name: string): string | undefined {
 
 export function getColorValue(key: string): string {
   return (
-    cookieGetItem(key) || localStorageGetItem(key) || (defaultColors as any)[key] || ''
+    cookieGetItem(key) || localStorageGetItem(key) || defaultColors[key] || ''
   )
 }
 
 export function useColors(): UseColorsInterface {
   const colors = useMemo(() => {
     const getItemColors = (key: string): ColorItemInterface => {
-      const primary = getColorValue(`${key}-item-color-user`) || getColorValue(`${key}-item-color-system`)
-      const hover = getColorValue(`${key}-item-hover-color-user`) || getColorValue(`${key}-item-hover-color-system`)
-      const secondary = getColorValue(`${key}-item-secondary-color-user`) || getColorValue(`${key}-item-secondary-color-system`)
+      const primary =
+        getColorValue(`${key}-item-color-user`) ||
+        getColorValue(`${key}-item-color-system`)
+      const hover =
+        getColorValue(`${key}-item-hover-color-user`) ||
+        getColorValue(`${key}-item-hover-color-system`)
+      const secondary =
+        getColorValue(`${key}-item-secondary-color-user`) ||
+        getColorValue(`${key}-item-secondary-color-system`)
       return { primary, hover, secondary }
     }
 
     return Object.fromEntries(colorKeys.map((key) => [key, getItemColors(key)]))
-  }, []) 
+  }, [])
 
   return { colors }
 }
@@ -65,18 +77,22 @@ export function useColors(): UseColorsInterface {
 export function useChart() {
   const { colors } = useColors()
 
-  const exampleColors = useMemo(() => Object.fromEntries(
-    [
-      ['activity', '#FFB600'],
-      ['user', '#64748B'],
-      ['article', '#1187C7'],
-      ['contact', '#10B981'],
-      ['file', '#6DB910'],
-      ['money', '#11C73B'],
-      ['question', '#8CB910'],
-      ['technology', '#B95910'],
-    ].map(([key, primary]) => [key, { primary, secondary: `${primary}35` }])
-  ), [])
+  const exampleColors = useMemo(
+    () =>
+      Object.fromEntries(
+        [
+          ['activity', '#FFB600'],
+          ['user', '#64748B'],
+          ['article', '#1187C7'],
+          ['contact', '#10B981'],
+          ['file', '#6DB910'],
+          ['money', '#11C73B'],
+          ['question', '#8CB910'],
+          ['technology', '#B95910'],
+        ].map(([key, primary]) => [key, { primary, secondary: `${primary}35` }])
+      ),
+    []
+  )
 
   const generateExampleDataByMonth = useCallback(() => {
     const dataByMonth = Object.fromEntries(
@@ -89,82 +105,111 @@ export function useChart() {
     return dataByMonth
   }, [])
 
-  const setChartData = useCallback((
-    chartMethodType: ChartMethodType,
-    activityLogData?: any[],
-    articleData?: any[],
-    contactData?: any[],
-    fileData?: any[],
-    moneyData?: any[],
-    questionData?: any[],
-    technologyData?: any[],
-    userData?: any[],
-    example?: boolean
-  ): ChartData | null => { 
-    try {
-      const entitiesData = {
-        activityLogData,
-        articleData,
-        contactData,
-        fileData,
-        moneyData,
-        questionData,
-        technologyData,
-        userData,
-      } as Record<string, ObjectType[]>
+  const setChartData = useCallback(
+    (
+      chartMethodType: ChartMethodType,
+      activityLogData?: NucActivityObjectInterface[],
+      articleData?: NucArticleObjectInterface[],
+      contactData?: NucContactObjectInterface[],
+      fileData?: NucFileObjectInterface[],
+      moneyData?: NucMoneyObjectInterface[],
+      questionData?: NucQuestionObjectInterface[],
+      technologyData?: NucTechnologyObjectInterface[],
+      userData?: NucUserObjectInterface[],
+      example?: boolean
+    ): ChartData | null => {
+      try {
+        const entitiesData = {
+          activityLogData,
+          articleData,
+          contactData,
+          fileData,
+          moneyData,
+          questionData,
+          technologyData,
+          userData,
+        } as Record<string, ObjectType[]>
 
-      const chartColors = example ? exampleColors : colors
-      const exampleDataByMonth = example ? generateExampleDataByMonth() : undefined
-      const stacked = true
+        const chartColors = example ? exampleColors : colors
+        const exampleDataByMonth = example
+          ? generateExampleDataByMonth()
+          : undefined
+        const stacked = true
 
-      switch (chartMethodType) {
-        case 'annual':
-          return prepareAnnualData(entitiesData, chartColors, undefined, undefined, undefined, exampleDataByMonth) as ChartData
-        case 'annual-stacked':
-          return prepareAnnualData(entitiesData, chartColors, stacked, undefined, undefined, exampleDataByMonth) as ChartData
-        case 'count':
-          return prepareCountData(entitiesData, chartColors, exampleDataByMonth) as ChartData
-        default:
-          return null
+        switch (chartMethodType) {
+          case 'annual':
+            return prepareAnnualData(
+              entitiesData,
+              chartColors,
+              undefined,
+              undefined,
+              undefined,
+              exampleDataByMonth
+            ) as ChartData
+          case 'annual-stacked':
+            return prepareAnnualData(
+              entitiesData,
+              chartColors,
+              stacked,
+              undefined,
+              undefined,
+              exampleDataByMonth
+            ) as ChartData
+          case 'count':
+            return prepareCountData(
+              entitiesData,
+              chartColors,
+              exampleDataByMonth
+            ) as ChartData
+          default:
+            return null
+        }
+      } catch (error) {
+        console.error(error)
+        return null
       }
-    } catch (error) {
-      console.error(error)
-      return null
-    }
-  }, [colors, exampleColors, generateExampleDataByMonth])
+    },
+    [colors, exampleColors, generateExampleDataByMonth]
+  )
 
-  const setChartOptions = useCallback((chartType: ChartType, direction?: string): ChartOptions => {
-    const options: ChartOptions = {
-      maintainAspectRatio: false,
-      aspectRatio: 0.8,
-      plugins: {
-        legend: { labels: { color: '#cce4dd' } },
-      },
-    }
+  const setChartOptions = useCallback(
+    (chartType: ChartType, direction?: string): ChartOptions => {
+      const options: ChartOptions = {
+        maintainAspectRatio: false,
+        aspectRatio: 0.8,
+        plugins: {
+          legend: { labels: { color: '#cce4dd' } },
+        },
+      }
 
-    switch (chartType) {
-      case 'bar':
-      case 'line':
-        return cartesianChart(options, direction === 'horizontal' ? 'horizontal' : undefined)
-      case 'bubble':
-        return pointerChart(options, { withRadius: true })
-      case 'doughnut':
-      case 'pie':
-        return circularChart(options)
-      case 'polarArea':
-        return radialChart(options, { gridColor: '#cce4dd' })
-      case 'radar':
-        return radialChart(options, {
-          angleLinesDisplay: false,
-          gridColor: '#39404a50',
-          tickColor: '#e6e6e6',
-        })
-      case 'scatter':
-        return pointerChart(options)
-      default:
-        return options
-    }
-  }, [])
+      switch (chartType) {
+        case 'bar':
+        case 'line':
+          return cartesianChart(
+            options,
+            direction === 'horizontal' ? 'horizontal' : undefined
+          )
+        case 'bubble':
+          return pointerChart(options, { withRadius: true })
+        case 'doughnut':
+        case 'pie':
+          return circularChart(options)
+        case 'polarArea':
+          return radialChart(options, { gridColor: '#cce4dd' })
+        case 'radar':
+          return radialChart(options, {
+            angleLinesDisplay: false,
+            gridColor: '#39404a50',
+            tickColor: '#e6e6e6',
+          })
+        case 'scatter':
+          return pointerChart(options)
+        default:
+          return options
+      }
+    },
+    []
+  )
 
   return { setChartData, setChartOptions }
 }

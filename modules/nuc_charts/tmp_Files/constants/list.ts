@@ -1,17 +1,17 @@
+import { modulesGroups } from '../constants/modules'
 import type { SettingsGroupInterface } from '../types/interfaces'
 import type { NucDisplayChartsStateKeyType } from '../types/variables'
-import { modulesGroups } from '../constants/modules'
 export const BASE_CHART_KEYS = [
-  'Activity', 
-  'Admin', 
-  'Article', 
-  'Contact', 
-  'File', 
-  'Money', 
-  'Question', 
-  'Structural', 
-  'Technology'
-] as const;
+  'Activity',
+  'Admin',
+  'Article',
+  'Contact',
+  'File',
+  'Money',
+  'Question',
+  'Structural',
+  'Technology',
+] as const
 export const colorKeys: string[] = [
   'main',
   'activity',
@@ -34,11 +34,15 @@ export function getDisplayChartGroups(): SettingsGroupInterface[] {
 }
 
 export function getDisplayChartList(): NucDisplayChartsStateKeyType[] {
-  return getDisplayChartGroups().flatMap((group) => group.items || []) as NucDisplayChartsStateKeyType[];
+  return getDisplayChartGroups().flatMap(
+    (group) => group.items || []
+  ) as NucDisplayChartsStateKeyType[]
 }
 
-export const displayChartGroups: SettingsGroupInterface[] = getDisplayChartGroups();
-export const displayChartList: NucDisplayChartsStateKeyType[] = getDisplayChartList();
+export const displayChartGroups: SettingsGroupInterface[] =
+  getDisplayChartGroups()
+export const displayChartList: NucDisplayChartsStateKeyType[] =
+  getDisplayChartList()
 
 export const defaultColors: Record<string, string> = {
   'main-item-color': '#10b981',

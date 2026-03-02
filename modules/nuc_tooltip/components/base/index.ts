@@ -1,1 +1,1 @@
- export { default as NucTooltipBase } from './index.tsx'
+export { default as NucTooltipBase } from './index.tsx'

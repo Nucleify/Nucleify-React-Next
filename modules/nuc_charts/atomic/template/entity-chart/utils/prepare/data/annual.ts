@@ -1,8 +1,10 @@
-import {  allEntitiesKeys} from '../../../../../../tmp_Files/types/variables'
-import {type ChartType} from '../../../../../../../../../next/src/atomic/organism/chart/types/variables'
-import {  type ColorItemInterface,
-  type EntityColorsInterface} from '../../../../../../tmp_Files/types/interfaces'
-  import {months} from '../../../../../../tmp_Files/constants/months'
+import { type ChartType } from '../../../../../../../../../next/src/atomic/organism/chart/types/variables'
+import { months } from '../../../../../../tmp_Files/constants/months'
+import {
+  type ColorItemInterface,
+  type EntityColorsInterface,
+} from '../../../../../../tmp_Files/types/interfaces'
+import { allEntitiesKeys } from '../../../../../../tmp_Files/types/variables'
 import {
   createScatterDatasets,
   createStackedDatasets,

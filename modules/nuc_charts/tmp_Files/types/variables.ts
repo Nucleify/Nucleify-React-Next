@@ -1,6 +1,4 @@
-import { displayChartList } from '../constants/list'
-
-import { BASE_CHART_KEYS } from '../constants/list'
+import { BASE_CHART_KEYS, displayChartList } from '../constants/list'
 
 export type NucDisplayChartsStateKeyType = (typeof BASE_CHART_KEYS)[number]
 export const entitiesKeys: string[] = ['article', 'contact', 'money', 'user']

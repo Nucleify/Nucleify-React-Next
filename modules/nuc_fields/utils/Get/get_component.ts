@@ -1,4 +1,3 @@
-import type { ComponentType } from '../../types/index'
 import {
   AdDatePicker,
   AdInputMask,
@@ -7,6 +6,7 @@ import {
   AdSelect,
   AdTextarea,
 } from '../../../../src/atomic/index'
+import type { ComponentType } from '../../types/index'
 
 export function getComponent(type: ComponentType) {
   const componentMap = {
