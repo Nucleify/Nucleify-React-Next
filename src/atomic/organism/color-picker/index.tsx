@@ -1,6 +1,6 @@
+import { ColorPicker } from 'primereact/colorpicker'
 import type { JSX } from 'react'
 
-import { ColorPicker } from 'primereact/colorpicker'
 import type { ColorPickerInterface } from './types'
 
 export function AdColorPicker({

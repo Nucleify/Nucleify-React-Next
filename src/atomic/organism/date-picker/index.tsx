@@ -1,6 +1,6 @@
+import { Calendar } from 'primereact/calendar'
 import type { JSX } from 'react'
 
-import { Calendar } from 'primereact/calendar'
 import styles from './index.module.scss'
 import type { DatePickerInterface } from './types'
 

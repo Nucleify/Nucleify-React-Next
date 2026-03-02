@@ -1,4 +1,5 @@
 import { Tree } from 'primereact/tree'
+
 import type { TreeInterface } from './types'
 
 export function AdTree(props: TreeInterface) {

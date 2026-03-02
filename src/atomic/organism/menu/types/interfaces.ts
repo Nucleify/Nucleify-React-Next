@@ -1,6 +1,6 @@
+import { MenuProps } from 'primereact/menu'
 import type { RefObject } from 'react'
 
-import { MenuProps } from 'primereact/menu'
 import type { OpenMenuFunctionType } from './functions'
 
 export type ObjectType = Record<string, unknown>

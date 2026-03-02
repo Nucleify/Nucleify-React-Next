@@ -1,4 +1,4 @@
-import type { NucNavLinkInterface } from '.'
+import type { NucNavLinkInterface } from 'nucleify'
 
 type NavbarTranslate = (key: string) => string
 

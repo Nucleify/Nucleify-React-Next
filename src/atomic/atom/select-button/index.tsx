@@ -1,7 +1,8 @@
 'use client'
-import type { JSX } from 'react'
 
 import { SelectButton } from 'primereact/selectbutton'
+import type { JSX } from 'react'
+
 import styles from './index.module.scss'
 import type { SelectButtonInterface } from './types'
 

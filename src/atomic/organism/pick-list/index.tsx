@@ -1,6 +1,6 @@
+import { PickList } from 'primereact/picklist'
 import type { JSX } from 'react'
 
-import { PickList } from 'primereact/picklist'
 import type { PickListInterface } from './types'
 
 export function AdPickList({

@@ -1,7 +1,7 @@
 'use client'
+import Link from 'next/link'
 import type { JSX } from 'react'
 
-import Link from 'next/link'
 import { AdIcon, AdParagraph } from '@/atomic'
 import styles from './index.module.scss'
 import type { TileInterface } from './types'

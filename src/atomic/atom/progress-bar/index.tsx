@@ -1,6 +1,6 @@
+import { ProgressBar } from 'primereact/progressbar'
 import type { JSX } from 'react'
 
-import { ProgressBar } from 'primereact/progressbar'
 import type { ProgressBarInterface } from './types'
 
 export function AdProgressBar({

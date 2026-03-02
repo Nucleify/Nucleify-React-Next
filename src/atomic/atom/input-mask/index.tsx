@@ -1,6 +1,6 @@
+import { InputMask } from 'primereact/inputmask'
 import type { JSX } from 'react'
 
-import { InputMask } from 'primereact/inputmask'
 import styles from './index.module.scss'
 import type { InputMaskInterface } from './types'
 

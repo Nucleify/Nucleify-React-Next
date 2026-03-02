@@ -1,6 +1,6 @@
+import { OrganizationChart } from 'primereact/organizationchart'
 import type { JSX } from 'react'
 
-import { OrganizationChart } from 'primereact/organizationchart'
 import type { OrganizationChartInterface } from './types'
 
 export function AdOrganizationChart(

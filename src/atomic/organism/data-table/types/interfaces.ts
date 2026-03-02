@@ -1,6 +1,5 @@
-import type { ComponentProps } from 'react'
-
 import { DataTable } from 'primereact/datatable'
+import type { ComponentProps } from 'react'
 
 type LoadingType = boolean | undefined
 

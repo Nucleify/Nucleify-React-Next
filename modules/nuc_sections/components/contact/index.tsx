@@ -1,9 +1,8 @@
 'use client'
+
 import type { JSX } from 'react'
 
-import { AdIcon } from '@/atomic'
-import enLocale from '../../../../../modules/nuc_languages/locales/en.json'
-import { NucSectionEmailUsDialog } from '../email-us/dialog'
+import { AdIcon, enLocale, NucSectionEmailUsDialog } from 'nucleify'
 import styles from './index.module.scss'
 
 function t(key: string): string {

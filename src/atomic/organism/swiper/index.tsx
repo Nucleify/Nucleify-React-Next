@@ -2,6 +2,7 @@
 
 import { Swiper, SwiperSlide } from 'swiper/react'
 import 'swiper/css'
+
 import type { ReactNode } from 'react'
 
 import type { SwiperInterface } from './types'

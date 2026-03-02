@@ -1,7 +1,7 @@
-import { type JSX, useEffect, useMemo, useState } from 'react'
-
 import { Divider } from 'primereact/divider'
 import { Password } from 'primereact/password'
+import { type JSX, useEffect, useMemo, useState } from 'react'
+
 import styles from './index.module.scss'
 import type { PasswordInterface } from './types'
 

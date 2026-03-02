@@ -1,6 +1,6 @@
+import { Menu } from 'primereact/menu'
 import React, { forwardRef, useImperativeHandle, useRef } from 'react'
 
-import { Menu } from 'primereact/menu'
 import styles from './index.module.scss'
 import type { MenuInterface } from './types'
 export interface AdMenuRef {

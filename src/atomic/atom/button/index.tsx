@@ -1,6 +1,6 @@
+import { Button, type ButtonProps } from 'primereact/button'
 import type { CSSProperties, JSX, ReactNode } from 'react'
 
-import { Button, type ButtonProps } from 'primereact/button'
 import { AdIcon } from '../icon'
 import { AdImage } from '../image'
 import styles from './index.module.scss'

@@ -1,7 +1,8 @@
 'use client'
-import type { JSX } from 'react'
 
 import { Dialog } from 'primereact/dialog'
+import type { JSX } from 'react'
+
 import styles from './index.module.scss'
 import type { DialogInterface } from './types'
 

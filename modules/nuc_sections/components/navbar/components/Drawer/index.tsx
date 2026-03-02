@@ -1,7 +1,8 @@
 'use client'
-import type { JSX, ReactNode } from 'react'
 
 import { Sidebar, type SidebarProps } from 'primereact/sidebar'
+import type { JSX, ReactNode } from 'react'
+
 import styles from '../../index.module.scss'
 
 type NucNavbarDrawerProps = SidebarProps & {

@@ -1,6 +1,6 @@
+import { Panel } from 'primereact/panel'
 import type { JSX } from 'react'
 
-import { Panel } from 'primereact/panel'
 import type { PanelInterface } from './types'
 
 export function AdPanel({

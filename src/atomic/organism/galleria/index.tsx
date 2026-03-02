@@ -1,6 +1,6 @@
+import { Galleria } from 'primereact/galleria'
 import type { JSX } from 'react'
 
-import { Galleria } from 'primereact/galleria'
 import type { GalleriaInterface } from './types'
 
 export function AdGalleria({

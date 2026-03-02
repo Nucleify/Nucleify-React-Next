@@ -1,6 +1,6 @@
+import { Chart } from 'primereact/chart'
 import type { JSX } from 'react'
 
-import { Chart } from 'primereact/chart'
 import type { ChartInterface } from './types'
 
 export function AdChart({
@@ -9,6 +9,8 @@ export function AdChart({
   data,
   width,
   height,
+  chartMethodType,
+  example,
   ...rest
 }: ChartInterface): JSX.Element | null {
   if (!data) return null

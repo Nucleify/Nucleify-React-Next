@@ -1,7 +1,8 @@
 'use client'
-import type { JSX } from 'react'
 
 import { InputTextarea } from 'primereact/inputtextarea'
+import type { JSX } from 'react'
+
 import styles from './index.module.scss'
 import type { TextareaInterface } from './types'
 

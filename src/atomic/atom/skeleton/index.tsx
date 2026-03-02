@@ -1,6 +1,6 @@
+import { Skeleton } from 'primereact/skeleton'
 import type { JSX } from 'react'
 
-import { Skeleton } from 'primereact/skeleton'
 import type { SkeletonInterface } from './types'
 
 export function AdSkeleton({

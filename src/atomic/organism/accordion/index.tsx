@@ -1,7 +1,8 @@
 'use client'
-import type { ReactNode } from 'react'
 
 import { Accordion, AccordionTab } from 'primereact/accordion'
+import type { ReactNode } from 'react'
+
 import styles from './index.module.scss'
 import type { AccordionInterface } from './types/interfaces'
 

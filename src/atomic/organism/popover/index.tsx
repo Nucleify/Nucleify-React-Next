@@ -1,7 +1,7 @@
+import { OverlayPanel } from 'primereact/overlaypanel'
 import type { JSX } from 'react'
 import { useRef } from 'react'
 
-import { OverlayPanel } from 'primereact/overlaypanel'
 import { AdButton } from '@/atomic'
 import styles from './index.module.scss'
 import type { PopoverInterface } from './types'

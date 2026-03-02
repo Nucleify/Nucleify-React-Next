@@ -1,6 +1,6 @@
+import { FloatLabel } from 'primereact/floatlabel'
 import type { JSX, ReactNode } from 'react'
 
-import { FloatLabel } from 'primereact/floatlabel'
 import type { FloatLabelInterface } from './types'
 
 export function AdFloatLabel({

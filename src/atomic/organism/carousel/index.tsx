@@ -1,6 +1,6 @@
+import { Carousel } from 'primereact/carousel'
 import type { JSX } from 'react'
 
-import { Carousel } from 'primereact/carousel'
 import type { CarouselInterface } from './types'
 
 export function AdCarousel({

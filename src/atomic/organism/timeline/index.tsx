@@ -1,8 +1,8 @@
 'use client'
 
+import { Timeline } from 'primereact/timeline'
 import type { JSX } from 'react'
 
-import { Timeline } from 'primereact/timeline'
 import type { AdTimelineProps } from './types'
 
 export function AdTimeline({

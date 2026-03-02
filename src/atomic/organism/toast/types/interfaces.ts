@@ -1,6 +1,6 @@
+import type { Toast, ToastProps } from 'primereact/toast'
 import type { ReactNode, RefObject } from 'react'
 
-import type { Toast, ToastProps } from 'primereact/toast'
 import type { FlashToastFunctionType } from './variables'
 
 export interface ToastInterface extends ToastProps {}

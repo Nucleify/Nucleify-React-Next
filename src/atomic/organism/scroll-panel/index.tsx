@@ -1,6 +1,6 @@
+import { ScrollPanel } from 'primereact/scrollpanel'
 import type { JSX, ReactNode } from 'react'
 
-import { ScrollPanel } from 'primereact/scrollpanel'
 import type { ScrollPanelInterface } from './types'
 
 export function AdScrollPanel({

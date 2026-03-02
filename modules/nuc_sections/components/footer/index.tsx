@@ -1,12 +1,9 @@
 'use client'
+import Link from 'next/link'
 import type { JSX } from 'react'
 
-import { AdLogoSymbol } from 'atomic/atom/logo/symbol'
-import Link from 'next/link'
-import { AdAnchor, AdLogo } from '@/atomic'
-import enLocale from '../../../../../modules/nuc_languages/locales/en.json'
+import { AdAnchor, AdLogo, AdLogoSymbol, enLocale, getColumns } from 'nucleify'
 import styles from './index.module.scss'
-import { getColumns } from './items'
 
 function t(key: string): string {
   const value = (enLocale as Record<string, string>)[key]
@@ -29,7 +26,7 @@ export function NucSectionFooter(): JSX.Element {
         <div className={topClassName}>
           <AdLogoSymbol dimensions={logoSize} />
 
-          <AdAnchor href="#start" className={headerClassName}>
+          <AdAnchor href="#start" anchorClass={headerClassName}>
             <AdLogo dimensions={logoSize} adType="main" />
             <h1 className={styles['name']}>Nucleify</h1>
           </AdAnchor>

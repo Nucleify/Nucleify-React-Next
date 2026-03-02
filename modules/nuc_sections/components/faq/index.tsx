@@ -1,33 +1,34 @@
 'use client'
+
 import { type JSX, useEffect, useState } from 'react'
 
-import { AdAccordion } from '@/atomic'
+import {
+  AdAccordion,
+  apiHandle,
+  type NucFaqQuestionInterface,
+  type NucSectionFaqInterface,
+  useSplitQuestions,
+} from 'nucleify'
 import styles from './index.module.scss'
-import type {
-  NucQuestionObjectInterface,
-  NucSectionFaqInterface,
-} from './types'
-import { useSplitQuestions } from './utils'
 
 export function NucSectionFaq({
   questions,
   site,
 }: NucSectionFaqInterface): JSX.Element {
-  const [resultsBySite, setResultsBySite] = useState<
-    NucQuestionObjectInterface[]
-  >([])
-  const [column1, setColumn1] = useState<NucQuestionObjectInterface[]>([])
-  const [column2, setColumn2] = useState<NucQuestionObjectInterface[]>([])
+  const [resultsBySite, setResultsBySite] = useState<NucFaqQuestionInterface[]>(
+    []
+  )
+  const [column1, setColumn1] = useState<NucFaqQuestionInterface[]>([])
+  const [column2, setColumn2] = useState<NucFaqQuestionInterface[]>([])
 
   useEffect(() => {
     if (!site || questions) return
 
-    void fetch(`/api/questions/get-site-questions/${site}`)
-      .then((response) => response.json())
-      .then((data) =>
-        setResultsBySite(Array.isArray(data) ? data : (data?.data ?? []))
-      )
-      .catch(() => setResultsBySite([]))
+    void apiHandle<NucFaqQuestionInterface[]>({
+      url: '/api/questions/get-site-questions',
+      id: site,
+      onSuccess: (data) => setResultsBySite(Array.isArray(data) ? data : []),
+    }).catch(() => setResultsBySite([]))
   }, [questions, site])
 
   useEffect(() => {
@@ -43,7 +44,7 @@ export function NucSectionFaq({
     setColumn2(splitQuestions.column2)
   }, [questions, resultsBySite])
 
-  const renderColumn = (panels: NucQuestionObjectInterface[]): JSX.Element => (
+  const renderColumn = (panels: NucFaqQuestionInterface[]): JSX.Element => (
     <AdAccordion
       panels={panels}
       className={styles['p-accordion']}

@@ -1,12 +1,12 @@
 import type {
-  NucQuestionObjectInterface,
+  NucFaqQuestionInterface,
   UseSplitQuestionsInterface,
-} from '../types'
+} from 'nucleify'
 
 export function useSplitQuestions(
-  questions: NucQuestionObjectInterface | NucQuestionObjectInterface[]
+  questions: NucFaqQuestionInterface | NucFaqQuestionInterface[]
 ): UseSplitQuestionsInterface {
-  const normalizedQuestions: NucQuestionObjectInterface[] = Array.isArray(
+  const normalizedQuestions: NucFaqQuestionInterface[] = Array.isArray(
     questions
   )
     ? questions
@@ -14,11 +14,11 @@ export function useSplitQuestions(
 
   const middleIndex: number = Math.ceil(normalizedQuestions.length / 2)
 
-  const column1: NucQuestionObjectInterface[] = normalizedQuestions.slice(
+  const column1: NucFaqQuestionInterface[] = normalizedQuestions.slice(
     0,
     middleIndex
   )
-  const column2: NucQuestionObjectInterface[] =
+  const column2: NucFaqQuestionInterface[] =
     normalizedQuestions.slice(middleIndex)
 
   return { column1, column2 }

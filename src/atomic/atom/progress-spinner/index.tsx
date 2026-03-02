@@ -1,6 +1,6 @@
+import { ProgressSpinner } from 'primereact/progressspinner'
 import type { JSX } from 'react'
 
-import { ProgressSpinner } from 'primereact/progressspinner'
 import type { ProgressSpinnerInterface } from './types'
 
 export function AdProgressSpinner({

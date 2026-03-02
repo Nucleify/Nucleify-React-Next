@@ -1,6 +1,6 @@
+import { InputNumber } from 'primereact/inputnumber'
 import type { JSX } from 'react'
 
-import { InputNumber } from 'primereact/inputnumber'
 import styles from './index.module.scss'
 import type { InputNumberInterface } from './types'
 

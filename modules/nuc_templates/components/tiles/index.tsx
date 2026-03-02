@@ -1,9 +1,8 @@
 'use client'
+
 import type { JSX } from 'react'
 
-import type { NucTilesInterface } from '.'
-
-import { AdTile } from '@/atomic'
+import { AdTile, type NucTilesInterface } from 'nucleify'
 import styles from './index.module.scss'
 
 export function NucTiles({ entities }: NucTilesInterface): JSX.Element {

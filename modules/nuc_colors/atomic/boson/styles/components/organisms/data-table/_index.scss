@@ -1,0 +1,13 @@
+@import 'mixins';
+
+@each $type in $ad-types {
+  .p-datatable[ad-type='#{$type}'] {
+    @include entity-with-suffix($type) using ($suffix) {
+      @include entity-datatable-styles(
+        var(--#{$type}-item-color#{$suffix}) !important,
+        var(--#{$type}-item-selected-color#{$suffix}) !important,
+        var(--#{$type}-item-highlight-color#{$suffix}) !important
+      );
+    }
+  }
+}

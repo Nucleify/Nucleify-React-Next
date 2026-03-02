@@ -1,4 +1,5 @@
 'use client'
+
 import {
   type ChangeEvent,
   type FormEvent,
@@ -14,16 +15,13 @@ import {
   AdInputText,
   AdLabel,
   AdTextarea,
-} from 'atomic'
-
-import { getEmailUsTextFields } from './constants'
+  type ContactFormDataInterface,
+  type ContactFormErrorsInterface,
+  type FormFieldInterface,
+  getEmailUsTextFields,
+  submitContactForm,
+} from 'nucleify'
 import styles from './index.module.scss'
-import type {
-  ContactFormDataInterface,
-  ContactFormErrorsInterface,
-  FormFieldInterface,
-} from './types'
-import { submitContactForm } from './utils'
 
 type NucSectionEmailUsProps = {
   onSuccess?: () => void
