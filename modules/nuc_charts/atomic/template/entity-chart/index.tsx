@@ -48,10 +48,10 @@ export const NucEntityChart: React.FC<NucEntityChartInterface> = (props) => {
       data={chartData}
       options={chartOptions}
       type={props.type}
-      // chartMethodType={props.chartMethodType}
-      // direction={props.direction}
+      chartMethodType={props.chartMethodType}
+      direction={props.direction}
       className={props.chartClass} 
-      // example={props.example}
+      example={props.example}
     />
   );
 };

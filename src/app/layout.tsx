@@ -24,7 +24,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 <NucEntityChartCard 
                   entity="Admin" 
                   type="line" 
-                  chartMethodType="count" 
+                  chartMethodType="annual" 
                   example={true} 
                   chartClass="test-card-chart"
                   loading={false}
