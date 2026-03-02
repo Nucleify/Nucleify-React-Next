@@ -1,4 +1,5 @@
 import type { ButtonProps } from 'primereact/button'
+
 import type { ButtonMedia, ButtonType, ButtonVariant } from './variables'
 
 export interface ButtonInterface extends ButtonProps {

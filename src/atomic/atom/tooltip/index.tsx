@@ -1,6 +1,6 @@
+import { Tooltip } from 'primereact/tooltip'
 import type { JSX } from 'react'
 
-import { Tooltip } from 'primereact/tooltip'
 import type { TooltipInterface } from './types'
 
 export function AdTooltip(props: TooltipInterface): JSX.Element {

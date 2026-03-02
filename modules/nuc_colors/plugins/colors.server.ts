@@ -1,4 +1,4 @@
-import { colorKeys, colorShades } from 'atomic'
+import { colorKeys, colorShades } from 'nucleify'
 
 export function buildServerColorVariables(cookies: string): string {
   const colorVariables: string[] = []

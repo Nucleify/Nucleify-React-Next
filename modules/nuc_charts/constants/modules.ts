@@ -1,8 +1,8 @@
-import type { SettingsGroupInterface } from '../types/interfaces'
+import type { ChartSettingsGroupInterface } from 'nucleify'
 
 export function modulesGroups(
   withCategory: boolean = false
-): SettingsGroupInterface[] {
+): ChartSettingsGroupInterface[] {
   return [
     {
       name: 'nuc_activity',

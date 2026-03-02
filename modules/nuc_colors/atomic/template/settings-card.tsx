@@ -8,8 +8,7 @@ import {
   AdLabel,
   colorGroups,
   resetColorsToDefault,
-} from 'atomic'
-
+} from 'nucleify'
 import { NucColorPicker } from '../organism'
 
 interface NucColorSettingsCardProps {

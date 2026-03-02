@@ -1,6 +1,5 @@
-import type { ReactNode } from 'react'
-
 import type { TimelineProps } from 'primereact/timeline'
+import type { ReactNode } from 'react'
 
 export interface TimelineInterface extends TimelineProps {}
 

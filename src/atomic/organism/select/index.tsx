@@ -1,7 +1,8 @@
 'use client'
-import type { JSX } from 'react'
 
 import { Dropdown } from 'primereact/dropdown'
+import type { JSX } from 'react'
+
 import styles from './index.module.scss'
 import type { SelectInterface } from './types/interfaces'
 

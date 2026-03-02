@@ -1,11 +1,14 @@
 'use client'
+
 import React from 'react'
 
-import { AdCard } from '../../../../../../next/src/atomic/organism/card/index'
-import type { NucDisplayChartsStateInterface } from '../../../tmp_Files/types/interfaces.ts'
-import { useDisplayChartsStore } from '../../boson/utils/use_display_charts_store'
-import { NucEntityChart } from '../entity-chart/index.tsx'
-import type { NucEntityChartCardInterface } from '../entity-chart-card/types/interfaces'
+import {
+  AdCard,
+  type NucDisplayChartsStateInterface,
+  NucEntityChart,
+  type NucEntityChartCardInterface,
+  useDisplayChartsStore,
+} from 'nucleify'
 export const NucEntityChartCard: React.FC<NucEntityChartCardInterface> = (
   props
 ) => {

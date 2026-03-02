@@ -2,8 +2,8 @@ import type {
   ApiHandleOptionsInterface,
   HttpMethodType,
   UseApiErrorsInterface,
-} from 'atomic'
-import { apiRequest, useApiErrors } from 'atomic'
+} from 'nucleify'
+import { apiRequest, useApiErrors } from 'nucleify'
 
 export async function apiHandle<T>({
   url,

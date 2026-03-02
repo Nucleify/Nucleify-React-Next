@@ -1,6 +1,6 @@
+import { InputOtp } from 'primereact/inputotp'
 import type { JSX } from 'react'
 
-import { InputOtp } from 'primereact/inputotp'
 import styles from './index.module.scss'
 import type { InputOtpInterface } from './types'
 

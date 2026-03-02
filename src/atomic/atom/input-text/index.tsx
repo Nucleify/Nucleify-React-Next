@@ -1,6 +1,6 @@
+import { InputText } from 'primereact/inputtext'
 import type { JSX } from 'react'
 
-import { InputText } from 'primereact/inputtext'
 import styles from './index.module.scss'
 import type { InputTextInterface } from './types'
 

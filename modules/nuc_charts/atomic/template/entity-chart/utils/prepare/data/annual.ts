@@ -1,18 +1,16 @@
-import { type ChartType } from '../../../../../../../../../next/src/atomic/organism/chart/types/variables'
-import { months } from '../../../../../../tmp_Files/constants/months'
 import {
+  allEntitiesKeys,
+  type ChartType,
   type ColorItemInterface,
-  type EntityColorsInterface,
-} from '../../../../../../tmp_Files/types/interfaces'
-import { allEntitiesKeys } from '../../../../../../tmp_Files/types/variables'
-import {
   createScatterDatasets,
   createStackedDatasets,
   createStandardDatasets,
-} from './dataset'
+  type EntityColorsInterface,
+  months,
+} from 'nucleify'
 
 export function prepareAnnualData(
-  entitiesData: Record<string, ObjectType[]>,
+  entitiesData: Record<string, unknown[]>,
   chartColors: EntityColorsInterface,
   stacked?: boolean,
   comboTypes?: Record<string, 'bar' | 'line'>,

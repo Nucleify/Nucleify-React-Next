@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 
-import { isSelectOrDatePicker } from 'atomic'
+import { isSelectOrDatePicker } from 'nucleify'
 
 describe('isSelectOrDatePicker', (): void => {
   it('returns true when parameter is select', (): void => {

@@ -1,9 +1,9 @@
-import { apiHandle } from '../../../../nuc_api'
-import type {
-  ContactFormDataInterface,
-  SubmitFormResultInterface,
-} from '../types'
-import { validateContactForm } from './validate_form'
+import {
+  apiHandle,
+  type ContactFormDataInterface,
+  type SubmitFormResultInterface,
+  validateContactForm,
+} from 'nucleify'
 
 export async function submitContactForm(
   form: ContactFormDataInterface

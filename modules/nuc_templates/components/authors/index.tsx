@@ -1,8 +1,6 @@
 import type { JSX } from 'react'
 
-import { AdImage } from '@/atomic/atom/image'
-import { AdAnchor } from '@/atomic/molecule/anchor'
-import { AdDeferredContent } from '@/atomic/organism/deferred-content'
+import { AdAnchor, AdDeferredContent, AdImage } from 'nucleify'
 import styles from './index.module.scss'
 
 export function NucAuthors(): JSX.Element {

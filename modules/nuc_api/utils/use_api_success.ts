@@ -1,7 +1,5 @@
-import type { CloseDialogType } from 'atomic'
-
-import type { UseToastInterface } from '../../../src/atomic/organism/toast/types'
-import { useAtomicToast } from '../../../src/atomic/organism/toast/utils'
+import type { CloseDialogType, UseToastInterface } from 'nucleify'
+import { useAtomicToast } from 'nucleify'
 
 export function useApiSuccess() {
   const { flashToast }: UseToastInterface = useAtomicToast()

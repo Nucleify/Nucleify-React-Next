@@ -2,8 +2,8 @@
 
 import type { JSX, PropsWithChildren } from 'react'
 
-import type { ButtonInterface } from '@/atomic'
-import { AdButton } from '@/atomic'
+import type { ButtonInterface } from 'nucleify'
+import { AdButton } from 'nucleify'
 // import { NucAnimationHexagons } from 'nuc_animations/hexagons'
 import styles from './index.module.scss'
 

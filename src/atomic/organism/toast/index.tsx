@@ -1,7 +1,8 @@
 'use client'
-import { forwardRef, type JSX } from 'react'
 
 import { Toast } from 'primereact/toast'
+import { forwardRef, type JSX } from 'react'
+
 import styles from './index.module.scss'
 import type { AdToastProps } from './types'
 

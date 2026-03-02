@@ -1,6 +1,5 @@
-import type { ReactNode } from 'react'
-
 import type { TabPanelProps, TabViewProps } from 'primereact/tabview'
+import type { ReactNode } from 'react'
 
 export interface TabsInterface extends TabViewProps {
   lists?: TabListInterface[]

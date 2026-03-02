@@ -9,7 +9,7 @@ import type {
   NucQuestionObjectInterface,
   NucTechnologyObjectInterface,
   NucUserObjectInterface,
-} from '../../../../tmp_Files/types/interfaces'
+} from 'nucleify'
 
 export interface NucEntityChartInterface extends ChartInterface {
   chartMethodType: ChartMethodType

@@ -1,78 +1,28 @@
 /* eslint-disable */
-import { useCallback, useMemo } from 'react'
 
 import { ChartData, ChartOptions } from 'chart.js'
-import type { ChartType } from '../../../../../../../next/src/atomic/organism/chart/types/variables'
-import type { ObjectType } from '../../../../../../../next/src/atomic/organism/menu/types/interfaces'
-import { colorKeys, defaultColors } from '../../../../tmp_Files/constants/list'
-import type {
-  ChartInterface,
-  ChartMethodType,
-  ColorItemInterface,
-  NucActivityObjectInterface,
-  NucArticleObjectInterface,
-  NucContactObjectInterface,
-  NucFileObjectInterface,
-  NucMoneyObjectInterface,
-  NucQuestionObjectInterface,
-  NucTechnologyObjectInterface,
-  NucUserObjectInterface,
-  UseColorsInterface,
-} from '../../../../tmp_Files/types/interfaces'
-import { allEntitiesKeys } from '../../../../tmp_Files/types/variables'
+import { useCallback, useMemo } from 'react'
+
 import {
+  allEntitiesKeys,
+  type ChartMethodType,
+  type ChartType,
   cartesianChart,
   circularChart,
+  type NucActivityObjectInterface,
+  type NucArticleObjectInterface,
+  type NucContactObjectInterface,
+  type NucFileObjectInterface,
+  type NucMoneyObjectInterface,
+  type NucQuestionObjectInterface,
+  type NucTechnologyObjectInterface,
+  type NucUserObjectInterface,
   pointerChart,
   prepareAnnualData,
   prepareCountData,
   radialChart,
-} from './prepare'
-
-export function localStorageGetItem(item: string): string | undefined {
-  if (typeof window !== 'undefined') {
-    return localStorage.getItem(item) || undefined
-  }
-  return undefined
-}
-
-export function cookieGetItem(name: string): string | undefined {
-  if (typeof window !== 'undefined') {
-    const value = `; ${document.cookie}`
-    const parts = value.split(`; ${name}=`)
-    if (parts.length === 2) {
-      return parts.pop()?.split(';').shift() || undefined
-    }
-  }
-  return undefined
-}
-
-export function getColorValue(key: string): string {
-  return (
-    cookieGetItem(key) || localStorageGetItem(key) || defaultColors[key] || ''
-  )
-}
-
-export function useColors(): UseColorsInterface {
-  const colors = useMemo(() => {
-    const getItemColors = (key: string): ColorItemInterface => {
-      const primary =
-        getColorValue(`${key}-item-color-user`) ||
-        getColorValue(`${key}-item-color-system`)
-      const hover =
-        getColorValue(`${key}-item-hover-color-user`) ||
-        getColorValue(`${key}-item-hover-color-system`)
-      const secondary =
-        getColorValue(`${key}-item-secondary-color-user`) ||
-        getColorValue(`${key}-item-secondary-color-system`)
-      return { primary, hover, secondary }
-    }
-
-    return Object.fromEntries(colorKeys.map((key) => [key, getItemColors(key)]))
-  }, [])
-
-  return { colors }
-}
+  useColors,
+} from 'nucleify'
 
 export function useChart() {
   const { colors } = useColors()
@@ -128,7 +78,7 @@ export function useChart() {
           questionData,
           technologyData,
           userData,
-        } as Record<string, ObjectType[]>
+        } as Record<string, unknown[]>
 
         const chartColors = example ? exampleColors : colors
         const exampleDataByMonth = example

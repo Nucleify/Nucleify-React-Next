@@ -20,7 +20,7 @@ export interface SubmitFormResultInterface {
   message?: string
 }
 
-import type { ComponentType } from 'atomic'
+import type { ComponentType } from 'nucleify'
 
 export interface FormFieldInterface {
   id: keyof Omit<ContactFormDataInterface, 'consent'>

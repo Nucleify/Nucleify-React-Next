@@ -1,4 +1,4 @@
-import { applyColorsWithSystemAndUser, colorKeys, colorShades } from 'atomic'
+import { applyColorsWithSystemAndUser, colorKeys, colorShades } from 'nucleify'
 
 function localStorageGetItem(key: string): string {
   if (typeof window === 'undefined') return ''

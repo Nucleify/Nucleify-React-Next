@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 
-import { hasLowercase } from 'atomic'
+import { hasLowercase } from 'nucleify'
 
 describe('hasLowercase', (): void => {
   it('returns true when parameter contains lowercase letters', (): void => {

@@ -1,7 +1,8 @@
 'use client'
+
 import type { JSX } from 'react'
 
-import { AdAnchor } from '@/atomic'
+import { AdAnchor } from 'nucleify'
 import styles from './index.module.scss'
 
 export function NucHomeLink(): JSX.Element {

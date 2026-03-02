@@ -1,6 +1,6 @@
+import { Dock } from 'primereact/dock'
 import type { JSX } from 'react'
 
-import { Dock } from 'primereact/dock'
 import styles from './index.module.scss'
 import type { DockInterface } from './types'
 

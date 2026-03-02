@@ -1,4 +1,4 @@
-import type { TileInterface } from 'atomic'
+import type { TileInterface } from 'nucleify'
 
 export interface NucTilesInterface {
   entities: TileInterface[]

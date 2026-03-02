@@ -1,15 +1,15 @@
-import type { AccordionPanelInterface } from 'atomic'
+import type { AccordionPanelInterface } from 'nucleify'
 
 export type SiteType = string
 
-export interface NucQuestionObjectInterface extends AccordionPanelInterface {}
+export interface NucFaqQuestionInterface extends AccordionPanelInterface {}
 
 export interface NucSectionFaqInterface {
-  questions?: NucQuestionObjectInterface | NucQuestionObjectInterface[]
+  questions?: NucFaqQuestionInterface | NucFaqQuestionInterface[]
   site?: SiteType
 }
 
 export interface UseSplitQuestionsInterface {
-  column1: NucQuestionObjectInterface[]
-  column2: NucQuestionObjectInterface[]
+  column1: NucFaqQuestionInterface[]
+  column2: NucFaqQuestionInterface[]
 }

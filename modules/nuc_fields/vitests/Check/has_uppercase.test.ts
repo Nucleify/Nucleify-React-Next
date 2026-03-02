@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 
-import { hasUppercase } from 'atomic'
+import { hasUppercase } from 'nucleify'
 
 describe('hasUppercase', (): void => {
   it('returns true when parameter contains uppercase letters', (): void => {

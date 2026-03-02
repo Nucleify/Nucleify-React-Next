@@ -1,11 +1,10 @@
 'use client'
-import type { JSX } from 'react'
-
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import enLocale from '../../../../../../../modules/nuc_languages/locales/en.json'
+import type { JSX } from 'react'
+
+import { enLocale, getNavLinks } from 'nucleify'
 import styles from '../../index.module.scss'
-import { getNavLinks } from './links'
 
 type NucNavbarLinksProps = {
   onCloseDrawer?: () => void

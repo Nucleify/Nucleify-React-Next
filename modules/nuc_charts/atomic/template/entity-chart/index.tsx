@@ -1,11 +1,13 @@
 'use client'
+import type { ChartData } from 'chart.js'
 import React, { useEffect, useMemo, useState } from 'react'
 
-import type { ChartData } from 'chart.js'
-import { AdChart } from '../../../../../../next/src/atomic/organism/chart/index'
-import type { ChartType } from '../../../../../../next/src/atomic/organism/chart/types/variables'
-import { useChart } from '../entity-chart/utils/use_chart'
-import type { NucEntityChartInterface } from './types'
+import {
+  AdChart,
+  type ChartType,
+  type NucEntityChartInterface,
+  useChart,
+} from 'nucleify'
 
 export const NucEntityChart: React.FC<NucEntityChartInterface> = (props) => {
   const { setChartData, setChartOptions } = useChart()

@@ -1,7 +1,7 @@
 import type {
   ContactFormDataInterface,
   ContactFormErrorsInterface,
-} from '../types'
+} from 'nucleify'
 
 export function validateContactForm(
   form: ContactFormDataInterface

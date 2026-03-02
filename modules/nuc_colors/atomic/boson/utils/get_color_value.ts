@@ -1,4 +1,4 @@
-import { defaultColors } from 'atomic'
+import { defaultColors } from 'nucleify'
 
 // TODO(nuc_stores): replace local storage/cookie helpers with atomic exports
 // after nuc_stores is migrated to Next.

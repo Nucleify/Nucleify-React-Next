@@ -1,6 +1,6 @@
+import { MegaMenu } from 'primereact/megamenu'
 import type { JSX } from 'react'
 
-import { MegaMenu } from 'primereact/megamenu'
 import type { MegaMenuInterface } from './types'
 
 export function AdMegaMenu({

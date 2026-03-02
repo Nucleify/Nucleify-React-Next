@@ -1,4 +1,4 @@
-import { darkenColor, setColorOpacity } from 'atomic'
+import { darkenColor, setColorOpacity } from 'nucleify'
 
 export function createColorShades(colorValue: string): Record<string, string> {
   return {

@@ -1,7 +1,9 @@
-import type { ErrorResponseInterface, UseApiErrorsInterface } from 'atomic'
-
-import type { UseToastInterface } from '../../../src/atomic/organism/toast/types'
-import { useAtomicToast } from '../../../src/atomic/organism/toast/utils'
+import type {
+  ErrorResponseInterface,
+  UseApiErrorsInterface,
+  UseToastInterface,
+} from 'nucleify'
+import { useAtomicToast } from 'nucleify'
 
 export function useApiErrors(): UseApiErrorsInterface {
   const { flashToast }: UseToastInterface = useAtomicToast()

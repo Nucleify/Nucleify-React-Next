@@ -1,11 +1,14 @@
 'use client'
-import { type JSX, useMemo, useState } from 'react'
 
 import { Dialog } from 'primereact/dialog'
-import { AdButton } from '@/atomic'
-import { NucSectionEmailUs } from '../index.tsx'
+import { type JSX, useMemo, useState } from 'react'
+
+import {
+  AdButton,
+  type NucEmailUsDialogPropsInterface,
+  NucSectionEmailUs,
+} from 'nucleify'
 import styles from './index.module.scss'
-import type { NucEmailUsDialogPropsInterface } from './types'
 
 const textMap: Record<string, string> = {
   'form-get-in-touch': 'Get in touch',

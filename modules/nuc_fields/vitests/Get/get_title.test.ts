@@ -1,6 +1,6 @@
 import { expect, it } from 'vitest'
 
-import * as atomic from 'atomic'
+import * as atomic from 'nucleify'
 
 it('returns undefined for undefined input', (): void => {
   expect(atomic.getTitle(undefined)).toBe('Unknown Entity')

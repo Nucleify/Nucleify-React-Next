@@ -1,6 +1,6 @@
+import { Chart } from 'primereact/chart'
 import type { JSX } from 'react'
 
-import { Chart } from 'primereact/chart'
 import type { ChartInterface } from './types'
 
 export function AdChart({

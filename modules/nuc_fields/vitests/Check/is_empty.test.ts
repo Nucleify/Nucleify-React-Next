@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 
-import { isEmpty } from 'atomic'
+import { isEmpty } from 'nucleify'
 
 describe('isEmpty', (): void => {
   it('returns true when parameter is empty string', (): void => {

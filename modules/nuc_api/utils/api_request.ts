@@ -1,4 +1,4 @@
-import type { ApiResponseType, HttpMethodType } from 'atomic'
+import type { ApiResponseType, HttpMethodType } from 'nucleify'
 
 function getCookieValue(name: string): string | undefined {
   if (typeof document === 'undefined') return undefined

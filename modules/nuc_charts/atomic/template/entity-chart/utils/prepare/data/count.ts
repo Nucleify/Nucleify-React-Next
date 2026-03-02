@@ -1,7 +1,7 @@
-import type { EntityColorsInterface } from '../../../../../../tmp_Files/types/interfaces'
+import type { EntityColorsInterface } from 'nucleify'
 
 export function prepareCountData(
-  entitiesData: Record<string, ObjectType[]>,
+  entitiesData: Record<string, unknown[]>,
   chartColors: EntityColorsInterface,
   exampleDataByMonth?: Record<string, number[]>
 ) {

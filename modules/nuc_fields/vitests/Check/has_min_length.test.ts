@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 
-import { hasMinLength } from 'atomic'
+import { hasMinLength } from 'nucleify'
 
 describe('hasMinLength', (): void => {
   it('returns true when parameter length equals default min length', (): void => {

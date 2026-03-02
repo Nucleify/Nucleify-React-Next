@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 
-import { passwordsMatch } from 'atomic'
+import { passwordsMatch } from 'nucleify'
 
 describe('passwordsMatch', (): void => {
   it('returns true when passwords are identical', (): void => {

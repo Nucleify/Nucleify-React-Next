@@ -1,4 +1,4 @@
-import type { FormFieldInterface } from '../types'
+import type { FormFieldInterface } from 'nucleify'
 
 export function getEmailUsTextFields(
   t: (key: string) => string

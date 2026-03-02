@@ -1,6 +1,6 @@
+import { Image } from 'primereact/image'
 import type { JSX } from 'react'
 
-import { Image } from 'primereact/image'
 import type { ImageInterface } from './types'
 
 export function AdImage({

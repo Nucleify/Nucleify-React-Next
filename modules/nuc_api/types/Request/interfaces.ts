@@ -1,4 +1,4 @@
-import type { HttpMethodType } from '../Http'
+import type { HttpMethodType } from 'nucleify'
 
 export type CloseDialogType = (action: ActionType) => void
 

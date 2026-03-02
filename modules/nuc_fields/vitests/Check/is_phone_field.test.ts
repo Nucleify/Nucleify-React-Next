@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 
-import { isPhoneField } from 'atomic'
+import { isPhoneField } from 'nucleify'
 
 describe('isPhoneField', (): void => {
   it('returns true when parameter is work_phone', (): void => {

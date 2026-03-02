@@ -1,6 +1,6 @@
+import { DeferredContent } from 'primereact/deferredcontent'
 import type { JSX } from 'react'
 
-import { DeferredContent } from 'primereact/deferredcontent'
 import type { DeferredContentInterface } from './types'
 
 export function AdDeferredContent({

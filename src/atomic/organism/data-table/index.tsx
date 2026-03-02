@@ -1,6 +1,6 @@
+import { DataTable } from 'primereact/datatable'
 import type { JSX } from 'react'
 
-import { DataTable } from 'primereact/datatable'
 import styles from './index.module.scss'
 import type { DataTableInterface } from './types/interfaces'
 

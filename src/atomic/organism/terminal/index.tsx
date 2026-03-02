@@ -1,8 +1,9 @@
 'use client'
-import { type JSX, useEffect } from 'react'
 
 import { Terminal } from 'primereact/terminal'
 import { TerminalService } from 'primereact/terminalservice'
+import { type JSX, useEffect } from 'react'
+
 import styles from './index.module.scss'
 import type { TerminalInterface } from './types'
 import { handleCommands } from './utils'

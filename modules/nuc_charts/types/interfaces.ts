@@ -1,25 +1,30 @@
 import type { ChartProps } from 'primereact/chart'
-import type { NucDisplayChartsStateKeyType } from './variables'
+
+import type { NucDisplayChartsStateKeyType } from 'nucleify'
 
 export interface NucDisplayChartsStateInterface
   extends Partial<Record<NucDisplayChartsStateKeyType, boolean>> {}
 
-export interface SettingsGroupInterface {
+export interface ChartSettingsGroupInterface {
   name?: string
   items?: string[]
 }
+
 export interface ChartInterface extends Omit<ChartProps, 'width' | 'height'> {
   width?: string | number
   height?: string | number
   chartClass?: string
 }
+
 export type ChartMethodType = 'annual' | 'count' | 'annual-stacked'
+
 export interface NucActivityObjectInterface {
   id: number
   description: string
   created_at: string
   causer_id: number
 }
+
 export interface NucArticleObjectInterface {
   id?: number
   user_id?: number
@@ -29,6 +34,7 @@ export interface NucArticleObjectInterface {
   updated_at?: string
   category: string
 }
+
 export interface NucContactObjectInterface {
   id?: number
   user_id?: number
@@ -45,6 +51,7 @@ export interface NucContactObjectInterface {
   created_at?: string
   updated_at?: string
 }
+
 export interface NucFileObjectInterface {
   id?: number
   user_id: number
@@ -54,6 +61,7 @@ export interface NucFileObjectInterface {
   created_at?: string
   updated_at?: string
 }
+
 export interface NucMoneyObjectInterface {
   id?: number
   user_id?: number
@@ -66,6 +74,7 @@ export interface NucMoneyObjectInterface {
   created_at: string
   updated_at?: string
 }
+
 export interface NucQuestionObjectInterface {
   id?: number
   index: number
@@ -77,6 +86,7 @@ export interface NucQuestionObjectInterface {
   created_at?: string
   updated_at?: string
 }
+
 export interface NucTechnologyObjectInterface {
   id?: number
   href?: string
@@ -89,6 +99,7 @@ export interface NucTechnologyObjectInterface {
   updated_at?: string
   prefix?: string
 }
+
 export interface NucUserObjectInterface {
   id?: number
   name: string
@@ -99,31 +110,4 @@ export interface NucUserObjectInterface {
   created_at?: string
   updated_at?: string
   email_verified_at?: string
-}
-export interface ColorItemInterface {
-  primary?: string
-  hover?: string
-  secondary?: string
-}
-export interface EntityColorsInterface {
-  [key: string]: ColorItemInterface
-}
-
-//
-export interface ColorItemStyleInterface {
-  color?: string
-  backgroundColor?: string
-  borderColor?: string
-  boxShadow?: string
-  opacity?: number
-}
-
-export interface ColorItemInterface {
-  primary?: string
-  hover?: string
-  secondary?: string
-}
-
-export interface UseColorsInterface {
-  colors: EntityColorsInterface
 }

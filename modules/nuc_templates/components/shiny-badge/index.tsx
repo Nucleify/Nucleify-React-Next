@@ -1,9 +1,9 @@
 'use client'
+
 import type { JSX } from 'react'
 
-import { AdIcon } from '@/atomic'
+import { AdIcon, type NucShinyBadgeInterface } from 'nucleify'
 import styles from './index.module.scss'
-import type { NucShinyBadgeInterface } from './types'
 
 export function NucShinyBadge({
   icon,

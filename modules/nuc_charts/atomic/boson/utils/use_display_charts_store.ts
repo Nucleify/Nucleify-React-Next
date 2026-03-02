@@ -1,26 +1,13 @@
 /* eslint-disable */
+
+import {
+  displayChartList,
+  type NucDisplayChartsStateInterface,
+  type NucDisplayChartsStateKeyType,
+} from 'nucleify'
 import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
-import { displayChartList } from '../../../tmp_Files/constants/list'
-import type {
-  NucDisplayChartsStateInterface,
-  NucDisplayChartsStateKeyType,
-} from '../../../tmp_Files/types/index'
 export const toggleState = (currentValue: boolean): boolean => !currentValue
-
-export const getDisplayChartList = (): string[] => {
-  return [
-    'Activity',
-    'Admin',
-    'Article',
-    'Contact',
-    'File',
-    'Money',
-    'Question',
-    'Structural',
-    'Technology',
-  ]
-}
 
 export const initialStoreState = (list: string[], defaultValue: boolean) => {
   return list.reduce((acc, key) => ({ ...acc, [key]: defaultValue }), {})

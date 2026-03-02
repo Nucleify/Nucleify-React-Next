@@ -1,7 +1,8 @@
 'use client'
-import type { JSX, ReactNode } from 'react'
 
 import { Card } from 'primereact/card'
+import type { JSX, ReactNode } from 'react'
+
 import styles from './index.module.scss'
 import type { CardInterface } from './types/interfaces'
 

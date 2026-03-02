@@ -5,8 +5,8 @@ import {
   AdPassword,
   AdSelect,
   AdTextarea,
-} from '../../../../src/atomic/index'
-import type { ComponentType } from '../../types/index'
+  type ComponentType,
+} from 'nucleify'
 
 export function getComponent(type: ComponentType) {
   const componentMap = {

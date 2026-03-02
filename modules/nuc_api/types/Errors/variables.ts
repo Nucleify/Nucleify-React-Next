@@ -1,4 +1,4 @@
-import type { MessageOrMessagesType } from '../Response/Message'
+import type { MessageOrMessagesType } from 'nucleify'
 
 export interface ErrorResponseInterface {
   response: {

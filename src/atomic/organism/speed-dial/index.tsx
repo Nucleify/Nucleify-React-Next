@@ -1,6 +1,6 @@
+import { SpeedDial } from 'primereact/speeddial'
 import type { JSX } from 'react'
 
-import { SpeedDial } from 'primereact/speeddial'
 import type { SpeedDialInterface } from './types'
 
 export function AdSpeedDial({

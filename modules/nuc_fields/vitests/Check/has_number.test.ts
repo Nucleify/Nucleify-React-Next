@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 
-import { hasNumber } from 'atomic'
+import { hasNumber } from 'nucleify'
 
 describe('hasNumber', (): void => {
   it('returns true when parameter contains numbers', (): void => {

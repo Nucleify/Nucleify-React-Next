@@ -3,10 +3,11 @@
 import type { JSX } from 'react'
 import { useEffect } from 'react'
 
-import { AdColorPicker } from 'atomic'
-
-import type { NucColorPickerInterface } from './types'
-import { useColorPicker } from './utils'
+import {
+  AdColorPicker,
+  type NucColorPickerInterface,
+  useColorPicker,
+} from 'nucleify'
 
 export function NucColorPicker(props: NucColorPickerInterface): JSX.Element {
   const { itemColor, onItemColorChange, setColorValues } = useColorPicker(

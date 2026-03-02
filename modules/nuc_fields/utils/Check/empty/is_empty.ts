@@ -1,4 +1,4 @@
-import { isEmptyArray, isEmptyObject, isEmptyString } from '.'
+import { isEmptyArray, isEmptyObject, isEmptyString } from 'nucleify'
 
 export function isEmpty(parameter: unknown): boolean {
   if (!parameter) return true

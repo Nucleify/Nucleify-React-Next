@@ -1,6 +1,6 @@
+import { AutoComplete } from 'primereact/autocomplete'
 import type { JSX } from 'react'
 
-import { AutoComplete } from 'primereact/autocomplete'
 import type { AutoCompleteInterface } from './types'
 
 export function AdAutoComplete({

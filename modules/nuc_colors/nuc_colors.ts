@@ -1,4 +1,4 @@
-import { colorsClientPlugin, colorsServerPlugin } from './plugins'
+import { colorsClientPlugin, colorsServerPlugin } from 'nucleify'
 
 export function registerNucColors(): void {
   colorsServerPlugin()

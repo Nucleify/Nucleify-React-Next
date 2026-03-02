@@ -1,4 +1,4 @@
-import { colorKeys, colorShades } from 'atomic'
+import { colorKeys, colorShades } from 'nucleify'
 
 // TODO(nuc_stores+nuc_api): replace local helpers and local request wrapper
 // with atomic exports after nuc_stores and final nuc_api integration are ready in Next.

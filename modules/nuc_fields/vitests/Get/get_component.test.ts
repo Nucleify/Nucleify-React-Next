@@ -1,6 +1,6 @@
 import { expect, it } from 'vitest'
 
-import * as atomic from 'atomic'
+import * as atomic from 'nucleify'
 
 it('returns AdTextarea for "textarea"', (): void => {
   expect(atomic.getComponent('textarea')).toBe(atomic.AdTextarea)

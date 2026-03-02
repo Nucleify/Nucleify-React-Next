@@ -1,5 +1,5 @@
-import type { ColorItemInterface, UseColorsInterface } from 'atomic'
-import { colorKeys, getColorValue } from 'atomic'
+import type { ColorItemInterface, UseColorsInterface } from 'nucleify'
+import { colorKeys, getColorValue } from 'nucleify'
 
 export function useColors(): UseColorsInterface {
   const getItemColors = (key: string): ColorItemInterface => {

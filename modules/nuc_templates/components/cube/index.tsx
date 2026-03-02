@@ -1,7 +1,6 @@
 import type { JSX } from 'react'
 
-import { AdIcon } from '@/atomic/atom/icon'
-import type { NucCubeInterface } from './types'
+import { AdIcon, type NucCubeInterface } from 'nucleify'
 
 export function NucCube({
   icon = 'prime:box',

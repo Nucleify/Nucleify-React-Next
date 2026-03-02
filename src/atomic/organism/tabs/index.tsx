@@ -1,8 +1,8 @@
 'use client'
 
+import { TabPanel, TabView } from 'primereact/tabview'
 import type { JSX } from 'react'
 
-import { TabPanel, TabView } from 'primereact/tabview'
 import type { TabPanelInterface, TabsInterface } from './types'
 
 export function AdTabPanel(props: TabPanelInterface): JSX.Element {

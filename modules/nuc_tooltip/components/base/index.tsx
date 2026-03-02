@@ -1,7 +1,7 @@
+import { Tooltip } from 'primereact/tooltip'
 import React, { useId } from 'react'
 
-import { Tooltip } from 'primereact/tooltip'
-import type { TooltipInterface } from '@/atomic'
+import type { TooltipInterface } from 'nucleify'
 
 export interface NucTooltipProps extends TooltipInterface {
   children: React.ReactNode
