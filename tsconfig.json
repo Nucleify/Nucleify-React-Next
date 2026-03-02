@@ -20,7 +20,8 @@
     ],
     "paths": {
       "@/*": ["./src/*"],
-      "atomic": ["./src/atomic/*"],
+      "atomic": ["./src/atomic"],
+      "atomic/*": ["./src/atomic/*"],
       "atom/*": ["./src/atomic/atom/*"],
       "molecule/*": ["./src/atomic/molecule/*"],
       "organism/*": ["./src/atomic/organism/*"]
