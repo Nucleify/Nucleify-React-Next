@@ -1,4 +1,4 @@
-import * as atomic from 'atomic'
+import * as atomic from 'nucleify'
 
 export const testCases: {
   value: atomic.StoreStateType

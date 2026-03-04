@@ -19,8 +19,6 @@
       }
     ],
     "paths": {
-      "atomic": ["./src/atomic"],
-      "atomic/*": ["./src/atomic/*"],
       "nucleify": ["./index.ts"]
     },
     "allowImportingTsExtensions": true
