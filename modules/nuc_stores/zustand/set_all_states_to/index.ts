@@ -1,4 +1,4 @@
-import type { StoreStateKeyType, StoreStatesInterface } from 'nucleify'
+import type { StoreStateKeyType, StoreStatesInterface } from '../types'
 
 export function setAllStatesTo<T>(
   states: StoreStatesInterface<T>,
