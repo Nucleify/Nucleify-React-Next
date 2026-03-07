@@ -3,6 +3,7 @@
 import type { JSX } from 'react'
 
 import { AdIcon, enLocale, NucSectionEmailUsDialog } from 'nucleify'
+
 import styles from './index.module.scss'
 
 function t(key: string): string {

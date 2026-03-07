@@ -9,6 +9,7 @@ import {
   colorGroups,
   resetColorsToDefault,
 } from 'nucleify'
+
 import { NucColorPicker } from '../organism'
 
 interface NucColorSettingsCardProps {

@@ -9,6 +9,7 @@ import {
   type NucSectionFaqInterface,
   useSplitQuestions,
 } from 'nucleify'
+
 import styles from './index.module.scss'
 
 export function NucSectionFaq({
