@@ -5,7 +5,9 @@
   "scripts": {
     "dev": "npx next dev",
     "build": "npx next build",
-    "start": "npx next start"
+    "start": "npx next start",
+    "check": "cd && npx biome check .",
+    "write": "cd && npx biome check --write ."
   },
   "dependencies": {
     "@gsap/react": "2.1.2",
