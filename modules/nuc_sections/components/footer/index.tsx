@@ -3,6 +3,7 @@ import Link from 'next/link'
 import type { JSX } from 'react'
 
 import { AdAnchor, AdLogo, AdLogoSymbol, enLocale, getColumns } from 'nucleify'
+
 import styles from './index.module.scss'
 
 function t(key: string): string {

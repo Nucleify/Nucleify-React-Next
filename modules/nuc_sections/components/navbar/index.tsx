@@ -11,6 +11,7 @@ import {
   NucNavbarLinks,
   useNavbar,
 } from 'nucleify'
+
 import styles from './index.module.scss'
 
 function getLangFromPathname(pathname: string): string {

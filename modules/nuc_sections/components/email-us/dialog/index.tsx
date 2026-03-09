@@ -8,6 +8,7 @@ import {
   type NucEmailUsDialogPropsInterface,
   NucSectionEmailUs,
 } from 'nucleify'
+
 import styles from './index.module.scss'
 
 const textMap: Record<string, string> = {

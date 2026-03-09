@@ -4,6 +4,7 @@ import { usePathname } from 'next/navigation'
 import type { JSX } from 'react'
 
 import { enLocale, getNavLinks } from 'nucleify'
+
 import styles from '../../index.module.scss'
 
 type NucNavbarLinksProps = {
