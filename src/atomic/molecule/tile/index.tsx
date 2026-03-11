@@ -14,7 +14,6 @@ export function AdTile({
   countSecondary,
   textSecondary,
   icon,
-  storybook,
 }: TileInterface): JSX.Element {
   return (
     <Link href={href} data-ad-type={adType} className={styles['ad-tile']}>
@@ -30,12 +29,7 @@ export function AdTile({
         </div>
 
         <div className={styles['icon-container']}>
-          <AdIcon
-            className={styles['icon']}
-            icon={icon}
-            adType={adType}
-            storybook={storybook}
-          />
+          <AdIcon className={styles['icon']} icon={icon} adType={adType} />
         </div>
       </div>
 
