@@ -5,6 +5,7 @@ import {
   type NucDisplayChartsStateInterface,
   type NucDisplayChartsStateKeyType,
 } from 'nucleify'
+
 import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
 export const toggleState = (currentValue: boolean): boolean => !currentValue

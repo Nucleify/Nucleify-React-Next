@@ -9,7 +9,7 @@ const nextConfig: NextConfig = {
       'global-builtin',
       'legacy-js-api',
     ],
-    prependData: `@import "./src/assets/_index.scss";`,
+    prependData: `@import "./assets/_index.scss";`,
   },
 }
 

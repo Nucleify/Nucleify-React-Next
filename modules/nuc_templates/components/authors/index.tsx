@@ -1,6 +1,7 @@
 import type { JSX } from 'react'
 
 import { AdAnchor, AdDeferredContent, AdImage } from 'nucleify'
+
 import styles from './index.module.scss'
 
 export function NucAuthors(): JSX.Element {

@@ -3,6 +3,7 @@
 import type { JSX } from 'react'
 
 import { AdIcon, type NucShinyBadgeInterface } from 'nucleify'
+
 import styles from './index.module.scss'
 
 export function NucShinyBadge({
