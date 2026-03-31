@@ -2,6 +2,7 @@
 
 import type { ChangeEvent, FormEvent, JSX } from 'react'
 
+import type { LoginFieldKey } from '../../bosons'
 import { useAuthForm } from '../../bosons'
 
 function t(key: string): string {
@@ -19,24 +20,28 @@ export function NucLoginPage(): JSX.Element {
 
   return (
     <form onSubmit={handleSubmit}>
-      {loginInputs.map((field) => (
-        <label key={field.id} htmlFor={field.id}>
-          {t(field.label)}
-          <input
-            id={field.id}
-            type={field.type}
-            autoFocus={field.autofocus}
-            value={loginFields[field.model]}
-            onChange={(event: ChangeEvent<HTMLInputElement>) => {
-              const value = event.target.value
-              setLoginFields((prev) => ({
-                ...prev,
-                [field.model]: value,
-              }))
-            }}
-          />
-        </label>
-      ))}
+      {loginInputs.map((field) => {
+        const model = field.model as LoginFieldKey
+
+        return (
+          <label key={field.id} htmlFor={field.id}>
+            {t(field.label)}
+            <input
+              id={field.id}
+              type={field.type}
+              autoFocus={field.autofocus}
+              value={loginFields[model]}
+              onChange={(event: ChangeEvent<HTMLInputElement>) => {
+                const value = event.target.value
+                setLoginFields((prev) => ({
+                  ...prev,
+                  [model]: value,
+                }))
+              }}
+            />
+          </label>
+        )
+      })}
 
       <button type="submit">{t('auth-login-submit')}</button>
     </form>

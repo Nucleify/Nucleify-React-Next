@@ -1,8 +1,6 @@
-import type {
-  InputInterface,
-  LoginFieldsInterface,
-  RegisterFieldsInterface,
-} from 'nucleify'
+import type { InputInterface } from '../../../../../../nuc_fields'
+import type { LoginFieldsInterface } from '../Login'
+import type { RegisterFieldsInterface } from '../Register'
 
 export type LoginFieldKey = keyof LoginFieldsInterface
 export type RegisterFieldKey = keyof RegisterFieldsInterface

@@ -2,6 +2,7 @@
 
 import type { ChangeEvent, FormEvent, JSX } from 'react'
 
+import type { RegisterFieldKey } from '../../bosons'
 import { useAuthForm } from '../../bosons'
 
 function t(key: string): string {
@@ -19,24 +20,28 @@ export function NucRegisterPage(): JSX.Element {
 
   return (
     <form onSubmit={handleSubmit}>
-      {registerInputs.map((field) => (
-        <label key={field.id} htmlFor={field.id}>
-          {t(field.label)}
-          <input
-            id={field.id}
-            type={field.type}
-            autoFocus={field.autofocus}
-            value={registerFields[field.model]}
-            onChange={(event: ChangeEvent<HTMLInputElement>) => {
-              const value = event.target.value
-              setRegisterFields((prev) => ({
-                ...prev,
-                [field.model]: value,
-              }))
-            }}
-          />
-        </label>
-      ))}
+      {registerInputs.map((field) => {
+        const model = field.model as RegisterFieldKey
+
+        return (
+          <label key={field.id} htmlFor={field.id}>
+            {t(field.label)}
+            <input
+              id={field.id}
+              type={field.type}
+              autoFocus={field.autofocus}
+              value={registerFields[model]}
+              onChange={(event: ChangeEvent<HTMLInputElement>) => {
+                const value = event.target.value
+                setRegisterFields((prev) => ({
+                  ...prev,
+                  [model]: value,
+                }))
+              }}
+            />
+          </label>
+        )
+      })}
 
       <button type="submit">{t('auth-register-submit')}</button>
     </form>
