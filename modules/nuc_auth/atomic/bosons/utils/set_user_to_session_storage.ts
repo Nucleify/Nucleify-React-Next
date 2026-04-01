@@ -1,6 +1,5 @@
+import type { NucAuthUserInterface } from 'nucleify'
 import { sessionStorageSetItem } from 'nucleify'
-
-import type { NucAuthUserInterface } from '../types'
 
 const userKeys = [
   'id',

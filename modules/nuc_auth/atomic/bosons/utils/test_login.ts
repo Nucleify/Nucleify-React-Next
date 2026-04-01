@@ -1,7 +1,5 @@
-import { apiRequest, syncColorsWithDatabase } from 'nucleify'
-
-import type { LoginFieldsInterface, UserRoleType } from '../types'
-import { getAndSetUser } from './get_and_set_user'
+import type { LoginFieldsInterface, UserRoleType } from 'nucleify'
+import { apiRequest, getAndSetUser, syncColorsWithDatabase } from 'nucleify'
 
 export async function testLogin(role: UserRoleType): Promise<void> {
   const credentials: Record<UserRoleType, LoginFieldsInterface | undefined> = {

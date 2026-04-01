@@ -1,8 +1,5 @@
-import type { ApiResponseType } from 'nucleify'
-import { apiRequest } from 'nucleify'
-
-import type { NucAuthUserInterface } from '../types'
-import { setUserToSessionStorage } from './set_user_to_session_storage'
+import type { ApiResponseType, NucAuthUserInterface } from 'nucleify'
+import { apiRequest, setUserToSessionStorage } from 'nucleify'
 
 function extractResponse<T>(response: ApiResponseType<T>): T {
   if (response && typeof response === 'object' && 'data' in response) {

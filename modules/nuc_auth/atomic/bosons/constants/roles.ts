@@ -1,4 +1,4 @@
-import type { UserRoleType } from '../types'
+import type { UserRoleType } from 'nucleify'
 
 export const roles: readonly UserRoleType[] = [
   'user',

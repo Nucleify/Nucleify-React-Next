@@ -1,7 +1,9 @@
-import { apiRequest, navigateToUrl } from 'nucleify'
-
-import { getCurrentLang } from './get_current_lang'
-import { removeUserFromSessionStorage } from './remove_user_from_session_storage'
+import {
+  apiRequest,
+  getCurrentLang,
+  navigateToUrl,
+  removeUserFromSessionStorage,
+} from 'nucleify'
 
 export async function logout(): Promise<void> {
   const lang = getCurrentLang()

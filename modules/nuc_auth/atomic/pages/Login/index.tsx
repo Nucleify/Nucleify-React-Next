@@ -2,8 +2,8 @@
 
 import type { ChangeEvent, FormEvent, JSX } from 'react'
 
-import type { LoginFieldKey } from '../../bosons'
-import { useAuthForm } from '../../bosons'
+import type { LoginFieldKey } from 'nucleify'
+import { useAuthForm } from 'nucleify'
 
 function t(key: string): string {
   return key

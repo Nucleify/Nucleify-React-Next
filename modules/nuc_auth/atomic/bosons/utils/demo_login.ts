@@ -1,7 +1,10 @@
-import { apiRequest, navigateToUrl, syncColorsWithDatabase } from 'nucleify'
-
-import { getAndSetUser } from './get_and_set_user'
-import { getCurrentLang } from './get_current_lang'
+import {
+  apiRequest,
+  getAndSetUser,
+  getCurrentLang,
+  navigateToUrl,
+  syncColorsWithDatabase,
+} from 'nucleify'
 
 export async function demoLogin(): Promise<void> {
   const lang = getCurrentLang()

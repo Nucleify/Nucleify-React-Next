@@ -1,6 +1,8 @@
-import type { InputInterface } from 'nucleify'
-
-import type { LoginFieldKey, LoginFieldsInterface } from '../../types'
+import type {
+  InputInterface,
+  LoginFieldKey,
+  LoginFieldsInterface,
+} from 'nucleify'
 
 export const loginFields: LoginFieldsInterface = {
   email: '',

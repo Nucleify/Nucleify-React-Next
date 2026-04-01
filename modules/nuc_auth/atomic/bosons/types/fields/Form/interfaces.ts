@@ -1,9 +1,12 @@
 import type { Dispatch, SetStateAction } from 'react'
 
-import type { InputInterface } from '../../../../../../nuc_fields'
-import type { LoginFieldsInterface } from '../Login'
-import type { RegisterFieldsInterface } from '../Register'
-import type { LoginInputInterface, RegisterInputInterface } from './variables'
+import type {
+  InputInterface,
+  LoginFieldsInterface,
+  LoginInputInterface,
+  RegisterFieldsInterface,
+  RegisterInputInterface,
+} from 'nucleify'
 
 export interface UseAuthFormInterface {
   loginFields: LoginFieldsInterface

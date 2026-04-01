@@ -1,6 +1,8 @@
-import type { InputInterface } from 'nucleify'
-
-import type { RegisterFieldKey, RegisterFieldsInterface } from '../../types'
+import type {
+  InputInterface,
+  RegisterFieldKey,
+  RegisterFieldsInterface,
+} from 'nucleify'
 
 export const registerFields: RegisterFieldsInterface = {
   name: '',

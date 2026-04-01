@@ -2,9 +2,7 @@
 
 import type { JSX } from 'react'
 
-import { navigateToUrl } from 'nucleify'
-
-import { getCurrentLang, testLogin } from '../../bosons'
+import { getCurrentLang, navigateToUrl, testLogin } from 'nucleify'
 
 export function NucTestLoginButtons(): JSX.Element {
   async function loginAndGo(role: 'admin' | 'user'): Promise<void> {
