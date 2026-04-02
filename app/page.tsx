@@ -1,3 +1,8 @@
+import {NucSectionPricing} from '../modules/nuc_pricings';
+
 export default function Home() {
-  return <main></main>
+  return <main>
+            <NucSectionPricing />
+
+  </main>
 }

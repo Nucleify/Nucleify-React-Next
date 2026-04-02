@@ -7,11 +7,12 @@ import { NucPricingDialog } from './dialog';
 import type { BillingPeriodType, PricingPlanInterface } from './types';
 import { formatPrice, getPrice } from './utils';
 
-import { NucShinyBadge} from '../../../nuc_templates'; 
-import { NucSectionEmailUsDialog } from '../../../nuc_sections';
-import { NucSubmitButton } from '../Buttons';
-import { NucTrustBadges } from '../../../nuc_templates'; 
-
+import { 
+  NucShinyBadge, 
+  NucSectionEmailUsDialog, 
+  NucSubmitButton, 
+  NucTrustBadges 
+} from 'nucleify';
 export const NucSectionPricing: React.FC = () => {
   const { t } = useTranslation();
 

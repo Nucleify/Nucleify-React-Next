@@ -1,4 +1,4 @@
-import { TFunction } from 'next-i18next';
+import type { TFunction } from 'i18next';
 
 import type { NucTrustBadgeItemInterface } from 'nucleify'
 

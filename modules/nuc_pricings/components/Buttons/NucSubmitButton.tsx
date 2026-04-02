@@ -6,8 +6,10 @@ interface NucSubmitButtonProps {
   label: string;
   icon?: string;
   className?: string;
-onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
-variant?: 'primary' | 'secondary';
+  onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  variant?: 'primary' | 'secondary';
+  type?: 'button' | 'submit' | 'reset';
+  disabled?: boolean;
 }
 
 export const NucSubmitButton: React.FC<NucSubmitButtonProps> = ({
@@ -15,12 +17,16 @@ export const NucSubmitButton: React.FC<NucSubmitButtonProps> = ({
   icon,
   className,
   onClick,
+  type = 'button',
+  disabled = false,
 }) => {
   return (
     <Button 
       label={label} 
       className={`nuc-submit-button ${className || ''}`} 
       onClick={onClick}
+      type={type}
+      disabled={disabled}
     >
       {icon && <Icon icon={icon} className="mr-2" />}
     </Button>
