@@ -1,6 +1,6 @@
-import type { TFunction } from 'i18next';
-
 import type { NucTrustBadgeItemInterface } from 'nucleify'
+
+import type { TFunction } from 'i18next'
 
 export const getTrustItems = (t: TFunction): NucTrustBadgeItemInterface[] => {
   return [

@@ -1,3 +1,3 @@
-import { NucSectionPricing } from './components';
+import { NucSectionPricing } from './components'
 
-export { NucSectionPricing };
+export { NucSectionPricing }

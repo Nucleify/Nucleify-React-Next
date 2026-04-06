@@ -1,67 +1,72 @@
-import React, { useState, useMemo } from 'react';
-import { useTranslation } from 'react-i18next';
-import { Icon } from '@iconify/react';
+import React, { useMemo, useState } from 'react'
 
-import { getPricingCategories, getTrustItems } from './constants';
-import { NucPricingDialog } from './dialog';
-import type { BillingPeriodType, PricingPlanInterface } from './types';
-import { formatPrice, getPrice } from './utils';
+import {
+  NucSectionEmailUsDialog,
+  NucShinyBadge,
+  NucSubmitButton,
+  NucTrustBadges,
+} from 'nucleify'
 
-import { 
-  NucShinyBadge, 
-  NucSectionEmailUsDialog, 
-  NucSubmitButton, 
-  NucTrustBadges 
-} from 'nucleify';
+import { Icon } from '@iconify/react'
+import i18next from 'i18next'
+import { getPricingCategories, getTrustItems } from './constants'
+import { NucPricingDialog } from './dialog'
+import type { BillingPeriodType, PricingPlanInterface } from './types'
+import { formatPrice, getPrice } from './utils'
 export const NucSectionPricing: React.FC = () => {
-  const { t } = useTranslation();
+  const [activeCategory, setActiveCategory] = useState('customer')
+  const [billingPeriod, setBillingPeriod] =
+    useState<BillingPeriodType>('one-time')
+  const [showPlanDialog, setShowPlanDialog] = useState(false)
+  const [selectedPlan, setSelectedPlan] = useState<PricingPlanInterface | null>(
+    null
+  )
+  const [selectedPlanIndex, setSelectedPlanIndex] = useState(-1)
 
-  const [activeCategory, setActiveCategory] = useState('customer');
-  const [billingPeriod, setBillingPeriod] = useState<BillingPeriodType>('one-time');
-  const [showPlanDialog, setShowPlanDialog] = useState(false);
-  const [selectedPlan, setSelectedPlan] = useState<PricingPlanInterface | null>(null);
-  const [selectedPlanIndex, setSelectedPlanIndex] = useState(-1);
-
-  const pricingCategories = useMemo(() => getPricingCategories(t), [t]);
-  const trustItems = useMemo(() => getTrustItems(t), [t]);
+  const pricingCategories = useMemo(() => getPricingCategories(i18next.t), [])
+  const trustItems = useMemo(() => getTrustItems(i18next.t), [])
 
   const currentPlans = useMemo(() => {
-    const category = pricingCategories.find((c) => c.id === activeCategory);
-    return category?.plans || [];
-  }, [pricingCategories, activeCategory]);
+    const category = pricingCategories.find((c) => c.id === activeCategory)
+    return category?.plans || []
+  }, [pricingCategories, activeCategory])
 
   const previousPlanName = useMemo(() => {
     if (selectedPlanIndex > 0) {
-      return currentPlans[selectedPlanIndex - 1]?.name ?? null;
+      return currentPlans[selectedPlanIndex - 1]?.name ?? null
     }
-    return null;
-  }, [selectedPlanIndex, currentPlans]);
+    return null
+  }, [selectedPlanIndex, currentPlans])
 
   const openPlanDialog = (plan: PricingPlanInterface) => {
-    setSelectedPlan(plan);
-    setSelectedPlanIndex(currentPlans.findIndex((p) => p.id === plan.id));
-    setShowPlanDialog(true);
-  };
+    setSelectedPlan(plan)
+    setSelectedPlanIndex(currentPlans.findIndex((p) => p.id === plan.id))
+    setShowPlanDialog(true)
+  }
 
   return (
     <section id="pricing">
       <div className="pricing-glow"></div>
       <div className="pricing-container container">
-        
         <div className="pricing-header">
-          <NucShinyBadge icon="mdi:tag-outline" label={t('pricing-badge')} />
+          <NucShinyBadge
+            icon="mdi:tag-outline"
+            label={i18next.t('pricing-badge')}
+          />
           <h2 className="pricing-heading">
-            {t('pricing-heading-prefix')}{' '}
-            <span className="highlight">{t('pricing-heading-highlight')}</span>
+            {i18next.t('pricing-heading-prefix')}{' '}
+            <span className="highlight">
+              {i18next.t('pricing-heading-highlight')}
+            </span>
           </h2>
           <p className="pricing-description">
-            {t('pricing-description')}{' '}
-            <span className="vat-note">{t('pricing-vat-note')}</span>
+            {i18next.t('pricing-description')}{' '}
+            <span className="vat-note">{i18next.t('pricing-vat-note')}</span>
           </p>
           <NucSectionEmailUsDialog
             buttonClass="ask-sticker"
-            buttonLabel={t('pricing-help-choosing')}
-            buttonStrong={t('pricing-lets-talk')}
+            buttonLabel={i18next.t('pricing-help-choosing')}
+            buttonStrong={i18next.t('pricing-lets-talk')}
           />
         </div>
 
@@ -72,15 +77,17 @@ export const NucSectionPricing: React.FC = () => {
               onClick={() => setBillingPeriod('monthly')}
             >
               <Icon icon="mdi:calendar-month" />
-              <span>{t('pricing-billing-monthly')}</span>
+              <span>{i18next.t('pricing-billing-monthly')}</span>
             </button>
             <button
               className={`billing-option ${billingPeriod === 'one-time' ? 'active' : ''}`}
               onClick={() => setBillingPeriod('one-time')}
             >
               <Icon icon="mdi:lightning-bolt" />
-              <span>{t('pricing-billing-one-time')}</span>
-              <span className="save-badge">{t('pricing-save-badge')}</span>
+              <span>{i18next.t('pricing-billing-one-time')}</span>
+              <span className="save-badge">
+                {i18next.t('pricing-save-badge')}
+              </span>
             </button>
           </div>
 
@@ -109,7 +116,7 @@ export const NucSectionPricing: React.FC = () => {
               {plan.popular && (
                 <div className="popular-badge">
                   <Icon icon="mdi:star" />
-                  <span>{t('pricing-most-popular')}</span>
+                  <span>{i18next.t('pricing-most-popular')}</span>
                 </div>
               )}
 
@@ -124,12 +131,14 @@ export const NucSectionPricing: React.FC = () => {
               <div className="plan-price">
                 <div className="price-row">
                   <span className="currency">{plan.currency}</span>
-                  <span className="amount">{formatPrice(getPrice(plan, billingPeriod))}</span>
+                  <span className="amount">
+                    {formatPrice(getPrice(plan, billingPeriod))}
+                  </span>
                 </div>
                 <span className="period">
                   {billingPeriod === 'monthly'
-                    ? t('pricing-period-month')
-                    : t('pricing-period-one-time')}
+                    ? i18next.t('pricing-period-month')
+                    : i18next.t('pricing-period-one-time')}
                 </span>
               </div>
 
@@ -142,7 +151,11 @@ export const NucSectionPricing: React.FC = () => {
                     }`}
                   >
                     <Icon
-                      icon={feature.included ? 'mdi:check-circle' : 'mdi:close-circle'}
+                      icon={
+                        feature.included
+                          ? 'mdi:check-circle'
+                          : 'mdi:close-circle'
+                      }
                       className="feature-icon"
                     />
                     <span>{feature.text}</span>
@@ -151,9 +164,14 @@ export const NucSectionPricing: React.FC = () => {
 
                 {plan.features.length > 5 && (
                   <li className="feature-item more-features">
-                    <Icon icon="mdi:plus-circle-outline" className="feature-icon" />
+                    <Icon
+                      icon="mdi:plus-circle-outline"
+                      className="feature-icon"
+                    />
                     <span>
-                      {t('pricing-more-features', { count: plan.features.length - 5 })}
+                      {i18next.t('pricing-more-features', {
+                        count: plan.features.length - 5,
+                      })}
                     </span>
                   </li>
                 )}
@@ -163,7 +181,7 @@ export const NucSectionPricing: React.FC = () => {
                 <p className="includes-previous">
                   <Icon icon="mdi:layers-outline" />
                   <span>
-                    {t('pricing-includes-all-features', {
+                    {i18next.t('pricing-includes-all-features', {
                       plan: currentPlans[index - 1].name,
                     })}
                   </span>
@@ -171,11 +189,11 @@ export const NucSectionPricing: React.FC = () => {
               )}
 
               <NucSubmitButton
-                label={t('pricing-choose-plan')}
+                label={i18next.t('pricing-choose-plan')}
                 className={`plan-button ${plan.popular ? 'primary' : ''}`}
                 onClick={(e: React.MouseEvent) => {
-                  e.stopPropagation(); 
-                  openPlanDialog(plan);
+                  e.stopPropagation()
+                  openPlanDialog(plan)
                 }}
               />
             </div>
@@ -184,8 +202,10 @@ export const NucSectionPricing: React.FC = () => {
         {billingPeriod === 'monthly' && (
           <p className="contract-note">
             <Icon icon="mdi:file-document-outline" />
-            {t('pricing-contract-note')}{' '}
-            <span className="note-highlight">{t('pricing-contract-note-highlight')}</span>
+            {i18next.t('pricing-contract-note')}{' '}
+            <span className="note-highlight">
+              {i18next.t('pricing-contract-note-highlight')}
+            </span>
           </p>
         )}
 
@@ -200,6 +220,6 @@ export const NucSectionPricing: React.FC = () => {
         previousPlanName={previousPlanName}
       />
     </section>
-  );
-};
-export default NucSectionPricing;
+  )
+}
+export default NucSectionPricing

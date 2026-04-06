@@ -1,6 +1,5 @@
-import { getPaymentLink } from '.'
-
-import type { BillingPeriodType, PricingPlanInterface } from '../types'
+import type { BillingPeriodType, PricingPlanInterface } from 'nucleify'
+import { getPaymentLink } from 'nucleify'
 
 export function openPaymentLink(
   plan: PricingPlanInterface,

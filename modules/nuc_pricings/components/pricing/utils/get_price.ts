@@ -1,4 +1,4 @@
-import type { BillingPeriodType, PricingPlanInterface } from '../types'
+import type { BillingPeriodType, PricingPlanInterface } from 'nucleify'
 
 export function getPrice(
   plan: PricingPlanInterface,

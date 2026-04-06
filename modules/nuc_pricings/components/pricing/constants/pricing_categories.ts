@@ -1,7 +1,10 @@
-import type { TFunction } from 'i18next';
-import type { PricingCategoryInterface } from '../types'
+import type { PricingCategoryInterface } from 'nucleify'
 
-export const getPricingCategories = (t: TFunction): PricingCategoryInterface[] => {
+import type { TFunction } from 'i18next'
+
+export const getPricingCategories = (
+  t: TFunction
+): PricingCategoryInterface[] => {
   return [
     {
       id: 'customer',
