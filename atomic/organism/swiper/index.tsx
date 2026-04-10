@@ -1,6 +1,7 @@
 'use client'
 
 import { Swiper, SwiperSlide } from 'swiper/react'
+import type { SwiperOptions } from 'swiper/types'
 import 'swiper/css'
 
 import type { ReactNode } from 'react'
@@ -11,7 +12,7 @@ export function AdSwiper(props: SwiperInterface & { children?: ReactNode }) {
   const { slides, children, ...rest } = props
   return (
     <div className="swiper-container ad-swiper">
-      <Swiper {...rest}>
+      <Swiper {...(rest as SwiperOptions)}>
         {slides &&
           slides.map((slide, idx) => (
             <SwiperSlide key={idx}>

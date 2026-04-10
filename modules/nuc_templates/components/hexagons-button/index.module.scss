@@ -14,8 +14,8 @@
 
   &:hover,
   &:active {
-    background: var(--main-item-highlight-color-system);
-    border-color: var(--main-item-hover-color-system);
-    color: var(--main-item-hover-color-system);
+    background: var(--main-h-s);
+    border-color: var(--main-hv-s);
+    color: var(--main-hv-s);
   }
 }

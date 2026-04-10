@@ -1,17 +1,16 @@
-import type { ColorItemInterface, UseColorsInterface } from 'nucleify'
-import { colorKeys, getColorValue } from 'nucleify'
+import { colorKeys } from '../constants/keys'
+import type {
+  ColorItemInterface,
+  UseColorsInterface,
+} from '../types/interfaces'
+import { getColorValue } from './get_color_value'
 
 export function useColors(): UseColorsInterface {
   const getItemColors = (key: string): ColorItemInterface => {
-    const primary =
-      getColorValue(`${key}-item-color-user`) ||
-      getColorValue(`${key}-item-color-system`)
-    const hover =
-      getColorValue(`${key}-item-hover-color-user`) ||
-      getColorValue(`${key}-item-hover-color-system`)
+    const primary = getColorValue(`${key}-c-u`) || getColorValue(`${key}-c-s`)
+    const hover = getColorValue(`${key}-hv-u`) || getColorValue(`${key}-hv-s`)
     const secondary =
-      getColorValue(`${key}-item-secondary-color-user`) ||
-      getColorValue(`${key}-item-secondary-color-system`)
+      getColorValue(`${key}-sc-u`) || getColorValue(`${key}-sc-s`)
 
     return { primary, hover, secondary }
   }

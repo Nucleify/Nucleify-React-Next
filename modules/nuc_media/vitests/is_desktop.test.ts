@@ -1,6 +1,6 @@
 import { afterEach, beforeEach, expect, it } from 'vitest'
 
-import { isDesktop } from 'atomic'
+import { isDesktop } from 'nucleify'
 
 beforeEach((): void => {
   Object.defineProperty(window.screen, 'width', {

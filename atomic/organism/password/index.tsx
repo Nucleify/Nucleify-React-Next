@@ -1,3 +1,5 @@
+'use client'
+
 import { Divider } from 'primereact/divider'
 import { Password } from 'primereact/password'
 import { type JSX, useEffect, useMemo, useState } from 'react'

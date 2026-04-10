@@ -1,10 +1,12 @@
+import type { SwiperModule } from 'swiper/types'
+
 export interface SwiperInterface {
   slides?: SwiperSlideInterface[]
   slidesPerView?: number
   slidesPerGroup?: number
   spaceBetween?: number
   speed?: number
-  modules?: unknown[]
+  modules?: SwiperModule[]
   navigation?: boolean
   pagination?: unknown
   scrollbar?: unknown
@@ -26,7 +28,7 @@ export interface SwiperInterface {
   creativeEffect?: unknown
   cssMode?: boolean
   cubeEffect?: unknown
-  direction?: string
+  direction?: 'horizontal' | 'vertical'
   edgeSwipeDetection?: string | boolean
   edgeSwipeThreshold?: number
   effect?: string

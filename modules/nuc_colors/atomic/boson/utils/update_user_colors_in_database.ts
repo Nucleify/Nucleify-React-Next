@@ -1,4 +1,5 @@
-import { colorKeys, colorShades } from 'nucleify'
+import { colorKeys } from '../constants/keys'
+import { colorShades } from '../constants/shades'
 
 // TODO(nuc_stores+nuc_api): replace local helpers and local request wrapper
 // with atomic exports after nuc_stores and final nuc_api integration are ready in Next.
@@ -143,7 +144,7 @@ export async function updateAllUserColorsInDatabase(): Promise<void> {
 
     colorKeys.forEach((item: string): void =>
       colorShades.forEach((state: string): void => {
-        const userKey = `${item}-item-${state}-user`
+        const userKey = `${item}-${state}-u`
         const value = cookieGetItem(userKey) || localStorageGetItem(userKey)
 
         if (value) {

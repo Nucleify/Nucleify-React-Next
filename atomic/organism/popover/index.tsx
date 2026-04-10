@@ -1,8 +1,10 @@
+'use client'
+
 import { OverlayPanel } from 'primereact/overlaypanel'
 import type { JSX } from 'react'
 import { useRef } from 'react'
 
-import { AdButton } from '@/atomic'
+import { AdButton } from '../../atom/button'
 import styles from './index.module.scss'
 import type { PopoverInterface } from './types'
 

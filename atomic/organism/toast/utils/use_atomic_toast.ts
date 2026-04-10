@@ -1,5 +1,3 @@
-'use client'
-
 import type { Toast } from 'primereact/toast'
 
 import type {

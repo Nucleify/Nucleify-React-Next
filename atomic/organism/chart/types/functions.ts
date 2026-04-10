@@ -1,1 +1,1 @@
-export type ChartMethodType = 'annual' | 'count' | 'annual-stacked'
+export type AdChartMethodType = 'annual' | 'count' | 'annual-stacked'

@@ -1,64 +1,98 @@
-/*  Main colors  */
-$main-color: var(--main-item-color);
-$main-dark-color: var(--main-item-dark-color);
-$main-hover-color: var(--main-item-hover-color);
-$main-focus-color: var(--main-item-focus-color);
-$main-secondary-color: var(--main-item-secondary-color);
-$main-selected-color: var(--main-item-selected-color);
-$main-highlight-color: var(--main-item-highlight-color);
+@use 'sass:map';
 
-/*  Activity colors  */
-$activity-color: var(--activity-item-color);
-$activity-hover-color: var(--activity-item-hover-color);
-$activity-focus-color: var(--activity-item-focus-color);
-$activity-secondary-color: var(--activity-item-secondary-color);
-$activity-selected-color: var(--activity-item-selected-color);
-$activity-highlight-color: var(--activity-item-highlight-color);
+$entity-suffixes: (
+  color: c,
+  dark-color: d,
+  hover-color: hv,
+  focus-color: f,
+  secondary-color: sc,
+  selected-color: sl,
+  highlight-color: h,
+);
+$entity-vars: ();
 
-/*  Article colors  */
-$article-color: var(--article-item-color);
-$article-hover-color: var(--article-item-hover-color);
-$article-focus-color: var(--article-item-focus-color);
-$article-secondary-color: var(--article-item-secondary-color);
-$article-selected-color: var(--article-item-selected-color);
-$article-highlight-color: var(--article-item-highlight-color);
+@each $entity in $ad-types {
+  $entity-map: ();
 
-/*  Contact colors  */
-$contact-color: var(--contact-item-color);
-$contact-hover-color: var(--contact-item-hover-color);
-$contact-focus-color: var(--contact-item-focus-color);
-$contact-secondary-color: var(--contact-item-secondary-color);
-$contact-selected-color: var(--contact-item-selected-color);
-$contact-highlight-color: var(--contact-item-highlight-color);
+  @each $prop-name, $suffix in $entity-suffixes {
+    $entity-map: map.merge(
+      $entity-map,
+      (
+        $prop-name: var(--#{$entity}-#{$suffix}),
+        #{$prop-name}-user: var(--#{$entity}-#{$suffix}-u),
+        #{$prop-name}-system: var(--#{$entity}-#{$suffix}-s),
+      )
+    );
+  }
 
-/*  Money colors  */
-$money-color: var(--money-item-color);
-$money-hover-color: var(--money-item-hover-color);
-$money-focus-color: var(--money-item-focus-color);
-$money-secondary-color: var(--money-item-secondary-color);
-$money-selected-color: var(--money-item-selected-color);
-$money-highlight-color: var(--money-item-highlight-color);
+  $entity-vars: map.merge($entity-vars, (#{$entity}: $entity-map));
+}
 
-/*  Question colors  */
-$question-color: var(--question-item-color);
-$question-hover-color: var(--question-item-hover-color);
-$question-focus-color: var(--question-item-focus-color);
-$question-secondary-color: var(--question-item-secondary-color);
-$question-selected-color: var(--question-item-selected-color);
-$question-highlight-color: var(--question-item-highlight-color);
+@function entity($type, $prop) {
+  @return map.get($entity-vars, $type, $prop);
+}
 
-/*  Technology colors  */
-$technology-color: var(--technology-item-color);
-$technology-hover-color: var(--technology-item-hover-color);
-$technology-focus-color: var(--technology-item-focus-color);
-$technology-secondary-color: var(--technology-item-secondary-color);
-$technology-selected-color: var(--technology-item-selected-color);
-$technology-highlight-color: var(--technology-item-highlight-color);
-
-/*  User colors  */
-$user-color: var(--user-item-color);
-$user-hover-color: var(--user-item-hover-color);
-$user-focus-color: var(--user-item-focus-color);
-$user-secondary-color: var(--user-item-secondary-color);
-$user-selected-color: var(--user-item-selected-color);
-$user-highlight-color: var(--user-item-highlight-color);
+/*  Variables (values from loop above)  */
+$main-color: entity(main, color);
+$main-dark-color: entity(main, dark-color);
+$main-hover-color: entity(main, hover-color);
+$main-focus-color: entity(main, focus-color);
+$main-secondary-color: entity(main, secondary-color);
+$main-selected-color: entity(main, selected-color);
+$main-highlight-color: entity(main, highlight-color);
+$main-color-user: entity(main, color-user);
+$main-color-system: entity(main, color-system);
+$main-focus-color-user: entity(main, focus-color-user);
+$main-focus-color-system: entity(main, focus-color-system);
+$main-hover-color-user: entity(main, hover-color-user);
+$main-hover-color-system: entity(main, hover-color-system);
+$main-highlight-color-user: entity(main, highlight-color-user);
+$main-highlight-color-system: entity(main, highlight-color-system);
+$activity-color: entity(activity, color);
+$activity-hover-color: entity(activity, hover-color);
+$activity-focus-color: entity(activity, focus-color);
+$activity-secondary-color: entity(activity, secondary-color);
+$activity-selected-color: entity(activity, selected-color);
+$activity-highlight-color: entity(activity, highlight-color);
+$article-color: entity(article, color);
+$article-hover-color: entity(article, hover-color);
+$article-focus-color: entity(article, focus-color);
+$article-secondary-color: entity(article, secondary-color);
+$article-selected-color: entity(article, selected-color);
+$article-highlight-color: entity(article, highlight-color);
+$contact-color: entity(contact, color);
+$contact-hover-color: entity(contact, hover-color);
+$contact-focus-color: entity(contact, focus-color);
+$contact-secondary-color: entity(contact, secondary-color);
+$contact-selected-color: entity(contact, selected-color);
+$contact-highlight-color: entity(contact, highlight-color);
+$file-color: entity(file, color);
+$file-hover-color: entity(file, hover-color);
+$file-focus-color: entity(file, focus-color);
+$file-secondary-color: entity(file, secondary-color);
+$file-selected-color: entity(file, selected-color);
+$file-highlight-color: entity(file, highlight-color);
+$money-color: entity(money, color);
+$money-hover-color: entity(money, hover-color);
+$money-focus-color: entity(money, focus-color);
+$money-secondary-color: entity(money, secondary-color);
+$money-selected-color: entity(money, selected-color);
+$money-highlight-color: entity(money, highlight-color);
+$question-color: entity(question, color);
+$question-hover-color: entity(question, hover-color);
+$question-focus-color: entity(question, focus-color);
+$question-secondary-color: entity(question, secondary-color);
+$question-selected-color: entity(question, selected-color);
+$question-highlight-color: entity(question, highlight-color);
+$technology-color: entity(technology, color);
+$technology-hover-color: entity(technology, hover-color);
+$technology-focus-color: entity(technology, focus-color);
+$technology-secondary-color: entity(technology, secondary-color);
+$technology-selected-color: entity(technology, selected-color);
+$technology-highlight-color: entity(technology, highlight-color);
+$user-color: entity(user, color);
+$user-hover-color: entity(user, hover-color);
+$user-focus-color: entity(user, focus-color);
+$user-secondary-color: entity(user, secondary-color);
+$user-selected-color: entity(user, selected-color);
+$user-highlight-color: entity(user, highlight-color);

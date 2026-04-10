@@ -4,7 +4,7 @@
   .p-radiobutton[ad-type='#{$type}'] {
     @include entity-with-suffix($type) using ($suffix) {
       @include entity-radiobutton-styles(
-        var(--#{$type}-item-color#{$suffix}) !important
+        var(--#{$type}-c#{$suffix}) !important
       );
     }
   }
@@ -19,7 +19,7 @@
     @include entity-with-suffix($type) using ($suffix) {
       @include entity-dock-radiobutton-styles(
         #ffffff15,
-        var(--#{$type}-item-color#{$suffix}) !important
+        var(--#{$type}-c#{$suffix}) !important
       );
     }
   }

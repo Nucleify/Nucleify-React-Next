@@ -1,4 +1,6 @@
-import { colorKeys, colorShades, defaultColors } from 'nucleify'
+import { defaultColors } from '../constants/default'
+import { colorKeys } from '../constants/keys'
+import { colorShades } from '../constants/shades'
 
 // TODO(nuc_stores): replace local storage/cookie helpers with atomic exports
 // after nuc_stores is migrated to Next.
@@ -22,9 +24,9 @@ export function applyColorsWithSystemAndUser(): void {
 
   colorKeys.forEach((item: string): void =>
     colorShades.forEach((state: string): void => {
-      const baseKey = `${item}-item-${state}`
-      const systemKey = `${baseKey}-system`
-      const userKey = `${baseKey}-user`
+      const baseKey = `${item}-${state}`
+      const systemKey = `${baseKey}-s`
+      const userKey = `${baseKey}-u`
       const systemValue =
         cookieGetItem(systemKey) ||
         localStorageGetItem(systemKey) ||
