@@ -2,9 +2,12 @@
 import Link from 'next/link'
 import type { JSX } from 'react'
 
-import { AdAnchor, AdLogo, AdLogoSymbol, enLocale, getColumns } from 'nucleify'
-
+import { AdLogo } from '../../../../atomic/atom/logo'
+import { AdLogoSymbol } from '../../../../atomic/atom/logo/symbol'
+import { AdAnchor } from '../../../../atomic/molecule/anchor'
+import { enLocale } from '../../../nuc_languages'
 import styles from './index.module.scss'
+import { getColumns } from './items'
 
 function t(key: string): string {
   const value = (enLocale as Record<string, string>)[key]

@@ -3,26 +3,26 @@
 import { ChartData, ChartOptions } from 'chart.js'
 import { useCallback, useMemo } from 'react'
 
-import {
-  allEntitiesKeys,
-  type ChartMethodType,
-  type ChartType,
-  cartesianChart,
-  circularChart,
-  type NucActivityObjectInterface,
-  type NucArticleObjectInterface,
-  type NucContactObjectInterface,
-  type NucFileObjectInterface,
-  type NucMoneyObjectInterface,
-  type NucQuestionObjectInterface,
-  type NucTechnologyObjectInterface,
-  type NucUserObjectInterface,
-  pointerChart,
-  prepareAnnualData,
-  prepareCountData,
-  radialChart,
-  useColors,
-} from 'nucleify'
+import type { ChartType } from '../../../../../../atomic/organism/chart/types/variables'
+import { useColors } from '../../../../../nuc_colors/atomic/boson/utils/use_colors.client'
+import { allEntitiesKeys } from '../../../../../nuc_fields/constants/keys/entities'
+import type {
+  ChartMethodType,
+  NucActivityObjectInterface,
+  NucArticleObjectInterface,
+  NucContactObjectInterface,
+  NucFileObjectInterface,
+  NucMoneyObjectInterface,
+  NucQuestionObjectInterface,
+  NucTechnologyObjectInterface,
+  NucUserObjectInterface,
+} from '../../../../types/interfaces'
+import { prepareAnnualData } from './prepare/data/annual'
+import { prepareCountData } from './prepare/data/count'
+import { cartesianChart } from './prepare/option/cartesian'
+import { circularChart } from './prepare/option/circular'
+import { pointerChart } from './prepare/option/pointer'
+import { radialChart } from './prepare/option/radial'
 
 export function useChart() {
   const { colors } = useColors()

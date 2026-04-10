@@ -1,3 +1,5 @@
+'use client'
+
 import { Menu } from 'primereact/menu'
 import React, { forwardRef, useImperativeHandle, useRef } from 'react'
 

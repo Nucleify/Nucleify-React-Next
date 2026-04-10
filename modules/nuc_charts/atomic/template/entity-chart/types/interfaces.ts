@@ -9,7 +9,7 @@ import type {
   NucQuestionObjectInterface,
   NucTechnologyObjectInterface,
   NucUserObjectInterface,
-} from 'nucleify'
+} from '../../../../types/interfaces'
 
 export interface NucEntityChartInterface extends ChartInterface {
   chartMethodType: ChartMethodType
@@ -17,8 +17,6 @@ export interface NucEntityChartInterface extends ChartInterface {
   example?: boolean
   direction?: string
 }
-
-export type LoadingType = boolean
 
 export interface NucEntityChartDataInterface {
   activity?: NucActivityObjectInterface[]

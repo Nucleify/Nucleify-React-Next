@@ -1,5 +1,4 @@
-// TODO(nuc_stores): replace local storage/cookie helpers with atomic exports
-// after nuc_stores is migrated to Next.
+// TODO(nuc_stores): replace with nuc_stores cookie/localStorage when migrated.
 function localStorageSetItem(key: string, value: string): void {
   if (typeof window === 'undefined') return
   window.localStorage.setItem(key, value)
@@ -11,7 +10,7 @@ function cookieSetItem(key: string, value: string): void {
 }
 
 export function setColorWithUserSuffix(key: string, value: string): void {
-  const userKey = `${key}-user`
+  const userKey = `${key}-u`
 
   cookieSetItem(userKey, value)
   localStorageSetItem(userKey, value)

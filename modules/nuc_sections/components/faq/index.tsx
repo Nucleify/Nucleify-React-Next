@@ -7,10 +7,10 @@ import {
   apiHandle,
   type NucFaqQuestionInterface,
   type NucSectionFaqInterface,
-  useSplitQuestions,
 } from 'nucleify'
 
 import styles from './index.module.scss'
+import { useSplitQuestions } from './utils/use_split_questions'
 
 export function NucSectionFaq({
   questions,

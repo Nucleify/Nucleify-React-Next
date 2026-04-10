@@ -1,4 +1,5 @@
-$dark-text-color: #333941;
-$primary-text-color: #4b5563;
-$secondary-text-color: #5e5e5e;
-$white-text-color: #f5f4f4;
+$dark-text-color: var(--nuc-dark-text-color);
+$primary-text-color: var(--nuc-primary-text-color);
+$secondary-text-color: var(--nuc-secondary-text-color);
+$white-text-color: var(--nuc-white-text-color);
+$white-text-color-rgb: var(--nuc-white-text-rgb);

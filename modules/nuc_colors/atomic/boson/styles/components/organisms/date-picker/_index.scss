@@ -4,8 +4,8 @@
   .p-datepicker[ad-type='#{$type}'] {
     @include entity-with-suffix($type) using ($suffix) {
       @include entity-calendar-styles(
-        var(--#{$type}-item-color#{$suffix}) !important,
-        var(--#{$type}-item-focus-color#{$suffix}) !important
+        var(--#{$type}-c#{$suffix}) !important,
+        var(--#{$type}-f#{$suffix}) !important
       );
     }
   }
@@ -13,10 +13,10 @@
   .p-datepicker-panel.#{$type} {
     @include entity-with-suffix($type) using ($suffix) {
       @include entity-datepicker-styles(
-        var(--#{$type}-item-color#{$suffix}) !important,
-        var(--#{$type}-item-focus-color#{$suffix}) !important,
-        var(--#{$type}-item-selected-color#{$suffix}) !important,
-        var(--#{$type}-item-highlight-color#{$suffix}) !important
+        var(--#{$type}-c#{$suffix}) !important,
+        var(--#{$type}-f#{$suffix}) !important,
+        var(--#{$type}-sl#{$suffix}) !important,
+        var(--#{$type}-h#{$suffix}) !important
       );
     }
   }

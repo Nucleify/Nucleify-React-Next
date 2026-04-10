@@ -1,4 +1,4 @@
-import type { IconInterface } from '@/atomic'
+import type { IconInterface } from '../../../atom/icon/types/interfaces'
 
 export interface TileInterface extends IconInterface {
   adType?: AdTypeType

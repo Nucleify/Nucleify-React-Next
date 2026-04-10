@@ -2,8 +2,9 @@
 
 import type { JSX } from 'react'
 
-import { AdIcon, enLocale, NucSectionEmailUsDialog } from 'nucleify'
+import { AdIcon, NucSectionEmailUsDialog } from 'nucleify'
 
+import { enLocale } from '../../../nuc_languages'
 import styles from './index.module.scss'
 
 function t(key: string): string {

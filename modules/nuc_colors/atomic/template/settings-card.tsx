@@ -2,14 +2,10 @@
 
 import type { JSX } from 'react'
 
-import {
-  AdButton,
-  AdCard,
-  AdLabel,
-  colorGroups,
-  resetColorsToDefault,
-} from 'nucleify'
+import { AdButton, AdCard, AdLabel } from 'nucleify'
 
+import { colorGroups } from '../boson/constants/list'
+import { resetColorsToDefault } from '../boson/utils/reset_colors_to_default'
 import { NucColorPicker } from '../organism'
 
 interface NucColorSettingsCardProps {

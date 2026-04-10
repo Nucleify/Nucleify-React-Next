@@ -1,2 +1,2 @@
-export { default as enLocale } from '../modules/nuc_languages/locales/en.json'
-export * from './atomic'
+export * from 'atomic'
+export * from 'modules'

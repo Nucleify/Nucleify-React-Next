@@ -1,7 +1,7 @@
 import { Chart } from 'primereact/chart'
 import type { JSX } from 'react'
 
-import type { ChartInterface } from './types'
+import type { AdChartInterface } from './types'
 
 export function AdChart({
   className = '',
@@ -12,7 +12,7 @@ export function AdChart({
   chartMethodType,
   example,
   ...rest
-}: ChartInterface): JSX.Element | null {
+}: AdChartInterface): JSX.Element | null {
   if (!data) return null
 
   const mergedClassName = ['ad-chart', className, chartClass]

@@ -15,7 +15,7 @@ $dock-items: (
     .p-dock .iconify[ad-type='#{$item}'] {
       @include entity-with-suffix($type) using ($suffix) {
         @include entity-dock-item-styles(
-          var(--#{$type}-item-color#{$suffix}) !important
+          var(--#{$type}-c#{$suffix}) !important
         );
       }
     }

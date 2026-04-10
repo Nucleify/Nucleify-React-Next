@@ -3,9 +3,10 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import type { JSX } from 'react'
 
-import { enLocale, getNavLinks } from 'nucleify'
+import { enLocale } from 'nucleify'
 
 import styles from '../../index.module.scss'
+import { getNavLinks } from './links'
 
 type NucNavbarLinksProps = {
   onCloseDrawer?: () => void

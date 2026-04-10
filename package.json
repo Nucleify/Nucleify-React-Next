@@ -6,25 +6,28 @@
     "dev": "npx next dev",
     "build": "npx next build",
     "start": "npx next start",
-    "check": "cd && npx biome check .",
-    "write": "cd && npx biome check --write ."
+    "check": "cd .. && npx biome check .",
+    "write": "cd .. && npx biome check --write ."
   },
   "dependencies": {
     "@gsap/react": "2.1.2",
+    "@iconify/react": "6.0.2",
     "chart.js": "4.5.1",
     "gsap": "3.13.0",
+    "i18next": "26.0.3",
     "next": "16.1.6",
     "primeicons": "7.0.0",
     "primereact": "10.9.7",
     "quill": "2.0.3",
     "react": "19.0.0",
     "react-dom": "19.0.0",
+    "react-i18next": "17.0.2",
     "sass": "1.89.0",
     "swiper": "12.0.3",
     "zustand": "5.0.11"
   },
   "devDependencies": {
-    "@biomejs/biome": "^2.4.6",
+    "@biomejs/biome": "2.4.6",
     "@types/node": "20",
     "@types/react": "19",
     "@types/react-dom": "19",

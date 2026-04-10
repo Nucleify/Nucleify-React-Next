@@ -2,16 +2,9 @@
 import { usePathname } from 'next/navigation'
 import type { JSX } from 'react'
 
-import {
-  AdAnchor,
-  AdButton,
-  AdLogo,
-  AdLogoSymbol,
-  NucNavbarDrawer,
-  NucNavbarLinks,
-  useNavbar,
-} from 'nucleify'
+import { AdAnchor, AdButton, AdLogo, AdLogoSymbol, useNavbar } from 'nucleify'
 
+import { NucNavbarDrawer, NucNavbarLinks } from './components'
 import styles from './index.module.scss'
 
 function getLangFromPathname(pathname: string): string {

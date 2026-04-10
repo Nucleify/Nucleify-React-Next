@@ -2,8 +2,9 @@ import {
   apiHandle,
   type ContactFormDataInterface,
   type SubmitFormResultInterface,
-  validateContactForm,
 } from 'nucleify'
+
+import { validateContactForm } from './validate_form'
 
 export async function submitContactForm(
   form: ContactFormDataInterface
