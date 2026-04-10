@@ -1,28 +1,30 @@
-@mixin entity-select-styles($item-color, $focus-color) {
+@mixin entity-select-styles($c, $focus-color) {
+  border-color: $focus-color;
+
   &:hover {
-    border-color: $item-color;
+    border-color: $c;
   }
 
-  &[data-p="focus"] {
+  &[data-p-focus="true"] {
     outline: 0 none;
     outline-offset: 0;
     box-shadow: 0 0 0.5em $focus-color;
-    border-color: $item-color;
+    border-color: $c;
   }
 }
 
 @mixin entity-select-overlay-styles(
-  $item-color,
+  $c,
   $selected-color,
   $highlight-color
 ) {
-  .p-select-option {
+  .p-dropdown-item {
     &:hover {
       background: $highlight-color;
     }
 
     &[data-p-selected="true"] {
-      color: $item-color;
+      color: $c;
       background: $selected-color;
     }
   }

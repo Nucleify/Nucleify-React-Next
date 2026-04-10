@@ -1,19 +1,31 @@
-import { Button } from 'primereact/button'
-import { Checkbox } from 'primereact/checkbox'
-import { Dropdown } from 'primereact/dropdown'
-import { InputText } from 'primereact/inputtext'
-import React, { useState } from 'react'
+'use client'
+
+import React, { type ReactNode, useState } from 'react'
+
+import {
+  AdCheckbox,
+  AdInputText,
+  AdSelect,
+  NucEmailUsDialogFrame,
+  NucSubmitButton,
+} from 'nucleify'
 
 import i18next from 'i18next'
 
-interface NucSectionEmailUsProps {
+interface NucPricingEmailUsProps {
+  visible: boolean
+  onHide: () => void
   onSuccess?: () => void
   className?: string
+  header?: ReactNode
 }
 
-export const NucSectionEmailUs: React.FC<NucSectionEmailUsProps> = ({
+export const NucPricingEmailUs: React.FC<NucPricingEmailUsProps> = ({
+  visible,
+  onHide,
   onSuccess,
   className,
+  header,
 }) => {
   const [email, setEmail] = useState('')
   const [websiteType, setWebsiteType] = useState(null)
@@ -26,7 +38,7 @@ export const NucSectionEmailUs: React.FC<NucSectionEmailUsProps> = ({
     { label: i18next.t('form-website-type-help'), value: 'help' },
   ]
 
-  return (
+  const form = (
     <div id="email-us" className={className || ''}>
       <form
         className="email-us-form"
@@ -37,12 +49,13 @@ export const NucSectionEmailUs: React.FC<NucSectionEmailUsProps> = ({
       >
         <div className="form-group">
           <label htmlFor="email">{i18next.t('form-email-label')}</label>
-          <InputText
+          <AdInputText
             id="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder={i18next.t('form-email-placeholder')}
             className="w-full"
+            adType="main"
           />
         </div>
 
@@ -50,31 +63,33 @@ export const NucSectionEmailUs: React.FC<NucSectionEmailUsProps> = ({
           <label htmlFor="website_type">
             {i18next.t('form-website-type-label')}
           </label>
-          <Dropdown
+          <AdSelect
             id="website_type"
             value={websiteType}
             options={websiteOptions}
             onChange={(e) => setWebsiteType(e.value)}
             placeholder={i18next.t('form-website-type-placeholder')}
             className="w-full"
+            adType="main"
           />
         </div>
 
         <div className="form-group checkbox-group">
-          <Checkbox
+          <AdCheckbox
             inputId="consent"
             checked={consent}
             onChange={(e) => setConsent(e.checked || false)}
+            adType="main"
           />
-          <label htmlFor="consent" className="ml-2 cursor-pointer">
+          <label htmlFor="consent" className="cursor-pointer">
             {i18next.t('form-consent')}
           </label>
         </div>
 
-        <Button
+        <NucSubmitButton
           type="submit"
           label={i18next.t('form-submit')}
-          className="nuc-submit-button"
+          icon="mdi:send"
         />
       </form>
 
@@ -85,5 +100,15 @@ export const NucSectionEmailUs: React.FC<NucSectionEmailUsProps> = ({
         </span>
       </div>
     </div>
+  )
+
+  return (
+    <NucEmailUsDialogFrame
+      visible={visible}
+      onHide={onHide}
+      dialogClassName="pricing-email-dialog"
+    >
+      {form}
+    </NucEmailUsDialogFrame>
   )
 }

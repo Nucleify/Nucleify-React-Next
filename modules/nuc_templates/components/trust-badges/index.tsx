@@ -11,17 +11,18 @@ export interface TrustBadgeItemInterface {
   label: string
 }
 
-interface TrustBadgePropsInterface {
+interface TrustBadgesInterface {
   items?: TrustBadgeItemInterface[]
 }
 
-export function NucTrustBadges({
-  items,
-}: TrustBadgePropsInterface): JSX.Element {
+export function NucTrustBadges({ items }: TrustBadgesInterface): JSX.Element {
   return (
     <div className={styles['nuc-trust-badges']}>
-      {items?.map((item) => (
-        <div key={item.label} className={styles['nuc-trust-badge-item']}>
+      {items?.map((item, index) => (
+        <div
+          key={`${item.icon}-${item.label}-${index}`}
+          className={styles['nuc-trust-badge-item']}
+        >
           <AdIcon icon={item.icon} className={styles['iconify']} />
           <span>{item.label}</span>
         </div>

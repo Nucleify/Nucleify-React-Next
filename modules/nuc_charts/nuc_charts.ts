@@ -1,6 +1,7 @@
 import type { App } from 'vue'
 
-import { NucEntityChart, NucEntityChartCard } from 'nucleify'
+import { NucEntityChart } from './atomic/template/entity-chart'
+import { NucEntityChartCard } from './atomic/template/entity-chart-card'
 
 export function registerNucCharts(app: App<Element>): void {
   app

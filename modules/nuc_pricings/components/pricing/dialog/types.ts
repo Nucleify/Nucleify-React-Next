@@ -1,4 +1,5 @@
-import type { BillingPeriodType, PricingPlanInterface } from 'nucleify'
+import type { PricingPlanInterface } from '../types/interfaces'
+import type { BillingPeriodType } from '../types/variables'
 
 export interface PricingDialogInterface {
   modelValue: boolean

@@ -1,7 +1,6 @@
-import { Button } from 'primereact/button'
 import React from 'react'
 
-import { Icon } from '@iconify/react'
+import { AdButton } from 'nucleify'
 
 interface NucSubmitButtonProps {
   label: string
@@ -18,18 +17,28 @@ export const NucSubmitButton: React.FC<NucSubmitButtonProps> = ({
   icon,
   className,
   onClick,
+  variant,
   type = 'button',
   disabled = false,
 }) => {
+  const rootClass = [
+    'nuc-submit-button',
+    variant && `nuc-submit-button-${variant}`,
+    className,
+  ]
+    .filter(Boolean)
+    .join(' ')
+
   return (
-    <Button
+    <AdButton
       label={label}
-      className={`nuc-submit-button ${className || ''}`}
-      onClick={onClick}
+      icon={icon}
+      className={rootClass}
+      adType="main"
       type={type}
       disabled={disabled}
-    >
-      {icon && <Icon icon={icon} className="mr-2" />}
-    </Button>
+      onClick={onClick}
+      gap={icon ? '0.5rem' : undefined}
+    />
   )
 }

@@ -1,13 +1,13 @@
-import {
-  allEntitiesKeys,
-  type ChartType,
-  type ColorItemInterface,
-  createScatterDatasets,
-  createStackedDatasets,
-  createStandardDatasets,
-  type EntityColorsInterface,
-  months,
-} from 'nucleify'
+import type { ChartType } from '../../../../../../../../atomic/organism/chart/types/variables'
+import type {
+  ColorItemInterface,
+  EntityColorsInterface,
+} from '../../../../../../../../modules/nuc_colors/atomic/boson/types/interfaces'
+import { allEntitiesKeys } from '../../../../../../../../modules/nuc_fields/constants/keys/entities'
+import { months } from '../../../../../../constants/months'
+import { createScatterDatasets } from './dataset/scatter'
+import { createStackedDatasets } from './dataset/stacked'
+import { createStandardDatasets } from './dataset/standard'
 
 export function prepareAnnualData(
   entitiesData: Record<string, unknown[]>,

@@ -29,6 +29,7 @@ export function AdDataTable({
   const pt = {
     root: {
       className: cx(styles['ad-datatable'], className),
+      'data-nuc-datatable': '',
     },
     bodyRow: {
       className: styles['ad-datatable-row'],
@@ -76,6 +77,8 @@ export function AdDataTable({
   }
 
   return (
+    // PrimeReact DataTable props union is overly strict when spreading `rest` with `pt`
+    // @ts-expect-error — cellSelection overload mismatch with spread
     <DataTable
       {...rest}
       value={value}

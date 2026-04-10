@@ -1,4 +1,4 @@
-@mixin entity-textarea-styles($item-color, $box-shadow-color) {
+@mixin entity-textarea-styles($c, $box-shadow-color) {
   &.p-invalid {
     border-color: $invalid-color;
   
@@ -19,7 +19,7 @@
       outline: 0 none;
       outline-offset: 0;
       box-shadow: 0 0 0.5em $box-shadow-color;
-      border-color: $item-color;
+      border-color: $c;
     }
   }
 }

@@ -1,15 +1,19 @@
 'use client'
 
-import { Dialog } from 'primereact/dialog'
-import { type JSX, useMemo, useState } from 'react'
+import { type JSX, type ReactNode, useMemo, useState } from 'react'
 
-import {
-  AdButton,
-  type NucEmailUsDialogPropsInterface,
-  NucSectionEmailUs,
-} from 'nucleify'
+import { AdButton } from '../../../../../atomic/atom/button'
+import { AdDialog } from '../../../../../atomic/organism/dialog'
+import { NucSectionEmailUs } from '..'
+import type { NucEmailUsDialogPropsInterface } from './types'
 
-import styles from './index.module.scss'
+const SECTION_EMAIL_DIALOG_CLASS = 'section-email-us-dialog'
+
+const emailDialogClosePt = {
+  closeButton: {
+    root: { 'ad-type': 'main' as const },
+  },
+}
 
 const textMap: Record<string, string> = {
   'form-get-in-touch': 'Get in touch',
@@ -25,6 +29,41 @@ function resolveButtonIcon(icon: string): string {
   return icon
 }
 
+export interface NucEmailUsDialogFrameProps {
+  visible: boolean
+  onHide: () => void
+  children: ReactNode
+  dialogClassName?: string
+  header?: ReactNode
+}
+
+export function NucEmailUsDialogFrame({
+  visible,
+  onHide,
+  children,
+  dialogClassName,
+  header,
+}: NucEmailUsDialogFrameProps): JSX.Element {
+  const rootClassName =
+    dialogClassName?.trim() + ' ' + SECTION_EMAIL_DIALOG_CLASS
+
+  return (
+    <AdDialog
+      visible={visible}
+      modal
+      dismissableMask
+      draggable={false}
+      className={rootClassName}
+      header={header}
+      showHeader
+      onHide={onHide}
+      pt={emailDialogClosePt}
+    >
+      {children}
+    </AdDialog>
+  )
+}
+
 export function NucSectionEmailUsDialog({
   buttonLabel = '',
   buttonClass = '',
@@ -36,14 +75,6 @@ export function NucSectionEmailUsDialog({
     () => buttonLabel || t('form-get-in-touch'),
     [buttonLabel]
   )
-  const pt = {
-    mask: { className: styles['p-dialog-mask'] },
-    root: { className: styles['p-dialog'] },
-    header: { className: styles['p-dialog-header'] },
-    headerIcons: { className: styles['p-dialog-header-actions'] },
-    content: { className: styles['p-dialog-content'] },
-    closeButton: { 'ad-type': 'main' },
-  }
 
   return (
     <>
@@ -56,19 +87,15 @@ export function NucSectionEmailUsDialog({
         {buttonStrong && <strong>{buttonStrong}</strong>}
       </AdButton>
 
-      <Dialog
+      <NucEmailUsDialogFrame
         visible={showDialog}
-        modal
-        dismissableMask
-        draggable={false}
         onHide={() => setShowDialog(false)}
-        pt={pt}
       >
         <NucSectionEmailUs
           onSuccess={() => setShowDialog(false)}
-          cardClassName={styles['p-card']}
+          cardClassName="p-card"
         />
-      </Dialog>
+      </NucEmailUsDialogFrame>
     </>
   )
 }

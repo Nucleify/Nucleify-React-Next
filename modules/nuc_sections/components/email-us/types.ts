@@ -20,12 +20,10 @@ export interface SubmitFormResultInterface {
   message?: string
 }
 
-import type { ComponentType } from 'nucleify'
-
 export interface FormFieldInterface {
   id: keyof Omit<ContactFormDataInterface, 'consent'>
   label: string
-  component: ComponentType
+  component: string
   type?: string
   placeholder: string
   autocomplete?: string

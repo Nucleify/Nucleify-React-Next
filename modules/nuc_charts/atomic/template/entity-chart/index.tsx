@@ -2,12 +2,10 @@
 import type { ChartData } from 'chart.js'
 import React, { useEffect, useMemo, useState } from 'react'
 
-import {
-  AdChart,
-  type ChartType,
-  type NucEntityChartInterface,
-  useChart,
-} from 'nucleify'
+import { AdChart, type ChartType } from 'nucleify'
+
+import type { NucEntityChartInterface } from './types/interfaces'
+import { useChart } from './utils/use_chart'
 
 export const NucEntityChart: React.FC<NucEntityChartInterface> = (props) => {
   const { setChartData, setChartOptions } = useChart()
@@ -45,7 +43,7 @@ export const NucEntityChart: React.FC<NucEntityChartInterface> = (props) => {
 
   return (
     <AdChart
-      data={chartData}
+      data={chartData ?? undefined}
       options={chartOptions}
       type={props.type}
       chartMethodType={props.chartMethodType}

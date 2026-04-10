@@ -1,4 +1,4 @@
-import type { MessageOrMessagesType } from 'nucleify'
+import type { MessageOrMessagesType } from 'atomic'
 
 export interface ErrorResponseInterface {
   response: {

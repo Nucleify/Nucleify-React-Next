@@ -17,6 +17,7 @@ export function AdSelect({
   const pt = {
     root: {
       className: cx(styles['ad-select'], className),
+      ...(adType ? { 'ad-type': adType } : {}),
     },
     input: {
       className: styles['ad-select-label'],
@@ -26,7 +27,7 @@ export function AdSelect({
     },
     panel: {
       className: styles['ad-select-overlay'],
-      ...(adType ? { 'data-ad-type': adType } : {}),
+      ...(adType ? { 'ad-type': adType } : {}),
     },
     wrapper: {
       className: styles['ad-select-list-container'],

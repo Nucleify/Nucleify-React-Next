@@ -69,11 +69,11 @@
 
   &:active,
   &:hover {
-    border: 1px solid var(--main-item-color-user) !important;
-    color: var(--main-item-color-user) !important;
+    border: 1px solid var(--main-c-u) !important;
+    color: var(--main-c-u) !important;
 
     :global(.iconify) {
-      color: var(--main-item-color-user) !important;
+      color: var(--main-c-u) !important;
     }
   }
 

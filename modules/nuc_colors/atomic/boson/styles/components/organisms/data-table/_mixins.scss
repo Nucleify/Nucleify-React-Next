@@ -1,22 +1,22 @@
-@mixin entity-datatable-styles($item-color, $selected-color, $highlight-color) {
+@mixin entity-datatable-styles($c, $selected-color, $highlight-color) {
   .p-datatable-column-sorted,
   .p-paginator-content 
     button:hover {
-    color: $item-color;
+    color: $c;
     background: $highlight-color;
 
     .p-datatable-column-title {
-      color: $item-color;
+      color: $c;
     }
 
     .p-datatable-sort-icon {
-      color: $item-color;
+      color: $c;
     }
   }
 
   .p-button {
     .iconify {
-      color: $item-color;
+      color: $c;
     }
   }
 
@@ -39,8 +39,8 @@
   .p-paginator {
     .p-select {
       &.p-focus {
-        box-shadow: 0 0 0.5em $item-color;
-        border-color: $item-color;
+        box-shadow: 0 0 0.5em $c;
+        border-color: $c;
       }
     }
   }

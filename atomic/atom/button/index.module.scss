@@ -1,11 +1,17 @@
 .ad-button {
-  display: flex;
-  justify-content: center;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
   transition: all 0.5s;
 
   .p-button-label {
+    flex: 0 1 auto;
     font-family: Nunito, sans-serif;
     font-weight: 600;
+    line-height: 1.2;
+    display: inline-flex;
+    align-items: center;
+    min-width: 0;
   }
 
   &.rounded-button {
@@ -25,6 +31,10 @@
     width: 34px;
   }
 
+  &:focus {
+    box-shadow: none !important;
+  }
+
   @media (min-width: $lg) {
     &.mobile-button {
       display: none;
@@ -35,3 +45,4 @@
     }
   }
 }
+

@@ -1,12 +1,12 @@
-@mixin entity-radiobutton-styles($item-color) {
+@mixin entity-radiobutton-styles($c) {
   &.p-highlight .p-radiobutton-box,
   &:checked {
-    border-color: $item-color;
-    background: $item-color;
+    border-color: $c;
+    background: $c;
   }
 
   &:not(.p-disabled):has(.p-radiobutton-input:hover) .p-radiobutton-box {
-    border-color: $item-color;
+    border-color: $c;
   }
 }
 

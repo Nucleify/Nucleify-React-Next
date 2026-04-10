@@ -1,18 +1,15 @@
-import { useRouter } from 'next/router'
-import { Dialog } from 'primereact/dialog'
+'use client'
+
+import { useRouter } from 'next/navigation'
 import React, { useEffect, useMemo, useState } from 'react'
 
-import {
-  BillingPeriodType,
-  formatPrice,
-  getPrice,
-  NucSectionEmailUs,
-  NucSubmitButton,
-  PricingPlanInterface,
-} from 'nucleify'
+import { AdButton, AdDialog, NucSubmitButton } from 'nucleify'
 
 import { Icon } from '@iconify/react'
 import { useTranslation } from 'react-i18next'
+import { NucPricingEmailUs } from '../NucPricingEmailUs'
+import type { BillingPeriodType, PricingPlanInterface } from '../types'
+import { formatPrice, getPrice } from '../utils'
 
 interface PricingDialogProps {
   isOpen: boolean
@@ -106,7 +103,7 @@ export const NucPricingDialog: React.FC<PricingDialogProps> = ({
   return (
     <>
       {plan && (
-        <Dialog
+        <AdDialog
           visible={isOpen}
           onHide={onClose}
           modal
@@ -116,11 +113,6 @@ export const NucPricingDialog: React.FC<PricingDialogProps> = ({
           className="pricing-plan-dialog"
           header={dialogHeader}
           footer={dialogFooter}
-          pt={{
-            closeButton: {
-              root: { 'ad-type': 'main' } as Record<string, string>,
-            },
-          }}
         >
           <div className="plan-dialog-content">
             {previousPlanName && (
@@ -148,38 +140,29 @@ export const NucPricingDialog: React.FC<PricingDialogProps> = ({
               </ul>
 
               {hasMoreFeatures && !showAllFeatures && (
-                <button
+                <AdButton
+                  type="button"
+                  adType="main"
+                  text
                   className="show-more-features"
+                  label={t('pricing-dialog-show-more-features', {
+                    count: remainingFeaturesCount,
+                  })}
+                  icon="mdi:chevron-down"
                   onClick={() => setShowAllFeatures(true)}
-                >
-                  <Icon icon="mdi:chevron-down" />
-                  <span>
-                    {t('pricing-dialog-show-more-features', {
-                      count: remainingFeaturesCount,
-                    })}
-                  </span>
-                </button>
+                />
               )}
             </div>
           </div>
-        </Dialog>
+        </AdDialog>
       )}
 
-      <Dialog
+      <NucPricingEmailUs
         visible={showEmailDialog}
         onHide={() => setShowEmailDialog(false)}
-        modal
-        dismissableMask
-        draggable={false}
-        className="pricing-email-dialog"
-        pt={{
-          closeButton: {
-            root: { 'ad-type': 'main' } as Record<string, string>,
-          },
-        }}
-      >
-        <NucSectionEmailUs onSuccess={handleEmailSuccess} />
-      </Dialog>
+        header={t('offer-trust-consultation')}
+        onSuccess={handleEmailSuccess}
+      />
     </>
   )
 }
