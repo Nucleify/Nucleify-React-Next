@@ -1,19 +1,28 @@
 'use client'
 
+import { usePathname, useRouter } from 'next/navigation'
 import type { JSX } from 'react'
 
-import { enLocale, NucGridBackground } from 'nucleify'
+import { enLocale, NucGridBackground as NucGridBackgroundBase } from 'nucleify'
 
 function t(key: string): string {
   const value = (enLocale as Record<string, string>)[key]
   return typeof value === 'string' ? value : key
 }
 
+const NucGridBackground = NucGridBackgroundBase as unknown as () => JSX.Element
+
 export function NucError404Page(): JSX.Element {
+  const pathname = usePathname()
+  const router = useRouter()
+
+  const getHomeUrl = (): string => {
+    const lang = pathname?.split('/').filter(Boolean)[0] || 'en'
+    return `/${lang}/home`
+  }
+
   const goHome = (): void => {
-    if (typeof window !== 'undefined') {
-      window.location.href = '/en/home'
-    }
+    router.push(getHomeUrl())
   }
 
   const goBack = (): void => {
@@ -21,7 +30,7 @@ export function NucError404Page(): JSX.Element {
       window.history.back()
       return
     }
-    goHome()
+    router.push(getHomeUrl())
   }
 
   return (

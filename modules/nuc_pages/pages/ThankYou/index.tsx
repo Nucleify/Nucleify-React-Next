@@ -1,5 +1,6 @@
 'use client'
 
+import { usePathname, useRouter } from 'next/navigation'
 import type { JSX } from 'react'
 
 import { AdIcon, enLocale } from 'nucleify'
@@ -10,10 +11,12 @@ function t(key: string): string {
 }
 
 export function NucThankYouPage(): JSX.Element {
+  const pathname = usePathname()
+  const router = useRouter()
+
   const navigateToHome = (): void => {
-    if (typeof window !== 'undefined') {
-      window.location.href = '/en/home'
-    }
+    const lang = pathname?.split('/').filter(Boolean)[0] || 'en'
+    router.push(`/${lang}/home`)
   }
 
   return (
