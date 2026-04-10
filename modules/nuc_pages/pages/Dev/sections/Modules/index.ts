@@ -1,1 +1,1 @@
-export { default as NucDevModules } from './index.tsx'
+export { NucDevModules } from './index.tsx'

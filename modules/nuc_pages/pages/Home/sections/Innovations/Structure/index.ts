@@ -1,3 +1,1 @@
-export { default as NucStructure } from './index.tsx'
-
-export * from './components'
+export { NucStructure } from './index.tsx'

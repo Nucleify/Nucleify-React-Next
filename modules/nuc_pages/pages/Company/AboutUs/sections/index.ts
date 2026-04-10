@@ -1,1 +1,4 @@
-export { default as NucAboutStart } from './Start/index.tsx'
+export { NucAboutMission } from './Mission'
+export { NucAboutProcess } from './Process'
+export { NucAboutStart } from './Start'
+export { NucAboutValues } from './Values'

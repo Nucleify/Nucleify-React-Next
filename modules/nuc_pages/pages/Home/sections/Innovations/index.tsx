@@ -2,6 +2,14 @@
 
 import type { JSX } from 'react'
 
+import { NucStructure, NucTechnologies } from './'
+import './_index.scss'
+
 export function NucInnovations(): JSX.Element {
-  return <div className="home-sections-innovations-container"></div>
+  return (
+    <section id="innovations">
+      <NucTechnologies />
+      <NucStructure />
+    </section>
+  )
 }

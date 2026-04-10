@@ -1,2 +1,1 @@
-export { default as NucResults } from './index.tsx'
-
+export { NucResults } from './index.tsx'

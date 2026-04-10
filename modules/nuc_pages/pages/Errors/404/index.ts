@@ -1,1 +1,1 @@
-export { default as NucError404Page } from './index.tsx'
+export { NucError404Page } from './index.tsx'

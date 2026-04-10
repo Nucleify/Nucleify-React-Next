@@ -1,1 +1,1 @@
-export { default as NucPrivacyPolicyPage } from './index.tsx'
+export { NucPrivacyPolicyPage } from './index.tsx'

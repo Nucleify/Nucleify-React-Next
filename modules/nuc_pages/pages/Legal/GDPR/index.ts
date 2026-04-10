@@ -1,1 +1,1 @@
-export { default as NucGDPRPage } from './index.tsx'
+export { NucGDPRPage } from './index.tsx'

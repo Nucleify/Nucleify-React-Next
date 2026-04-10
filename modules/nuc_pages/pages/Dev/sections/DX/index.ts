@@ -1,1 +1,1 @@
-export { default as NucDevDX } from './index.tsx'
+export { NucDevDX } from './index.tsx'

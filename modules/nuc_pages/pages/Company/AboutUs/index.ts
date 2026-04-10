@@ -1,1 +1,1 @@
-export { default as NucAboutUsPage } from './index.tsx'
+export { NucAboutUsPage } from "./index.tsx";

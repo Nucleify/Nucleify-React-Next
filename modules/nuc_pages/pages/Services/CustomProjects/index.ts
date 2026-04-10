@@ -1,1 +1,1 @@
-export { default as NucCustomProjectsPage } from './index.tsx'
+export { NucCustomProjectsPage } from './index.tsx'

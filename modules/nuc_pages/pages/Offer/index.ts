@@ -1,2 +1,2 @@
-export { default as NucOfferPage } from './index.tsx'
+export { NucOfferPage } from './index.tsx'
 

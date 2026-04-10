@@ -1,1 +1,1 @@
-export { default as NucEcommerceStoresPage } from './index.tsx'
+export { NucEcommerceStoresPage } from './index.tsx'

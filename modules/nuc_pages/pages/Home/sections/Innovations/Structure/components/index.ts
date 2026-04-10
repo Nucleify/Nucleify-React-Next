@@ -1,1 +1,1 @@
-export { default as NucStructureAnimation } from './Animation.tsx'
+export { NucStructureAnimation } from './Animation'

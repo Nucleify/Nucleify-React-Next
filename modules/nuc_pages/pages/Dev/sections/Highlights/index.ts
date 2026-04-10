@@ -1,1 +1,1 @@
-export { default as NucDevHighlights } from './index.tsx'
+export { NucDevHighlights } from './index.tsx'

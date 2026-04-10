@@ -1,1 +1,1 @@
-export { default as NucBusinessWebsitesPage } from './index.tsx'
+export { NucBusinessWebsitesPage } from './index.tsx'

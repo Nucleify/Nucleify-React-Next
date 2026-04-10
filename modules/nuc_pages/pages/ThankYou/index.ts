@@ -1,3 +1,3 @@
-export { default as NucThankYouPage } from './index.tsx'
+export { NucThankYouPage } from './index.tsx'
 
 

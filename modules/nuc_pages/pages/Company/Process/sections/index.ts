@@ -1,1 +1,3 @@
-export { default as NucProcessStart } from './Start/index.tsx'
+export { NucProcessGuarantees } from './Guarantees'
+export { NucProcessStart } from './Start'
+export { NucProcessSteps } from './Steps'

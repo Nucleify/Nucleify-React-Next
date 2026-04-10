@@ -1,1 +1,1 @@
-export { default as NucProcessPage } from './index.tsx'
+export { NucProcessPage } from './index.tsx'

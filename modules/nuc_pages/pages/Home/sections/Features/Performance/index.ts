@@ -1,2 +1,1 @@
-export { default as NucPerformance } from './index.tsx'
-
+export { NucPerformance } from './index.tsx'

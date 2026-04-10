@@ -1,1 +1,1 @@
-export { default as NucCookiesPage } from './index.tsx'
+export { NucCookiesPage } from './index.tsx'

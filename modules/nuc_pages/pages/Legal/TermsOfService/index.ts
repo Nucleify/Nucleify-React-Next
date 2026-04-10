@@ -1,1 +1,1 @@
-export { default as NucTermsOfServicePage } from './index.tsx'
+export { NucTermsOfServicePage } from './index.tsx'

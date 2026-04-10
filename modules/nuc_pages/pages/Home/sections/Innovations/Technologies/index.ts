@@ -1,1 +1,1 @@
-export { default as NucTechnologies } from './index.tsx'
+export { NucTechnologies } from './index.tsx'
