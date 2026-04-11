@@ -4,9 +4,10 @@ import type { JSX } from 'react'
 
 import { AdButton, AdCard, AdLabel } from 'nucleify'
 
+import { NucColorPicker } from '../organism'
+
 import { colorGroups } from '../boson/constants/list'
 import { resetColorsToDefault } from '../boson/utils/reset_colors_to_default'
-import { NucColorPicker } from '../organism'
 
 interface NucColorSettingsCardProps {
   heading?: string

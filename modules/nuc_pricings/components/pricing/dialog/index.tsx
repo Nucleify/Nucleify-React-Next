@@ -5,11 +5,12 @@ import React, { useEffect, useMemo, useState } from 'react'
 
 import { AdButton, AdDialog, NucSubmitButton } from 'nucleify'
 
-import { Icon } from '@iconify/react'
-import { useTranslation } from 'react-i18next'
 import { NucPricingEmailUs } from '../NucPricingEmailUs'
 import type { BillingPeriodType, PricingPlanInterface } from '../types'
 import { formatPrice, getPrice } from '../utils'
+
+import { Icon } from '@iconify/react'
+import { useTranslation } from 'react-i18next'
 
 interface PricingDialogProps {
   isOpen: boolean
