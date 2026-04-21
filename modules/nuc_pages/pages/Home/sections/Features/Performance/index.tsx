@@ -1,11 +1,12 @@
 'use client'
 
-import type { JSX } from 'react'
+import { type JSX, useEffect, useState } from 'react'
 
-import { enLocale, useDarkMode } from 'nucleify'
+import { enLocale } from 'nucleify'
 
-import type { FeatureItemInterface } from '../Template'
 import { NucFeatureTemplate } from '../Template'
+
+import type { FeatureItemInterface } from '../Template/interfaces'
 import './_index.scss'
 
 function t(key: string): string {
@@ -25,8 +26,32 @@ function getScoreColor(score: number): string {
   return '#ef4444'
 }
 
+function getIsDarkMode(): boolean {
+  if (typeof document === 'undefined') return true
+
+  const html = document.documentElement
+  if (html.classList.contains('p-dark')) return true
+  if (html.classList.contains('p-light')) return false
+
+  return window.matchMedia?.('(prefers-color-scheme: dark)').matches ?? true
+}
+
 export function NucPerformance(): JSX.Element {
-  const { isDark } = useDarkMode()
+  const [isDark, setIsDark] = useState<boolean>(getIsDarkMode)
+
+  useEffect(() => {
+    const html = document.documentElement
+    setIsDark(getIsDarkMode())
+
+    const observer = new MutationObserver(() => {
+      setIsDark(getIsDarkMode())
+    })
+
+    observer.observe(html, { attributes: true, attributeFilter: ['class'] })
+
+    return () => observer.disconnect()
+  }, [])
+
   const trackColor = isDark ? '#0d4723' : '#c6e0d4'
 
   const features: FeatureItemInterface[] = [
