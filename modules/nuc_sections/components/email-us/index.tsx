@@ -14,7 +14,7 @@ import {
   AdCheckbox,
   AdInputText,
   AdLabel,
-  AdTextarea,
+  AdSelect,
   type ContactFormDataInterface,
   type ContactFormErrorsInterface,
   type FormFieldInterface,
@@ -30,19 +30,19 @@ type NucSectionEmailUsProps = {
 }
 
 const textMap: Record<string, string> = {
-  'form-name-label': 'Name',
-  'form-name-placeholder': 'Your name',
   'form-email-label': 'Email',
-  'form-email-placeholder': 'Your email',
-  'form-phone-label': 'Phone',
-  'form-phone-placeholder': 'Your phone number',
-  'form-message-label': 'Message',
-  'form-message-placeholder': 'Tell us what you need',
+  'form-email-placeholder': 'Enter your email address',
+  'form-website-type-label': 'What type of website are you interested in?',
+  'form-website-type-placeholder': 'Select website type',
+  'form-website-type-landing': 'Landing page',
+  'form-website-type-business': 'Business website',
+  'form-website-type-blog': 'Blog',
+  'form-website-type-help': 'Help center',
   'form-consent': 'I consent to data processing.',
-  'form-submit': 'Send message',
+  'form-submit': 'Free consultation',
   'form-sending': 'Sending...',
-  'form-response-text': 'Average response time:',
-  'form-response-badge': 'UNDER 24H',
+  'form-response-text': 'We respond personally',
+  'form-response-badge': 'WITHIN 8 HOURS',
 }
 
 function t(key: string): string {
@@ -50,10 +50,8 @@ function t(key: string): string {
 }
 
 const initialForm: ContactFormDataInterface = {
-  name: '',
   email: '',
-  phone: '',
-  message: '',
+  website_type: '',
   consent: false,
 }
 
@@ -72,11 +70,18 @@ export function NucSectionEmailUs({
     setErrors((prev) => ({ ...prev, [field]: undefined }))
   }
 
-  const handleTextChange =
+  const handleFieldChange =
     (field: keyof Omit<ContactFormDataInterface, 'consent'>) =>
     (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>): void => {
       const value = event.target.value
       setForm((prev) => ({ ...prev, [field]: value }))
+      clearFieldError(field)
+    }
+
+  const handleSelectChange =
+    (field: keyof Omit<ContactFormDataInterface, 'consent'>) =>
+    (event: { value: string }): void => {
+      setForm((prev) => ({ ...prev, [field]: event.value || '' }))
       clearFieldError(field)
     }
 
@@ -114,14 +119,17 @@ export function NucSectionEmailUs({
       invalid: !!errors[field.id],
     }
 
-    if (field.component === 'textarea') {
+    if (field.component === 'select') {
       return (
-        <AdTextarea
+        <AdSelect
           {...commonProps}
-          className="p-textarea"
-          rows={field.rows}
+          className="p-dropdown"
+          options={field.options || []}
+          optionLabel="label"
+          optionValue="value"
+          showClear={false}
           value={form[field.id]}
-          onChange={handleTextChange(field.id)}
+          onChange={handleSelectChange(field.id)}
         />
       )
     }
@@ -133,7 +141,7 @@ export function NucSectionEmailUs({
         type={field.type}
         autoComplete={field.autocomplete}
         value={form[field.id]}
-        onChange={handleTextChange(field.id)}
+        onChange={handleFieldChange(field.id)}
       />
     )
   }

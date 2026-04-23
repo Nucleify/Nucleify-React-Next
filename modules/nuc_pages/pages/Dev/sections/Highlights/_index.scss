@@ -7,7 +7,7 @@
   .dev-hl-bg {
     position: absolute;
     inset: 0;
-    background: linear-gradient(175deg, #030c07 0%, #061710 40%, #091e15 70%, #040f0a 100%);
+    background: linear-gradient(175deg, #000208 0%, #020713 40%, #040d22 70%, #030915 100%);
     z-index: 0;
   }
 
@@ -32,7 +32,7 @@
       height: 600px;
       top: -20%;
       right: 10%;
-      background: rgba($primary-color, 0.06);
+      background: rgba($primary-color, 0.03);
       animation: dev-hl-drift 18s ease-in-out infinite;
     }
 
@@ -41,7 +41,7 @@
       height: 400px;
       bottom: -15%;
       left: 5%;
-      background: rgba(#34d399, 0.04);
+      background: rgba(#60a5fa, 0.015);
       animation: dev-hl-drift 22s ease-in-out infinite reverse;
     }
   }
@@ -72,7 +72,7 @@
     position: relative;
     border-radius: 20px;
     border: 1px solid rgba($primary-color, 0.12);
-    background: rgba(#040d08, 0.75);
+    background: rgba(#01040d, 0.92);
     backdrop-filter: blur(16px);
     overflow: hidden;
     padding: 2rem;
@@ -117,7 +117,7 @@
 
     &:hover {
       border-color: rgba($primary-color, 0.22);
-      box-shadow: 0 8px 40px rgba(#000, 0.3), 0 0 60px rgba($primary-color, 0.06);
+      box-shadow: 0 8px 40px rgba(#000, 0.55), 0 0 60px rgba($primary-color, 0.025);
 
       &::before {
         opacity: 1;
@@ -153,7 +153,7 @@
     h3 {
       font-size: 1.2rem;
       font-weight: 600;
-      color: rgba(#d1e8de, 0.8);
+      color: rgba(#dbeafe, 0.85);
       line-height: 1.6;
       margin: 0;
 
@@ -164,7 +164,7 @@
 
     p {
       font-size: 0.9rem;
-      color: rgba(#d1e8de, 0.6);
+      color: rgba(#bfdbfe, 0.7);
       line-height: 1.7;
       margin: 0;
     }
@@ -199,7 +199,7 @@
       align-items: flex-start;
       gap: 0.5rem;
       font-size: 0.85rem;
-      color: rgba(#d1e8de, 0.6);
+      color: rgba(#bfdbfe, 0.7);
       line-height: 1.5;
       transition: color 0.25s ease, transform 0.25s ease;
 
@@ -212,7 +212,7 @@
     }
 
     .dev-hl-card:hover & li {
-      color: rgba(#d1e8de, 0.9);
+      color: rgba(#eff6ff, 0.95);
       transform: translateX(2px);
     }
   }
@@ -238,7 +238,7 @@
     transition: transform 0.4s ease, box-shadow 0.4s ease;
 
     &-1 {
-      background: rgba(#064e3b, 0.35);
+      background: rgba(#1e3a8a, 0.35);
       border: 1px solid rgba($primary-color, 0.08);
     }
 
@@ -291,7 +291,7 @@
     border-radius: 10px;
     overflow: hidden;
     border: 1px solid rgba($primary-color, 0.1);
-    background: rgba(#040f0a, 0.6);
+    background: rgba(#0b1220, 0.6);
     height: 150px;
     transition: border-color 0.4s ease;
 
@@ -381,7 +381,7 @@
     gap: 0.5rem;
     padding: 1.25rem;
     border-radius: 10px;
-    background: rgba(#040f0a, 0.6);
+    background: rgba(#0b1220, 0.6);
     border: 1px solid rgba($primary-color, 0.1);
     transition: border-color 0.4s ease;
 
@@ -468,7 +468,7 @@
   .dev-hl-device {
     border-radius: 8px;
     border: 1px solid rgba($primary-color, 0.12);
-    background: rgba(#040f0a, 0.7);
+    background: rgba(#0b1220, 0.7);
     overflow: hidden;
     transition: border-color 0.4s ease, transform 0.4s ease;
 

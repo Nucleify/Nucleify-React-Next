@@ -9,6 +9,7 @@ import { NucDevDX } from './sections/DX'
 import { NucDevHighlights } from './sections/Highlights'
 import { NucDevModules } from './sections/Modules'
 import { NucDevStack } from './sections/Stack'
+import './_index.scss'
 
 function t(key: string): string {
   const value = (enLocale as Record<string, string>)[key]

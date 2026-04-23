@@ -1,14 +1,24 @@
 @import './dialog/index';
 
 #email-us {
+  background: $p-card-background;
   position: relative;
   padding: 0;
   width: 100%;
 
   .p-inputtext,
-  .p-textarea,
   .p-dropdown {
-    background: rgba(#000, 0.3) !important;
+    background: $p-card-background;
+
+    &:not(.p-invalid) {
+      transition: all 0.2s ease;
+    }
+  }
+
+  .p-checkbox:not(.p-invalid) {
+    .p-checkbox-box {
+      border: 1px solid rgba($primary-color, 0.38) !important;
+    }
   }
 
   .email-us-form {
@@ -25,12 +35,10 @@
     label {
       font-size: $font-size-sm;
       font-weight: 600;
-      color: $primary-white-text-color;
       margin-bottom: 0.5rem;
 
       .optional {
         font-weight: 400;
-        color: $primary-text-color;
       }
     }
 
@@ -49,12 +57,32 @@
     .p-checkbox {
       width: 22px;
       height: 22px;
+
+      .p-checkbox-box {
+        width: 22px;
+        height: 22px;
+        border-radius: 4px;
+        background: $p-card-background;
+        transition: all 0.2s ease;
+
+        .p-checkbox-icon {
+          color: $primary-white-text-color;
+        }
+
+        &:hover:not(.p-highlight) {
+          border-color: rgba($primary-color, 0.6) !important;
+        }
+
+        &.p-highlight {
+          background: $primary-color !important;
+          border-color: $primary-color !important;
+        }
+      }
     }
 
     label {
       margin-bottom: 0;
-      font-weight: 400;
-      color: $white-text-color;
+      font-weight: 500;
       cursor: pointer;
     }
 
@@ -69,22 +97,8 @@
     padding: 1rem 1.5rem !important;
     font-size: $font-size-sm;
     font-weight: 700 !important;
-    letter-spacing: 0.025em;
     border-radius: $small-border-radius !important;
     margin-top: 0.5rem;
-    color: #000 !important;
-    box-shadow: 0 4px 24px rgba($primary-color, 0.4);
-    transition: all 0.3s ease;
-
-    &:disabled {
-      opacity: 0.65;
-      box-shadow: none;
-    }
-
-    &:hover:not(:disabled) {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 32px rgba($primary-color, 0.5);
-    }
 
     .hexagon-rows-container {
       .hexagon-row-container {
@@ -108,7 +122,6 @@
 
     .response-text {
       font-size: $font-size-sm;
-      color: $primary-white-text-color;
     }
 
     .response-badge {
@@ -117,21 +130,21 @@
       letter-spacing: 0.05em;
       line-height: 1;
       color: $primary-color;
-      background: rgba($primary-color, 0.075);
+      background: rgba($primary-color, 0.12);
       padding: 0.45em 0.75em 0.35em;
-      border-radius: 0.5rem;
+      border-radius: .5rem;
       position: relative;
 
       &::before {
         content: '';
         position: absolute;
         inset: 0;
-        border-radius: 0.5rem;
+        border-radius: .5rem;
         padding: 1px;
         background: linear-gradient(
           to top,
-          rgba($primary-color, 0.5) 0%,
-          transparent 100%
+          rgba($primary-color, 0.65) 0%,
+          rgba($primary-color, 0.25) 100%
         );
         mask:
           linear-gradient(#fff 0 0) content-box,

@@ -33,7 +33,7 @@ export function NucFeatureTemplate({
           <span className="feature-badge">{badge}</span>
           <h2 className="feature-heading">
             {headingPrefix}
-            <span className="highlight">{headingHighlight}</span>
+            <span className="highlight"> {headingHighlight}</span>
           </h2>
           <p className="feature-description">{description}</p>
           <div className="feature-list">

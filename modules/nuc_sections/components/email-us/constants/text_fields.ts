@@ -5,13 +5,6 @@ export function getEmailUsTextFields(
 ): FormFieldInterface[] {
   return [
     {
-      id: 'name',
-      label: t('form-name-label'),
-      component: 'input-text',
-      placeholder: t('form-name-placeholder'),
-      autocomplete: 'name',
-    },
-    {
       id: 'email',
       label: t('form-email-label'),
       component: 'input-text',
@@ -20,19 +13,16 @@ export function getEmailUsTextFields(
       autocomplete: 'email',
     },
     {
-      id: 'phone',
-      label: t('form-phone-label'),
-      component: 'input-text',
-      type: 'tel',
-      placeholder: t('form-phone-placeholder'),
-      autocomplete: 'tel',
-    },
-    {
-      id: 'message',
-      label: t('form-message-label'),
-      component: 'textarea',
-      placeholder: t('form-message-placeholder'),
-      rows: 4,
+      id: 'website_type',
+      label: t('form-website-type-label'),
+      component: 'select',
+      placeholder: t('form-website-type-placeholder'),
+      options: [
+        { label: t('form-website-type-landing'), value: 'landing' },
+        { label: t('form-website-type-business'), value: 'business' },
+        { label: t('form-website-type-blog'), value: 'blog' },
+        { label: t('form-website-type-help'), value: 'help' },
+      ],
     },
   ]
 }
