@@ -35,11 +35,15 @@ export function getColumns(lang: string, t: FooterTranslate): FooterItem[][] {
       { name: t('footer-faq'), url: '#faq' },
     ],
     [
-      { name: t('footer-legal'), header: true, url: `${b}/privacy-policy` },
-      { name: t('footer-privacy-policy'), url: `${b}/privacy-policy` },
-      { name: t('footer-terms'), url: `${b}/terms-of-service` },
-      { name: t('footer-cookies'), url: `${b}/cookies` },
-      { name: t('footer-gdpr'), url: `${b}/gdpr` },
+      {
+        name: t('footer-legal'),
+        header: true,
+        url: `${b}/legal/privacy-policy`,
+      },
+      { name: t('footer-privacy-policy'), url: `${b}/legal/privacy-policy` },
+      { name: t('footer-terms'), url: `${b}/legal/terms-of-service` },
+      { name: t('footer-cookies'), url: `${b}/legal/cookies` },
+      { name: t('footer-gdpr'), url: `${b}/legal/gdpr` },
     ],
   ]
 }

@@ -48,3 +48,5 @@ export function t(key: string): string {
 export const plLocale = locales.pl
 export const vnLocale = locales.vn
 
+export { NUC_LOCALES, type NucLocaleOption } from './constants'
+
