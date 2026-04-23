@@ -2,16 +2,11 @@
 
 import type { JSX } from 'react'
 
-import { AdIcon, enLocale } from 'nucleify'
+import { AdIcon, t } from 'nucleify'
 
 import type { FeatureItemInterface } from '../Template'
 import { NucFeatureTemplate } from '../Template'
 import './_index.scss'
-
-function t(key: string): string {
-  const value = (enLocale as Record<string, string>)[key]
-  return typeof value === 'string' ? value : key
-}
 
 export function NucSupport(): JSX.Element {
   const features: FeatureItemInterface[] = [

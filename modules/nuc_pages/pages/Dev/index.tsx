@@ -2,18 +2,14 @@
 
 import type { JSX } from 'react'
 
-import { enLocale, NucSectionContact } from 'nucleify'
+import { NucSectionContact, t } from 'nucleify'
 
 import { NucDevStart } from './sections'
-import NucDevDX from './sections/DX'
-import NucDevHighlights from './sections/Highlights'
-import NucDevModules from './sections/Modules'
-import NucDevStack from './sections/Stack'
-
-function t(key: string): string {
-  const value = (enLocale as Record<string, string>)[key]
-  return typeof value === 'string' ? value : key
-}
+import { NucDevDX } from './sections/DX'
+import { NucDevHighlights } from './sections/Highlights'
+import { NucDevModules } from './sections/Modules'
+import { NucDevStack } from './sections/Stack'
+import './_index.scss'
 
 export function NucDevPage(): JSX.Element {
   return (

@@ -2,7 +2,8 @@
 
 import { type JSX, type ReactNode, useMemo, useState } from 'react'
 
-import { AdButton } from '../../../../../atomic/atom/button'
+import { NucSubmitButton, t } from 'nucleify'
+
 import { AdDialog } from '../../../../../atomic/organism/dialog'
 import { NucSectionEmailUs } from '..'
 import type { NucEmailUsDialogPropsInterface } from './types'
@@ -13,20 +14,6 @@ const emailDialogClosePt = {
   closeButton: {
     root: { 'ad-type': 'main' as const },
   },
-}
-
-const textMap: Record<string, string> = {
-  'form-get-in-touch': 'Get in touch',
-}
-
-function t(key: string): string {
-  return textMap[key] || key
-}
-
-function resolveButtonIcon(icon: string): string {
-  if (!icon) return 'prime:comment'
-  if (icon.startsWith('mdi:')) return 'prime:comment'
-  return icon
 }
 
 export interface NucEmailUsDialogFrameProps {
@@ -68,24 +55,18 @@ export function NucSectionEmailUsDialog({
   buttonLabel = '',
   buttonClass = '',
   buttonIcon = 'mdi:message-text-outline',
-  buttonStrong = '',
 }: NucEmailUsDialogPropsInterface): JSX.Element {
   const [showDialog, setShowDialog] = useState(false)
-  const resolvedLabel = useMemo(
-    () => buttonLabel || t('form-get-in-touch'),
-    [buttonLabel]
-  )
 
   return (
     <>
-      <AdButton
+      <NucSubmitButton
         className={buttonClass}
-        icon={resolveButtonIcon(buttonIcon)}
-        label={resolvedLabel}
+        icon={buttonIcon}
+        label={buttonLabel || t('form-get-in-touch')}
+        variant="primary"
         onClick={() => setShowDialog(true)}
-      >
-        {buttonStrong && <strong>{buttonStrong}</strong>}
-      </AdButton>
+      />
 
       <NucEmailUsDialogFrame
         visible={showDialog}

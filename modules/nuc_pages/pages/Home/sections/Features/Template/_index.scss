@@ -29,6 +29,10 @@
     width: 100%;
     display: flex;
     justify-content: center;
+
+    .p-card-content {
+      padding: 0;
+    }
   }
 
   .feature-badge {

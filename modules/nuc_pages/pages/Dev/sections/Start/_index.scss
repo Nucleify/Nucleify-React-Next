@@ -136,7 +136,7 @@
     display: inline-flex;
     align-items: center;
     gap: 0.35rem;
-    color: #6ee7b7;
+    color: #93c5fd;
     font-weight: 600;
     text-decoration: none;
     transition: color 0.3s ease;
@@ -146,7 +146,7 @@
     }
 
     &:hover {
-      color: #a7f3d0;
+      color: #bfdbfe;
 
       .iconify {
         transform: translateX(4px);
@@ -177,7 +177,7 @@
   }
 
   .dev-terminal-header {
-    background: rgba(#0c2e20, 0.9);
+    background: rgba(#0f172a, 0.9);
     padding: 0.75rem 1rem;
     display: flex;
     align-items: center;
@@ -208,7 +208,7 @@
   }
 
   .dev-terminal-body {
-    background: rgba(#081f16, 0.95);
+    background: rgba(#020617, 0.95);
     padding: 1.25rem;
     font-family: 'JetBrains Mono', 'Fira Code', monospace;
     font-size: 0.85rem;
@@ -236,11 +236,11 @@
   }
 
   .dev-terminal-cmd {
-    color: #d1e8de;
+    color: #dbeafe;
   }
 
   .dev-terminal-output {
-    color: rgba(#d1e8de, 0.5);
+    color: rgba(#dbeafe, 0.55);
     padding-left: 1rem;
 
     &.dev-terminal-success {
@@ -279,28 +279,28 @@
 }
 
 html:not(.p-dark) #dev #dev-start {
-  background: linear-gradient(160deg, #0b2a1d 0%, #103828 35%, #0c2e20 65%, #081f16 100%);
+  background: linear-gradient(160deg, #0b1b3a 0%, #0f2a57 35%, #0f2648 65%, #09162b 100%);
 
   .dev-start-heading {
-    color: #f0f5f3;
+    color: #eff6ff;
   }
 
   .dev-start-description {
-    color: rgba(#d1e8de, 0.85);
+    color: rgba(#dbeafe, 0.85);
   }
 
   .dev-feature-icon {
-    background: rgba(#34d399, 0.1);
+    background: rgba(#60a5fa, 0.1);
 
     &::before {
-      background: linear-gradient(to top, rgba(#34d399, 0.4), transparent);
+      background: linear-gradient(to top, rgba(#60a5fa, 0.4), transparent);
     }
 
-    .iconify { color: #34d399; }
+    .iconify { color: #60a5fa; }
   }
 
   .dev-feature-content {
-    span { color: #6ee7b7; }
-    p { color: rgba(#d1e8de, 0.7); }
+    span { color: #93c5fd; }
+    p { color: rgba(#dbeafe, 0.72); }
   }
 }

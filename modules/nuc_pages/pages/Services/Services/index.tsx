@@ -4,16 +4,12 @@ import type { JSX } from 'react'
 
 import {
   AdIcon,
-  enLocale,
   NucSectionContact,
   NucSectionFaq,
   NucShinyBadge,
+  t,
 } from 'nucleify'
-
-function t(key: string): string {
-  const value = (enLocale as Record<string, string>)[key]
-  return typeof value === 'string' ? value : key
-}
+import '../_index.scss'
 
 export function NucServicesPage(): JSX.Element {
   const services = [

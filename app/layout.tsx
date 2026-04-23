@@ -26,7 +26,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="p-dark">
-      <body>
+      <body className="nuc-system">
         <Providers>
           <PrimeReactProvider value={{ ripple: true }}>
             {children}

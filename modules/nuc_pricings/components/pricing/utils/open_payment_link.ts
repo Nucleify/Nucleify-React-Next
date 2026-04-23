@@ -1,4 +1,5 @@
 import type { BillingPeriodType, PricingPlanInterface } from '../types'
+
 import { getPaymentLink } from './get_payment_link'
 
 export function openPaymentLink(

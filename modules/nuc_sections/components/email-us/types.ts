@@ -1,16 +1,12 @@
 export interface ContactFormDataInterface {
-  name: string
   email: string
-  phone: string
-  message: string
+  website_type: string
   consent: boolean
 }
 
 export interface ContactFormErrorsInterface {
-  name?: string
   email?: string
-  phone?: string
-  message?: string
+  website_type?: string
   consent?: string
 }
 
@@ -27,5 +23,5 @@ export interface FormFieldInterface {
   type?: string
   placeholder: string
   autocomplete?: string
-  rows?: number
+  options?: { label: string; value: string }[]
 }

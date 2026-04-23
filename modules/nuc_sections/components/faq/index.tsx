@@ -1,5 +1,6 @@
 'use client'
 
+import { usePathname } from 'next/navigation'
 import { type JSX, useEffect, useState } from 'react'
 
 import {
@@ -9,13 +10,16 @@ import {
   type NucSectionFaqInterface,
 } from 'nucleify'
 
-import styles from './index.module.scss'
 import { useSplitQuestions } from './utils/use_split_questions'
+
+import './_index.scss'
 
 export function NucSectionFaq({
   questions,
   site,
 }: NucSectionFaqInterface): JSX.Element {
+  const pathname = usePathname()
+  const locale = pathname.split('/').filter(Boolean).at(0) || 'en'
   const [resultsBySite, setResultsBySite] = useState<NucFaqQuestionInterface[]>(
     []
   )
@@ -26,8 +30,8 @@ export function NucSectionFaq({
     if (!site || questions) return
 
     void apiHandle<NucFaqQuestionInterface[]>({
-      url: '/api/questions/get-site-questions',
-      id: site,
+      url: process.env.NEXT_PUBLIC_API_URL + '/questions/get-site-questions',
+      id: `${site}/${locale}`,
       onSuccess: (data) => setResultsBySite(Array.isArray(data) ? data : []),
     }).catch(() => setResultsBySite([]))
   }, [questions, site])
@@ -46,26 +50,21 @@ export function NucSectionFaq({
   }, [questions, resultsBySite])
 
   const renderColumn = (panels: NucFaqQuestionInterface[]): JSX.Element => (
-    <AdAccordion
-      panels={panels}
-      className={styles['p-accordion']}
-      hexagons
-      multiple
-    />
+    <AdAccordion panels={panels} className="p-accordion" />
   )
 
   return (
-    <div className={`${styles['faq-section']} container`}>
-      <p className={styles['faq-section-header']}>
+    <section id="faq" className="faq-section container">
+      <p className="faq-section-header">
         <span>F</span>
         <span>A</span>
         <span>Q</span>
       </p>
 
-      <div className={styles['faq-section-questions']}>
+      <div className="faq-section-questions">
         {column1.length > 0 && renderColumn(column1)}
         {column2.length > 0 && renderColumn(column2)}
       </div>
-    </div>
+    </section>
   )
 }

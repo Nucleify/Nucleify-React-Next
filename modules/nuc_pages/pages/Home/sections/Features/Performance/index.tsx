@@ -1,17 +1,13 @@
 'use client'
 
-import type { JSX } from 'react'
+import { type JSX, useEffect, useState } from 'react'
 
-import { enLocale, useDarkMode } from 'nucleify'
+import { t } from 'nucleify'
 
-import type { FeatureItemInterface } from '../Template'
 import { NucFeatureTemplate } from '../Template'
-import './_index.scss'
 
-function t(key: string): string {
-  const value = (enLocale as Record<string, string>)[key]
-  return typeof value === 'string' ? value : key
-}
+import type { FeatureItemInterface } from '../Template/interfaces'
+import './_index.scss'
 
 interface Metric {
   id: string
@@ -20,14 +16,38 @@ interface Metric {
 }
 
 function getScoreColor(score: number): string {
-  if (score >= 90) return '#10b981'
+  if (score >= 90) return '#3b82f6'
   if (score >= 50) return '#eab308'
   return '#ef4444'
 }
 
+function getIsDarkMode(): boolean {
+  if (typeof document === 'undefined') return true
+
+  const html = document.documentElement
+  if (html.classList.contains('p-dark')) return true
+  if (html.classList.contains('p-light')) return false
+
+  return window.matchMedia?.('(prefers-color-scheme: dark)').matches ?? true
+}
+
 export function NucPerformance(): JSX.Element {
-  const { isDark } = useDarkMode()
-  const trackColor = isDark ? '#0d4723' : '#c6e0d4'
+  const [isDark, setIsDark] = useState<boolean>(getIsDarkMode)
+
+  useEffect(() => {
+    const html = document.documentElement
+    setIsDark(getIsDarkMode())
+
+    const observer = new MutationObserver(() => {
+      setIsDark(getIsDarkMode())
+    })
+
+    observer.observe(html, { attributes: true, attributeFilter: ['class'] })
+
+    return () => observer.disconnect()
+  }, [])
+
+  const trackColor = isDark ? 'rgba(59, 130, 246, 0.35)' : '#bfdbfe'
 
   const features: FeatureItemInterface[] = [
     { icon: 'mdi:server-network', label: t('features-performance-feat-cdn') },
@@ -82,7 +102,7 @@ export function NucPerformance(): JSX.Element {
                 <path
                   d="M 10 55 A 40 40 0 0 1 90 55"
                   fill="none"
-                  stroke="#10b981"
+                  stroke="#3b82f6"
                   strokeWidth="4"
                   strokeLinecap="round"
                   strokeDasharray={125.6}

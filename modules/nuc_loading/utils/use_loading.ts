@@ -1,3 +1,5 @@
+'use client'
+
 import { useState } from 'react'
 
 import type { LoadingRefType, UseLoadingInterface } from 'nucleify'

@@ -1,6 +1,4 @@
-@use 'sass:color';
-
-#process-page #steps {
+#process #steps {
   padding: 5rem 0;
 
   @media (min-width: $md) {
