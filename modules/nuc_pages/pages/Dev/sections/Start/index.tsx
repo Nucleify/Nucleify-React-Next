@@ -7,17 +7,12 @@ import { useMemo, useState } from 'react'
 import {
   AdIcon,
   demoLogin,
-  enLocale,
   NucGridBackground,
   NucSubmitButton,
   navigateToUrl,
+  t,
 } from 'nucleify'
 import './_index.scss'
-
-function t(key: string): string {
-  const value = (enLocale as Record<string, string>)[key]
-  return typeof value === 'string' ? value : key
-}
 
 export function NucDevStart(): JSX.Element {
   const pathname = usePathname()

@@ -2,18 +2,14 @@
 import Link from 'next/link'
 import type { JSX } from 'react'
 
+import { getActiveLocale, t } from 'nucleify'
+
 import { AdLogo } from '../../../../atomic/atom/logo'
 import { AdLogoSymbol } from '../../../../atomic/atom/logo/symbol'
 import { AdAnchor } from '../../../../atomic/molecule/anchor'
-import { enLocale } from '../../../nuc_languages'
 import './index.scss'
 
 import { getColumns } from './items'
-
-function t(key: string): string {
-  const value = (enLocale as Record<string, string>)[key]
-  return typeof value === 'string' ? value : key
-}
 
 function tWithParams(
   key: string,
@@ -31,7 +27,7 @@ function decodeLocaleEmail(value: string): string {
 }
 
 export function NucSectionFooter(): JSX.Element {
-  const lang = 'en'
+  const lang = getActiveLocale()
   const year = new Date().getFullYear()
   const columns = getColumns(lang, t)
   const logoSize = 72

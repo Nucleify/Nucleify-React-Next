@@ -1,23 +1,36 @@
 'use client'
 
 import { usePathname } from 'next/navigation'
-import { useEffect, useState } from 'react'
+import { use, useEffect, useState } from 'react'
 
-import { NucSectionFooter, NucSectionNavbar, useOfficeType } from 'nucleify'
+import {
+  NucSectionFooter,
+  NucSectionNavbar,
+  setActiveLocale,
+  useOfficeType,
+} from 'nucleify'
 
 export default function FrontOfficeLayout({
   children,
+  params,
 }: {
   children: React.ReactNode
+  params: Promise<{ lang: string }>
 }) {
   const [isHydrated, setIsHydrated] = useState(false)
   const pathname = usePathname()
   const { officeType } = useOfficeType()
+  const resolvedParams = use(params)
+  const routeLang = resolvedParams?.lang || 'en'
+  const pathnameLang = pathname.split('/').filter(Boolean).at(0) || routeLang
   const pageId = pathname.split('/').filter(Boolean).at(1) || 'page'
 
+  setActiveLocale(pathnameLang)
+
   useEffect(() => {
+    setActiveLocale(pathnameLang)
     setIsHydrated(true)
-  }, [])
+  }, [pathnameLang])
 
   if (!isHydrated) {
     return (

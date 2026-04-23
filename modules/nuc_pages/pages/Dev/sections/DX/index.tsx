@@ -3,13 +3,8 @@
 import type { JSX } from 'react'
 import { useMemo, useState } from 'react'
 
-import { AdIcon, enLocale } from 'nucleify'
+import { AdIcon, t } from 'nucleify'
 import './_index.scss'
-
-function t(key: string): string {
-  const value = (enLocale as Record<string, string>)[key]
-  return typeof value === 'string' ? value : key
-}
 
 export function NucDevDX(): JSX.Element {
   const [activeIndex, setActiveIndex] = useState(0)

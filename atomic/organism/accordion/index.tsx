@@ -21,7 +21,8 @@ export function AdAccordion({
     },
     item: {
       root: { className: styles['ad-accordionpanel'] },
-      headerAction: { className: styles['ad-accordionheader'] },
+      header: { className: styles['ad-accordionheader'] },
+      headerAction: { className: styles['ad-accordionheader-action'] },
       headerIcon: { className: styles['ad-accordionheader-toggle-icon'] },
       content: { className: styles['ad-accordion-content'] },
     },

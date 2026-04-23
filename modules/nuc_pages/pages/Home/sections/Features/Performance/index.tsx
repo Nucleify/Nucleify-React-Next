@@ -2,17 +2,12 @@
 
 import { type JSX, useEffect, useState } from 'react'
 
-import { enLocale } from 'nucleify'
+import { t } from 'nucleify'
 
 import { NucFeatureTemplate } from '../Template'
 
 import type { FeatureItemInterface } from '../Template/interfaces'
 import './_index.scss'
-
-function t(key: string): string {
-  const value = (enLocale as Record<string, string>)[key]
-  return typeof value === 'string' ? value : key
-}
 
 interface Metric {
   id: string

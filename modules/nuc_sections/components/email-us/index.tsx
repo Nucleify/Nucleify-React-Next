@@ -9,7 +9,6 @@ import {
 } from 'react'
 
 import {
-  AdButton,
   AdCard,
   AdCheckbox,
   AdInputText,
@@ -19,7 +18,9 @@ import {
   type ContactFormErrorsInterface,
   type FormFieldInterface,
   getEmailUsTextFields,
+  NucSubmitButton,
   submitContactForm,
+  t,
 } from 'nucleify'
 
 import './index.scss'
@@ -27,26 +28,6 @@ import './index.scss'
 type NucSectionEmailUsProps = {
   onSuccess?: () => void
   cardClassName?: string
-}
-
-const textMap: Record<string, string> = {
-  'form-email-label': 'Email',
-  'form-email-placeholder': 'Enter your email address',
-  'form-website-type-label': 'What type of website are you interested in?',
-  'form-website-type-placeholder': 'Select website type',
-  'form-website-type-landing': 'Landing page',
-  'form-website-type-business': 'Business website',
-  'form-website-type-blog': 'Blog',
-  'form-website-type-help': 'Help center',
-  'form-consent': 'I consent to data processing.',
-  'form-submit': 'Free consultation',
-  'form-sending': 'Sending...',
-  'form-response-text': 'We respond personally',
-  'form-response-badge': 'WITHIN 8 HOURS',
-}
-
-function t(key: string): string {
-  return textMap[key] || key
 }
 
 const initialForm: ContactFormDataInterface = {
@@ -176,11 +157,12 @@ export function NucSectionEmailUs({
           )}
         </div>
 
-        <AdButton
+        <NucSubmitButton
           className="submit-button"
           disabled={isSubmitting}
           label={isSubmitting ? t('form-sending') : t('form-submit')}
           type="submit"
+          variant="primary"
         />
       </form>
 

@@ -3,11 +3,7 @@
 import type { ChangeEvent, FormEvent, JSX } from 'react'
 
 import type { LoginFieldKey } from 'nucleify'
-import { useAuthForm } from 'nucleify'
-
-function t(key: string): string {
-  return key
-}
+import { t, useAuthForm } from 'nucleify'
 
 export function NucLoginPage(): JSX.Element {
   const { submitAndGo, loginFields, setLoginFields, loginInputs } =

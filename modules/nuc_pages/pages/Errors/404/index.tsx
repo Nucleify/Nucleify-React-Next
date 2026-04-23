@@ -3,12 +3,9 @@
 import { usePathname, useRouter } from 'next/navigation'
 import type { JSX } from 'react'
 
-import { enLocale, NucGridBackground as NucGridBackgroundBase } from 'nucleify'
+import { NucGridBackground as NucGridBackgroundBase, t } from 'nucleify'
 
-function t(key: string): string {
-  const value = (enLocale as Record<string, string>)[key]
-  return typeof value === 'string' ? value : key
-}
+import './_index.scss'
 
 const NucGridBackground = NucGridBackgroundBase as unknown as () => JSX.Element
 

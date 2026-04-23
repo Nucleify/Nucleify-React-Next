@@ -1,6 +1,7 @@
 import React from 'react'
 
 import { AdButton } from 'nucleify'
+import './_index.scss'
 
 interface NucSubmitButtonProps {
   label: string

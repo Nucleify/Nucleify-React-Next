@@ -4,48 +4,43 @@ import type { JSX } from 'react'
 
 import {
   AdIcon,
-  enLocale,
   NucSectionEmailUsDialog,
   NucShinyBadge,
   NucTrustBadges,
+  t,
 } from 'nucleify'
 import './_index.scss'
 
-function t(key: string): string {
-  const value = (enLocale as Record<string, string>)[key]
-  return typeof value === 'string' ? value : key
-}
-
-const trustItems = [
-  { icon: 'mdi:shield-check', label: t('results-trust-guarantee') },
-  { icon: 'mdi:credit-card-off-outline', label: t('results-trust-payment') },
-  { icon: 'mdi:infinity', label: t('results-trust-revisions') },
-]
-
-const benefits = [
-  {
-    title: t('results-benefit-standout-title'),
-    desc: t('results-benefit-standout-desc'),
-    icon: 'mdi:trophy-outline',
-  },
-  {
-    title: t('results-benefit-reach-title'),
-    desc: t('results-benefit-reach-desc'),
-    icon: 'mdi:account-group-outline',
-  },
-  {
-    title: t('results-benefit-trust-title'),
-    desc: t('results-benefit-trust-desc'),
-    icon: 'mdi:shield-check-outline',
-  },
-  {
-    title: t('results-benefit-control-title'),
-    desc: t('results-benefit-control-desc'),
-    icon: 'mdi:cursor-default-click-outline',
-  },
-]
-
 export function NucResults(): JSX.Element {
+  const trustItems = [
+    { icon: 'mdi:shield-check', label: t('results-trust-guarantee') },
+    { icon: 'mdi:credit-card-off-outline', label: t('results-trust-payment') },
+    { icon: 'mdi:infinity', label: t('results-trust-revisions') },
+  ]
+
+  const benefits = [
+    {
+      title: t('results-benefit-standout-title'),
+      desc: t('results-benefit-standout-desc'),
+      icon: 'mdi:trophy-outline',
+    },
+    {
+      title: t('results-benefit-reach-title'),
+      desc: t('results-benefit-reach-desc'),
+      icon: 'mdi:account-group-outline',
+    },
+    {
+      title: t('results-benefit-trust-title'),
+      desc: t('results-benefit-trust-desc'),
+      icon: 'mdi:shield-check-outline',
+    },
+    {
+      title: t('results-benefit-control-title'),
+      desc: t('results-benefit-control-desc'),
+      icon: 'mdi:cursor-default-click-outline',
+    },
+  ]
+
   return (
     <section id="results">
       <div className="results-glow"></div>
