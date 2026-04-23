@@ -22,10 +22,8 @@ export async function submitContactForm(
       url: '/contact-form',
       method: 'POST',
       data: {
-        name: form.name,
         email: form.email,
-        phone: form.phone,
-        message: form.message,
+        website_type: form.website_type,
       },
       onSuccess: (response) => {
         isSuccess = true

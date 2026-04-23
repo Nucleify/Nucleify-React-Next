@@ -4,17 +4,13 @@ import type { JSX } from 'react'
 
 import {
   AdIcon,
-  enLocale,
   NucSectionContact,
   NucSectionFaq,
   NucShinyBadge,
   NucTrustBadges,
+  t,
 } from 'nucleify'
-
-function t(key: string): string {
-  const value = (enLocale as Record<string, string>)[key]
-  return typeof value === 'string' ? value : key
-}
+import '../_index.scss'
 
 export function NucEcommerceStoresPage(): JSX.Element {
   const trustItems = [
@@ -39,6 +35,77 @@ export function NucEcommerceStoresPage(): JSX.Element {
       title: t('service-ec-feat-inventory-title'),
       desc: t('service-ec-feat-inventory-desc'),
     },
+    {
+      icon: 'mdi:cellphone-check',
+      title: t('service-ec-feat-responsive-title'),
+      desc: t('service-ec-feat-responsive-desc'),
+    },
+    {
+      icon: 'mdi:chart-line',
+      title: t('service-ec-feat-analytics-title'),
+      desc: t('service-ec-feat-analytics-desc'),
+    },
+    {
+      icon: 'mdi:email-fast-outline',
+      title: t('service-ec-feat-notifications-title'),
+      desc: t('service-ec-feat-notifications-desc'),
+    },
+  ]
+
+  const benefits = [
+    {
+      icon: 'mdi:hours-24',
+      title: t('service-ec-benefit-247-title'),
+      desc: t('service-ec-benefit-247-desc'),
+    },
+    {
+      icon: 'mdi:earth',
+      title: t('service-ec-benefit-global-title'),
+      desc: t('service-ec-benefit-global-desc'),
+    },
+    {
+      icon: 'mdi:rocket-launch-outline',
+      title: t('service-ec-benefit-scale-title'),
+      desc: t('service-ec-benefit-scale-desc'),
+    },
+  ]
+
+  const dashboardStats = [
+    {
+      icon: 'mdi:cash-multiple',
+      value: '$48k',
+      label: t('service-ec-stat-revenue'),
+      change: '+18%',
+    },
+    {
+      icon: 'mdi:cart-outline',
+      value: '126',
+      label: t('service-ec-stat-orders'),
+      change: '+11%',
+    },
+    {
+      icon: 'mdi:account-group-outline',
+      value: '2.4k',
+      label: t('service-ec-stat-customers'),
+      change: '+9%',
+    },
+    {
+      icon: 'mdi:target',
+      value: '4.3%',
+      label: t('service-ec-stat-conversion'),
+      change: '+1.2%',
+    },
+  ]
+
+  const integrations = [
+    { icon: 'mdi:credit-card-outline', label: 'Stripe' },
+    { icon: 'mdi:paypal', label: 'PayPal' },
+    { icon: 'mdi:google-analytics', label: 'Analytics' },
+    { icon: 'mdi:truck-outline', label: 'Shippo' },
+    { icon: 'mdi:email-outline', label: 'Mailchimp' },
+    { icon: 'mdi:facebook', label: 'Meta Ads' },
+    { icon: 'mdi:chat-outline', label: 'Live Chat' },
+    { icon: 'mdi:api', label: 'API' },
   ]
 
   return (
@@ -77,6 +144,109 @@ export function NucEcommerceStoresPage(): JSX.Element {
                 </div>
                 <h3>{feature.title}</h3>
                 <p>{feature.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="service-dashboard">
+        <div className="container">
+          <h2 className="service-section-heading">
+            {t('service-ec-dashboard-heading')}
+            <span className="highlight">
+              {t('service-ec-dashboard-highlight')}
+            </span>
+          </h2>
+          <div className="service-dashboard-preview">
+            <div className="service-dashboard-header">
+              <div className="service-dashboard-dots">
+                <span />
+                <span />
+                <span />
+              </div>
+              <span className="service-dashboard-title">
+                {t('service-ec-dashboard-title')}
+              </span>
+            </div>
+            <div className="service-dashboard-body">
+              <div className="service-dashboard-stats">
+                {dashboardStats.map((stat) => (
+                  <div key={stat.label} className="service-dashboard-stat">
+                    <div className="service-dashboard-stat-icon">
+                      <AdIcon icon={stat.icon} />
+                    </div>
+                    <span className="service-dashboard-stat-value">
+                      {stat.value}
+                    </span>
+                    <span className="service-dashboard-stat-label">
+                      {stat.label}
+                    </span>
+                    <span className="service-dashboard-stat-change positive">
+                      <AdIcon icon="mdi:trending-up" />
+                      {stat.change}
+                    </span>
+                  </div>
+                ))}
+              </div>
+              <div className="service-dashboard-chart">
+                <div className="service-dashboard-chart-label">
+                  {t('service-ec-dashboard-revenue')}
+                </div>
+                <div className="service-dashboard-chart-bars">
+                  {[42, 58, 49, 71, 65, 80, 76, 88, 79, 92, 86, 95].map(
+                    (value) => (
+                      <div
+                        key={value}
+                        className="service-dashboard-bar"
+                        style={{ height: `${value}%` }}
+                      />
+                    )
+                  )}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="service-integrations">
+        <div className="container">
+          <h2 className="service-section-heading">
+            {t('service-ec-integrations-heading')}
+            <span className="highlight">
+              {t('service-ec-integrations-highlight')}
+            </span>
+          </h2>
+          <div className="service-integrations-grid">
+            {integrations.map((item) => (
+              <div key={item.label} className="service-integration-card">
+                <AdIcon icon={item.icon} />
+                <span>{item.label}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="service-benefits">
+        <div className="container">
+          <h2 className="service-section-heading">
+            {t('service-ec-benefits-heading')}
+            <span className="highlight">
+              {t('service-ec-benefits-highlight')}
+            </span>
+          </h2>
+          <div className="service-benefits-grid">
+            {benefits.map((benefit) => (
+              <div key={benefit.title} className="service-benefit-item">
+                <div className="service-benefit-icon">
+                  <AdIcon icon={benefit.icon} />
+                </div>
+                <div className="service-benefit-content">
+                  <span>{benefit.title}</span>
+                  <p>{benefit.desc}</p>
+                </div>
               </div>
             ))}
           </div>

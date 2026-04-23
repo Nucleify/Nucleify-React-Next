@@ -2,14 +2,9 @@
 
 import type { JSX } from 'react'
 
-import { AdIcon, enLocale, NucShinyBadge } from 'nucleify'
+import { AdIcon, NucShinyBadge, t } from 'nucleify'
 
 import './_index.scss'
-
-function t(key: string): string {
-  const value = (enLocale as Record<string, string>)[key]
-  return typeof value === 'string' ? value : key
-}
 
 export function NucAboutMission(): JSX.Element {
   const features = [

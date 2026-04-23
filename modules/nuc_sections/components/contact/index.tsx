@@ -2,20 +2,10 @@
 
 import type { JSX } from 'react'
 
-import { AdIcon, NucSectionEmailUsDialog } from 'nucleify'
-
-import { enLocale } from '../../../nuc_languages'
-import styles from './index.module.scss'
-
-function t(key: string): string {
-  const value = (enLocale as Record<string, string>)[key]
-  return typeof value === 'string' ? value : key
-}
+import { AdIcon, NucSectionEmailUsDialog, t } from 'nucleify'
+import './index.scss'
 
 export function NucSectionContact(): JSX.Element {
-  const contactDecorationLeftClassName = `${styles['contact-decoration']} ${styles['contact-decoration-left']}`
-  const contactDecorationRightClassName = `${styles['contact-decoration']} ${styles['contact-decoration-right']}`
-  const contactBannerClassName = `${styles['contact-banner']} container`
   const contactText = t('contact-text')
   const contactTextHighlight = t('contact-text-highlight')
   const contactFeatures = [
@@ -25,39 +15,39 @@ export function NucSectionContact(): JSX.Element {
   ]
 
   return (
-    <div id={styles['contact']}>
-      <div className={contactBannerClassName}>
-        <div className={contactDecorationLeftClassName}>
-          <AdIcon className={styles['iconify']} icon="prime:envelope" />
+    <div id="contact">
+      <div className="contact-banner container">
+        <div className="contact-decoration contact-decoration-left">
+          <AdIcon className="iconify" icon="prime:envelope" />
         </div>
 
-        <div className={styles['contact-left']}>
-          <span className={styles['contact-badge']}>{t('contact-badge')}</span>
-          <h3 className={styles['contact-heading']}>{t('contact-heading')}</h3>
-          <p className={styles['contact-text']}>
+        <div className="contact-left">
+          <span className="contact-badge">{t('contact-badge')}</span>
+          <h3 className="contact-heading">{t('contact-heading')}</h3>
+          <p className="contact-text">
             {contactText}{' '}
-            <span className={styles['highlight']}>{contactTextHighlight}</span>
+            <span className="highlight">{contactTextHighlight}</span>
           </p>
 
-          <div className={styles['contact-features']}>
+          <div className="contact-features">
             {contactFeatures.map((feature) => (
-              <div className={styles['feature']} key={feature.icon}>
-                <AdIcon className={styles['iconify']} icon={feature.icon} />
+              <div className="feature" key={feature.icon}>
+                <AdIcon className="iconify" icon={feature.icon} />
                 <span>{feature.text}</span>
               </div>
             ))}
           </div>
         </div>
 
-        <div className={styles['contact-divider']} />
+        <div className="contact-divider" />
 
-        <div className={styles['contact-right']}>
-          <NucSectionEmailUsDialog buttonClass={styles['contact-button']} />
-          <span className={styles['contact-email']}>business@nucleify.io</span>
+        <div className="contact-right">
+          <NucSectionEmailUsDialog buttonClass="contact-button" />
+          <span className="contact-email">business@nucleify.io</span>
         </div>
 
-        <div className={contactDecorationRightClassName}>
-          <AdIcon className={styles['iconify']} icon="prime:send" />
+        <div className="contact-decoration contact-decoration-right">
+          <AdIcon className="iconify" icon="prime:send" />
         </div>
       </div>
     </div>

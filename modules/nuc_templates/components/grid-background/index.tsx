@@ -4,9 +4,13 @@ import type { JSX } from 'react'
 
 import styles from './index.module.scss'
 
-export function NucGridBackground(): JSX.Element {
+export function NucGridBackground({
+  className,
+}: {
+  className?: string
+}): JSX.Element {
   return (
-    <div className={styles['nuc-grid-background']}>
+    <div className={className}>
       <div className={styles['nuc-grid-background-grid']}></div>
       <div className={styles['nuc-grid-background-glow']}></div>
     </div>

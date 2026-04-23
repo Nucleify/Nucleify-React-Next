@@ -9,17 +9,18 @@ import {
 } from 'react'
 
 import {
-  AdButton,
   AdCard,
   AdCheckbox,
   AdInputText,
   AdLabel,
-  AdTextarea,
+  AdSelect,
   type ContactFormDataInterface,
   type ContactFormErrorsInterface,
   type FormFieldInterface,
   getEmailUsTextFields,
+  NucSubmitButton,
   submitContactForm,
+  t,
 } from 'nucleify'
 
 import './index.scss'
@@ -29,31 +30,9 @@ type NucSectionEmailUsProps = {
   cardClassName?: string
 }
 
-const textMap: Record<string, string> = {
-  'form-name-label': 'Name',
-  'form-name-placeholder': 'Your name',
-  'form-email-label': 'Email',
-  'form-email-placeholder': 'Your email',
-  'form-phone-label': 'Phone',
-  'form-phone-placeholder': 'Your phone number',
-  'form-message-label': 'Message',
-  'form-message-placeholder': 'Tell us what you need',
-  'form-consent': 'I consent to data processing.',
-  'form-submit': 'Send message',
-  'form-sending': 'Sending...',
-  'form-response-text': 'Average response time:',
-  'form-response-badge': 'UNDER 24H',
-}
-
-function t(key: string): string {
-  return textMap[key] || key
-}
-
 const initialForm: ContactFormDataInterface = {
-  name: '',
   email: '',
-  phone: '',
-  message: '',
+  website_type: '',
   consent: false,
 }
 
@@ -72,11 +51,18 @@ export function NucSectionEmailUs({
     setErrors((prev) => ({ ...prev, [field]: undefined }))
   }
 
-  const handleTextChange =
+  const handleFieldChange =
     (field: keyof Omit<ContactFormDataInterface, 'consent'>) =>
     (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>): void => {
       const value = event.target.value
       setForm((prev) => ({ ...prev, [field]: value }))
+      clearFieldError(field)
+    }
+
+  const handleSelectChange =
+    (field: keyof Omit<ContactFormDataInterface, 'consent'>) =>
+    (event: { value: string }): void => {
+      setForm((prev) => ({ ...prev, [field]: event.value || '' }))
       clearFieldError(field)
     }
 
@@ -114,14 +100,17 @@ export function NucSectionEmailUs({
       invalid: !!errors[field.id],
     }
 
-    if (field.component === 'textarea') {
+    if (field.component === 'select') {
       return (
-        <AdTextarea
+        <AdSelect
           {...commonProps}
-          className="p-textarea"
-          rows={field.rows}
+          className="p-dropdown"
+          options={field.options || []}
+          optionLabel="label"
+          optionValue="value"
+          showClear={false}
           value={form[field.id]}
-          onChange={handleTextChange(field.id)}
+          onChange={handleSelectChange(field.id)}
         />
       )
     }
@@ -133,7 +122,7 @@ export function NucSectionEmailUs({
         type={field.type}
         autoComplete={field.autocomplete}
         value={form[field.id]}
-        onChange={handleTextChange(field.id)}
+        onChange={handleFieldChange(field.id)}
       />
     )
   }
@@ -168,11 +157,12 @@ export function NucSectionEmailUs({
           )}
         </div>
 
-        <AdButton
+        <NucSubmitButton
           className="submit-button"
           disabled={isSubmitting}
           label={isSubmitting ? t('form-sending') : t('form-submit')}
           type="submit"
+          variant="primary"
         />
       </form>
 

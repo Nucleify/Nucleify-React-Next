@@ -18,6 +18,7 @@ export function AdCard({
 
   const pt = {
     root: { className: cx(styles['ad-card'], className) },
+    content: { className: styles['ad-card-content'] },
   }
 
   return (
