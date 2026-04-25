@@ -9,6 +9,7 @@ const sassGlobalEntry = path
 
 const nextConfig: NextConfig = {
   sassOptions: {
+    includePaths: ['.'],
     silenceDeprecations: [
       'mixed-decls',
       'import',
