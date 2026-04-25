@@ -2,13 +2,13 @@
 
 import React from 'react'
 
-import {
-  AdCard,
-  type NucDisplayChartsStateInterface,
-  NucEntityChart,
-  type NucEntityChartCardInterface,
-  useDisplayChartsStore,
-} from 'nucleify'
+import { AdCard } from 'nucleify'
+
+import { NucEntityChart } from '../entity-chart'
+
+import type { NucDisplayChartsStateInterface } from '../../../types/interfaces'
+import { useDisplayChartsStore } from '../../boson/utils/use_display_charts_store'
+import type { NucEntityChartCardInterface } from './types/interfaces'
 export const NucEntityChartCard: React.FC<NucEntityChartCardInterface> = (
   props
 ) => {

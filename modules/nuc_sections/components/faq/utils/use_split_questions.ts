@@ -1,7 +1,7 @@
 import type {
   NucFaqQuestionInterface,
   UseSplitQuestionsInterface,
-} from 'nucleify'
+} from '../types/interfaces'
 
 export function useSplitQuestions(
   questions: NucFaqQuestionInterface | NucFaqQuestionInterface[]

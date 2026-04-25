@@ -1,4 +1,11 @@
+import path from 'node:path'
+import { fileURLToPath } from 'node:url'
 import type { NextConfig } from 'next'
+
+const nextDirname = path.dirname(fileURLToPath(import.meta.url))
+const sassGlobalEntry = path
+  .join(nextDirname, 'assets/_index.scss')
+  .replace(/\\/g, '/')
 
 const nextConfig: NextConfig = {
   sassOptions: {
@@ -10,7 +17,7 @@ const nextConfig: NextConfig = {
       'global-builtin',
       'legacy-js-api',
     ],
-    prependData: `@import "assets/_index.scss";`,
+    prependData: `@use 'sass:color' as color; @import "${sassGlobalEntry}";`,
   },
 }
 

@@ -1,9 +1,2 @@
-export const colorShades: string[] = [
-  'color',
-  'dark-color',
-  'highlight-color',
-  'focus-color',
-  'secondary-color',
-  'selected-color',
-  'hover-color',
-]
+/** Skrócone nazwy (c=color, d=dark, h=highlight, f=focus, sc=secondary, sl=selected, hv=hover) */
+export const colorShades: string[] = ['c', 'd', 'h', 'f', 'sc', 'sl', 'hv']

@@ -1,19 +1,15 @@
 'use client'
+
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import type { JSX } from 'react'
 
-import { enLocale, getNavLinks } from 'nucleify'
+import { t } from 'nucleify'
 
-import styles from '../../index.module.scss'
+import { getNavLinks } from './links'
 
 type NucNavbarLinksProps = {
   onCloseDrawer?: () => void
-}
-
-function t(key: string): string {
-  const value = (enLocale as Record<string, string>)[key]
-  return typeof value === 'string' ? value : key
 }
 
 function getLangFromPathname(pathname: string): string {
@@ -29,13 +25,13 @@ export function NucNavbarLinks({
   const navLinks = getNavLinks(lang, t)
 
   return (
-    <div className={styles['nav-links-container']}>
+    <div className="nav-links-container">
       {navLinks.map((link) => (
         <Link
           className={
             link.isButton
-              ? `p-button ${styles[link.class || 'login-button']}`
-              : styles['nav-link']
+              ? `p-button ${link.class || 'login-button'}`
+              : 'nav-link'
           }
           href={link.href}
           key={link.label}

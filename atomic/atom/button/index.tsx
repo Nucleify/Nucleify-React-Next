@@ -38,6 +38,7 @@ export function AdButton({
     root: {
       className: cx(
         styles['ad-button'],
+        icon && styles['with-ad-icon'],
         media && styles[`${media}-button`],
         variant && styles[`${variant}-button`],
         rounded && styles['rounded-button'],

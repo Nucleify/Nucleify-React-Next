@@ -2,8 +2,9 @@ import {
   apiHandle,
   type ContactFormDataInterface,
   type SubmitFormResultInterface,
-  validateContactForm,
 } from 'nucleify'
+
+import { validateContactForm } from './validate_form'
 
 export async function submitContactForm(
   form: ContactFormDataInterface
@@ -21,10 +22,8 @@ export async function submitContactForm(
       url: '/contact-form',
       method: 'POST',
       data: {
-        name: form.name,
         email: form.email,
-        phone: form.phone,
-        message: form.message,
+        website_type: form.website_type,
       },
       onSuccess: (response) => {
         isSuccess = true

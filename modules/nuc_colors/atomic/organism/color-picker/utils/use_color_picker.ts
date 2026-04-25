@@ -1,15 +1,22 @@
-'use client'
-
 import { useEffect, useState } from 'react'
 
-import type { UseColorPickerInterface, UseColorsInterface } from 'nucleify'
-import {
-  applyColorsWithSystemAndUser,
-  createColorShades,
-  setColorWithUserSuffix,
-  updateUserColorInDatabase,
-  useColors,
-} from 'nucleify'
+import type { UseColorsInterface } from '../../../boson/types/interfaces'
+import { applyColorsWithSystemAndUser } from '../../../boson/utils/apply_colors_with_system_and_user'
+import { createColorShades } from '../../../boson/utils/create_color_shades'
+import { setColorWithUserSuffix } from '../../../boson/utils/set_color_with_user_suffix'
+import { updateUserColorInDatabase } from '../../../boson/utils/update_user_colors_in_database'
+import { useColors } from '../../../boson/utils/use_colors.client'
+import type { UseColorPickerInterface } from '../types/interfaces'
+
+const shadeMap: Record<string, string> = {
+  '': 'c',
+  dark: 'd',
+  hover: 'hv',
+  focus: 'f',
+  highlight: 'h',
+  secondary: 'sc',
+  selected: 'sl',
+}
 
 export function useColorPicker(item: string): UseColorPickerInterface {
   const { colors }: UseColorsInterface = useColors()
@@ -22,7 +29,7 @@ export function useColorPicker(item: string): UseColorPickerInterface {
     if (typeof document === 'undefined') return
 
     function updateItemColor(): void {
-      const userKey = `--${item}-item-color-user`
+      const userKey = `--${item}-c-u`
       const computedStyle = getComputedStyle(document.documentElement)
       const newColor =
         computedStyle.getPropertyValue(userKey).trim() || '#000000'
@@ -48,10 +55,11 @@ export function useColorPicker(item: string): UseColorPickerInterface {
     const updatePromises: Promise<void>[] = []
 
     Object.entries(colorSettings).forEach(([key, value]) => {
-      const colorKey = `${item}-item${key ? `-${key}` : ''}-color`
+      const shade = shadeMap[key] ?? 'c'
+      const colorKey = `${item}-${shade}`
       setColorWithUserSuffix(colorKey, value)
 
-      const userKey = `${colorKey}-user`
+      const userKey = `${colorKey}-u`
       updatePromises.push(updateUserColorInDatabase(userKey, value))
     })
 

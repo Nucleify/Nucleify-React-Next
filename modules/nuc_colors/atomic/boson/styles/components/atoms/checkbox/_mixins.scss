@@ -1,4 +1,8 @@
 @mixin entity-checkbox-styles($box-shadow-color) {
+  .p-checkbox-box {
+    border: 1.5px solid $box-shadow-color;
+  }
+
   &.p-invalid {
     .p-checkbox-box {
       border-color: $invalid-color !important;
@@ -12,9 +16,8 @@
   }
 }
 
-@mixin entity-checkbox-checked-styles($item-color) {
+@mixin entity-checkbox-checked-styles($c) {
   .p-checkbox-box {
-    background-color: $item-color;
-    border-color: $item-color;
+    background-color: $c;
   }
 }

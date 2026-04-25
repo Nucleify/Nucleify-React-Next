@@ -1,6 +1,6 @@
 import type { ChartProps } from 'primereact/chart'
 
-import type { NucDisplayChartsStateKeyType } from 'nucleify'
+import type { NucDisplayChartsStateKeyType } from './variables'
 
 export interface NucDisplayChartsStateInterface
   extends Partial<Record<NucDisplayChartsStateKeyType, boolean>> {}

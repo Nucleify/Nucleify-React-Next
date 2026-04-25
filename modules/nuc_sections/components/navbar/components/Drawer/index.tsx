@@ -3,8 +3,6 @@
 import { Sidebar, type SidebarProps } from 'primereact/sidebar'
 import type { JSX, ReactNode } from 'react'
 
-import styles from '../../index.module.scss'
-
 type NucNavbarDrawerProps = SidebarProps & {
   children?: ReactNode
 }
@@ -16,11 +14,7 @@ export function NucNavbarDrawer({
   blockScroll = true,
   ...rest
 }: NucNavbarDrawerProps): JSX.Element {
-  const drawerClassName = [
-    styles['navbar-drawer'],
-    styles['p-drawer'],
-    className,
-  ]
+  const drawerClassName = ['navbar-drawer', 'p-drawer', className]
     .filter(Boolean)
     .join(' ')
 
@@ -28,17 +22,17 @@ export function NucNavbarDrawer({
     <Sidebar
       {...rest}
       blockScroll={blockScroll}
-      maskClassName={styles['p-drawer-mask']}
+      maskClassName="p-drawer-mask"
       pt={{
         closeButton: {
-          className: styles['p-drawer-close-button'],
+          className: 'p-drawer-close-button',
         },
       }}
       className={drawerClassName}
       position={position}
     >
       {children}
-      <div className={styles['template-authors']} />
+      <div className="template-authors" />
     </Sidebar>
   )
 }

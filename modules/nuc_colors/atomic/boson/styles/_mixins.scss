@@ -1,25 +1,67 @@
-@import 'variables/system_selectors';
+@use 'sass:list';
 
-// General mixin for handling -user and -system suffixes
-// Generates styles with -user suffix (default) and -system (for special selectors)
-// 
-// Usage:
-// @include entity-with-suffix($type, $system-selectors) using ($suffix) {
-//   @include your-mixin(
-//     var(--#{$type}-item-color#{$suffix}) !important,
-//     var(--#{$type}-item-dark-color#{$suffix}) !important
-//   );
-// }
-@mixin entity-with-suffix(
-  $type,
-  $system-selectors: $system-selectors
-) {
-  @content(-user);
+@mixin entity-with-suffix($type) {
+  @content(-u);
 
-  @each $selector in $system-selectors {
-    body:has(#{$selector}) & {
-      @content(-system);
+  .nuc-system & {
+    @content(-s);
+  }
+}
+
+@mixin entity-var-overrides($selector, $var-spec) {
+  @each $type in $ad-types {
+    #{$selector}[ad-type='#{$type}'] {
+      @each $local, $entity-suffix in $var-spec {
+        #{$local}: var(--#{$type}-#{$entity-suffix}-u);
+      }
+    }
+    .nuc-system #{$selector}[ad-type='#{$type}'] {
+      @each $local, $entity-suffix in $var-spec {
+        #{$local}: var(--#{$type}-#{$entity-suffix}-s);
+      }
     }
   }
 }
 
+@mixin entity-var-overrides-multi($selectors, $var-spec) {
+  @each $type in $ad-types {
+    $sel-list: ();
+
+    @each $sel in $selectors {
+      $full-sel: $sel + '[ad-type=\'' + $type + '\']';
+      $sel-list: list.append($sel-list, $full-sel, comma);
+    }
+    #{$sel-list} {
+      @each $local, $entity-suffix in $var-spec {
+        #{$local}: var(--#{$type}-#{$entity-suffix}-u);
+      }
+    }
+
+    $sel-list-sys: ();
+
+    @each $sel in $selectors {
+      $full-sel-sys: '.nuc-system ' + $sel + '[ad-type=\'' + $type + '\']';
+      $sel-list-sys: list.append($sel-list-sys, $full-sel-sys, comma);
+    }
+    #{$sel-list-sys} {
+      @each $local, $entity-suffix in $var-spec {
+        #{$local}: var(--#{$type}-#{$entity-suffix}-s);
+      }
+    }
+  }
+}
+
+@mixin entity-class-var-overrides($base-selector, $var-spec) {
+  @each $type in $ad-types {
+    #{$base-selector}.#{$type} {
+      @each $local, $entity-suffix in $var-spec {
+        #{$local}: var(--#{$type}-#{$entity-suffix}-u);
+      }
+    }
+    .nuc-system #{$base-selector}.#{$type} {
+      @each $local, $entity-suffix in $var-spec {
+        #{$local}: var(--#{$type}-#{$entity-suffix}-s);
+      }
+    }
+  }
+}

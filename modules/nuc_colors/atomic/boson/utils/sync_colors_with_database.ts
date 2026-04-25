@@ -1,5 +1,5 @@
-import { colorKeys, colorShades } from 'nucleify'
-
+import { colorKeys } from '../constants/keys'
+import { colorShades } from '../constants/shades'
 import { applyColorsWithSystemAndUser } from './apply_colors_with_system_and_user'
 
 // TODO(nuc_stores+nuc_api): replace local helpers and local request wrapper
@@ -95,7 +95,7 @@ export async function syncColorsWithDatabase(): Promise<void> {
 
     colorKeys.forEach((item: string): void =>
       colorShades.forEach((state: string): void => {
-        const userKey = `${item}-item-${state}-user`
+        const userKey = `${item}-${state}-u`
         const dbColor = dbColorMap.get(userKey)
 
         if (!dbColor) return

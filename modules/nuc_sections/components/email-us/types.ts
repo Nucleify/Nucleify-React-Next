@@ -1,16 +1,12 @@
 export interface ContactFormDataInterface {
-  name: string
   email: string
-  phone: string
-  message: string
+  website_type: string
   consent: boolean
 }
 
 export interface ContactFormErrorsInterface {
-  name?: string
   email?: string
-  phone?: string
-  message?: string
+  website_type?: string
   consent?: string
 }
 
@@ -20,14 +16,12 @@ export interface SubmitFormResultInterface {
   message?: string
 }
 
-import type { ComponentType } from 'nucleify'
-
 export interface FormFieldInterface {
   id: keyof Omit<ContactFormDataInterface, 'consent'>
   label: string
-  component: ComponentType
+  component: string
   type?: string
   placeholder: string
   autocomplete?: string
-  rows?: number
+  options?: { label: string; value: string }[]
 }

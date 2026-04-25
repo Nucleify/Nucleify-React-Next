@@ -1,9 +1,8 @@
-import type {
-  ApiHandleOptionsInterface,
-  HttpMethodType,
-  UseApiErrorsInterface,
-} from 'nucleify'
-import { apiRequest, useApiErrors } from 'nucleify'
+import type { UseApiErrorsInterface } from '../types/Errors/interfaces'
+import type { HttpMethodType } from '../types/Http/functions'
+import type { ApiHandleOptionsInterface } from '../types/Request/interfaces'
+import { apiRequest } from './api_request'
+import { useApiErrors } from './use_api_errors'
 
 export async function apiHandle<T>({
   url,

@@ -87,7 +87,7 @@ export const NucDialog: React.FC<NucDialogProps> = (props) => {
 
   const handleFieldChange = (name: string, e: FieldChangeEvent) => {
     const val = e && e.target !== undefined ? e.target.value : e?.value
-    setFormData((prev) => ({ ...prev, [name]: val } as FormDataInterface))
+    setFormData((prev) => ({ ...prev, [name]: val }) as FormDataInterface)
   }
 
   const translatedProps = (fieldProps?: Record<string, unknown>) => {

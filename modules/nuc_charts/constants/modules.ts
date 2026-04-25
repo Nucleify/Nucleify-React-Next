@@ -1,4 +1,4 @@
-import type { ChartSettingsGroupInterface } from 'nucleify'
+import type { ChartSettingsGroupInterface } from '../types/interfaces'
 
 export function modulesGroups(
   withCategory: boolean = false

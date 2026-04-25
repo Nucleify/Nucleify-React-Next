@@ -1,13 +1,10 @@
 /* eslint-disable */
 
-import {
-  displayChartList,
-  type NucDisplayChartsStateInterface,
-  type NucDisplayChartsStateKeyType,
-} from 'nucleify'
-
 import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
+import { displayChartList } from '../../../constants/list'
+import type { NucDisplayChartsStateInterface } from '../../../types/interfaces'
+import type { NucDisplayChartsStateKeyType } from '../../../types/variables'
 export const toggleState = (currentValue: boolean): boolean => !currentValue
 
 export const initialStoreState = (list: string[], defaultValue: boolean) => {
@@ -50,7 +47,10 @@ export const useDisplayChartsStore = create<DisplayChartsStore>()(
 
       setAllTo: (value) =>
         set((state) => ({
-          ...(setAllStatesTo(state, value) as NucDisplayChartsStateInterface),
+          ...(setAllStatesTo(
+            state as unknown as Record<string, boolean>,
+            value
+          ) as NucDisplayChartsStateInterface),
         })),
     }),
     {

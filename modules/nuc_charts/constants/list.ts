@@ -1,20 +1,6 @@
-import {
-  type ChartSettingsGroupInterface,
-  modulesGroups,
-  type NucDisplayChartsStateKeyType,
-} from 'nucleify'
-
-export const BASE_CHART_KEYS = [
-  'Activity',
-  'Admin',
-  'Article',
-  'Contact',
-  'File',
-  'Money',
-  'Question',
-  'Structural',
-  'Technology',
-] as const
+import type { ChartSettingsGroupInterface } from '../types/interfaces'
+import type { NucDisplayChartsStateKeyType } from '../types/variables'
+import { modulesGroups } from './modules'
 
 export function getDisplayChartGroups(): ChartSettingsGroupInterface[] {
   return [

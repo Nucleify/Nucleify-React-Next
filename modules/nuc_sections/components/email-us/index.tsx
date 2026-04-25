@@ -9,51 +9,30 @@ import {
 } from 'react'
 
 import {
-  AdButton,
   AdCard,
   AdCheckbox,
   AdInputText,
   AdLabel,
-  AdTextarea,
+  AdSelect,
   type ContactFormDataInterface,
   type ContactFormErrorsInterface,
   type FormFieldInterface,
   getEmailUsTextFields,
+  NucSubmitButton,
   submitContactForm,
+  t,
 } from 'nucleify'
 
-import styles from './index.module.scss'
+import './index.scss'
 
 type NucSectionEmailUsProps = {
   onSuccess?: () => void
   cardClassName?: string
 }
 
-const textMap: Record<string, string> = {
-  'form-name-label': 'Name',
-  'form-name-placeholder': 'Your name',
-  'form-email-label': 'Email',
-  'form-email-placeholder': 'Your email',
-  'form-phone-label': 'Phone',
-  'form-phone-placeholder': 'Your phone number',
-  'form-message-label': 'Message',
-  'form-message-placeholder': 'Tell us what you need',
-  'form-consent': 'I consent to data processing.',
-  'form-submit': 'Send message',
-  'form-sending': 'Sending...',
-  'form-response-text': 'Average response time:',
-  'form-response-badge': 'UNDER 24H',
-}
-
-function t(key: string): string {
-  return textMap[key] || key
-}
-
 const initialForm: ContactFormDataInterface = {
-  name: '',
   email: '',
-  phone: '',
-  message: '',
+  website_type: '',
   consent: false,
 }
 
@@ -72,11 +51,18 @@ export function NucSectionEmailUs({
     setErrors((prev) => ({ ...prev, [field]: undefined }))
   }
 
-  const handleTextChange =
+  const handleFieldChange =
     (field: keyof Omit<ContactFormDataInterface, 'consent'>) =>
     (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>): void => {
       const value = event.target.value
       setForm((prev) => ({ ...prev, [field]: value }))
+      clearFieldError(field)
+    }
+
+  const handleSelectChange =
+    (field: keyof Omit<ContactFormDataInterface, 'consent'>) =>
+    (event: { value: string }): void => {
+      setForm((prev) => ({ ...prev, [field]: event.value || '' }))
       clearFieldError(field)
     }
 
@@ -114,14 +100,17 @@ export function NucSectionEmailUs({
       invalid: !!errors[field.id],
     }
 
-    if (field.component === 'textarea') {
+    if (field.component === 'select') {
       return (
-        <AdTextarea
+        <AdSelect
           {...commonProps}
-          className={styles['p-textarea']}
-          rows={field.rows}
+          className="p-dropdown"
+          options={field.options || []}
+          optionLabel="label"
+          optionValue="value"
+          showClear={false}
           value={form[field.id]}
-          onChange={handleTextChange(field.id)}
+          onChange={handleSelectChange(field.id)}
         />
       )
     }
@@ -129,76 +118,61 @@ export function NucSectionEmailUs({
     return (
       <AdInputText
         {...commonProps}
-        className={styles['p-inputtext']}
+        className="p-inputtext"
         type={field.type}
         autoComplete={field.autocomplete}
         value={form[field.id]}
-        onChange={handleTextChange(field.id)}
+        onChange={handleFieldChange(field.id)}
       />
     )
   }
 
-  const cardClassNames = [styles['p-card'], cardClassName]
-    .filter(Boolean)
-    .join(' ')
+  const cardClassNames = ['p-card', cardClassName].filter(Boolean).join(' ')
 
   return (
-    <AdCard className={cardClassNames} id={styles['email-us']}>
-      <form className={styles['email-us-form']} onSubmit={submitForm}>
+    <AdCard className={cardClassNames} id="email-us">
+      <form className="email-us-form" onSubmit={submitForm}>
         {fields.map((field) => (
-          <div className={styles['form-group']} key={field.id}>
+          <div className="form-group" key={field.id}>
             <AdLabel forInput={field.id} label={field.label} />
             {renderField(field)}
             {errors[field.id] && (
-              <small className={styles['error-message']}>
-                {errors[field.id]}
-              </small>
+              <small className="error-message">{errors[field.id]}</small>
             )}
           </div>
         ))}
 
-        <div className={`${styles['form-group']} ${styles['checkbox-group']}`}>
+        <div className="form-group checkbox-group">
           <AdCheckbox
             adType="main"
-            className={styles['p-checkbox']}
+            className="p-checkbox"
             checked={form.consent}
             inputId="consent"
             invalid={!!errors.consent}
-            onChange={(event) => handleConsentChange(!!event.checked)}
-            pt={{
-              box: {
-                className: `${styles['p-checkbox-box']} ${
-                  form.consent ? styles['p-highlight'] : ''
-                }`,
-              },
-              icon: { className: styles['p-checkbox-icon'] },
-            }}
+            onChange={(event) => handleConsentChange(Boolean(event.checked))}
           />
           <AdLabel forInput="consent" label={t('form-consent')} />
           {errors.consent && (
-            <small className={styles['error-message']}>{errors.consent}</small>
+            <small className="error-message">{errors.consent}</small>
           )}
         </div>
 
-        <AdButton
-          className={styles['submit-button']}
+        <NucSubmitButton
+          className="submit-button"
           disabled={isSubmitting}
           label={isSubmitting ? t('form-sending') : t('form-submit')}
           type="submit"
+          variant="primary"
         />
       </form>
 
-      <div className={styles['email-us-footer']}>
-        <span className={styles['response-text']}>
-          {t('form-response-text')}
-        </span>
-        <span className={styles['response-badge']}>
-          {t('form-response-badge')}
-        </span>
+      <div className="email-us-footer">
+        <span className="response-text">{t('form-response-text')}</span>
+        <span className="response-badge">{t('form-response-badge')}</span>
       </div>
 
       {responseMessage && (
-        <small className={styles['error-message']}>{responseMessage}</small>
+        <small className="error-message">{responseMessage}</small>
       )}
     </AdCard>
   )

@@ -2,46 +2,59 @@
 import Link from 'next/link'
 import type { JSX } from 'react'
 
-import { AdAnchor, AdLogo, AdLogoSymbol, enLocale, getColumns } from 'nucleify'
+import { getActiveLocale, t } from 'nucleify'
 
-import styles from './index.module.scss'
+import { AdLogo } from '../../../../atomic/atom/logo'
+import { AdLogoSymbol } from '../../../../atomic/atom/logo/symbol'
+import { AdAnchor } from '../../../../atomic/molecule/anchor'
+import './index.scss'
 
-function t(key: string): string {
-  const value = (enLocale as Record<string, string>)[key]
-  return typeof value === 'string' ? value : key
+import { getColumns } from './items'
+
+function tWithParams(
+  key: string,
+  params: Record<string, string | number>
+): string {
+  let value = t(key)
+  for (const [paramKey, paramValue] of Object.entries(params)) {
+    value = value.replaceAll(`{{${paramKey}}}`, String(paramValue))
+  }
+  return value
+}
+
+function decodeLocaleEmail(value: string): string {
+  return value.replace("{'@'}", '@')
 }
 
 export function NucSectionFooter(): JSX.Element {
-  const lang = 'en'
+  const lang = getActiveLocale()
+  const year = new Date().getFullYear()
   const columns = getColumns(lang, t)
   const logoSize = 72
-  const footerId = styles['footer']
-  const topClassName = styles['top']
-  const headerClassName = styles['header']
-  const contentClassName = styles['content']
-  const bottomClassName = styles['bottom']
+  const companyLink =
+    'https://aleo.com/pl/firma/atomic-it-spolka-z-ograniczona-odpowiedzialnoscia'
+  const companyEmail = decodeLocaleEmail(t('footer-company-email'))
 
   return (
-    <section id={footerId}>
-      <div className={styles['footer-content-container']}>
-        <div className={topClassName}>
+    <section id="footer">
+      <div className="footer-content-container">
+        <div className="top">
           <AdLogoSymbol dimensions={logoSize} />
 
-          <AdAnchor href="#start" anchorClass={headerClassName}>
-            <AdLogo dimensions={logoSize} adType="main" />
-            <h1 className={styles['name']}>Nucleify</h1>
-          </AdAnchor>
+          <div className="brand">
+            <AdAnchor className="header" href="#start">
+              <AdLogo dimensions={logoSize} adType="main" />
+              <h1 className="name">Nucleify</h1>
+            </AdAnchor>
+          </div>
 
-          <div className={contentClassName}>
+          <div className="columns">
             {columns.map((column, columnIndex) => (
-              <div
-                className={styles[`column-${columnIndex + 1}`]}
-                key={columnIndex}
-              >
+              <div className="column" key={columnIndex}>
                 {column.map((item, itemIndex) => (
                   <Link href={item.url} key={itemIndex}>
                     {item.header ? (
-                      <p className={styles['header']}>{item.name}</p>
+                      <p className="column-header">{item.name}</p>
                     ) : (
                       <span>{item.name}</span>
                     )}
@@ -52,9 +65,29 @@ export function NucSectionFooter(): JSX.Element {
           </div>
         </div>
 
-        <div className={bottomClassName} />
+        <div className="bottom">
+          <div className="company-info">
+            <a href={companyLink} rel="noreferrer" target="_blank">
+              {t('footer-company-name')}
+            </a>
+            <span className="separator">|</span>
+            <a href={companyLink} rel="noreferrer" target="_blank">
+              {t('footer-company-nip')}
+            </a>
+            <span className="separator">|</span>
+            <a href={companyLink} rel="noreferrer" target="_blank">
+              {t('footer-company-address')}
+            </a>
+            <span className="separator">|</span>
+            <a href={`mailto:${companyEmail}`}>{companyEmail}</a>
+          </div>
+
+          <span className="copyright">
+            {tWithParams('footer-copyright', { year })}
+          </span>
+        </div>
       </div>
-      <div className={styles['hexagon-rows-container']} />
+      <div className="hexagon-rows-container" />
     </section>
   )
 }

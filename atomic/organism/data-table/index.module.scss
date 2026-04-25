@@ -7,48 +7,46 @@
   justify-content: space-between;
   transition: 0.2s 0.15s opacity;
 
-  :global {
-    .p-datatable-thead > tr > th {
-      background: $bg-black-color !important;
-      color: $white-text-color !important;
-      padding: 9px !important;
+  .p-datatable-thead > tr > th {
+    background: $bg-black-color !important;
+    color: $white-text-color !important;
+    padding: 9px !important;
+    border: none !important;
+    text-align: left;
+  }
+
+  .p-datatable-tbody > tr {
+    border: none !important;
+    cursor: pointer;
+    outline: none !important;
+
+    > td {
+      padding: 6px 9px !important;
       border: none !important;
-      text-align: left;
     }
 
-    .p-datatable-tbody > tr {
-      border: none !important;
-      cursor: pointer;
-      outline: none !important;
+    &:nth-child(even) {
+      background-color: $p-card-background !important;
+      color: $white-text-color !important;
 
       > td {
-        padding: 6px 9px !important;
-        border: none !important;
-      }
-
-      &:nth-child(even) {
         background-color: $p-card-background !important;
         color: $white-text-color !important;
-
-        > td {
-          background-color: $p-card-background !important;
-          color: $white-text-color !important;
-        }
       }
+    }
 
-      &:nth-child(odd) {
+    &:nth-child(odd) {
+      background-color: $content-background !important;
+      color: $white-text-color !important;
+
+      > td {
         background-color: $content-background !important;
         color: $white-text-color !important;
-
-        > td {
-          background-color: $content-background !important;
-          color: $white-text-color !important;
-        }
       }
+    }
 
-      &:hover {
-        background-color: inherit !important;
-      }
+    &:hover {
+      background-color: inherit !important;
     }
   }
 }

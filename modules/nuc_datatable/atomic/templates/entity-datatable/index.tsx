@@ -4,7 +4,7 @@ import {
   DataTable,
   DataTableFilterEvent,
   DataTableFilterMeta,
-  DataTableProps, 
+  DataTableProps,
   DataTableRowClickEvent,
 } from 'primereact/datatable'
 import { InputText } from 'primereact/inputtext'
