@@ -1,1 +1,1 @@
-export * from './interfaces.tsx'
+export * from './interfaces'
