@@ -1,4 +1,5 @@
 export * from './nuc_api'
+export * from './nuc_animations'
 export * from './nuc_auth'
 export * from './nuc_charts'
 export * from './nuc_colors'
