@@ -9,9 +9,11 @@ import {
   AdTile,
   articleRequests,
   contactRequests,
+  isMobile,
   moneyRequests,
   NucArticleDashboard,
   NucContactDashboard,
+  NucEntityChartCard,
   NucMoneyDashboard,
   t,
 } from 'nucleify'
@@ -43,12 +45,12 @@ export function NucEntitiesPage(): JSX.Element {
   const [allLoaded, setAllLoaded] = useState<boolean>(false)
 
   useEffect(() => {
-    void getAllArticles(true).catch(() => undefined)
-    void getAllContacts(true).catch(() => undefined)
-    void getAllMoney(true).catch(() => undefined)
-    void getCountArticlesByCreatedLastWeek().catch(() => undefined)
-    void getCountContactsByCreatedLastWeek().catch(() => undefined)
-    void getCountMoneyByCreatedLastWeek().catch(() => undefined)
+    void getAllArticles(true)
+    void getAllContacts(true)
+    void getAllMoney(true)
+    void getCountArticlesByCreatedLastWeek()
+    void getCountContactsByCreatedLastWeek()
+    void getCountMoneyByCreatedLastWeek()
   }, [])
 
   useEffect(() => {
@@ -114,6 +116,19 @@ export function NucEntitiesPage(): JSX.Element {
           <AdTile key={entity.href} {...entity} />
         ))}
       </div>
+      <NucEntityChartCard
+        entity="Entities"
+        chartClass="annual-chart-card"
+        chartMethodType="annual"
+        type="bar"
+        direction={isMobile() ? 'horizontal' : 'vertical'}
+        data={{
+          article: articles,
+          contact: contacts,
+          money: money,
+        }}
+        loading={!allLoaded}
+      />
       <NucArticleDashboard
         data={articles ?? []}
         getData={getAllArticles}

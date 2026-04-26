@@ -7,12 +7,11 @@ import type { NucContactObjectInterface, NucDashboardInterface } from 'nucleify'
 import {
   contactRequests,
   NucDialog,
+  NucEntityDataTableCard,
   t,
   useContactFields,
   useNucDialog,
 } from 'nucleify'
-
-import { NucEntityDataTable } from '../../../../nuc_datatable/atomic/templates/entity-datatable'
 
 type ContactDashboardProps = Omit<NucDashboardInterface, 'data'> & {
   data: NucContactObjectInterface[]
@@ -95,13 +94,14 @@ export function NucContactDashboard({
 
   return (
     <section id="contacts">
-      <NucEntityDataTable
+      <NucEntityDataTableCard
         adType="contact"
         value={safeData}
         loading={loading}
         openDialog={openDialog}
-        rows={10}
-        rowsPerPageOptions={[10, 20, 50]}
+        tag={3}
+        headerText={t('entity-contact-manage')}
+        buttonText={t('entity-contact-new')}
       />
 
       {dialogs.map((dialog) => (

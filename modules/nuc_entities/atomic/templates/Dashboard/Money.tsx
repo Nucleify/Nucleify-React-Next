@@ -7,12 +7,11 @@ import type { NucDashboardInterface, NucMoneyObjectInterface } from 'nucleify'
 import {
   moneyRequests,
   NucDialog,
+  NucEntityDataTableCard,
   t,
   useMoneyFields,
   useNucDialog,
 } from 'nucleify'
-
-import { NucEntityDataTable } from '../../../../nuc_datatable/atomic/templates/entity-datatable'
 
 type MoneyDashboardProps = Omit<NucDashboardInterface, 'data'> & {
   data: NucMoneyObjectInterface[]
@@ -94,13 +93,14 @@ export function NucMoneyDashboard({
 
   return (
     <section id="money">
-      <NucEntityDataTable
+      <NucEntityDataTableCard
         adType="money"
         value={safeData}
         loading={loading}
         openDialog={openDialog}
-        rows={10}
-        rowsPerPageOptions={[10, 20, 50]}
+        tag={3}
+        headerText={t('entity-money-manage')}
+        buttonText={t('entity-money-new')}
       />
 
       {dialogs.map((dialog) => (

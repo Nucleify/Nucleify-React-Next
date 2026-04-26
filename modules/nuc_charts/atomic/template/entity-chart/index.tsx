@@ -1,6 +1,6 @@
 'use client'
 import type { ChartData } from 'chart.js'
-import React, { useEffect, useMemo, useState } from 'react'
+import React, { useEffect, useMemo, useRef, useState } from 'react'
 
 import { AdChart, type ChartType } from 'nucleify'
 
@@ -11,6 +11,7 @@ export const NucEntityChart: React.FC<NucEntityChartInterface> = (props) => {
   const { setChartData, setChartOptions } = useChart()
 
   const [chartData, setChartDataState] = useState<ChartData | null>(null)
+  const lastDataKeyRef = useRef<string>('')
 
   const chartOptions = useMemo(() => {
     if (!props.type) return {}
@@ -34,7 +35,11 @@ export const NucEntityChart: React.FC<NucEntityChartInterface> = (props) => {
       )
 
       if (dataToSet) {
-        setChartDataState(dataToSet)
+        const dataKey = JSON.stringify(dataToSet)
+        if (dataKey !== lastDataKeyRef.current) {
+          lastDataKeyRef.current = dataKey
+          setChartDataState(dataToSet)
+        }
       }
     }
 

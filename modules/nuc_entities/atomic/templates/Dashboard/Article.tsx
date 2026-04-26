@@ -7,12 +7,11 @@ import type { NucArticleObjectInterface, NucDashboardInterface } from 'nucleify'
 import {
   articleRequests,
   NucDialog,
+  NucEntityDataTableCard,
   t,
   useArticleFields,
   useNucDialog,
 } from 'nucleify'
-
-import { NucEntityDataTable } from '../../../../nuc_datatable/atomic/templates/entity-datatable'
 
 type ArticleDashboardProps = Omit<NucDashboardInterface, 'data'> & {
   data: NucArticleObjectInterface[]
@@ -95,13 +94,14 @@ export function NucArticleDashboard({
 
   return (
     <section id="articles">
-      <NucEntityDataTable
+      <NucEntityDataTableCard
         adType="article"
         value={safeData}
         loading={loading}
         openDialog={openDialog}
-        rows={10}
-        rowsPerPageOptions={[10, 20, 50]}
+        tag={3}
+        headerText={t('entity-article-manage')}
+        buttonText={t('entity-article-new')}
       />
 
       {dialogs.map((dialog) => (
