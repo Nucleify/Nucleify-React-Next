@@ -9,6 +9,7 @@ export function AdIcon({
   size,
   className = '',
   style,
+  adType,
   ...rest
 }: IconInterface & { style?: CSSProperties }): JSX.Element | null {
   if (!icon) return null
@@ -28,6 +29,7 @@ export function AdIcon({
         icon={icon}
         className={cx(styles['iconify-icon'], className)}
         style={mergedStyle}
+        {...(adType ? { 'data-ad-type': adType } : {})}
         {...rest}
       />
     )
@@ -36,5 +38,12 @@ export function AdIcon({
   const iconClass = `pi pi-${icon.replace('prime:', '')}`
   const mergedClassName = cx(iconClass, styles['prime-icon'], className)
 
-  return <i className={mergedClassName} style={mergedStyle} {...rest} />
+  return (
+    <i
+      className={mergedClassName}
+      style={mergedStyle}
+      {...(adType ? { 'data-ad-type': adType } : {})}
+      {...rest}
+    />
+  )
 }
