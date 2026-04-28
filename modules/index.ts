@@ -14,6 +14,7 @@ export * from './nuc_sections'
 export * from './nuc_stores'
 export * from './nuc_templates'
 export * from './nuc_tooltip'
+export * from './nuc_users'
 
 export { getEmailUsTextFields } from './nuc_sections/components/email-us/constants/text_fields'
 export { submitContactForm } from './nuc_sections/components/email-us/utils/submit_form'
