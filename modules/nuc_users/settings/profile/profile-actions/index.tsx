@@ -6,10 +6,9 @@ import { useEffect, useState } from 'react'
 import './_index.scss'
 
 import type { UseToastInterface } from 'nucleify'
-import { AdButton, useAtomicToast } from 'nucleify'
+import { AdButton, AdDialog, useAtomicToast } from 'nucleify'
 
 import { useTranslation } from 'react-i18next'
-import { NucDialog } from '../../../../nuc_dialog'
 
 type ProfileEditDataType = {
   firstName: string
@@ -118,40 +117,77 @@ export function NucProfileActions({
         />
       </div>
 
-      <NucDialog
+      <AdDialog
         visible={isEditProfileDialogVisible}
-        modal
-        draggable={false}
-        entity="user"
-        action="edit"
-        title={t('profile-edit-profile')}
-        data={editDialogData as unknown as ObjectType[]}
-        selectedObject={editDialogData as unknown as ObjectType}
-        fields={profileEditFields}
-        cancelButtonLabel={t('common-cancel')}
-        confirmButtonLabel={t('common-save')}
-        confirmButtonDisabled={isSavingProfile}
-        confirm={confirmEditProfile}
-        close={(_action?: string) => setIsEditProfileDialogVisible(false)}
         onHide={() => setIsEditProfileDialogVisible(false)}
-      />
-
-      <NucDialog
-        visible={isDeleteAccountDialogVisible}
         modal
+        dismissableMask
         draggable={false}
-        action="delete"
-        title={t('profile-delete-account')}
-        selectedObject={{ id: userId } as ObjectType}
-        cancelButtonLabel={t('common-cancel')}
-        confirmButtonLabel={t('common-delete')}
-        confirmButtonDisabled={isDeletingAccount}
-        confirm={confirmDeleteAccount}
-        close={(_action?: string) => setIsDeleteAccountDialogVisible(false)}
+        showHeader
+        header={t('profile-edit-profile')}
+        footer={
+          <div className="dialog-buttons-container">
+            <AdButton
+              label={t('common-cancel')}
+              severity="secondary"
+              onClick={() => setIsEditProfileDialogVisible(false)}
+            />
+            <AdButton
+              label={t('common-save')}
+              adType="main"
+              disabled={isSavingProfile}
+              onClick={() => void confirmEditProfile(editDialogData)}
+            />
+          </div>
+        }
+      >
+        <div className="form-container">
+          {profileEditFields.map((field) => (
+            <div key={field.name} className="form-div">
+              <label htmlFor={field.name}>{t(field.label)}</label>
+              <input
+                id={field.name}
+                value={String(
+                  editDialogData[field.key as keyof ProfileEditDataType] ?? ''
+                )}
+                onChange={(event) =>
+                  setEditDialogData((prev) => ({
+                    ...prev,
+                    [field.key]: event.target.value,
+                  }))
+                }
+              />
+            </div>
+          ))}
+        </div>
+      </AdDialog>
+
+      <AdDialog
+        visible={isDeleteAccountDialogVisible}
         onHide={() => setIsDeleteAccountDialogVisible(false)}
+        modal
+        dismissableMask
+        draggable={false}
+        showHeader
+        header={t('profile-delete-account')}
+        footer={
+          <div className="dialog-buttons-container">
+            <AdButton
+              label={t('common-cancel')}
+              severity="secondary"
+              onClick={() => setIsDeleteAccountDialogVisible(false)}
+            />
+            <AdButton
+              label={t('common-delete')}
+              severity="danger"
+              disabled={isDeletingAccount}
+              onClick={() => void confirmDeleteAccount()}
+            />
+          </div>
+        }
       >
         <p>{t('profile-delete-confirm')}</p>
-      </NucDialog>
+      </AdDialog>
     </div>
   )
 }

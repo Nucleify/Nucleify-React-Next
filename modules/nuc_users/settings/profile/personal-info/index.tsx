@@ -1,7 +1,7 @@
 'use client'
 
 import type { ChangeEvent, JSX } from 'react'
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 
 import './_index.scss'
 
@@ -9,19 +9,17 @@ import {
   AdAvatar,
   AdButton,
   AdCard,
+  AdDialog,
   AdIcon,
   AdPassword,
   AdSelect,
-  isEmpty,
+  NucProfileActions,
   passwordsMatch,
   sessionStorageGetItem,
   sessionStorageSetItem,
 } from 'nucleify'
 
-import { NucProfileActions } from '../profile-actions'
-
 import { useTranslation } from 'react-i18next'
-import { NucDialog } from '../../../../nuc_dialog'
 
 const MAX_AVATAR_SIZE_BYTES = 15 * 1024 * 1024
 const ACCEPTED_IMAGE_TYPES = [
@@ -54,11 +52,10 @@ export function NucUsersProfilePersonalInfo(): JSX.Element {
   const { t } = useTranslation()
 
   const [profileForm, setProfileForm] = useState<ProfileFormType>({
-    firstName: sessionStorageGetItem('user_name')?.split(' ')[0] || '',
-    lastName:
-      sessionStorageGetItem('user_name')?.split(' ').slice(1).join(' ') || '',
-    email: sessionStorageGetItem('user_email') || '',
-    phone_number: sessionStorageGetItem('user_phone_number') || '',
+    firstName: '',
+    lastName: '',
+    email: '',
+    phone_number: '',
   })
   const [avatarPreview, setAvatarPreview] = useState<string | null>(null)
   const [isPasswordDialogVisible, setIsPasswordDialogVisible] = useState(false)
@@ -68,9 +65,26 @@ export function NucUsersProfilePersonalInfo(): JSX.Element {
     confirmPassword: '',
   })
   const [preferences, setPreferences] = useState({
-    language: sessionStorageGetItem('user_language') || 'en',
-    country: sessionStorageGetItem('user_country') || 'poland',
+    language: 'en',
+    country: 'poland',
   })
+
+  useEffect(() => {
+    const userName = sessionStorageGetItem('user_name') ?? ''
+    const parts = userName.split(' ').filter(Boolean)
+
+    setProfileForm({
+      firstName: parts[0] ?? '',
+      lastName: parts.slice(1).join(' '),
+      email: sessionStorageGetItem('user_email') || '',
+      phone_number: sessionStorageGetItem('user_phone_number') || '',
+    })
+
+    setPreferences({
+      language: sessionStorageGetItem('user_language') || 'en',
+      country: sessionStorageGetItem('user_country') || 'poland',
+    })
+  }, [])
 
   const languageOptions: SelectOptionType[] = [
     { label: 'English', value: 'en' },
@@ -311,21 +325,29 @@ export function NucUsersProfilePersonalInfo(): JSX.Element {
         </section>
       </div>
 
-      <NucDialog
+      <AdDialog
         visible={isPasswordDialogVisible}
-        modal
-        draggable={false}
-        entity={'user' as unknown as ObjectType}
-        action="edit"
-        title={t('profile-change-password')}
-        cancelButtonLabel={t('common-cancel')}
-        confirmButtonLabel={t('profile-update-password')}
-        confirmButtonDisabled={!isPasswordFormValid}
-        confirm={async () => {
-          closePasswordDialog()
-        }}
-        close={closePasswordDialog}
         onHide={closePasswordDialog}
+        modal
+        dismissableMask
+        draggable={false}
+        showHeader
+        header={t('profile-change-password')}
+        footer={
+          <div className="dialog-buttons-container">
+            <AdButton
+              label={t('common-cancel')}
+              severity="secondary"
+              onClick={closePasswordDialog}
+            />
+            <AdButton
+              label={t('profile-update-password')}
+              adType="main"
+              disabled={!isPasswordFormValid}
+              onClick={closePasswordDialog}
+            />
+          </div>
+        }
       >
         <div className="password-dialog-fields">
           <div className="password-dialog-field">
@@ -333,7 +355,6 @@ export function NucUsersProfilePersonalInfo(): JSX.Element {
             <AdPassword
               id="nuc-pwd-cur"
               value={passwordForm.currentPassword}
-              adType="main"
               feedback={false}
               toggleMask
               autoComplete="one-time-code"
@@ -350,7 +371,6 @@ export function NucUsersProfilePersonalInfo(): JSX.Element {
             <AdPassword
               id="nuc-pwd-new"
               value={passwordForm.newPassword}
-              adType="main"
               toggleMask
               autoComplete="one-time-code"
               onChange={(event: { target?: { value?: string } }) =>
@@ -368,15 +388,12 @@ export function NucUsersProfilePersonalInfo(): JSX.Element {
             <AdPassword
               id="nuc-pwd-confirm"
               value={passwordForm.confirmPassword}
-              adType="main"
               toggleMask
               autoComplete="one-time-code"
               passwordsMatch={passwordsMatch(
                 passwordForm.newPassword,
                 passwordForm.confirmPassword
               )}
-              emptyPassword={isEmpty(passwordForm.newPassword)}
-              emptyConfirmPassword={isEmpty(passwordForm.confirmPassword)}
               onChange={(event: { target?: { value?: string } }) =>
                 setPasswordForm((prev) => ({
                   ...prev,
@@ -386,7 +403,7 @@ export function NucUsersProfilePersonalInfo(): JSX.Element {
             />
           </div>
         </div>
-      </NucDialog>
+      </AdDialog>
     </AdCard>
   )
 }
