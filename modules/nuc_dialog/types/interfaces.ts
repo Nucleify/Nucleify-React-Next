@@ -8,8 +8,8 @@ import type {
 } from './functions'
 
 export interface NucDialogInterface extends DialogInterface {
-  entity?: ObjectType
-  action?: ActionType
+  entity?: AdTypeType
+  action?: ActionType | 'share'
   title?: string
   fields?: Array<{
     name: string
