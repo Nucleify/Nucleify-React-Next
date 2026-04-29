@@ -1,6 +1,6 @@
 'use client'
 import type { ChartData } from 'chart.js'
-import React, { useEffect, useMemo, useRef, useState } from 'react'
+import React, { useMemo } from 'react'
 
 import { AdChart, type ChartType } from 'nucleify'
 
@@ -10,18 +10,15 @@ import { useChart } from './utils/use_chart'
 export const NucEntityChart: React.FC<NucEntityChartInterface> = (props) => {
   const { setChartData, setChartOptions } = useChart()
 
-  const [chartData, setChartDataState] = useState<ChartData | null>(null)
-  const lastDataKeyRef = useRef<string>('')
-
   const chartOptions = useMemo(() => {
     if (!props.type) return {}
 
     return setChartOptions(props.type as ChartType, props.direction)
   }, [props.type, props.direction, setChartOptions])
 
-  useEffect(() => {
-    const updateData = () => {
-      const dataToSet = setChartData(
+  const chartData: ChartData | undefined = useMemo(() => {
+    return (
+      setChartData(
         props.chartMethodType,
         props.data?.activity,
         props.data?.article,
@@ -32,23 +29,25 @@ export const NucEntityChart: React.FC<NucEntityChartInterface> = (props) => {
         props.data?.technology,
         props.data?.user,
         props.example
-      )
-
-      if (dataToSet) {
-        const dataKey = JSON.stringify(dataToSet)
-        if (dataKey !== lastDataKeyRef.current) {
-          lastDataKeyRef.current = dataKey
-          setChartDataState(dataToSet)
-        }
-      }
-    }
-
-    updateData()
-  }, [props.chartMethodType, props.example, props.data, setChartData])
+      ) ?? undefined
+    )
+  }, [
+    props.chartMethodType,
+    props.data?.activity,
+    props.data?.article,
+    props.data?.contact,
+    props.data?.file,
+    props.data?.money,
+    props.data?.question,
+    props.data?.technology,
+    props.data?.user,
+    props.example,
+    setChartData,
+  ])
 
   return (
     <AdChart
-      data={chartData ?? undefined}
+      data={chartData}
       options={chartOptions}
       type={props.type}
       chartMethodType={props.chartMethodType}
