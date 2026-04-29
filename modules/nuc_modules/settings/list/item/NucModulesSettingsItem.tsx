@@ -1,8 +1,7 @@
 'use client'
 
-import type { ModuleObjectInterface } from '../../../types/interfaces'
 import { NucCube } from '../../../../nuc_templates/components/cube'
-
+import type { ModuleObjectInterface } from '../../../types/interfaces'
 import { NucModulesItemOptions } from './options'
 
 import './_index.scss'
@@ -18,9 +17,7 @@ export function NucModulesSettingsItem({
   ...module
 }: NucModulesSettingsItemProps) {
   return (
-    <div
-      className={`modules-settings-item${module.enabled ? ' active' : ''}`}
-    >
+    <div className={`modules-settings-item${module.enabled ? ' active' : ''}`}>
       <a
         className="modules-settings-item-link"
         href={`/settings#module-${module.name}`}

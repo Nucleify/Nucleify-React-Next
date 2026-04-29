@@ -1,6 +1,6 @@
-import { act, renderHook } from '@testing-library/react'
 import { describe, expect, it } from 'vitest'
 
+import { act, renderHook } from '@testing-library/react'
 import { useShareSelection } from '../../components/share-checkbox/utils/use_share_selection'
 
 describe('useShareSelection', (): void => {

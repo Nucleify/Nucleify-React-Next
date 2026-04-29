@@ -2,9 +2,10 @@
 
 import type { JSX } from 'react'
 
+import { NucShareCheckbox } from '../share-checkbox'
+
 import { AdHeading } from '../../../../atomic/atom/heading'
 import { NucDialog } from '../../../nuc_dialog'
-import { NucShareCheckbox } from '../share-checkbox'
 import type { NucShareDialogInterface } from './types'
 import { useShareDialog } from './utils/use_share_dialog'
 
@@ -68,7 +69,9 @@ export function NucShareDialog(props: NucShareDialogInterface): JSX.Element {
                   onToggle={() => toggleFriend(friend.id)}
                 />
                 <div className="share-dialog-friend-info">
-                  <span className="share-dialog-friend-name">{friend.name}</span>
+                  <span className="share-dialog-friend-name">
+                    {friend.name}
+                  </span>
                   {friend.email ? (
                     <span className="share-dialog-friend-email">
                       {friend.email}

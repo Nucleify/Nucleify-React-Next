@@ -2,13 +2,14 @@ import { useCallback, useEffect, useMemo, useState } from 'react'
 
 import { apiHandle, useApiSuccess } from 'nucleify'
 
-import { apiUrl } from '../../../atomic/utils/api_url'
 import type {
   Friend,
   FriendshipListItemInterface,
   NucShareDialogInterface,
   UseShareDialogInterface,
 } from '../types'
+
+import { apiUrl } from '../../../atomic/utils/api_url'
 
 export function useShareDialog(
   props: NucShareDialogInterface
@@ -103,8 +104,7 @@ export function useShareDialog(
   }, [props.onUpdateVisible])
 
   const isConfirmDisabled = useMemo(
-    () =>
-      selectedEntities.length === 0 || selectedFriendIds.length === 0,
+    () => selectedEntities.length === 0 || selectedFriendIds.length === 0,
     [selectedEntities.length, selectedFriendIds.length]
   )
 

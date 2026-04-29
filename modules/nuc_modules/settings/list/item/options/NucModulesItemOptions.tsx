@@ -1,16 +1,14 @@
 'use client'
 
 import { useRouter } from 'next/navigation'
-import { useCallback, useMemo, useState } from 'react'
-
 import type { MenuItem } from 'primereact/menuitem'
+import { useCallback, useMemo, useState } from 'react'
 
 import { AdButton, AdIcon, AdSpeedDial, useAtomicToast } from 'nucleify'
 
-import { ModuleItemOptionsDialog } from '../../../detail/ModuleItemOptionsDialog'
-
-import type { ModuleDialogAction } from '../../../detail/types'
 import type { ModuleObjectInterface } from '../../../../types/interfaces'
+import { ModuleItemOptionsDialog } from '../../../detail/ModuleItemOptionsDialog'
+import type { ModuleDialogAction } from '../../../detail/types'
 import { toggleModule } from '../../../toggle/toggle_module'
 import { uninstallModule } from '../../../uninstall/uninstall_module'
 

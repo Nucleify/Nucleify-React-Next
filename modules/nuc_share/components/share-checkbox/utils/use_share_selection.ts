@@ -18,7 +18,10 @@ export function useShareSelection(
 ): UseShareSelectionReturn {
   const [selected, setSelected] = useState<Record<number, boolean>>({})
 
-  const selectedCount = useMemo(() => Object.values(selected).filter(Boolean).length, [selected])
+  const selectedCount = useMemo(
+    () => Object.values(selected).filter(Boolean).length,
+    [selected]
+  )
 
   const isAllSelected = useMemo(() => {
     if (!items || items.length === 0) return false
@@ -30,7 +33,10 @@ export function useShareSelection(
     return selectedCount > 0 && selectedCount < items.length
   }, [items, selectedCount])
 
-  const isSelected = useCallback((id: number): boolean => selected[id] === true, [selected])
+  const isSelected = useCallback(
+    (id: number): boolean => selected[id] === true,
+    [selected]
+  )
 
   const toggle = useCallback((id: number): void => {
     setSelected((prev) => ({

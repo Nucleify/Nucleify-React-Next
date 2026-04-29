@@ -1,4 +1,4 @@
-import { useEffect, useRef, type JSX } from 'react'
+import { type JSX, useEffect, useRef } from 'react'
 
 import type { NucShareCheckboxInterface } from './types'
 

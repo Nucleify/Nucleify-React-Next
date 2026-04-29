@@ -3,7 +3,6 @@
 import { useMemo } from 'react'
 
 import { useTranslation } from 'react-i18next'
-
 import { NucEntityDataTableCard } from '../../../../nuc_datatable/atomic/templates/entity-datatable-card'
 import { NucDialog } from '../../../../nuc_dialog'
 import type { ConfirmDialogFunctionType } from '../../../../nuc_dialog/types/functions'
@@ -33,15 +32,21 @@ export default function NucQuestionDashboard(
     questionRequests(closeDialog)
 
   const confirmCreate: ConfirmDialogFunctionType = async (data, getData) => {
-    await storeQuestion(data as unknown as NucQuestionObjectInterface, async () => {
-      getData?.()
-    })
+    await storeQuestion(
+      data as unknown as NucQuestionObjectInterface,
+      async () => {
+        getData?.()
+      }
+    )
   }
 
   const confirmEdit: ConfirmDialogFunctionType = async (data, getData) => {
-    await editQuestion(data as unknown as NucQuestionObjectInterface, async () => {
-      getData?.()
-    })
+    await editQuestion(
+      data as unknown as NucQuestionObjectInterface,
+      async () => {
+        getData?.()
+      }
+    )
   }
 
   const confirmDelete: ConfirmDialogFunctionType = async (id, getData) => {

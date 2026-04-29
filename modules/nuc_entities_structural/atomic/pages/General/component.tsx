@@ -1,16 +1,18 @@
 'use client'
 
+import { useParams } from 'next/navigation'
 import { useEffect, useMemo, useState } from 'react'
 
-import { useParams } from 'next/navigation'
 import { useTranslation } from 'react-i18next'
-
 import { NucEntityChartCard } from '../../../../nuc_charts/atomic/template/entity-chart-card'
 import { isMobile } from '../../../../nuc_media/utils/is_mobile'
 import { NucTiles } from '../../../../nuc_templates/components/tiles'
 import type { NucTilesInterface } from '../../../../nuc_templates/components/tiles/interfaces'
 import { questionRequests, technologyRequests } from '../../bosons/utils'
-import { NucQuestionDashboard, NucTechnologyDashboard } from '../../templates/Dashboard'
+import {
+  NucQuestionDashboard,
+  NucTechnologyDashboard,
+} from '../../templates/Dashboard'
 
 export default function NucStructuralPage(): React.JSX.Element {
   const params = useParams<{ lang?: string }>()
