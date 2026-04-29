@@ -72,6 +72,9 @@ export function NucDialog(props: NucDialogInterface) {
       {...rest}
       modal={props.modal ?? true}
       showHeader={props.showHeader ?? true}
+      onHide={() => {
+        if (action) close?.(action)
+      }}
       className={`nuc-dialog ${action || ''}`}
       header={
         action === 'show' && selectedObject ? (
@@ -117,13 +120,16 @@ export function NucDialog(props: NucDialogInterface) {
             const FieldComponent = getComponent(
               field.type as ComponentType
             ) as React.ElementType
+            const isSelectLike = isSelectOrDatePicker(field.type)
+            const isPasswordConfirmation =
+              field.name === 'password_confirmation'
             return (
               <div key={index} className="form-div">
                 <label htmlFor={field.name}>{t(field.label)}</label>
                 <FieldComponent
                   {...translatedProps(field.props)}
                   id={field.name}
-                  value={formData[field.name]}
+                  value={formData[field.name] ?? ''}
                   onChange={(e: {
                     target?: { value: unknown }
                     value?: unknown
@@ -136,34 +142,25 @@ export function NucDialog(props: NucDialogInterface) {
                     }))
                   }
                   adType={entity as AdTypeType}
-                  panelClass={
-                    isSelectOrDatePicker(field.type) ? entity : undefined
-                  }
-                  dateFormat={
-                    field.type === 'date-picker' ? 'yy-mm-dd' : undefined
-                  }
-                  toggleMask={field.type === 'password' ? true : undefined}
-                  passwordsMatch={
-                    field.name === 'password_confirmation' &&
-                    passwordsMatch(
-                      formData.password,
-                      formData.password_confirmation
-                    )
-                      ? true
-                      : undefined
-                  }
-                  emptyPassword={
-                    field.name === 'password_confirmation' &&
-                    isEmpty(formData.password)
-                      ? true
-                      : undefined
-                  }
-                  emptyConfirmPassword={
-                    field.name === 'password_confirmation' &&
-                    isEmpty(formData.password_confirmation)
-                      ? true
-                      : undefined
-                  }
+                  {...(isSelectLike ? { panelClass: entity } : {})}
+                  {...(field.type === 'date-picker'
+                    ? { dateFormat: 'yy-mm-dd' }
+                    : {})}
+                  {...(field.type === 'password' ? { toggleMask: true } : {})}
+                  {...(isPasswordConfirmation &&
+                  passwordsMatch(
+                    formData.password,
+                    formData.password_confirmation
+                  )
+                    ? { passwordsMatch: true }
+                    : {})}
+                  {...(isPasswordConfirmation && isEmpty(formData.password)
+                    ? { emptyPassword: true }
+                    : {})}
+                  {...(isPasswordConfirmation &&
+                  isEmpty(formData.password_confirmation)
+                    ? { emptyConfirmPassword: true }
+                    : {})}
                   mask={isPhoneField(field.name) ? '999-999-999' : undefined}
                   placeholder={isPhoneField(field.name) ? '999-999-999' : ''}
                   unmask={isPhoneField(field.name) ? true : undefined}
