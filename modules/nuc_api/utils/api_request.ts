@@ -16,6 +16,10 @@ function resolveApiUrl(url: string): string {
   return `${baseUrl}${url}`
 }
 
+function stripApiPrefix(url: string): string {
+  return url.startsWith('/api/') ? url.slice(4) : url
+}
+
 export async function apiRequest<T>(
   url: string,
   method: HttpMethodType = 'GET',
@@ -54,12 +58,34 @@ export async function apiRequest<T>(
   const queryString = searchParams.toString()
   const requestUrl = queryString ? `${finalApiUrl}?${queryString}` : finalApiUrl
 
-  const response = await fetch(requestUrl, {
+  let response = await fetch(requestUrl, {
     method,
     body: data ? JSON.stringify(data) : undefined,
     headers,
     credentials: 'include',
   })
+
+  // Fallback for environments where backend routes are exposed without `/api`.
+  if (
+    !response.ok &&
+    response.status === 404 &&
+    !/^https?:\/\//.test(finalUrl)
+  ) {
+    const fallbackUrl = stripApiPrefix(finalUrl)
+    if (fallbackUrl !== finalUrl) {
+      const resolvedFallbackUrl = resolveApiUrl(fallbackUrl)
+      const fallbackRequestUrl = queryString
+        ? `${resolvedFallbackUrl}?${queryString}`
+        : resolvedFallbackUrl
+
+      response = await fetch(fallbackRequestUrl, {
+        method,
+        body: data ? JSON.stringify(data) : undefined,
+        headers,
+        credentials: 'include',
+      })
+    }
+  }
 
   if (!response.ok) {
     let errorData: unknown = null
@@ -68,14 +94,26 @@ export async function apiRequest<T>(
     } catch {
       errorData = { error: response.statusText }
     }
+    const responseData =
+      errorData && typeof errorData === 'object'
+        ? (errorData as { error?: string; errors?: string })
+        : null
+    const message =
+      responseData?.error ||
+      responseData?.errors ||
+      response.statusText ||
+      `Request failed with status ${response.status}`
+    const requestError = new Error(message)
 
-    throw {
+    Object.assign(requestError, {
       response: {
         status: response.status,
         data: errorData,
       },
       data: errorData,
-    }
+    })
+
+    throw requestError
   }
 
   return (await response.json()) as ApiResponseType<T>

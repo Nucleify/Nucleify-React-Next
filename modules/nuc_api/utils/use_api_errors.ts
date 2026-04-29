@@ -60,16 +60,15 @@ export function useApiErrors(): UseApiErrorsInterface {
 
     if (error instanceof Error) {
       flashToast(error.message, 'error')
-      throw error
+      return
     }
 
     if (typeof error === 'string') {
       flashToast(error, 'error')
-      throw new Error(error)
+      return
     }
 
     flashToast('An unknown error occurred', 'error')
-    throw new Error('An unknown error occurred')
   }
 
   return {

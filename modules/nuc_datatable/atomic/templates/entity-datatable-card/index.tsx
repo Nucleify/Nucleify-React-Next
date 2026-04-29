@@ -2,7 +2,7 @@ import { Button } from 'primereact/button'
 import { Card } from 'primereact/card'
 import type { DataTableFilterMeta } from 'primereact/datatable'
 import { Skeleton } from 'primereact/skeleton'
-import React, { useMemo, useState } from 'react'
+import React, { useCallback, useMemo, useState } from 'react'
 
 import { NucEntityDataTable } from '../entity-datatable'
 
@@ -19,6 +19,17 @@ export const NucEntityDataTableCard: React.FC<
 
   const [shareDialogVisible, setShareDialogVisible] = useState(false)
   const [selectedItems, setSelectedItems] = useState<unknown[]>([])
+  const handleSelectedUpdate = useCallback((selected: unknown[]) => {
+    setSelectedItems((prev) => {
+      if (
+        prev.length === selected.length &&
+        prev.every((item, index) => item === selected[index])
+      ) {
+        return prev
+      }
+      return selected
+    })
+  }, [])
   type ColumnWithField = { field?: string }
 
   const specificColumns = useMemo(() => {
@@ -124,7 +135,7 @@ export const NucEntityDataTableCard: React.FC<
               totalRecords: '{totalRecords}',
             })}
             selection={selectedItems}
-            onSelectedUpdate={(selected) => setSelectedItems(selected)}
+            onSelectedUpdate={handleSelectedUpdate}
           />
         )}
       </Card>
