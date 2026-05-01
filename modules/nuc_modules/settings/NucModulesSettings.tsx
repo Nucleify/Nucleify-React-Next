@@ -16,7 +16,10 @@ function extractModules(
 ): ModuleObjectInterface[] | undefined {
   if (typeof response !== 'object' || response === null) return undefined
 
-  if ('modules' in response && Array.isArray((response as { modules: unknown }).modules)) {
+  if (
+    'modules' in response &&
+    Array.isArray((response as { modules: unknown }).modules)
+  ) {
     return (response as { modules: ModuleObjectInterface[] }).modules
   }
 
@@ -25,7 +28,8 @@ function extractModules(
     typeof (response as { data: unknown }).data === 'object' &&
     (response as { data: unknown }).data !== null
   ) {
-    const data = (response as { data: { modules?: ModuleObjectInterface[] } }).data
+    const data = (response as { data: { modules?: ModuleObjectInterface[] } })
+      .data
     if (Array.isArray(data.modules)) return data.modules
   }
 

@@ -1,13 +1,11 @@
 import { useState } from 'react'
 
+import type { ShareRequestInterface, ShareRequestsInterface } from '../types'
+
 import { apiHandle } from '../../../nuc_api/utils/api_handle'
 import { useApiSuccess } from '../../../nuc_api/utils/use_api_success'
 import { useLoading } from '../../../nuc_loading/utils/use_loading'
-
-import type { ShareRequestInterface, ShareRequestsInterface } from '../types'
-
 import { apiUrl } from './api_url'
-
 
 export function useShareRequests(): ShareRequestsInterface {
   const [received, setReceived] = useState<ShareRequestInterface[]>([])

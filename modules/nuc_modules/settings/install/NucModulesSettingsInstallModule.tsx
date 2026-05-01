@@ -1,13 +1,11 @@
 'use client'
 
-import { useState } from 'react'
-
 import type { FileUploadFile } from 'primereact/fileupload'
+import { useState } from 'react'
 
 import { AdButton, AdDialog, AdFileUpload } from 'nucleify'
 
 import { nucModulesApiUrl } from '../../utils/api_url'
-
 import { useInstallModule } from './use_install_module'
 
 import './_index.scss'

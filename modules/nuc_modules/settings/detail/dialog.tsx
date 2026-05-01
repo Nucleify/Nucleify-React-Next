@@ -3,7 +3,6 @@
 import { AdButton, AdDialog } from 'nucleify'
 
 import { NucModulesReadme } from '../../atomic/template/readme'
-
 import type { ModuleReadmeDialogComponentProps } from './types'
 
 import './_dialog.scss'

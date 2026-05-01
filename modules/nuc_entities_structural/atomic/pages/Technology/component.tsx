@@ -10,7 +10,8 @@ import { NucTechnologyDashboard } from '../../templates/Dashboard'
 
 export default function NucTechnologyPage(): React.JSX.Element {
   const { closeDialog } = useNucDialog()
-  const { results, loading, getAllTechnologies } = technologyRequests(closeDialog)
+  const { results, loading, getAllTechnologies } =
+    technologyRequests(closeDialog)
 
   useEffect(() => {
     void getAllTechnologies(true)

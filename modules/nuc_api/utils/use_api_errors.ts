@@ -16,7 +16,8 @@ function apiFailureToError(error: unknown): Error {
       if (typeof d.message === 'string') return new Error(d.message)
       if (d.error != null) return new Error(String(d.error))
     }
-    const status = (error as { response?: { status?: number } }).response?.status
+    const status = (error as { response?: { status?: number } }).response
+      ?.status
     if (status != null) return new Error(`Request failed (${status})`)
   }
   return new Error('Request failed')

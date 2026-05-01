@@ -1,14 +1,14 @@
 'use client'
 
-import { useEffect, useState, type JSX } from 'react'
+import { type JSX, useEffect, useState } from 'react'
 
 import { AdHeading } from 'nucleify'
 
-import type { ShareTabType } from '../../atomic/types'
-import { useShareRequests } from '../../atomic/utils/requests'
-
 import { NucShareRequestsList } from '../share-requests-list'
 import { NucShareTabs } from '../share-tabs'
+
+import type { ShareTabType } from '../../atomic/types'
+import { useShareRequests } from '../../atomic/utils/requests'
 
 import './_index.scss'
 
@@ -35,10 +35,7 @@ export function NucSharePopover(): JSX.Element {
       </div>
 
       <div className="share-popover-content">
-        <NucShareTabs
-          activeTab={activeTab}
-          onUpdateActiveTab={setActiveTab}
-        />
+        <NucShareTabs activeTab={activeTab} onUpdateActiveTab={setActiveTab} />
 
         {activeTab === 'received' ? (
           <NucShareRequestsList

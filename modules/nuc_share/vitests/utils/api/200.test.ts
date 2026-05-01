@@ -1,6 +1,6 @@
-import { act, renderHook } from '@testing-library/react'
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 
+import { act, renderHook } from '@testing-library/react'
 import type { ShareRequestsInterface } from '../../../atomic/types'
 import { useShareRequests } from '../../../atomic/utils/requests'
 
@@ -60,7 +60,9 @@ describe('useShareRequests', (): void => {
   })
 
   it('loadAll fetches received, sent, and count', async (): Promise<void> => {
-    const { result } = renderHook((): ShareRequestsInterface => useShareRequests())
+    const { result } = renderHook(
+      (): ShareRequestsInterface => useShareRequests()
+    )
 
     await act(async () => {
       await result.current.loadAll()
@@ -81,7 +83,9 @@ describe('useShareRequests', (): void => {
   })
 
   it('acceptRequest sends POST to accept endpoint', async (): Promise<void> => {
-    const { result } = renderHook((): ShareRequestsInterface => useShareRequests())
+    const { result } = renderHook(
+      (): ShareRequestsInterface => useShareRequests()
+    )
 
     await act(async () => {
       await result.current.acceptRequest(1)
@@ -94,7 +98,9 @@ describe('useShareRequests', (): void => {
   })
 
   it('rejectRequest sends POST to reject endpoint', async (): Promise<void> => {
-    const { result } = renderHook((): ShareRequestsInterface => useShareRequests())
+    const { result } = renderHook(
+      (): ShareRequestsInterface => useShareRequests()
+    )
 
     await act(async () => {
       await result.current.rejectRequest(1)
@@ -107,7 +113,9 @@ describe('useShareRequests', (): void => {
   })
 
   it('cancelRequest sends POST to cancel endpoint', async (): Promise<void> => {
-    const { result } = renderHook((): ShareRequestsInterface => useShareRequests())
+    const { result } = renderHook(
+      (): ShareRequestsInterface => useShareRequests()
+    )
 
     await act(async () => {
       await result.current.cancelRequest(1)

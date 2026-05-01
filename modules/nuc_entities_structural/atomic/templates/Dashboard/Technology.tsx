@@ -3,7 +3,6 @@
 import { useMemo } from 'react'
 
 import { useTranslation } from 'react-i18next'
-
 import { NucEntityDataTableCard } from '../../../../nuc_datatable/atomic/templates/entity-datatable-card'
 import { NucDialog } from '../../../../nuc_dialog'
 import type { ConfirmDialogFunctionType } from '../../../../nuc_dialog/types/functions'
@@ -42,9 +41,12 @@ export default function NucTechnologyDashboard(
   }
 
   const confirmEdit: ConfirmDialogFunctionType = async (data, getData) => {
-    await editTechnology(data as unknown as NucTechnologyObjectInterface, async () => {
-      getData?.()
-    })
+    await editTechnology(
+      data as unknown as NucTechnologyObjectInterface,
+      async () => {
+        getData?.()
+      }
+    )
   }
 
   const confirmDelete: ConfirmDialogFunctionType = async (id, getData) => {

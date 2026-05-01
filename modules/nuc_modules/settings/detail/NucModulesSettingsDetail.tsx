@@ -1,24 +1,17 @@
 'use client'
 
 import { useRouter } from 'next/navigation'
-import { useCallback, useEffect, useState, type ReactNode } from 'react'
+import { type ReactNode, useCallback, useEffect, useState } from 'react'
 
-import {
-  AdBadge,
-  AdButton,
-  AdCard,
-  apiRequest,
-  useAtomicToast,
-} from 'nucleify'
+import { AdBadge, AdButton, AdCard, apiRequest, useAtomicToast } from 'nucleify'
 
-import type { ModuleObjectInterface } from '../../types/interfaces'
 import { NucCube } from '../../../nuc_templates/components/cube'
+import type { ModuleObjectInterface } from '../../types/interfaces'
 import { nucModulesApiUrl } from '../../utils/api_url'
 import { toggleModule } from '../toggle/toggle_module'
 import { uninstallModule } from '../uninstall/uninstall_module'
-
-import { ModuleItemOptionsDialog } from './ModuleItemOptionsDialog'
 import { NucModulesSettingsDetailReadmeDialog } from './dialog'
+import { ModuleItemOptionsDialog } from './ModuleItemOptionsDialog'
 
 import './_index.scss'
 
@@ -73,9 +66,7 @@ export default function NucModulesSettingsDetail({
         nucModulesApiUrl(`/modules/${moduleSlug}`)
       )
       const data =
-        typeof response === 'object' &&
-        response !== null &&
-        'data' in response
+        typeof response === 'object' && response !== null && 'data' in response
           ? (response as { data: ModuleObjectInterface }).data
           : (response as ModuleObjectInterface)
       setModuleData(data)
@@ -146,9 +137,7 @@ export default function NucModulesSettingsDetail({
         ) : null}
         <AdButton
           label={module?.enabled ? 'Disable' : 'Enable'}
-          icon={
-            module?.enabled ? 'prime:times-circle' : 'prime:check-circle'
-          }
+          icon={module?.enabled ? 'prime:times-circle' : 'prime:check-circle'}
           severity="secondary"
           type="button"
           onClick={() => setToggleDialogVisible(true)}

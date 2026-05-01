@@ -1,8 +1,7 @@
 'use client'
 
-import { NucModulesSettingsItem } from './item'
-
 import type { NucModulesListInterface } from './interfaces'
+import { NucModulesSettingsItem } from './item'
 
 import './_index.scss'
 

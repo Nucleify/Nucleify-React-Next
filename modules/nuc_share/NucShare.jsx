@@ -1,9 +1,8 @@
 import { useEffect } from 'react'
 
 import { AdPopover } from 'atomic'
-
-import { useShareRequests } from './atomic/utils/requests'
 import { isMobile } from '../nuc_media/utils/is_mobile'
+import { useShareRequests } from './atomic/utils/requests'
 import { NucSharePopover } from './components/share-popover'
 import './_index.scss'
 

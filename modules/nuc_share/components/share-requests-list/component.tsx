@@ -4,9 +4,9 @@ import type { JSX } from 'react'
 
 import { AdButton, AdTag } from 'nucleify'
 
-import type { ShareRequestInterface } from '../../atomic/types'
-
 import { NucShareRequestsItem } from '../share-requests-item'
+
+import type { ShareRequestInterface } from '../../atomic/types'
 
 import './_index.scss'
 
@@ -72,9 +72,7 @@ export function NucShareRequestsList({
             ) : (
               <AdTag
                 value={request.status}
-                severity={
-                  request.status === 'accepted' ? 'success' : 'danger'
-                }
+                severity={request.status === 'accepted' ? 'success' : 'danger'}
               />
             )
           }

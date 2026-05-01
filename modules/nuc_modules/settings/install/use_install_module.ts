@@ -1,8 +1,8 @@
 'use client'
 
+import type { FileUploadBeforeSendEvent } from 'primereact/fileupload'
 import { useCallback } from 'react'
 
-import type { FileUploadBeforeSendEvent } from 'primereact/fileupload'
 import { useAtomicToast } from 'nucleify'
 
 function getCookieValue(name: string): string | undefined {

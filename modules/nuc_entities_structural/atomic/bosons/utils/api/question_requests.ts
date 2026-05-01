@@ -10,6 +10,7 @@ import type {
   UseLoadingInterface,
 } from 'nucleify'
 import { apiHandle, useApiSuccess, useLoading } from 'nucleify'
+
 import type { NucQuestionRequestsInterface } from '../../types/api'
 
 export function questionRequests(
@@ -69,7 +70,10 @@ export function questionRequests(
     })
   }
 
-  async function getSiteQuestions(site: string, loading?: boolean): Promise<void> {
+  async function getSiteQuestions(
+    site: string,
+    loading?: boolean
+  ): Promise<void> {
     await apiHandle<NucQuestionObjectInterface[]>({
       url: apiUrl() + `/questions/get-site-questions/${site}`,
       setLoading: loading ? setLoading : undefined,
