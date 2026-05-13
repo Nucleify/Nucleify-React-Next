@@ -1,7 +1,6 @@
 import type { JSX } from 'react'
 import Script from 'next/script'
 
-/** Runs before paint so `p-dark` matches the `nuc-dark-mode` cookie (FOUC guard). */
 export const NUC_DARK_MODE_BOOTSTRAP_SCRIPT = `(function(){try{var m=document.cookie.match(/(?:^|;\\s*)nuc-dark-mode=([^;]*)/);if(m&&m[1]==='false'){document.documentElement.classList.remove('p-dark')}else{document.documentElement.classList.add('p-dark')}}catch(e){}})()`
 
 export function NucDarkModeBootstrapScript(): JSX.Element {
