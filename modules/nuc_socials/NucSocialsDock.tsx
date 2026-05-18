@@ -2,9 +2,9 @@
 
 import './_index.scss'
 
-import { Icon } from '@iconify/react'
 import { useCallback } from 'react'
 
+import { Icon } from '@iconify/react'
 import type { SocialItemInterface, SocialLinkInputInterface } from './types'
 import { useSocialsLinks } from './utils'
 
